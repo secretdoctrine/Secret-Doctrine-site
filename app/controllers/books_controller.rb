@@ -15,6 +15,9 @@ class BooksController < ApplicationController
   end
 
   def show
+
+    @tree = BookCategory.build_categories_tree
+
   end
 
 end
