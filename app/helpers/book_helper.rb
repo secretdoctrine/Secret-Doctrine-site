@@ -863,69 +863,70 @@ module BookHelper
 
     def import_all
 
-      helper = BookImportHelper.new(
-          $td1_page_selector, $td1_pdf_regex, $td1_html_regex, $td1_files_path, $td1_shift_modifier, $td1_book_structure, $td1_pages_dictionary)
-      import_book(helper, 0)
-
-      helper = BookImportHelper.new(
-          $td2_page_selector, $td2_pdf_regex, $td2_html_regex, $td2_files_path, $td2_shift_modifier, $td2_book_structure, $td2_pages_dictionary)
-      import_book(helper, 1)
-
-      helper = BookImportHelper.new(
-          $td3_page_selector, $td3_pdf_regex, $td3_html_regex, $td3_files_path, $td3_shift_modifier, $td3_book_structure, $td3_pages_dictionary)
-      import_book(helper, 2)
-
-    end
-
-    def import_book(helper, number)
-
       ActiveRecord::Base.transaction do
 
         root_category = BookCategory.get_root!
 
-        @min_page = 0
-        @max_page = 0
+        helper = BookImportHelper.new(
+            $td1_page_selector, $td1_pdf_regex, $td1_html_regex, $td1_files_path, $td1_shift_modifier, $td1_book_structure, $td1_pages_dictionary)
+        import_book(helper, 0, root_category)
 
-        book = Book.create!(
-            name: helper.book_structure.name,
-            order_number: number,
-            book_category_id: root_category.id,
-            synopsis: helper.book_structure.synopsis)
+        helper = BookImportHelper.new(
+            $td2_page_selector, $td2_pdf_regex, $td2_html_regex, $td2_files_path, $td2_shift_modifier, $td2_book_structure, $td2_pages_dictionary)
+        import_book(helper, 1, root_category)
 
-        pages_array = helper.book_structure.pages.split('-')
-        @min_page = int_value(pages_array[0]) if int_value(pages_array[0]) < @min_page
-        @max_page = int_value(pages_array[1]) if int_value(pages_array[1]) > @max_page
+        subcategory1 = BookCategory.create!(name: 'Subcategory 1', book_category_id: root_category.id, order_number: 0)
 
-        helper.book_structure.parts.each { |part| create_part(book, part, nil) }
-        helper.book_structure.chapters.each { |chapter| create_chapter(book, chapter) }
+        helper = BookImportHelper.new(
+            $td3_page_selector, $td3_pdf_regex, $td3_html_regex, $td3_files_path, $td3_shift_modifier, $td3_book_structure, $td3_pages_dictionary)
+        import_book(helper, 0, subcategory1)
 
-        (@min_page..@max_page).each do |page_num|
+      end
 
-          file_page_num = page_num + helper.shift_modifier
-          page_name = helper.pages_dictionary.has_key?(page_num) ?
-              helper.pages_dictionary[page_num] : 'Page ' + file_page_num.to_s
+    end
 
-          page = Page.create!(book_id: book.id, internal_order: page_num, display_name: page_name)
-          Dir[helper.files_path].each do |file_name|
+    def import_book(helper, number, category)
 
-            match = helper.pdf_regex.match(file_name)
-            unless match.nil?
-              match_num = match[1].to_i
-              ExternalPageContent.create!(page_id: page.id, type: 0, path: file_name) if match_num == file_page_num
-            end
+      @min_page = 0
+      @max_page = 0
 
-            match = helper.html_regex.match(file_name)
-            unless match.nil?
-              match_num = match[1].to_i
-              ExternalPageContent.create!(page_id: page.id, type: 1, path: file_name) if match_num == file_page_num
-            end
+      book = Book.create!(
+          name: helper.book_structure.name,
+          order_number: number,
+          book_category_id: category.id,
+          synopsis: helper.book_structure.synopsis)
 
+      pages_array = helper.book_structure.pages.split('-')
+      @min_page = int_value(pages_array[0]) if int_value(pages_array[0]) < @min_page
+      @max_page = int_value(pages_array[1]) if int_value(pages_array[1]) > @max_page
+
+      helper.book_structure.parts.each { |part| create_part(book, part, nil) }
+      helper.book_structure.chapters.each { |chapter| create_chapter(book, chapter) }
+
+      (@min_page..@max_page).each do |page_num|
+
+        file_page_num = page_num + helper.shift_modifier
+        page_name = helper.pages_dictionary.has_key?(page_num) ?
+            helper.pages_dictionary[page_num] : 'Page ' + file_page_num.to_s
+
+        page = Page.create!(book_id: book.id, internal_order: page_num, display_name: page_name)
+        Dir[helper.files_path].each do |file_name|
+
+          match = helper.pdf_regex.match(file_name)
+          unless match.nil?
+            match_num = match[1].to_i
+            ExternalPageContent.create!(page_id: page.id, type: 0, path: file_name) if match_num == file_page_num
+          end
+
+          match = helper.html_regex.match(file_name)
+          unless match.nil?
+            match_num = match[1].to_i
+            ExternalPageContent.create!(page_id: page.id, type: 1, path: file_name) if match_num == file_page_num
           end
 
         end
 
       end
-
 
     end
 
