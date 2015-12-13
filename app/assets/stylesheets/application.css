@@ -33,6 +33,7 @@ table.books_main_table td {
 #tree_container_div, #contents_div, #main_container_div {
     display: block;
     float: left;
+    color: #ffffff;
 }
 
 #tree_container_div, #contents_div {

@@ -1,0 +1,13 @@
+- display = display_contents ? 'none' : 'block'
+
+%div{ :id => 'tree_container_div', :class => 'fullheight', :width => '200px', :style => 'display: ' + display + ';' }
+  %input{:type => 'button', :value => '1111', :onclick => 'javascript: $("#contents_div")[0].style.display = "block"; $("#tree_container_div")[0].style.display = "none";'}
+  this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>
+
+
+- display = display_contents ? 'block' : 'none'
+
+%div{ :id => 'contents_div', :class => 'fullheight', :width => '200px', :style => 'display: ' + display + ';' }
+  %input{:type => 'button', :value => '1111', :onclick => 'javascript: $("#contents_div")[0].style.display = "none"; $("#tree_container_div")[0].style.display = "block";'}
+  this is contents
+
