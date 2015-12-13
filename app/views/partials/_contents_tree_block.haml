@@ -11,3 +11,17 @@
   %input{:type => 'button', :value => '1111', :onclick => 'javascript: $("#contents_div")[0].style.display = "none"; $("#tree_container_div")[0].style.display = "block";'}
   this is contents
 
+
+%script{:type => "text/javascript"}
+  $('#tree_container_div').jstree({
+  "core" : {"themes" : {"icons" : false}}
+  });
+
+  $("#tree_container_div").bind("select_node.jstree", function (e, data) {
+  return data.instance.toggle_node(data.node);
+  });
+
+  $("#tree_container_div").on("activate_node.jstree", function(e,data){
+  window.location.href = data.node.a_attr.href;
+  })
+

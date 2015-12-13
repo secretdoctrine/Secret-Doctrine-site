@@ -27,7 +27,7 @@ class BookCategory < ActiveRecord::Base
 
   def self.add_tree_element(tree_parent, db_element)
 
-    tree_element = TreeElement.new(display_name: db_element.name)
+    tree_element = TreeElement.new(display_name: db_element.name, controller: :books, action: :show, id: 1 )
 
     process_own_books(db_element, tree_element)
 

@@ -1,14 +1,5 @@
 = render partial: 'partials/contents_tree_block', :locals => { :display_contents => false, :tree => @tree }
 
-%script{:type => "text/javascript"}
-  $('#tree_container_div').jstree({
-  "core" : {"themes" : {"icons" : false}}
-  });
-
-  $("#tree_container_div").bind("select_node.jstree", function (e, data) {
-  return data.instance.toggle_node(data.node);
-  });
-
 %div{:id => "main_container_div", :class => "fullheight"}
   this id main container
 
