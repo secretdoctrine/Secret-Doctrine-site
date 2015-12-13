@@ -1,32 +1,7 @@
-%div{:id => "tree_container_div", :class => "fullheight", :width => "200px"}
-  this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>
-%div{:id => "contents_div", :class => "fullheight", :width => "200px"}
-  this is contents
+= render partial: 'partials/tree_container', :locals => { :show => false }
+= render partial: 'partials/book_contents', :locals => { :show => true }
 
-%div{:id => "main_container_div", :class => "fullheight"}
+%div{:id => 'main_container_div', :class => 'fullheight'}
   this id main container
 
-
-%script{:type => "text/javascript"}
-  function resize()
-  {
-
-  //for correct resize handling we need to set body overflow to hidden
-  $("body")[0].style.overflow = "hidden";
-
-  var heights = window.innerHeight;
-  array = $(".fullheight")
-
-  for (index = 0; index < array.length; ++index) {
-  array[index].style.height = heights - 230 + "px";
-  }
-
-  var widths = window.innerWidth;
-
-  $("#main_container_div")[0].style.width = widths - 210 + "px";
-
-  }
-  resize();
-  window.onresize = function() {
-  resize();
-  };
+= render partial: 'partials/book_view_resize_script'

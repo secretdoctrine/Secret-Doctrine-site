@@ -38,7 +38,3 @@ table.books_main_table td {
 #tree_container_div, #contents_div {
     width: 200px;
 }
-
-#contents_div {
-    display: none;
-}
