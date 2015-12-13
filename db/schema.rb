@@ -11,19 +11,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151211181708) do
+ActiveRecord::Schema.define(version: 20151212201751) do
 
-  create_table "books", force: :cascade do |t|
-    t.string  "name",         null: false
-    t.integer "order_number", null: false
+  create_table "book_categories", force: :cascade do |t|
+    t.integer "book_category_id"
+    t.string  "name",             null: false
+    t.boolean "is_root"
+    t.integer "order_number",     null: false
   end
 
+  add_index "book_categories", ["book_category_id"], name: "index_book_categories_on_book_category_id"
+
+  create_table "books", force: :cascade do |t|
+    t.string  "name",             null: false
+    t.integer "order_number",     null: false
+    t.string  "picture_path"
+    t.string  "synopsis"
+    t.integer "year"
+    t.string  "author"
+    t.integer "page_count"
+    t.integer "book_category_id", null: false
+  end
+
+  add_index "books", ["book_category_id"], name: "index_books_on_book_category_id"
+
   create_table "contents_elements", force: :cascade do |t|
-    t.integer "book_id",     null: false
-    t.integer "page_number", null: false
+    t.integer "book_id",            null: false
+    t.integer "content_element_id"
+    t.integer "page_number",        null: false
   end
 
   add_index "contents_elements", ["book_id"], name: "index_contents_elements_on_book_id"
+  add_index "contents_elements", ["content_element_id"], name: "index_contents_elements_on_content_element_id"
+
+  create_table "external_book_contents", force: :cascade do |t|
+    t.integer "book_id", null: false
+    t.integer "type",    null: false
+    t.string  "path",    null: false
+  end
+
+  add_index "external_book_contents", ["book_id"], name: "index_external_book_contents_on_book_id"
 
   create_table "external_page_contents", force: :cascade do |t|
     t.integer "page_id", null: false

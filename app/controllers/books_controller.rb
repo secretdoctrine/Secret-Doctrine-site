@@ -9,6 +9,9 @@ class BooksController < ApplicationController
   end
 
   def index
+
+    @tree = BookCategory.build_categories_tree
+
   end
 
   def show
