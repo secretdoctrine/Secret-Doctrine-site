@@ -2,8 +2,8 @@
 
 %div{ :id => 'tree_container_div', :class => 'fullheight', :width => '200px', :style => 'display: ' + display + ';' }
   %input{:type => 'button', :value => '1111', :onclick => 'javascript: $("#contents_div")[0].style.display = "block"; $("#tree_container_div")[0].style.display = "none";'}
-  this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>
-
+  %ul
+    = render partial: 'books/tree_level_li', :locals => {:tree_element => tree}
 
 - display = display_contents ? 'block' : 'none'
 
