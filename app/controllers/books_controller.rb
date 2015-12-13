@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
 
-  layout 'layouts/empty_layout.haml', :only => [:index, :show]
+  layout 'layouts/application.haml', :only => [:index, :show]
 
   before_action :set_body_class
 

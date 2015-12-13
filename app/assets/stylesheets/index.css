@@ -7,7 +7,9 @@ a { text-decoration: none; }
 body {
     font:Arial, Helvetica, sans-serif;
     padding: 0 15px;
-    background: #151F52 url(bg_blue.jpg)
+    background: #151F52 url(bg_blue.jpg);
+    margin: 0;
+    padding: 0;
 }
 
 

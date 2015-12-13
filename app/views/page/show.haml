@@ -1,2 +1,28 @@
-%div
-  page here
+%div{:id => "tree_container_div", :class => "fullheight", :width => "200px"}
+  this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>this is tree<br>
+%div{:id => "contents_div", :class => "fullheight", :width => "200px"}
+  this is contents
+
+%div{:id => "main_container_div", :class => "fullheight"}
+  this id main container
+
+
+%script{:type => "text/javascript"}
+  function resize()
+  {
+  var heights = window.innerHeight;
+  array = $(".fullheight")
+
+  for (index = 0; index < array.length; ++index) {
+  array[index].style.height = heights - 230 + "px";
+  }
+
+  var widths = window.innerWidth;
+
+  $("#main_container_div")[0].style.width = widths - 210 + "px";
+
+  }
+  resize();
+  window.onresize = function() {
+  resize();
+  };
