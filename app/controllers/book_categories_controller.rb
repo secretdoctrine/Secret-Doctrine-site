@@ -16,7 +16,7 @@ class BookCategoriesController < ApplicationController
 
   def show
 
-    @category = BookCategory.find(params[:id])
+    @category = BookCategory.find_by_id(params[:id])
     @books = @category.nil? ? [] : @category.recursive_books_array
     @tree = BookCategory.build_categories_tree(@category)
 
