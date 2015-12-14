@@ -1,0 +1,62 @@
+input.library_toggle_button {
+    width: 100%;
+    padding: 7px;
+    border: 1px solid #254CBF;
+    background-color: #17317E;
+    color: #FFFFFF;
+    font-size: 12px;
+}
+
+#main_container_div {
+
+}
+
+.fullheight {
+    height: 500px;
+    overflow-y: auto;
+}
+
+#tree_container_div, #contents_div, #main_container_div {
+    display: block;
+    float: left;
+    color: #ffffff;
+}
+
+#tree_container_div, #contents_div {
+    width: 200px;
+}
+
+#search_block {
+    float: right;
+    margin: 0px 10px;
+    vertical-align: top;
+}
+
+#book_header {
+    font-size: 18px;
+    text-decoration: underline;
+    margin: 10px 10px 0px 20px;
+    float: left;
+}
+
+#page_header {
+    font-size: 14px;
+    margin: 10px 10px 0px 20px;
+    float: left;
+}
+
+#page_container {
+    display: block;
+    margin-top: 70px;
+    text-align: center;
+}
+
+#page_container iframe {
+    height: 800px;
+    width: 700px;
+}
+
+#previous_page, #next_page {
+    height: 800px;
+    width: 20px;
+}

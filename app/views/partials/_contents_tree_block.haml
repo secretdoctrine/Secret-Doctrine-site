@@ -2,15 +2,16 @@
 - display = display_contents ? 'none' : 'block'
 
 %div{ :id => 'tree_container_div', :class => 'fullheight', :width => '200px', :style => 'display: ' + display + ';' }
-  %input{:type => 'button', :value => '1111', :onclick => 'javascript: $("#contents_div")[0].style.display = "block"; $("#tree_container_div")[0].style.display = "none";'}
+  - display = display_contents ? 'block' : 'none'
+  /%input{:type => 'button', :value => I18n.t('library.show_contents'), :style => 'display: ' + display + ';', :class => 'library_toggle_button', :onclick => 'javascript: $("#contents_div")[0].style.display = "block"; $("#tree_container_div")[0].style.display = "none";'}
+  %input{:type => 'button', :value => I18n.t('library.show_contents'), :class => 'library_toggle_button', :onclick => 'javascript: $("#contents_div")[0].style.display = "block"; $("#tree_container_div")[0].style.display = "none";'}
   %div{ :id => jstree_div}
     %ul
       = render partial: 'partials/tree_level_li', :locals => {:tree_element => tree}
 
-- display = display_contents ? 'block' : 'none'
 
 %div{ :id => 'contents_div', :class => 'fullheight', :width => '200px', :style => 'display: ' + display + ';' }
-  %input{:type => 'button', :value => '1111', :onclick => 'javascript: $("#contents_div")[0].style.display = "none"; $("#tree_container_div")[0].style.display = "block";'}
+  %input{:type => 'button', :value => I18n.t('library.show_categories'), :class => 'library_toggle_button', :onclick => 'javascript: $("#contents_div")[0].style.display = "none"; $("#tree_container_div")[0].style.display = "block";'}
   this is contents
 
 

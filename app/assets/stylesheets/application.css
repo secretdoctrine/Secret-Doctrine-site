@@ -16,26 +16,3 @@
  *= require_self
  */
 
-table.books_main_table {
-    width: 100%;
-    border: 0px;
-}
-
-table.books_main_table td {
-    vertical-align: top;
-}
-
-.fullheight {
-    height: 500px;
-    overflow-y: auto;
-}
-
-#tree_container_div, #contents_div, #main_container_div {
-    display: block;
-    float: left;
-    color: #ffffff;
-}
-
-#tree_container_div, #contents_div {
-    width: 200px;
-}
