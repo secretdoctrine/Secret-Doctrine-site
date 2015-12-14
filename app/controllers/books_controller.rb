@@ -12,7 +12,7 @@ class BooksController < ApplicationController
 
     @book = Book.includes(:pages).find_by_id(params[:id])
 
-    return render(layout:false, status: 404) if @book.nil?
+    return render_404 if @book.nil?
 
     redirect_to book_page_path(@book, @book.pages.sort { |x, y| x.internal_order <=> y.internal_order}.first.internal_order)
 

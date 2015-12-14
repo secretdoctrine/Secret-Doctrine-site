@@ -17,7 +17,7 @@ class PagesController < ApplicationController
 
     @page = Page.find_by_book_id_and_internal_order(params[:book_id], params[:id])
 
-    return render layout: false, status: 404 if @page.nil?
+    render_404 if @page.nil?
 
   end
 
