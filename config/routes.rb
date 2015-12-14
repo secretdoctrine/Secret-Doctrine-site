@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :books, :only => [:index, :show]
   resources :menu, :only => [:show, :get]
   resources :page, :only => [:show, :index]
+  resources :book_categories, :only => [:show, :index]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

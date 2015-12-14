@@ -5,7 +5,7 @@
   %input{:type => 'button', :value => '1111', :onclick => 'javascript: $("#contents_div")[0].style.display = "block"; $("#tree_container_div")[0].style.display = "none";'}
   %div{ :id => jstree_div}
     %ul
-      = render partial: 'books/tree_level_li', :locals => {:tree_element => tree}
+      = render partial: 'partials/tree_level_li', :locals => {:tree_element => tree}
 
 - display = display_contents ? 'block' : 'none'
 

@@ -885,10 +885,71 @@ module BookHelper
 
     end
 
-    def import_book(helper, number, category)
+    def min_part_page(part)
 
-      @min_page = 0
-      @max_page = 0
+      min_page = 0
+      min_page = int_value(part.pages.split('-')[0]) unless part.pages.nil?
+
+      min_page
+
+    end
+
+    def min_chapter_page(chapter)
+
+      min_page = 0
+      min_page = int_value(chapter.pages.split('-')[0]) unless chapter.pages.nil?
+
+      chapter.parts.each { |part| min_page = min_part_page(part) if min_page < min_chapter_page(part) }
+
+      min_page
+
+    end
+
+    def min_book_page(book)
+
+      min_page = 0
+      min_page = int_value(book.pages.split('-')[0]) unless book.pages.nil?
+
+      book.chapters.each { |chapter| min_page = min_chapter_page(chapter) if min_page < min_chapter_page(chapter) }
+      book.parts.each { |part| min_page = min_part_page(part) if min_page < min_chapter_page(part) }
+
+      min_page
+
+    end
+
+    def max_part_page(part)
+
+      max_page = 0
+      max_page = int_value(part.pages.split('-')[1]) unless part.pages.nil?
+
+      max_page
+
+    end
+
+    def max_chapter_page(chapter)
+
+      max_page = 0
+      max_page = int_value(chapter.pages.split('-')[1]) unless chapter.pages.nil?
+
+      chapter.parts.each { |part| max_page = max_part_page(part) if max_page > max_chapter_page(part) }
+
+      min_page
+
+    end
+
+    def max_book_page(book)
+
+      max_page = 0
+      max_page = int_value(book.pages.split('-')[1]) unless book.pages.nil?
+
+      book.chapters.each { |chapter| max_page = max_chapter_page(chapter) if max_page < max_chapter_page(chapter) }
+      book.parts.each { |part| max_page = max_part_page(part) if max_page < max_page(part) }
+
+      max_page
+
+    end
+
+    def import_book(helper, number, category)
 
       book = Book.create!(
           name: helper.book_structure.name,
@@ -897,8 +958,6 @@ module BookHelper
           synopsis: helper.book_structure.synopsis)
 
       pages_array = helper.book_structure.pages.split('-')
-      @min_page = int_value(pages_array[0]) if int_value(pages_array[0]) < @min_page
-      @max_page = int_value(pages_array[1]) if int_value(pages_array[1]) > @max_page
 
       helper.book_structure.parts.each { |part| create_part(book, part, nil) }
       helper.book_structure.chapters.each { |chapter| create_chapter(book, chapter) }
