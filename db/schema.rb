@@ -45,25 +45,25 @@ ActiveRecord::Schema.define(version: 20151212201751) do
   add_index "contents_elements", ["content_element_id"], name: "index_contents_elements_on_content_element_id"
 
   create_table "external_book_contents", force: :cascade do |t|
-    t.integer "book_id", null: false
-    t.integer "type",    null: false
-    t.string  "path",    null: false
+    t.integer "book_id",      null: false
+    t.integer "content_type", null: false
+    t.string  "path",         null: false
   end
 
   add_index "external_book_contents", ["book_id"], name: "index_external_book_contents_on_book_id"
 
   create_table "external_page_contents", force: :cascade do |t|
-    t.integer "page_id", null: false
-    t.integer "type",    null: false
-    t.string  "path",    null: false
+    t.integer "page_id",      null: false
+    t.integer "content_type", null: false
+    t.string  "path",         null: false
   end
 
   add_index "external_page_contents", ["page_id"], name: "index_external_page_contents_on_page_id"
 
   create_table "internal_page_contents", force: :cascade do |t|
-    t.integer "page_id", null: false
-    t.integer "type",    null: false
-    t.string  "content", null: false
+    t.integer "page_id",      null: false
+    t.integer "content_type", null: false
+    t.string  "content",      null: false
   end
 
   add_index "internal_page_contents", ["page_id"], name: "index_internal_page_contents_on_page_id"

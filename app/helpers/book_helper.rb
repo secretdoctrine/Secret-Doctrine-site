@@ -841,22 +841,14 @@ module BookHelper
 
     def create_part(book, part, parent)
 
-      pages_array = part.pages.split('-')
-      @min_page = int_value(pages_array[0]) if int_value(pages_array[0]) < @min_page
-      @max_page = int_value(pages_array[1]) if int_value(pages_array[1]) > @max_page
-
       ContentsElement.create!(
-          book_id: book.id, page_number: int_value(pages_array[0]), content_element_id: parent.nil? ? nil : parent.id)
+          book_id: book.id, page_number: min_part_page(part), content_element_id: parent.nil? ? nil : parent.id)
 
     end
 
     def create_chapter(book, chapter)
 
-      pages_array = chapter.pages.split('-')
-      @min_page = int_value(pages_array[0]) if int_value(pages_array[0]) < @min_page
-      @max_page = int_value(pages_array[1]) if int_value(pages_array[1]) > @max_page
-
-      created_chapter = ContentsElement.create!(book_id: book.id, page_number: int_value(pages_array[0]), content_element_id: nil)
+      created_chapter = ContentsElement.create!(book_id: book.id, page_number: min_chapter_page(chapter), content_element_id: nil)
       chapter.parts.each { |part| create_part(book, part, created_chapter) }
 
     end
@@ -899,7 +891,7 @@ module BookHelper
       min_page = 0
       min_page = int_value(chapter.pages.split('-')[0]) unless chapter.pages.nil?
 
-      chapter.parts.each { |part| min_page = min_part_page(part) if min_page < min_chapter_page(part) }
+      chapter.parts.each { |part| min_page = min_part_page(part) if min_page > min_part_page(part) }
 
       min_page
 
@@ -910,8 +902,8 @@ module BookHelper
       min_page = 0
       min_page = int_value(book.pages.split('-')[0]) unless book.pages.nil?
 
-      book.chapters.each { |chapter| min_page = min_chapter_page(chapter) if min_page < min_chapter_page(chapter) }
-      book.parts.each { |part| min_page = min_part_page(part) if min_page < min_chapter_page(part) }
+      book.chapters.each { |chapter| min_page = min_chapter_page(chapter) if min_page > min_chapter_page(chapter) }
+      book.parts.each { |part| min_page = min_part_page(part) if min_page > min_part_page(part) }
 
       min_page
 
@@ -931,9 +923,9 @@ module BookHelper
       max_page = 0
       max_page = int_value(chapter.pages.split('-')[1]) unless chapter.pages.nil?
 
-      chapter.parts.each { |part| max_page = max_part_page(part) if max_page > max_chapter_page(part) }
+      chapter.parts.each { |part| max_page = max_part_page(part) if max_page < max_part_page(part) }
 
-      min_page
+      max_page
 
     end
 
@@ -943,7 +935,7 @@ module BookHelper
       max_page = int_value(book.pages.split('-')[1]) unless book.pages.nil?
 
       book.chapters.each { |chapter| max_page = max_chapter_page(chapter) if max_page < max_chapter_page(chapter) }
-      book.parts.each { |part| max_page = max_part_page(part) if max_page < max_page(part) }
+      book.parts.each { |part| max_page = max_part_page(part) if max_page < max_part_page(part) }
 
       max_page
 
@@ -957,30 +949,38 @@ module BookHelper
           book_category_id: category.id,
           synopsis: helper.book_structure.synopsis)
 
-      pages_array = helper.book_structure.pages.split('-')
-
       helper.book_structure.parts.each { |part| create_part(book, part, nil) }
       helper.book_structure.chapters.each { |chapter| create_chapter(book, chapter) }
 
-      (@min_page..@max_page).each do |page_num|
+      (min_book_page(helper.book_structure)..max_book_page(helper.book_structure)).each do |page_num|
 
         file_page_num = page_num + helper.shift_modifier
         page_name = helper.pages_dictionary.has_key?(page_num) ?
             helper.pages_dictionary[page_num] : 'Page ' + file_page_num.to_s
 
         page = Page.create!(book_id: book.id, internal_order: page_num, display_name: page_name)
-        Dir[helper.files_path].each do |file_name|
+        Dir.entries(helper.files_path).each do |file_name|
 
           match = helper.pdf_regex.match(file_name)
           unless match.nil?
             match_num = match[1].to_i
-            ExternalPageContent.create!(page_id: page.id, type: 0, path: file_name) if match_num == file_page_num
+            if match_num == file_page_num
+              ExternalPageContent.create!(
+                  page_id: page.id,
+                  content_type: ExternalPageContent::PDF_TYPE,
+                  path: File.join(helper.files_path, file_name))
+            end
           end
 
           match = helper.html_regex.match(file_name)
           unless match.nil?
             match_num = match[1].to_i
-            ExternalPageContent.create!(page_id: page.id, type: 1, path: file_name) if match_num == file_page_num
+            if match_num == file_page_num
+              ExternalPageContent.create!(
+                  page_id: page.id,
+                  content_type: ExternalPageContent::HTML_TYPE,
+                  path: File.join(helper.files_path, file_name))
+            end
           end
 
         end

@@ -46,6 +46,12 @@ class BookCategory < ActiveRecord::Base
 
   end
 
+  def self.build_categories_tree_for_book(book)
+
+    build_categories_tree(book.nil? ? nil : book.book_category)
+
+  end
+
   def self.build_categories_tree(current_element = nil)
 
     root = includes(book_categories: [:books], books: []).find_by(name: ROOT_NAME)

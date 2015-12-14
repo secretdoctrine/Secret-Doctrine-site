@@ -10,9 +10,13 @@ Rails.application.routes.draw do
   mount Refinery::Core::Engine, :at => '/cms'
 
   resources :news, :only => [:index]
-  resources :books, :only => [:index, :show]
+  resources :books, :only => [:show] do
+    resources :pages, :only => [:show] do
+      resources :external_page_contents, :only => [:show]
+    end
+  end
   resources :menu, :only => [:show, :get]
-  resources :page, :only => [:show, :index]
+  resources :pages, :only => [:show, :index]
   resources :book_categories, :only => [:show, :index]
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -8,15 +8,13 @@ class BooksController < ApplicationController
     @body_class = :bluegamma
   end
 
-  def index
-
-    @tree = BookCategory.build_categories_tree
-
-  end
-
   def show
 
-    @tree = BookCategory.build_categories_tree
+    @book = Book.includes(:pages).find_by_id(params[:id])
+
+    return render(layout:false, status: 404) if @book.nil?
+
+    redirect_to book_page_path(@book, @book.pages.sort { |x, y| x.internal_order <=> y.internal_order}.first)
 
   end
 
