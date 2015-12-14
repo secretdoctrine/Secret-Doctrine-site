@@ -7,6 +7,11 @@ input.library_toggle_button {
     font-size: 12px;
 }
 
+input.library_toggle_button:hover {
+    background-color: #27419E;
+    cursor: pointer;
+}
+
 #main_container_div {
 
 }
@@ -58,5 +63,14 @@ input.library_toggle_button {
 
 #previous_page, #next_page {
     height: 800px;
-    width: 20px;
+    width: 30px;
+    border: 1px solid #254CBF;
+    vertical-align: top;
+    background-color: #17317E;
+    color: #FFFFFF;
+}
+
+#previous_page:hover, #next_page:hover {
+    cursor: pointer;
+    background-color: #27419E;
 }
