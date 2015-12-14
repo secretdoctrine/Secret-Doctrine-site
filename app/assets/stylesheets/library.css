@@ -59,6 +59,7 @@ input.library_toggle_button:hover {
 #page_container iframe {
     height: 800px;
     width: 700px;
+    border: 1px solid #254CBF;
 }
 
 #previous_page, #next_page {
@@ -73,4 +74,112 @@ input.library_toggle_button:hover {
 #previous_page:hover, #next_page:hover {
     cursor: pointer;
     background-color: #27419E;
+}
+
+#library_feed {
+    padding: 15px 30px 30px 40px;
+}
+
+.pro {
+    background: url(black_40.png);
+    padding: 30px 15px 15px 25px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    min-height: 0;
+    position: relative;
+    margin: 0 0 10px;
+}
+
+.pro:after {
+    content: ".";
+    display: block;
+    clear: both;
+    height: 0;
+    visibility: hidden;
+}
+
+.pro .cover {
+    float: left;
+    margin-bottom: -9px;
+    width: 106px;
+}
+
+.pro .cover img {
+    vertical-align: top;
+    max-width: 100%;
+}
+
+.pro .anonce {
+    padding: 0 0 0 23px;
+    overflow: hidden;
+    font-size: 14px;
+    text-align: justify;
+}
+
+.pro h2, .pro h2 a {
+    font-size: 18px;
+    font-weight: bold;
+    color: #91C0D2;
+    margin: 0 0 25px;
+    text-decoration: underline;
+}
+
+.pro .footer { clear: both; float: right; min-height: 0;}
+
+.pro .footer a, .pro .footer span {
+    display: inline-block;
+}
+
+.pro .footer a {
+    color: #FFF;
+    text-decoration: none;
+    float: left;
+    background: url(pro_bg_blue.png) no-repeat 0 -90px;
+    padding: 0 0 0 2px;
+}
+
+.pro .footer a.first {
+    background: url(pro_bg_blue.png) no-repeat 0 0;
+    padding: 0 0 0 15px;
+}
+
+.pro .footer a .s1 {
+
+}
+
+.pro .footer a .s2 {
+    height: 26px;
+    line-height: 26px;
+    background: url(pro_bg_blue.png) repeat-x 0 -30px;
+    padding: 0 13px;
+}
+
+.pro .footer a.first .s2 {
+    padding-left: 0;
+}
+
+.pro .footer a.last .s1 {
+    background: url(pro_bg_blue.png) no-repeat 100% -60px;
+    padding: 0 15px 0 0;
+}
+
+.pro .footer a.last .s2 {
+    padding-right: 0;
+}
+
+.pro .footer a:hover {
+    color: #fff000;
+}
+
+.pro .footer a.first:hover {
+    background: url(pro_bg_blue_down.png) no-repeat 0 0;
+}
+
+.pro .footer a.last:hover .s1 {
+    background: url(pro_bg_blue_down.png) no-repeat 100% -60px;
+}
+
+.pro .footer a:hover .s2{
+    background: url(pro_bg_blue_down.png) repeat-x 0 -30px;
 }

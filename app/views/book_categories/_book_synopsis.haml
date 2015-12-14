@@ -1,4 +1,19 @@
-%div
-  = book.name
-%div
-  = book.synopsis
+%div{class: 'pro'}
+  %div{class: 'cover'}
+    %a{href: 'http://eee'}
+      %img
+  %div{class: 'anonce'}
+    %h2
+      %a{href: 'http://eee'}
+        = book.name
+    %p
+      = book.synopsis
+  %div{class: 'footer'}
+    %a{class: 'first last', href: 'http://eee'}
+      %span{class: 's1'}
+        %span{class: 's2'}
+          =I18n.t('library.download')
+    %a{class: 'first last', href: 'http://eee'}
+      %span{class: 's1'}
+        %span{class: 's2'}
+          =I18n.t('library.read')
