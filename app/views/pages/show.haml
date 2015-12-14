@@ -1,18 +1,24 @@
 = render partial: 'partials/contents_tree_block', :locals => { :display_contents => true, tree: @tree }
 
 %div{id: 'main_container_div', class: 'fullheight'}
-  %div{id: 'book_header'}
-    = @page.book.name
-  %div{id: 'page_header' }
-    = @page.display_name
-  %div{id: 'search_block'}
-    %form
-      %input{id: 'search_lite'}
-      %button{type: 'submit'}
-        =I18n.t('library.search')
+  %table{id: 'book_headers', cols: '*, 200px'}
+    %tr
+      %td{id: 'book_header'}
+        = @page.book.name
+      %td{id: 'search_block'}
+        %form
+          %input{id: 'search_lite'}
+          %button{type: 'submit'}
+            =I18n.t('library.search')
+    %tr
+      %td{id: 'page_header', colspan: '2'}
+        = @page.display_name
+
   %div{id: 'page_container'}
-    %input{type: 'button', id: 'previous_page', value: '<'}
+    %a{id: 'previous_page', src: 'http://ewfw'}
+      <
     %iframe{src: "#{book_page_external_page_content_path(@page.book, @page, @page.html_content)}"}
-    %input{type: 'button', id: 'next_page', value: '>'}
+    %a{id: 'next_page', src: 'http://ewfw'}
+      >
 
 = render partial: 'partials/book_view_resize_script'

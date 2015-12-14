@@ -31,23 +31,29 @@ input.library_toggle_button:hover {
     width: 200px;
 }
 
+#book_headers {
+    width: 100%;
+    border: none;
+}
+
+#book_headers td {
+    color: #ffffff;
+    padding: 10px 10px 0px 20px;
+}
+
 #search_block {
-    float: right;
     margin: 0px 10px;
     vertical-align: top;
+    text-align: right;
 }
 
 #book_header {
     font-size: 18px;
     text-decoration: underline;
-    margin: 10px 10px 0px 20px;
-    float: left;
 }
 
 #page_header {
     font-size: 14px;
-    margin: 10px 10px 0px 20px;
-    float: left;
 }
 
 #page_container {
@@ -69,6 +75,7 @@ input.library_toggle_button:hover {
     vertical-align: top;
     background-color: #17317E;
     color: #FFFFFF;
+    display: inline-block;
 }
 
 #previous_page:hover, #next_page:hover {
