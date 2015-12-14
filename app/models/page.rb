@@ -15,4 +15,16 @@ class Page < ActiveRecord::Base
 
   end
 
+  def prev
+
+    Page.find_by_book_id_and_internal_order(book.id, internal_order - 1)
+
+  end
+
+  def next
+
+    Page.find_by_book_id_and_internal_order(book.id, internal_order + 1)
+
+  end
+
 end
