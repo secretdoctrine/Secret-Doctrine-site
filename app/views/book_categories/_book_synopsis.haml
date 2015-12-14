@@ -4,8 +4,7 @@
       %img
   %div{class: 'anonce'}
     %h2
-      %a{href: 'http://eee'}
-        = book.name
+      = link_to(book.name, book_path(book.id))
     %p
       = book.synopsis
   %div{class: 'footer'}
@@ -13,7 +12,7 @@
       %span{class: 's1'}
         %span{class: 's2'}
           =I18n.t('library.download')
-    %a{class: 'first last', href: 'http://eee'}
+    %a{class: 'first last', href: "#{book_path(book.id)}"}
       %span{class: 's1'}
         %span{class: 's2'}
           =I18n.t('library.read')
