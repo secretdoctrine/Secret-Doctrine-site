@@ -956,7 +956,7 @@ module BookHelper
 
         file_page_num = page_num + helper.shift_modifier
         page_name = helper.pages_dictionary.has_key?(page_num) ?
-            helper.pages_dictionary[page_num] : 'Page ' + file_page_num.to_s
+            helper.pages_dictionary[page_num] : 'Page ' + page_num.to_s
 
         page = Page.create!(book_id: book.id, internal_order: page_num, display_name: page_name)
         Dir.entries(helper.files_path).each do |file_name|
