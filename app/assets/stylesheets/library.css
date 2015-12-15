@@ -190,3 +190,28 @@ input.library_toggle_button:hover {
 .pro .footer a:hover .s2{
     background: url(pro_bg_blue_down.png) repeat-x 0 -30px;
 }
+
+#library_news_feed {
+
+}
+
+.last_book {
+    width: 530px;
+    margin: 0 auto 12px;
+    background: url(black_40.png);
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    padding: 15px 10px;
+    color: #91C0D2;
+}
+
+.last_book > p.time {
+    display: block;
+    margin: 0 0 15px;
+    color: #FFF;
+}
+
+.last_book > p {
+    margin: 0 0 5px;
+}

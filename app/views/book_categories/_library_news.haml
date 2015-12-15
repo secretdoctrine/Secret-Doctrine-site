@@ -1,4 +1,6 @@
-%p
-  = news_item.news_datetime.strftime('%d.%m.%Y %H:%M')
-%p
-  = news_item.body
+%div{class: 'last_book'}
+  %p{class: 'time'}
+    = I18n.l(news_item.news_datetime, locale: :ru, format: :long)
+  %p
+    = news_item.body
+  %div{class: 'footer'}
