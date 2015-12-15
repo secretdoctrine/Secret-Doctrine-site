@@ -5,6 +5,7 @@ class CreateContentsElements < ActiveRecord::Migration
       t.references  :book,            index:true, foreign_key:true, null:false
       t.references  :content_element, index:true, foreign_key:true, null:true
       t.integer     :page_number,     null:false
+      t.string      :name,            null:false
 
     end
   end

@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20151215181722) do
     t.integer "book_id",            null: false
     t.integer "content_element_id"
     t.integer "page_number",        null: false
+    t.string  "name",               null: false
   end
 
   add_index "contents_elements", ["book_id"], name: "index_contents_elements_on_book_id"
