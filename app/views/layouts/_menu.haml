@@ -5,7 +5,7 @@
     %td
       %a.button{:href => "/news.php", :title => "Последнее обновление 20 августа 2012 г."} Новости
     %td
-      %a.button{:href => "/library/"} Библиотека
+      = link_to I18n.t('menu.library'), book_categories_path, {:class => :button}
     %td
       %a.button{:href => "#"} Книги
       %ul

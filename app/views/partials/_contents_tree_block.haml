@@ -3,8 +3,8 @@
 
 %div{ :id => 'tree_container_div', :class => 'fullheight', :width => '200px', :style => 'display: ' + display + ';' }
   - display = display_contents ? 'block' : 'none'
-  /%input{:type => 'button', :value => I18n.t('library.show_contents'), :style => 'display: ' + display + ';', :class => 'library_toggle_button', :onclick => 'javascript: $("#contents_div")[0].style.display = "block"; $("#tree_container_div")[0].style.display = "none";'}
-  %input{:type => 'button', :value => I18n.t('library.show_contents'), :class => 'library_toggle_button', :onclick => 'javascript: $("#contents_div")[0].style.display = "block"; $("#tree_container_div")[0].style.display = "none";'}
+  %input{:type => 'button', :value => I18n.t('library.show_contents'), :style => 'display: ' + display + ';', :class => 'library_toggle_button', :onclick => 'javascript: $("#contents_div")[0].style.display = "block"; $("#tree_container_div")[0].style.display = "none";'}
+  /%input{:type => 'button', :value => I18n.t('library.show_contents'), :class => 'library_toggle_button', :onclick => 'javascript: $("#contents_div")[0].style.display = "block"; $("#tree_container_div")[0].style.display = "none";'}
   %div{ :id => jstree_div}
     %ul
       = render partial: 'partials/tree_level_li', :locals => {:tree_element => tree}
