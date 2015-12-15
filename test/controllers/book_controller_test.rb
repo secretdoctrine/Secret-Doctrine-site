@@ -1,8 +1,8 @@
 require 'test_helper'
 
 class BookControllerTest < ActionController::TestCase
-  test "should get index" do
-    get :index
+  test "should get indexes" do
+    get :indexes
     assert_response :success
   end
 

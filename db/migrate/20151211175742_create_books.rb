@@ -9,7 +9,7 @@ class CreateBooks < ActiveRecord::Migration
       t.integer     :year
       t.string      :author
       t.integer     :page_count
-      t.references  :book_category, index:true, foreign_key:true, null:false
+      t.references  :book_category, indexes:true, foreign_key:true, null:false
 
     end
   end

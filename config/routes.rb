@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   # We ask that you don't use the :as option here, as Refinery relies on it being the default of "refinery"
   mount Refinery::Core::Engine, :at => '/cms'
 
-  resources :news, :only => [:index]
+  resources :indexes, :only => [:index]
   resources :books, :only => [:show] do
     resources :pages, :only => [:show] do
       resources :external_page_contents, :only => [:show]
@@ -18,12 +18,17 @@ Rails.application.routes.draw do
   resources :menu, :only => [:show, :get]
   resources :pages, :only => [:show, :index]
   resources :book_categories, :only => [:show, :index]
+  resources :poems, :only => [:show, :index]
+  resources :audios, :only => [:show, :index]
+  resources :symbols, :only => [:show, :index]
+  resources :news, :only => [:index]
+  resources :feedbacks, :only => [:index]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'news#index'
+  root 'indexes#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -1,37 +1,13 @@
 %table#mainmenu
   %tr
     %td
-      %a.button{:href => "/index.php"} Главная
+      = link_to I18n.t('menu.index'), indexes_path, {:class => :button}
     %td
-      %a.button{:href => "/news.php", :title => "Последнее обновление 20 августа 2012 г."} Новости
+      = link_to I18n.t('menu.news'), news_index_path, {:class => :button, :title => "Последнее обновление 20 августа 2012 г."}
     %td
       = link_to I18n.t('menu.library'), book_categories_path, {:class => :button}
     %td
-      %a.button{:href => "#"} Книги
-      %ul
-        %li
-          %a.parent{:href => "/books/7tomnik.php"}
-            Посланник Утренней Звезды Христос
-            %br>/
-            и Его Учение в свете Учения Шамбалы
-          %ul
-            %li
-              %a{:href => "/books/mnenie.php?predisl.ssi"} От автора. Предисловие
-            %li
-              %a{:href => "/books/mnenie.php?otziv.ssi"} Отзывы читателей первого издания
-            %li
-              %a{:href => "/books/7tomnik.php"} Читать книги
-        %li
-          %a{:href => "/books/3tomnik.php"}
-            \&quot;Тайная Доктрина&quot; Елены Блаватской
-            %br>/
-            в некоторых понятиях и символах
-        %li
-          %a{:href => "/books/dumalka.php"} Думалка
-        %li
-          %a{:href => "/books/priobr.php"} Где приобрести книги
-    %td
-      %a.button{:href => "/symbols/symbol.php"} Символы
+      = link_to I18n.t('menu.symbols'), symbols_path, {:class => :button}
       %ul
         %li
           %a{:href => "/symbols/symbol.php?intro.ssi"} Только рассудком символ не откроешь
@@ -56,16 +32,14 @@
         %li
           %a{:href => "/symbols/symbol.php?other.ssi#zmei"} “Змей, закусы­вающий свой хвост”
     %td
-      %a.button{:href => "#"} Поэзия
+      = link_to I18n.t('menu.poetry'), poems_path, {:class => :button}
       %ul
         %li
           %a{:href => "/stihi/contnk.php"} Философско-поэтические трактовки картин Николая Константиновича Рериха
         %li
           %a{:href => "/stihi/contsn.php"} Философско-поэтические трактовки картин Cвятослава Николаевича Рериха
-    / li><a href="#">Махатмы</a></li
-    / td><a class="button" href="#">Из Рериховского наследия</a></td
     %td
-      %a.button{:href => "/audio/audio.php"} Аудио
+      = link_to I18n.t('menu.audio'), audios_path, {:class => :button}
       %ul
         %li
           %a{:href => "/audio/audio_nk.php"} Звучит голос Николая Рериха
@@ -75,6 +49,5 @@
           %a{:href => "/audio/audio.php"} Фонограммы докладов Л. П. Дмитриевой на международных симпозиумах
         %li
           %a{:href => "/audio/audio.php"} Выступления Л. П. Дмитриевой на радио
-    / td><a class="button" href="#">Вход</a></td
     %td
-      %a.button{:href => "/mail.php", :title => "Если у Вас есть желание что-то сказать, пишите. Пожелания, предложения по улучшению удобств для посетителей сайта будут учтены"} Гостевая
+      = link_to I18n.t('menu.feedback'), feedbacks_path, {:class => :button, :title => "Если у Вас есть желание что-то сказать, пишите. Пожелания, предложения по улучшению удобств для посетителей сайта будут учтены"}
