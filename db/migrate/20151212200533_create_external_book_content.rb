@@ -1,4 +1,4 @@
-class ExternalBookContent < ActiveRecord::Migration
+class CreateExternalBookContent < ActiveRecord::Migration
   def change
     create_table :external_book_contents do |t|
 

@@ -1,4 +1,4 @@
-class BookCategory < ActiveRecord::Migration
+class CreateBookCategory < ActiveRecord::Migration
   def change
 
     create_table :book_categories do |t|

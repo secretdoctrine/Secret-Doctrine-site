@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151212201751) do
+ActiveRecord::Schema.define(version: 20151215181722) do
 
   create_table "book_categories", force: :cascade do |t|
     t.integer "book_category_id"
@@ -67,6 +67,13 @@ ActiveRecord::Schema.define(version: 20151212201751) do
   end
 
   add_index "internal_page_contents", ["page_id"], name: "index_internal_page_contents_on_page_id"
+
+  create_table "news", force: :cascade do |t|
+    t.text     "body",          limit: 65535,                 null: false
+    t.boolean  "library_news",                default: false, null: false
+    t.boolean  "site_news",                   default: false, null: false
+    t.datetime "news_datetime",                               null: false
+  end
 
   create_table "pages", force: :cascade do |t|
     t.integer "book_id"

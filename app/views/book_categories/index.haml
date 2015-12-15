@@ -1,7 +1,7 @@
 = render partial: 'partials/contents_tree_block', :locals => { :display_contents => false, :tree => @tree }
 
 %div{:id => "main_container_div", :class => "fullheight"}
-  this id main container
+  = render partial: 'library_news', collection: @library_news, as: :news_item
 
 
 = render partial: 'partials/book_view_resize_script'

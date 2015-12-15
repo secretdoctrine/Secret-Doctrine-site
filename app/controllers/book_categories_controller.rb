@@ -14,7 +14,7 @@ class BookCategoriesController < ApplicationController
 
   def index
 
-
+    @library_news = News.where(library_news: true).sort_by{ |x| x.news_datetime }
 
   end
 
