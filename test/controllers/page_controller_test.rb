@@ -6,8 +6,8 @@ class PageControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get index" do
-    get :index
+  test "should get indexes" do
+    get :indexes
     assert_response :success
   end
 

@@ -22,11 +22,18 @@ ru:
   importer:
     page: 'Страница'
   menu:
+    index: 'Главная'
+    news: 'Новости'
     library: 'Библиотека'
+    symbols: 'Символы'
+    poetry: 'Поэзия'
+    audio: 'Аудио'
+    archive: 'Архив'
+    feedback: 'Гостевая'
   library:
-    show_categories: "Показать категории"
-    show_contents: "Показать оглавление"
-    search: "Искать..."
-    enter_category: "Войти в раздел"
-    read: "Читать"
-    download: "Скачать"
+    show_categories: 'Показать категории'
+    show_contents: 'Показать оглавление'
+    search: 'Искать...'
+    enter_category: 'Войти в раздел'
+    read: 'Читать'
+    download: 'Скачать'
