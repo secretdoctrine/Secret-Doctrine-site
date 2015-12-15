@@ -36,7 +36,7 @@ module BookHelper
           name: part['name'],
           book_id: book.id,
           page_number: min_part_page(part),
-          content_element_id: parent.nil? ? nil : parent.id)
+          contents_element_id: parent.nil? ? nil : parent.id)
 
     end
 
@@ -46,7 +46,7 @@ module BookHelper
           name: chapter['name'],
           book_id: book.id,
           page_number: min_chapter_page(chapter),
-          content_element_id: nil)
+          contents_element_id: nil)
       if chapter['parts']
         chapter['parts'].each { |part| create_part(book, part, created_chapter) }
       end

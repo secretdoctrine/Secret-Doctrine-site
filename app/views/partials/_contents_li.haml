@@ -1,0 +1,7 @@
+- contents.child_elements.each do |child_element|
+  - li_class = child_element.is_open ? 'jstree-open' : nil
+  %li{class: "#{li_class}"}
+    = link_to child_element.display_name, book_page_path(child_element.book_id, child_element.page_internal_number)
+    - if not child_element.child_elements.empty?
+      %ul
+        = render partial: 'partials/contents_li', locals: {contents: child_element}

@@ -1,4 +1,4 @@
-= render partial: 'partials/contents_tree_block', :locals => { :display_contents => true, tree: @tree }
+= render partial: 'partials/contents_tree_block', :locals => { :display_contents => true, tree: @tree, contents: @contents }
 
 %div{id: 'main_container_div', class: 'fullheight'}
   %table{id: 'book_headers', cols: '*, 200px'}
