@@ -50,4 +50,6 @@
         %li
           %a{:href => "/audio/audio.php"} Выступления Л. П. Дмитриевой на радио
     %td
+      = link_to I18n.t('menu.archive'), 'http://archive.secretdoctrine.ru/', {:class => :button}
+    %td
       = link_to I18n.t('menu.feedback'), feedbacks_path, {:class => :button, :title => "Если у Вас есть желание что-то сказать, пишите. Пожелания, предложения по улучшению удобств для посетителей сайта будут учтены"}
