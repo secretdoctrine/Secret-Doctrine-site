@@ -25,6 +25,8 @@
           %br
           %span
             = @book.name_comment
+      %br
+      = image_tag 'roscherkl.gif'
     %ul
       = render partial: 'partials/contents_li', :locals => {:contents => contents}
 
