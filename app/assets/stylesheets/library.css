@@ -28,7 +28,7 @@ input.library_toggle_button:hover {
 }
 
 #tree_container_div, #contents_div {
-    width: 200px;
+    width: 300px;
 }
 
 #book_headers {
@@ -215,3 +215,193 @@ input.library_toggle_button:hover {
 .last_book > p {
     margin: 0 0 5px;
 }
+
+
+
+/*-------Contents-------*/
+
+#contents_div {
+    font-size: 80%;
+    background: #244372 url(rock085-4.jpg);
+}
+
+#contents_div li:hover > a,
+#contents_div li:hover > span,
+#contents_div li:hover > a > span,
+#contents_div li.li_background:hover > ul > li > a,
+#contents_div li.li_background:hover > ul > li > a > span {
+    color: #FFFF00;
+}
+
+#contents_div h2 {
+    text-align: center;
+    font-weight:bold;
+    font-size: 155%;
+    text-transform:uppercase;
+    display:block;
+    padding: 10px 0;
+    color:#91C0E0;
+}
+
+#contents_div h2 a {
+    color:#91C0E0;
+}
+
+#contents_div h2.part {
+    font-size: 140%;
+}
+
+#contents_div h2.part i {
+    font-size: 100%;
+    font-weight:normal;
+}
+
+#contents_div .section {
+    font-size: 140%;
+    text-align: center;
+    display:block;
+    padding: 0 0 20px 0;
+    margin: 20px 40px 0 0;
+    color:#91C0E0;
+}
+
+#contents_div .section a
+{
+    color:#91C0E0;
+}
+
+#contents_div .section i,
+#contents_div h2 i {
+    font-style:normal;
+    font-weight:normal;
+    text-transform:uppercase;
+    color: #dd0022;
+    letter-spacing: 4px;
+    line-height: 2em;
+}
+
+#contents_div .section i a,
+#contents_div h2 i a
+{
+    color:#dd0022;
+}
+
+#contents_div .section small { /*ïðåäèñëîâèå*/
+    letter-spacing: 0.4ex;
+    font-weight:normal;
+    color: #dd0022;
+}
+
+/* Ãëàâà */
+#contents_div .chapter i {
+    color: #DDDD00;
+    font-style:normal;
+    font-weight: bold;
+}
+
+
+#contents_div .chapter {
+    font-size: 120%;
+    text-align: center;
+    display:block;
+    padding: 20px 0 20px 0;
+    margin: 0;
+    color: #FFFFFF;
+    background: #798BA7 url(rock085-4-light3.jpg) repeat scroll 0 0; /*#A3B2CC;*/
+}
+
+#contents_div .chapter a
+{
+    color: #FFFFFF;
+}
+
+/* çàãîëîâîê */
+
+#contents_div li.part {
+    font-size:100%;
+    padding: 3px 5px;
+    margin: 0 0 0 20px;
+    list-style-image:url(kvad_ry.gif);
+    color:#000099;
+    background:#6E92AA none repeat scroll 0 0;
+    /*background:#dddddd;/*#5676AD;*/
+}
+
+#contents_div li.li_background {
+    background:#6E92AA none repeat scroll 0 0;
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+
+#contents_div li.part a,
+#contents_div li.page a{
+    color:#000066;
+    font-weight: bold;
+}
+/* ïîäçàãîëîâîê */
+
+#contents_div li.page {
+    font-size:100%;
+    margin: 0 0 0 30px;
+    list-style-image:url(disk_r.gif);
+    color:#000077;
+}
+
+#contents_div li.part,
+#contents_div li.page {
+    cursor:pointer;
+    font-size: 100%;
+}
+
+/*#contents_div li { margin-left: 24px; margin-right:0; }*/
+
+#contents_div .nobold {
+    font-weight:normal;
+    text-transform:none;
+    font-size: 90%;
+}
+
+#contents_div li {
+    padding-left:6px;
+    padding-right:6px;
+    margin-left:0;
+    margin-right:0;
+}
+
+#centerbar {
+    position:relative;
+    left:50%;
+    width:800px;
+    margin-left:-400px;
+    margin-top:0px;
+}
+
+/*.text i {
+ color:#FF0000;
+ font-style:normal;
+ font-weight:bold;
+}*/
+
+#contents_div h1 {
+    font-size:140%;
+    text-align:center;
+    margin: 1em 0;
+    color:#FFFFFF;
+    background:#7994C3;
+}
+
+/*h2 {
+ font-size:120%;
+ color:#0048C3;
+ text-align:center;
+}*/
+
+#contents_div .offtop {
+    font-size:75%;
+}
+
+#contents_div .w {
+    color:#ffffff;
+}
+

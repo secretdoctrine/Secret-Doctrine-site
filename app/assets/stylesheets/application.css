@@ -16,3 +16,6 @@
  *= require_self
  */
 
+body {
+    font-family: Arial, Helvetica, Verdana, sans-serif;
+}

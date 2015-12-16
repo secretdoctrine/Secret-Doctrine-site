@@ -12,8 +12,21 @@
 
 %div{ :id => 'contents_div', :class => 'fullheight', :width => '200px', :style => 'display: ' + display + ';' }
   %input{:type => 'button', :value => I18n.t('library.show_categories'), :class => 'library_toggle_button', :onclick => 'javascript: $("#contents_div")[0].style.display = "none"; $("#tree_container_div")[0].style.display = "block";'}
-  - if defined? contents and not contents.nil?
-    = render partial: 'partials/contents_li', :locals => {:contents => contents}
+  - if defined? contents and contents
+    %h2
+      %a
+        - if @book.name_prefix
+          %i
+            = @book.name_prefix
+          %br
+        - if @book.name
+          = @book.name
+        - if @book.name_comment
+          %br
+          %span
+            = @book.name_comment
+    %ul
+      = render partial: 'partials/contents_li', :locals => {:contents => contents}
 
 
 %script{:type => "text/javascript"}
