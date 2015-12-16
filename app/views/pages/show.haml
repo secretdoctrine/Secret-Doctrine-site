@@ -16,9 +16,9 @@
 
   %div{id: 'page_container'}
     - unless @page.prev.nil?
-      = link_to '<', book_page_path(@page.book, @page.prev.internal_order), id: 'previous_page'
+      = link_to '<', book_page_path(@page.book, @page.prev.url_name), id: 'previous_page'
     %iframe{src: "#{book_page_external_page_content_path(@page.book, @page, @page.html_content)}"}
     - unless @page.next.nil?
-      = link_to '>', book_page_path(@page.book, @page.next.internal_order), id: 'next_page'
+      = link_to '>', book_page_path(@page.book, @page.next.url_name), id: 'next_page'
 
 = render partial: 'partials/book_view_resize_script'

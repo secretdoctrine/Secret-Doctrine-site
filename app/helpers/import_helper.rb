@@ -61,10 +61,21 @@ module ImportHelper
       (min_book_page(yaml_object['book'])..max_book_page(yaml_object['book'])).each do |page_num|
 
         file_page_num = page_num + yaml_object['shift_modifier'].to_i
-        named_page = yaml_object['pages_dictionary'].find{ |x| x['page'].to_i == page_num }
-        page_name = named_page.nil? ? I18n.t('importer.page') + ' ' + page_num.to_s : named_page['name']
+        special_page = yaml_object['pages_dictionary'].find{ |x| x['page'].to_i == page_num }
 
-        page = Page.create!(book_id: book.id, internal_order: page_num, display_name: page_name)
+        if special_page and special_page.has_key?('url_name')
+          url_name = special_page['url_name']
+        else
+          url_name = page_num.to_s
+        end
+
+        if special_page and special_page.has_key?('name')
+          page_name = special_page['name']
+        else
+          page_name = I18n.t('importer.page') + ' ' + url_name
+        end
+
+        page = Page.create!(book_id: book.id, internal_order: page_num, display_name: page_name, url_name: url_name)
         Dir.entries(File.expand_path(yaml_object['files_path'])).each do |file_name|
 
           match = /#{yaml_object['pdf_regex']}/.match(file_name)

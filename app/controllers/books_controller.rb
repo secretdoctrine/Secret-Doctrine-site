@@ -14,7 +14,7 @@ class BooksController < ApplicationController
 
     return render_404 if @book.nil?
 
-    redirect_to book_page_path(@book, @book.pages.sort { |x, y| x.internal_order <=> y.internal_order}.first.internal_order)
+    redirect_to book_page_path(@book, @book.pages.sort { |x, y| x.internal_order <=> y.internal_order}.first.url_name)
 
   end
 

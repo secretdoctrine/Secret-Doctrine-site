@@ -274,6 +274,48 @@ book:
 
 pages_dictionary:
   -
+    page: '-13'
+    url_name: 'I'
+  -
+    page: '-12'
+    url_name: 'II'
+  -
+    page: '-11'
+    url_name: 'III'
+  -
+    page: '-10'
+    url_name: 'IV'
+  -
+    page: '-9'
+    url_name: 'V'
+  -
+    page: '-8'
+    url_name: 'VI'
+  -
+    page: '-7'
+    url_name: 'VII'
+  -
+    page: '-6'
+    url_name: 'VIII'
+  -
+    page: '-5'
+    url_name: 'IX'
+  -
+    page: '-4'
+    url_name: 'X'
+  -
+    page: '-3'
+    url_name: 'XI'
+  -
+    page: '-2'
+    url_name: 'XII'
+  -
+    page: '-1'
+    url_name: 'XIII'
+  -
+    page: '0'
+    url_name: 'XIV'
+  -
     page: '20'
     name: 'Страница 20. Части Беспредельности и Вечности — четыре Цикла, четыре Юги, четыре возраста, четыре цифры. Некоторое уточнение к первой Беседе из первой книги.'
   -

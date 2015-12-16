@@ -195,6 +195,42 @@ book:
 
 pages_dictionary:
   -
+    page: '-11'
+    url_name: 'I'
+  -
+    page: '-10'
+    url_name: 'II'
+  -
+    page: '-9'
+    url_name: 'III'
+  -
+    page: '-8'
+    url_name: 'IV'
+  -
+    page: '-7'
+    url_name: 'V'
+  -
+    page: '-6'
+    url_name: 'VI'
+  -
+    page: '-5'
+    url_name: 'VII'
+  -
+    page: '-4'
+    url_name: 'VIII'
+  -
+    page: '-3'
+    url_name: 'IX'
+  -
+    page: '-2'
+    url_name: 'X'
+  -
+    page: '-1'
+    url_name: 'XI'
+  -
+    page: '0'
+    url_name: 'XII'
+  -
     page: '38'
     name: 'Страница 38. "Кришна".'
   -

@@ -21,6 +21,7 @@ class BookCategoriesController < ApplicationController
   def show
 
     @category = BookCategory.find_by_id(params[:id])
+    render_404 if @category.nil?
     @books = @category.nil? ? [] : @category.recursive_books_array
 
   end

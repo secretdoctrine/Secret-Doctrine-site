@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 20151215181722) do
     t.integer "order_number",     null: false
   end
 
+  add_index "book_categories", ["book_category_id"], name: "index_book_categories_on_book_category_id"
+
   create_table "books", force: :cascade do |t|
     t.string  "name",             null: false
     t.string  "name_prefix"
@@ -33,6 +35,8 @@ ActiveRecord::Schema.define(version: 20151215181722) do
     t.integer "page_count"
     t.integer "book_category_id", null: false
   end
+
+  add_index "books", ["book_category_id"], name: "index_books_on_book_category_id"
 
   create_table "contents_elements", force: :cascade do |t|
     t.integer "book_id",             null: false
@@ -53,17 +57,23 @@ ActiveRecord::Schema.define(version: 20151215181722) do
     t.string  "path",         null: false
   end
 
+  add_index "external_book_contents", ["book_id"], name: "index_external_book_contents_on_book_id"
+
   create_table "external_page_contents", force: :cascade do |t|
     t.integer "page_id",      null: false
     t.integer "content_type", null: false
     t.string  "path",         null: false
   end
 
+  add_index "external_page_contents", ["page_id"], name: "index_external_page_contents_on_page_id"
+
   create_table "internal_page_contents", force: :cascade do |t|
     t.integer "page_id",      null: false
     t.integer "content_type", null: false
     t.string  "content",      null: false
   end
+
+  add_index "internal_page_contents", ["page_id"], name: "index_internal_page_contents_on_page_id"
 
   create_table "news", force: :cascade do |t|
     t.text     "body",          limit: 65535,                 null: false
@@ -73,10 +83,14 @@ ActiveRecord::Schema.define(version: 20151215181722) do
   end
 
   create_table "pages", force: :cascade do |t|
-    t.integer "book_id"
-    t.integer "internal_order"
+    t.integer "book_id",        null: false
+    t.integer "internal_order", null: false
     t.string  "display_name"
+    t.string  "url_name",       null: false
   end
+
+  add_index "pages", ["book_id"], name: "index_pages_on_book_id"
+  add_index "pages", ["display_name"], name: "index_pages_on_display_name"
 
   create_table "refinery_image_translations", force: :cascade do |t|
     t.integer  "refinery_image_id", null: false

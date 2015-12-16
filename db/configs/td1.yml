@@ -310,6 +310,84 @@ book:
 
 pages_dictionary:
   -
+    page: '-25'
+    url_name: 'I'
+  -
+    page: '-24'
+    url_name: 'II'
+  -
+    page: '-23'
+    url_name: 'III'
+  -
+    page: '-22'
+    url_name: 'IV'
+  -
+    page: '-21'
+    url_name: 'V'
+  -
+    page: '-20'
+    url_name: 'VI'
+  -
+    page: '-19'
+    url_name: 'VII'
+  -
+    page: '-18'
+    url_name: 'VIII'
+  -
+    page: '-17'
+    url_name: 'IX'
+  -
+    page: '-16'
+    url_name: 'X'
+  -
+    page: '-15'
+    url_name: 'XI'
+  -
+    page: '-14'
+    url_name: 'XII'
+  -
+    page: '-13'
+    url_name: 'XIII'
+  -
+    page: '-12'
+    url_name: 'XIV'
+  -
+    page: '-11'
+    url_name: 'XV'
+  -
+    page: '-10'
+    url_name: 'XVI'
+  -
+    page: '-9'
+    url_name: 'XVII'
+  -
+    page: '-8'
+    url_name: 'XVIII'
+  -
+    page: '-7'
+    url_name: 'XIX'
+  -
+    page: '-6'
+    url_name: 'XX'
+  -
+    page: '-5'
+    url_name: 'XXI'
+  -
+    page: '-4'
+    url_name: 'XXII'
+  -
+    page: '-3'
+    url_name: 'XXIII'
+  -
+    page: '-2'
+    url_name: 'XXIV'
+  -
+    page: '-1'
+    url_name: 'XXV'
+  -
+    page: '0'
+    url_name: 'XXVI'
+  -
     page: '22'
     name: 'Страница 22. Только рассудком символ не откроешь.'
   -
