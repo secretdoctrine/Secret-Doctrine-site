@@ -22,7 +22,7 @@ module ImportHelper
 
     end
 
-    def create_chapter(book, chapter)
+    def create_chapter(book, chapter, parent)
 
       created_chapter = ContentsElement.create!(
           name: chapter['name'],
@@ -30,11 +30,31 @@ module ImportHelper
           name_comment: chapter.has_key?('name_comment') ? chapter['name_comment'] : nil,
           book_id: book.id,
           page_number: min_chapter_page(chapter),
-          contents_element_id: nil,
+          contents_element_id: parent.nil? ? nil : parent.id,
           ce_type: ContentsElement::CHAPTER_CE_TYPE
       )
       if chapter['parts']
         chapter['parts'].each { |part| create_part(book, part, created_chapter) }
+      end
+
+    end
+
+    def create_section(book, section)
+
+      created_section = ContentsElement.create!(
+          name: section['name'],
+          name_prefix: section.has_key?('name_prefix') ? section['name_prefix'] : nil,
+          name_comment: section.has_key?('name_comment') ? section['name_comment'] : nil,
+          book_id: book.id,
+          page_number: min_section_page(section),
+          contents_element_id: nil,
+          ce_type: ContentsElement::SECTION_CE_TYPE
+      )
+      if section['parts']
+        section['parts'].each { |part| create_part(book, part, created_section) }
+      end
+      if section['chapters']
+        section['chapters'].each { |chapter| create_chapter(book, chapter, created_section) }
       end
 
     end
@@ -55,7 +75,10 @@ module ImportHelper
         yaml_object['book']['parts'].each { |part| create_part(book, part, nil) }
       end
       if yaml_object['book']['chapters']
-        yaml_object['book']['chapters'].each { |chapter| create_chapter(book, chapter) }
+        yaml_object['book']['chapters'].each { |chapter| create_chapter(book, chapter, nil) }
+      end
+      if yaml_object['book']['sections']
+        yaml_object['book']['sections'].each { |section| create_section(book, section) }
       end
 
       if yaml_object.has_key?('pages_dictionary') and yaml_object['pages_dictionary']
@@ -172,11 +195,30 @@ module ImportHelper
 
     end
 
+    def min_section_page(section)
+
+      min_page = 0
+      min_page = int_value(section['pages'].split('-')[0]) unless section['pages'].nil?
+
+      if section['parts']
+        section['parts'].each { |part| min_page = min_part_page(part) if min_page > min_part_page(part) }
+      end
+      if section['chapters']
+        section['chapters'].each { |chapter| min_page = min_chapter_page(chapter) if min_page > min_chapter_page(chapter) }
+      end
+
+      min_page
+
+    end
+
     def min_book_page(book)
 
       min_page = 0
       min_page = int_value(book['pages'].split('-')[0]) unless book['pages'].nil?
 
+      if book['sections']
+        book['sections'].each { |section| min_page = min_section_page(section) if min_page > min_section_page(section) }
+      end
       if book['chapters']
         book['chapters'].each { |chapter| min_page = min_chapter_page(chapter) if min_page > min_chapter_page(chapter) }
       end
@@ -210,11 +252,30 @@ module ImportHelper
 
     end
 
+    def max_section_page(section)
+
+      max_page = 0
+      max_page = int_value(section['pages'].split('-')[0]) unless section['pages'].nil?
+
+      if section['parts']
+        section['parts'].each { |part| max_page = max_part_page(part) if max_page < max_part_page(part) }
+      end
+      if section['chapters']
+        section['chapters'].each { |chapter| max_page = max_chapter_page(chapter) if max_page < max_chapter_page(chapter) }
+      end
+
+      max_page
+
+    end
+
     def max_book_page(book)
 
       max_page = 0
       max_page = int_value(book['pages'].split('-')[1]) unless book['pages'].nil?
 
+      if book['sections']
+        book['sections'].each { |section| max_page = max_section_page(section) if max_page < max_section_page(section) }
+      end
       if book['chapters']
         book['chapters'].each { |chapter| max_page = max_chapter_page(chapter) if max_page < max_chapter_page(chapter) }
       end
