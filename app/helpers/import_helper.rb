@@ -58,10 +58,32 @@ module ImportHelper
         yaml_object['book']['chapters'].each { |chapter| create_chapter(book, chapter) }
       end
 
+      if yaml_object.has_key?('pages_dictionary') and yaml_object['pages_dictionary']
+        yaml_object['pages_dictionary'].select{ |x| x.has_key?('name') }.each do |page|
+
+          parent = book.get_parent_for_page(page['page'].to_i)
+
+          ContentsElement.create!(
+              name: page['name'],
+              book_id: book.id,
+              page_number: page['page'].to_i,
+              contents_element_id: (parent ? parent.id : nil),
+              ce_type: ContentsElement::PAGE_CE_TYPE
+          )
+        end
+      end
+
+      dir_entries = Dir.entries(File.expand_path(yaml_object['files_path']))
+
       (min_book_page(yaml_object['book'])..max_book_page(yaml_object['book'])).each do |page_num|
 
         file_page_num = page_num + yaml_object['shift_modifier'].to_i
-        special_page = yaml_object['pages_dictionary'].find{ |x| x['page'].to_i == page_num }
+
+        if yaml_object.has_key?('pages_dictionary')
+          special_page = yaml_object['pages_dictionary'].find{ |x| x['page'].to_i == page_num }
+        else
+          special_page = nil
+        end
 
         if special_page and special_page.has_key?('url_name')
           url_name = special_page['url_name']
@@ -76,7 +98,7 @@ module ImportHelper
         end
 
         page = Page.create!(book_id: book.id, internal_order: page_num, display_name: page_name, url_name: url_name)
-        Dir.entries(File.expand_path(yaml_object['files_path'])).each do |file_name|
+        dir_entries.each do |file_name|
 
           match = /#{yaml_object['pdf_regex']}/.match(file_name)
           unless match.nil?

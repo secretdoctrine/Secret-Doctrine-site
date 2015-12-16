@@ -24,7 +24,6 @@ class PagesController < ApplicationController
   def show
 
     @page = Page.find_by_book_id_and_url_name(params[:book_id], params[:id])
-
     render_404 if @page.nil?
 
   end

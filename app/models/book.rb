@@ -33,4 +33,10 @@ class Book < ActiveRecord::Base
 
   end
 
+  def get_parent_for_page(page_num)
+
+    contents_elements.select{|x| x.page_number < page_num}.max_by{|x| x.page_number}
+
+  end
+
 end
