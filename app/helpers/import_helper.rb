@@ -91,10 +91,11 @@ module ImportHelper
           url_name = page_num.to_s
         end
 
+        page_name = I18n.t('importer.page') + ' ' + url_name
         if special_page and special_page.has_key?('name')
-          page_name = special_page['name']
+          page_name += '. ' + special_page['name']
         else
-          page_name = I18n.t('importer.page') + ' ' + url_name
+
         end
 
         page = Page.create!(book_id: book.id, internal_order: page_num, display_name: page_name, url_name: url_name)
