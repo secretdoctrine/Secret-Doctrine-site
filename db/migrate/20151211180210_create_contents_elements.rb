@@ -6,6 +6,7 @@ class CreateContentsElements < ActiveRecord::Migration
       t.references  :contents_element,  index:true, foreign_key:true, null:true
       t.integer     :page_number,       null:false
       t.string      :name,              null:false
+      t.integer     :ce_type,           null:false
 
     end
   end

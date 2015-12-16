@@ -9,7 +9,8 @@ class Book < ActiveRecord::Base
     tree_element = ContentsTreeElement.new(
         display_name: db_element.name,
         book_id: db_element.book.id,
-        page_internal_number: db_element.page_number)
+        page_internal_number: db_element.page_number,
+        class_name: db_element.get_class_name)
 
     db_element.contents_elements.each { |x| add_contents_element(tree_element, x) }
 

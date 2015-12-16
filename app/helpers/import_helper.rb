@@ -1,26 +1,4 @@
-
-
-module BookHelper
-
-  class BookImportHelper
-
-    attr_accessor :page_selector, :pdf_regex, :html_regex, :files_path, :shift_modifier, :book_structure, :pages_dictionary
-
-    def initialize(page_selector, pdf_regex, html_regex, files_path, shift_modifier, book_structure, pages_dictionary)
-
-      @page_selector = page_selector
-      @pdf_regex = pdf_regex
-      @html_regex = html_regex
-      @files_path = files_path
-      @shift_modifier = shift_modifier
-      @book_structure = book_structure
-      @pages_dictionary = pages_dictionary
-
-    end
-
-  end
-
-
+module ImportHelper
 
   class Importer
 
@@ -36,7 +14,9 @@ module BookHelper
           name: part['name'],
           book_id: book.id,
           page_number: min_part_page(part),
-          contents_element_id: parent.nil? ? nil : parent.id)
+          contents_element_id: parent.nil? ? nil : parent.id,
+          ce_type: ContentsElement::PART_CE_TYPE
+      )
 
     end
 
@@ -46,7 +26,9 @@ module BookHelper
           name: chapter['name'],
           book_id: book.id,
           page_number: min_chapter_page(chapter),
-          contents_element_id: nil)
+          contents_element_id: nil,
+          ce_type: ContentsElement::CHAPTER_CE_TYPE
+      )
       if chapter['parts']
         chapter['parts'].each { |part| create_part(book, part, created_chapter) }
       end
