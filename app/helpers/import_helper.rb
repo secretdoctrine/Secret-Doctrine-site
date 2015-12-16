@@ -131,7 +131,7 @@ module ImportHelper
               ExternalPageContent.create!(
                   page_id: page.id,
                   content_type: ExternalPageContent::PDF_TYPE,
-                  path: File.join(File.expand_path(yaml_object['files_path']), file_name))
+                  path: File.join(yaml_object['files_path'], file_name))
             end
           end
 
@@ -142,7 +142,7 @@ module ImportHelper
               ExternalPageContent.create!(
                   page_id: page.id,
                   content_type: ExternalPageContent::HTML_TYPE,
-                  path: File.join(File.expand_path(yaml_object['files_path']), file_name))
+                  path: File.join(yaml_object['files_path'], file_name))
             end
           end
 
