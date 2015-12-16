@@ -22,6 +22,9 @@ ActiveRecord::Schema.define(version: 20151215181722) do
 
   create_table "books", force: :cascade do |t|
     t.string  "name",             null: false
+    t.string  "name_prefix"
+    t.string  "tree_prefix"
+    t.string  "name_comment"
     t.integer "order_number",     null: false
     t.string  "picture_path"
     t.string  "synopsis"

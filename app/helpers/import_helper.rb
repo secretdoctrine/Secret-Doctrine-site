@@ -45,7 +45,11 @@ module ImportHelper
           name: yaml_object['book']['name'],
           order_number: number,
           book_category_id: category.id,
-          synopsis: yaml_object['book']['synopsis'])
+          synopsis: yaml_object['book']['synopsis'],
+          name_prefix: yaml_object['book'].has_key?('name_prefix') ? yaml_object['book']['name_prefix'] : nil,
+          tree_prefix: yaml_object['book'].has_key?('tree_prefix') ? yaml_object['book']['tree_prefix'] : nil,
+          name_comment: yaml_object['book'].has_key?('name_comment') ? yaml_object['book']['name_comment'] : nil
+      )
 
       if yaml_object['book']['parts']
         yaml_object['book']['parts'].each { |part| create_part(book, part, nil) }
