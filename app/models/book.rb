@@ -10,7 +10,10 @@ class Book < ActiveRecord::Base
         display_name: db_element.name,
         book_id: db_element.book.id,
         page_internal_number: db_element.page_number,
-        class_name: db_element.get_class_name)
+        class_name: db_element.get_class_name,
+        name_prefix: db_element.name_prefix,
+        name_comment: db_element.name_comment
+    )
 
     db_element.contents_elements.each { |x| add_contents_element(tree_element, x) }
 
@@ -20,7 +23,7 @@ class Book < ActiveRecord::Base
 
   def build_contents
 
-    root_element = ContentsTreeElement.new()
+    root_element = ContentsTreeElement.new
 
     contents_elements.where(contents_element_id: nil).sort_by{ |x| x.page_number }.each do |content_element|
       add_contents_element(root_element, content_element)

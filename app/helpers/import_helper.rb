@@ -12,6 +12,8 @@ module ImportHelper
 
       ContentsElement.create!(
           name: part['name'],
+          name_prefix: part.has_key?('name_prefix') ? part['name_prefix'] : nil,
+          name_comment: part.has_key?('name_comment') ? part['name_comment'] : nil,
           book_id: book.id,
           page_number: min_part_page(part),
           contents_element_id: parent.nil? ? nil : parent.id,
@@ -24,6 +26,8 @@ module ImportHelper
 
       created_chapter = ContentsElement.create!(
           name: chapter['name'],
+          name_prefix: chapter.has_key?('name_prefix') ? chapter['name_prefix'] : nil,
+          name_comment: chapter.has_key?('name_comment') ? chapter['name_comment'] : nil,
           book_id: book.id,
           page_number: min_chapter_page(chapter),
           contents_element_id: nil,

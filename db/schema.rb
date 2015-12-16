@@ -35,7 +35,9 @@ ActiveRecord::Schema.define(version: 20151215181722) do
     t.integer "book_id",             null: false
     t.integer "contents_element_id"
     t.integer "page_number",         null: false
+    t.string  "name_prefix"
     t.string  "name",                null: false
+    t.string  "name_comment"
     t.integer "ce_type",             null: false
   end
 
