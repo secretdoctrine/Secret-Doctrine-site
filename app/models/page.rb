@@ -27,4 +27,16 @@ class Page < ActiveRecord::Base
 
   end
 
+  def display_name
+
+    name = I18n.t('importer.page') + ' ' + url_name
+    contents_element = book.get_parent_for_page(internal_order)
+
+    return name if contents_element.nil? or contents_element.page_number != internal_order
+
+    name += '. ' + contents_element.name
+    name
+
+  end
+
 end

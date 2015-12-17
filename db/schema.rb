@@ -85,12 +85,10 @@ ActiveRecord::Schema.define(version: 20151215181722) do
   create_table "pages", force: :cascade do |t|
     t.integer "book_id",        null: false
     t.integer "internal_order", null: false
-    t.string  "display_name"
     t.string  "url_name",       null: false
   end
 
   add_index "pages", ["book_id"], name: "index_pages_on_book_id"
-  add_index "pages", ["display_name"], name: "index_pages_on_display_name"
 
   create_table "refinery_image_translations", force: :cascade do |t|
     t.integer  "refinery_image_id", null: false
