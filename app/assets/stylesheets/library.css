@@ -63,19 +63,23 @@ input.library_toggle_button:hover {
 }
 
 #page_container iframe {
-    height: 800px;
     width: 700px;
     border: 1px solid #254CBF;
 }
 
 #previous_page, #next_page {
-    height: 800px;
     width: 30px;
     border: 1px solid #254CBF;
     vertical-align: top;
     background-color: #17317E;
     color: #FFFFFF;
     display: inline-block;
+}
+
+#previous_page,
+#next_page,
+#page_container iframe{
+    height: 950px;
 }
 
 #previous_page:hover, #next_page:hover {
