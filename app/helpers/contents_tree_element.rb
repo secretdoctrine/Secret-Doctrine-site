@@ -8,8 +8,10 @@ class ContentsTreeElement
   attr_accessor :class_name
   attr_accessor :name_prefix
   attr_accessor :name_comment
+  attr_accessor :selected
 
   def initialize(
+      selected: false,
       child_elements: [],
       display_name: '',
       book_id: 0,
@@ -20,6 +22,7 @@ class ContentsTreeElement
       name_comment: nil
   )
 
+    @selected = selected
     @child_elements = child_elements
     @display_name = display_name
     @book_id = book_id

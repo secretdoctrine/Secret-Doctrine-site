@@ -15,8 +15,8 @@ class PagesController < ApplicationController
 
   def build_contents
 
-    @book = Book.find_by_id(params[:book_id])
-    @contents = @book.build_contents unless @book.nil?
+    page = Page.find_by_book_id_and_url_name(params[:book_id], params[:id])
+    @contents = page.book.build_contents(page) unless page.nil?
     @contents
 
   end
