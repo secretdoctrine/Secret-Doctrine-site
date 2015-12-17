@@ -7,12 +7,13 @@ class Book < ActiveRecord::Base
   def add_contents_element(tree_parent, db_element, page)
 
     parent_for_page = page ? get_parent_for_page(page.internal_order) : nil
+    target_page = Page.find_by_book_id_and_internal_order(db_element.book.id, db_element.page_number)
 
     tree_element = ContentsTreeElement.new(
         selected: (parent_for_page and parent_for_page.id == db_element.id),
         display_name: db_element.name,
         book_id: db_element.book.id,
-        page_internal_number: page ? page.url_name : nil,
+        page_internal_number: target_page ? target_page.url_name : nil,
         class_name: db_element.get_class_name,
         name_prefix: db_element.name_prefix,
         name_comment: db_element.name_comment
