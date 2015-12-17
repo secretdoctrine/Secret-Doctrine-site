@@ -91,7 +91,8 @@ module ImportHelper
               book_id: book.id,
               page_number: page['page'].to_i,
               contents_element_id: (parent ? parent.id : nil),
-              ce_type: ContentsElement::PAGE_CE_TYPE
+              ce_type: ContentsElement::PAGE_CE_TYPE,
+              name_comment: page.has_key?('name_comment') ? page['name_comment'] : nil
           )
         end
       end
