@@ -19,7 +19,9 @@ class Book < ActiveRecord::Base
         name_comment: db_element.name_comment
     )
 
-    db_element.contents_elements.each { |x| add_contents_element(tree_element, x, page) }
+    db_element.contents_elements.sort_by{ |x| x.page_number }.each {
+        |x| add_contents_element(tree_element, x, page)
+    }
 
     tree_parent.child_elements.push(tree_element)
 
@@ -39,6 +41,9 @@ class Book < ActiveRecord::Base
 
   def get_parent_for_page(page_num)
 
+    if page_num == 367
+      a = 3
+    end
     preceding_elements = contents_elements.select{|x| x.page_number <= page_num}
     return nil if preceding_elements.empty?
     max_named_page = preceding_elements.max_by{|x| x.page_number}.page_number
