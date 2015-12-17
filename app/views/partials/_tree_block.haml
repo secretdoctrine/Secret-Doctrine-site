@@ -28,7 +28,7 @@
           = @book.name
         - if @book.name_comment
           %br
-          %span
+          %span{class: 'nobold'}
             = @book.name_comment
       %br
       = image_tag 'roscherkl.gif'

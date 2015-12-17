@@ -292,11 +292,6 @@ body.library {
     line-height: 2em;
 }
 
-#contents_div .section span {
-    font-style:normal;
-    font-weight:normal;
-}
-
 #contents_div .section i a,
 #contents_div h2 i a
 {

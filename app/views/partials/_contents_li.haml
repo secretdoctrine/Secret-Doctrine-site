@@ -12,7 +12,7 @@
           = child_element.display_name
         - if child_element.name_comment
           %br
-          %span
+          %span{class: 'nobold'}
             = child_element.name_comment
 
   - if li_class == 'part' or li_class == 'page'
