@@ -1,0 +1,25 @@
+%html
+  %head
+
+    %meta{:@content_item => "text/html; charset=windows-1251", "http-equiv" => "Content-Type"}/
+    %title Тайная Доктрина Востока в творчестве Ларисы Дмитриевой
+    = stylesheet_link_tag 'index.css'
+    = stylesheet_link_tag 'mainmenu.css'
+    = stylesheet_link_tag 'header.css'
+    = stylesheet_link_tag 'application.css'
+    = stylesheet_link_tag 'library.css'
+    = stylesheet_link_tag 'jstree'
+    %link{:href => "/favicon.ico", :rel => "shortcut icon"}/
+    =javascript_include_tag 'jquery-2.1.4.js'
+    =javascript_include_tag 'jstree.js'
+
+  - stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+  - javascript_include_tag 'application', 'data-turbolinks-track' => true
+  - csrf_meta_tags
+
+  %body{:class => @body_class + ' library'}
+    #header
+      =image_tag 'Header_Slava2.jpg', {:title => 'Н. К. Рерих. Слава Гималаев'}
+      =image_tag 'Header_Slava_right2.gif', {:alt => 'Тайная Доктрина Востока в творчестве Ларисы Дмитриевой', :class => :right}
+    = render :partial => 'layouts/menu.haml'
+    = yield

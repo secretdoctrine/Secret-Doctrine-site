@@ -1,15 +1,22 @@
-input.library_toggle_button {
-    width: 100%;
-    padding: 7px;
-    border: 1px solid #254CBF;
-    background-color: #17317E;
-    color: #FFFFFF;
-    font-size: 12px;
+body.library {
+    background: #244372 url(rock085-4.jpg);
 }
 
-input.library_toggle_button:hover {
-    background-color: #27419E;
+.library_toggle input {
+    padding: 5px;
+    border: 0;
+    background-color: transparent;
+    color: #91C0D2;
+    font-size: 14px;
+}
+
+.library_toggle input:hover {
+    color: #fff000;
     cursor: pointer;
+}
+
+.library_toggle {
+    text-align: center;
 }
 
 #main_container_div {
