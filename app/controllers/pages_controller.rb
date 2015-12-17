@@ -1,11 +1,11 @@
 class PagesController < ApplicationController
 
-  layout 'layouts/application.haml', :only => [:index, :show]
+  layout 'layouts/library.haml', :only => [:index, :show]
 
   before_action :set_body_class, :build_tree, :build_contents
 
   def set_body_class
-    @body_class = :bluegamma
+    @body_class = 'bluegamma'
   end
 
   def build_tree

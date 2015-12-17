@@ -7,37 +7,14 @@
     = stylesheet_link_tag 'mainmenu.css'
     = stylesheet_link_tag 'header.css'
     = stylesheet_link_tag 'application.css'
-    = stylesheet_link_tag 'library.css'
-    = stylesheet_link_tag 'jstree'
     %link{:href => "/favicon.ico", :rel => "shortcut icon"}/
     =javascript_include_tag 'jquery-2.1.4.js'
-    =javascript_include_tag 'jstree.js'
-
-    %title
-      Doctrine
-    %div{:style => 'position:absolute; top:0; width:16px; right:15px'}
 
   - stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
   - javascript_include_tag 'application', 'data-turbolinks-track' => true
   - csrf_meta_tags
 
   %body{:class => @body_class}
-    #overlay_mask{:onclick => "$('#overlay_mask, #overlay_box').hide()"}
-    #overlay_box
-      %ins.close{:onclick => "$('#overlay_mask, #overlay_box').hide()"} Закрыть
-      .over_inner
-        %text
-          Уважаемые посетители сайта!
-          %br/
-          %br/
-          Администрация сообщает, что в скором времени представит вашему вниманию обновленную версию сайта. Изменения в основном коснутся разделов Библиотека и Аудио.
-          %br/
-          Аудиофайлы в новой версии будут каталогизированы по темам и представлены в удобном для прослушивания, скачивания и просмотра роликов виде. В разделе Библиотека будет представлен новый, удобный, быстрый и мощный поиск по книгам.
-          %br/
-          Администрация надеется, что это поможет вам в изучении представленных на сайте материалов.
-          %br/
-          %br/
-          Спасибо!
     #header
       =image_tag 'Header_Slava2.jpg', {:title => 'Н. К. Рерих. Слава Гималаев'}
       =image_tag 'Header_Slava_right2.gif', {:alt => 'Тайная Доктрина Востока в творчестве Ларисы Дмитриевой', :class => :right}
@@ -66,7 +43,7 @@
         %td{:valign => "top", :width => "50%"}
           %p{:align => "right"}
     %marquee#mecenat
-      Сайт открыт 24 марта 2007 г\&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      Сайт открыт 24 марта 2007 г.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       \&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       \&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       Редакция сердечно благодарит единомышленника из Санкт-Петербурга - мецената сайта, который предпочел оставаться неизвестным.

@@ -1,7 +1,8 @@
 - contents.child_elements.each do |child_element|
+  - selected = child_element.selected ? ' selected_li' : ''
   - li_class = child_element.class_name
   - if li_class == 'section' or li_class == 'chapter'
-    %li{class: li_class}
+    %li{class: li_class + selected}
       %a{href: book_page_path(child_element.book_id, child_element.page_internal_number)}
         - if child_element.name_prefix
           %i
@@ -17,7 +18,7 @@
   - if li_class == 'part' or li_class == 'page'
     %li{class: 'li_background'}
       %ul
-        %li{class: li_class}
+        %li{class: li_class + selected}
           %a{href: book_page_path(child_element.book_id, child_element.page_internal_number)}
             = child_element.display_name
             - if child_element.name_comment

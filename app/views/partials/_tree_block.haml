@@ -1,17 +1,22 @@
 - jstree_div = 'jstree_container'
 - display = display_contents ? 'none' : 'block'
 
-%div{ :id => 'tree_container_div', :class => 'fullheight', :width => '200px', :style => 'display: ' + display + ';' }
+%div{id: 'tree_container_div', class: 'fullheight', width: '200px', style: 'display: ' + display + ';' }
   - display = display_contents ? 'block' : 'none'
-  %input{:type => 'button', :value => I18n.t('library.show_contents'), :style => 'display: ' + display + ';', :class => 'library_toggle_button', :onclick => 'javascript: $("#contents_div")[0].style.display = "block"; $("#tree_container_div")[0].style.display = "none";'}
-  /%input{:type => 'button', :value => I18n.t('library.show_contents'), :class => 'library_toggle_button', :onclick => 'javascript: $("#contents_div")[0].style.display = "block"; $("#tree_container_div")[0].style.display = "none";'}
-  %div{ :id => jstree_div}
+  %div{class: 'library_toggle'}
+    %input{:type => 'button', :value => I18n.t('library.show_contents'), :onclick => 'javascript: $("#contents_div")[0].style.display = "block"; $("#tree_container_div")[0].style.display = "none";'}
+    %br
+    = image_tag 'roscherkl_up.gif'
+  %div{id: jstree_div}
     %ul
-      = render partial: 'partials/tree_level_li', :locals => {:tree_element => tree}
+      = render partial: 'partials/tree_level_li', locals: {tree_element: tree}
 
 
 %div{ :id => 'contents_div', :class => 'fullheight', :width => '200px', :style => 'display: ' + display + ';' }
-  %input{:type => 'button', :value => I18n.t('library.show_categories'), :class => 'library_toggle_button', :onclick => 'javascript: $("#contents_div")[0].style.display = "none"; $("#tree_container_div")[0].style.display = "block";'}
+  %div{class: 'library_toggle'}
+    %input{:type => 'button', :value => I18n.t('library.show_categories'), :onclick => 'javascript: $("#contents_div")[0].style.display = "none"; $("#tree_container_div")[0].style.display = "block";'}
+    %br
+    = image_tag 'roscherkl_up.gif'
   - if defined? contents and contents
     %h2
       %a
@@ -28,10 +33,10 @@
       %br
       = image_tag 'roscherkl.gif'
     %ul
-      = render partial: 'partials/contents_li', :locals => {:contents => contents}
+      = render partial: 'partials/contents_li', locals: {contents: contents}
 
 
-%script{:type => "text/javascript"}
+%script{:type => 'text/javascript'}
   $('##{jstree_div}').jstree({
   "core" : {"themes" : {"icons" : false}}
   });
@@ -43,3 +48,5 @@
   $("##{jstree_div}").on("activate_node.jstree", function(e,data){
   window.location.href = data.node.a_attr.href;
   })
+
+= render partial: 'partials/scroll_script'
