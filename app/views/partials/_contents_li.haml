@@ -23,7 +23,7 @@
             = child_element.display_name
             - if child_element.name_comment
               %span{class: 'nobold'}
-                = child_element.name_comment
+                = ' ' + child_element.name_comment
 
   - if not child_element.child_elements.empty?
     %ul
