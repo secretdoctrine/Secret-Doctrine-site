@@ -290,14 +290,9 @@
   transition: background-color 0.15s, box-shadow 0.15s;
 }
 .jstree-default .jstree-hovered {
-  background: #e7f4f9;
-  border-radius: 2px;
-  box-shadow: inset 0 0 1px #cccccc;
+  color: #fff000;
 }
 .jstree-default .jstree-clicked {
-  background: #beebff;
-  border-radius: 2px;
-  box-shadow: inset 0 0 1px #999999;
 }
 .jstree-default .jstree-no-icons .jstree-anchor > .jstree-themeicon {
   display: none;
@@ -311,7 +306,6 @@
   box-shadow: none;
 }
 .jstree-default .jstree-disabled.jstree-clicked {
-  background: #efefef;
 }
 .jstree-default .jstree-disabled > .jstree-icon {
   opacity: 0.8;
@@ -335,7 +329,7 @@
   box-shadow: none;
 }
 .jstree-default.jstree-checkbox-no-clicked .jstree-clicked.jstree-hovered {
-  background: #e7f4f9;
+  color: #fff000;
 }
 .jstree-default.jstree-checkbox-no-clicked > .jstree-wholerow-ul .jstree-wholerow-clicked {
   background: transparent;
@@ -433,7 +427,6 @@
   background: transparent;
 }
 .jstree-default .jstree-disabled.jstree-clicked {
-  background: #efefef;
 }
 .jstree-default .jstree-checkbox {
   background-position: -164px -4px;
@@ -606,7 +599,6 @@
   background: transparent;
 }
 .jstree-default-small .jstree-disabled.jstree-clicked {
-  background: #efefef;
 }
 .jstree-default-small .jstree-checkbox {
   background-position: -167px -7px;
@@ -779,7 +771,6 @@
   background: transparent;
 }
 .jstree-default-large .jstree-disabled.jstree-clicked {
-  background: #efefef;
 }
 .jstree-default-large .jstree-checkbox {
   background-position: -160px 0px;

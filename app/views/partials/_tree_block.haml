@@ -4,17 +4,15 @@
 %div{id: 'tree_container_div', class: 'fullheight', width: '200px', style: 'display: ' + display + ';' }
   - display = display_contents ? 'block' : 'none'
   %div{class: 'library_toggle'}
-    %input{:type => 'button', :value => I18n.t('library.show_contents'), :onclick => 'javascript: $("#contents_div")[0].style.display = "block"; $("#tree_container_div")[0].style.display = "none";'}
-    %br
-    = image_tag 'roscherkl_up.gif'
+    %input{type: 'button', value: I18n.t('library.show_contents'), style: 'display: ' + display + ';', onclick: 'javascript: $("#contents_div")[0].style.display = "block"; $("#tree_container_div")[0].style.display = "none";'}
   %div{id: jstree_div}
     %ul
       = render partial: 'partials/tree_level_li', locals: {tree_element: tree}
 
 
-%div{ :id => 'contents_div', :class => 'fullheight', :width => '200px', :style => 'display: ' + display + ';' }
+%div{ id: 'contents_div', class: 'fullheight', width: '200px', style: 'display: ' + display + ';' }
   %div{class: 'library_toggle'}
-    %input{:type => 'button', :value => I18n.t('library.show_categories'), :onclick => 'javascript: $("#contents_div")[0].style.display = "none"; $("#tree_container_div")[0].style.display = "block";'}
+    %input{type: 'button', value: I18n.t('library.show_categories'), onclick: 'javascript: $("#contents_div")[0].style.display = "none"; $("#tree_container_div")[0].style.display = "block";'}
     %br
     = image_tag 'roscherkl_up.gif'
   - if defined? contents and contents
@@ -39,10 +37,6 @@
 %script{:type => 'text/javascript'}
   $('##{jstree_div}').jstree({
   "core" : {"themes" : {"icons" : false}}
-  });
-
-  $("##{jstree_div}").bind("select_node.jstree", function (e, data) {
-  return data.instance.toggle_node(data.node);
   });
 
   $("##{jstree_div}").on("activate_node.jstree", function(e,data){
