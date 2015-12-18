@@ -417,3 +417,19 @@ body.library {
     color:#ffffff;
 }
 
+/*-----------------*/
+#tree_container_div {
+    background:#6E92AA none repeat scroll 0 0;
+    color:#000099;
+}
+
+#jstree_container {
+    margin-top: 5px;
+    max-width: 270px;
+}
+
+#jstree_container a {
+    white-space: normal !important;
+    height: auto;
+    padding: 1px 2px;
+}
