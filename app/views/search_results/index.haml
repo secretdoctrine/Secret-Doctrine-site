@@ -1,11 +1,13 @@
-= will_paginate @result[:search_results]
+%div{class: 'flickr_pagination'}
+  = will_paginate @result[:search_results]
 
-= link_to 'snippets', params.merge(show_html: false)
-= link_to 'html', params.merge(show_html: true)
+= link_to 'snippets', params.merge(show_html: false), class: 'search_type_link'
+= link_to 'html', params.merge(show_html: true), class: 'search_type_link'
 
 - if @result[:show_html]
   = render partial: 'search_html', collection: @result[:search_results], as: :page
 - else
   = render partial: 'search_snippet', collection: @result[:search_results], as: :page
 
-= will_paginate @result[:search_results]
+%div{class: 'flickr_pagination'}
+  = will_paginate @result[:search_results]
