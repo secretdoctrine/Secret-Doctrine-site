@@ -2,9 +2,9 @@
   %div{class: 'flickr_pagination', style: 'margin-top: 50px;'}
     = will_paginate @result[:search_results]
 
-  = link_to I18n.t('library.search.view_snippet'), params.merge(show_html: false), class: 'search_type_link'
-  = link_to I18n.t('library.search.view_html'), params.merge(show_html: true), class: 'search_type_link'
-  = link_to I18n.t('library.search.export'), params.merge(action: :export), class: 'search_type_link'
+  = link_to I18n.t('library.search_page.view_snippet'), params.merge(show_html: false), class: 'search_type_link'
+  = link_to I18n.t('library.search_page.view_html'), params.merge(show_html: true), class: 'search_type_link'
+  = link_to I18n.t('library.search_page.export'), params.merge(action: :export), class: 'search_type_link'
 
 
   - if @result[:show_html]

@@ -10,10 +10,22 @@
           %input{type: :hidden, name: 'book_id', value: @page_info[:page].book.id}
           %input{id: 'search_lite', name: 'search_text'}
           %button{type: 'submit'}
-            =I18n.t('library.search')
+            = I18n.t('library.search')
     %tr
       %td{id: 'page_header', colspan: '2'}
         = @page_info[:page].display_name
+    %tr
+      %td{id: 'page_buttons'}
+        = link_to book_page_path(@page_info[:page].book.id, @page_info[:page].url_name) do
+          = image_tag 'html.png'
+        = link_to book_page_path(@page_info[:page].book.id, @page_info[:page].url_name, pdf: true) do
+          = image_tag 'pdf.png'
+      %td{id: 'page_selector'}
+        %form
+          = I18n.t('library.go_to_page_prefix')
+          %select
+          %button{type: 'submit'}
+            = I18n.t('library.go_to_page')
 
   %div{id: 'page_container'}
     - unless @page_info[:page].prev.nil?

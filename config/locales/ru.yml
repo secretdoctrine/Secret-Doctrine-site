@@ -37,7 +37,9 @@ ru:
     enter_category: 'Войти в раздел'
     read: 'Читать'
     download: 'Скачать'
-    search:
+    go_to_page_prefix: 'Страница: '
+    go_to_page: 'Перейти'
+    search_page:
       view_html: 'Страницы целиком'
       view_snippet: 'Только вхождения'
       export: 'Скачать результаты поиска (PDF)'

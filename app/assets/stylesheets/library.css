@@ -48,7 +48,8 @@ body.library {
     padding: 10px 10px 0px 20px;
 }
 
-#search_block {
+#search_block,
+#page_selector {
     margin: 0px 10px;
     vertical-align: top;
     text-align: right;
