@@ -1,13 +1,14 @@
-%div{class: 'flickr_pagination'}
-  = will_paginate @result[:search_results]
+%div{class: 'serch_results_container'}
+  %div{class: 'flickr_pagination', style: 'margin-top: 50px;'}
+    = will_paginate @result[:search_results]
 
-= link_to 'snippets', params.merge(show_html: false), class: 'search_type_link'
-= link_to 'html', params.merge(show_html: true), class: 'search_type_link'
+  = link_to 'snippets', params.merge(show_html: false), class: 'search_type_link'
+  = link_to 'html', params.merge(show_html: true), class: 'search_type_link'
 
-- if @result[:show_html]
-  = render partial: 'search_html', collection: @result[:search_results], as: :page
-- else
-  = render partial: 'search_snippet', collection: @result[:search_results], as: :page
+  - if @result[:show_html]
+    = render partial: 'search_html', collection: @result[:search_results], as: :page
+  - else
+    = render partial: 'search_snippet', collection: @result[:search_results], as: :page
 
-%div{class: 'flickr_pagination'}
-  = will_paginate @result[:search_results]
+  %div{class: 'flickr_pagination'}
+    = will_paginate @result[:search_results]
