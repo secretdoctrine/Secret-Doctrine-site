@@ -1,4 +1,5 @@
-class ThinkingSphinx::Panes::WordsPane
+class WordsPane
+
   def initialize(context, object, raw)
     @context, @object = context, object
   end
@@ -38,4 +39,5 @@ class ThinkingSphinx::Panes::WordsPane
       @excerpter.excerpt! @object.send(method, *args, &block).to_s
     end
   end
+
 end

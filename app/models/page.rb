@@ -73,7 +73,7 @@ class Page < ActiveRecord::Base
         order: 'weight() DESC, book_id ASC, internal_order ASC'
     )
     result[:search_results].context[:panes] << ThinkingSphinx::Panes::ExcerptsPane
-    result[:search_results].context[:panes] << ThinkingSphinx::Panes::WordsPane
+    result[:search_results].context[:panes] << WordsPane
 
     result
 
