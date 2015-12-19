@@ -70,6 +70,7 @@ body.library {
     text-align: center;
 }
 
+object.pdf_page,
 #page_container iframe {
     width: 700px;
     border: 1px solid #254CBF;
@@ -86,6 +87,7 @@ body.library {
 
 #previous_page,
 #next_page,
+object.pdf_page,
 #page_container iframe{
     height: 950px;
 }
