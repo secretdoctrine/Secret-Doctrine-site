@@ -21,7 +21,7 @@
         = link_to book_page_path(@page_info[:page].book.id, @page_info[:page].url_name, pdf: true) do
           = image_tag 'pdf.png'
       %td{id: 'page_selector'}
-        = form_tag book_pages_path, {:method => :get} do
+        = form_tag redirect_book_pages_path, {:method => :get} do
           = I18n.t('library.go_to_page_prefix')
           = hidden_field_tag(:book_id, @page_info[:page].book.id)
           = hidden_field_tag(:pdf, @page_info[:pdf])
