@@ -28,6 +28,21 @@ class PagesController < ApplicationController
 
   end
 
+  def export
+
+    @page = Page.find_by_book_id_and_url_name(params[:book_id], params[:id])
+    render_404 if @page.nil?
+
+    send_file(
+        #File.read(File.expand_path(@page.pdf_content.path)),
+        File.expand_path(@page.pdf_content.path),
+        type: 'application/pdf',
+        disposition: 'attachment',
+        filename: @page.short_book_and_page_name + '.pdf'
+    )
+
+  end
+
   def index
   end
 end

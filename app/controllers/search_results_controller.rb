@@ -16,7 +16,17 @@ class SearchResultsController < ApplicationController
 
   def export
 
+    filename = 'export-' + DateTime.now.strftime('%Y%m%d%H%M%S%6N') + '.zip'
+    temp_file = Tempfile.new(filename)
 
+    begin
+      Page.zip_for_search(params, temp_file)
+      #send_file temp_file.path, type: 'application/zip', disposition: 'attachment', filename: filename
+      send_data File.read(temp_file.path), type: 'application/zip', disposition: 'attachment', filename: filename
+    ensure
+      temp_file.close
+      temp_file.unlink
+    end
 
   end
 

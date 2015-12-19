@@ -32,8 +32,8 @@ gem 'mysql2', '~> 0.3.13'
 gem 'thinking-sphinx'
 gem 'thin'
 
-gem 'sanitize'
 gem 'will_paginate'
+gem 'rubyzip', require: 'zip'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
