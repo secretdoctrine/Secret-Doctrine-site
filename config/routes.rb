@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   resources :indexes, :only => [:index]
   resources :books, :only => [:show] do
-    resources :pages, :only => [:show] do
+    resources :pages, :only => [:index, :show] do
       get 'export', on: :member
       resources :external_page_contents, :only => [:show]
     end

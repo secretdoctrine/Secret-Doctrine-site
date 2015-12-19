@@ -27,6 +27,12 @@ class Book < ActiveRecord::Base
 
   end
 
+  def pages_for_select
+
+    pages.sort_by{ |page| page.internal_order }.collect{ |page| [page.url_name, page.url_name] }
+
+  end
+
   def build_contents(page)
 
     root_element = ContentsTreeElement.new
@@ -41,9 +47,6 @@ class Book < ActiveRecord::Base
 
   def get_parent_for_page(page_num)
 
-    if page_num == 367
-      a = 3
-    end
     preceding_elements = contents_elements.select{|x| x.page_number <= page_num}
     return nil if preceding_elements.empty?
     max_named_page = preceding_elements.max_by{|x| x.page_number}.page_number

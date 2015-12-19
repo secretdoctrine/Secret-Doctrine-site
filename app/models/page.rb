@@ -103,6 +103,12 @@ class Page < ActiveRecord::Base
 
   end
 
+  def short_name
+
+    I18n.t('importer.page') + ' ' + url_name
+
+  end
+
   def display_name
 
     name = I18n.t('importer.page') + ' ' + url_name

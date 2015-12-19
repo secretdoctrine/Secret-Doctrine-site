@@ -19,6 +19,7 @@ class PagesController < ApplicationController
     @page_info[:tree] = BookCategory.build_categories_tree_for_book(@page.book)
     @page_info[:contents] = @page.book.build_contents(@page)
     @page_info[:pdf] = (params.has_key?('pdf') and params['pdf'] == 'true')
+    @page_info[:pages_for_select] = @page.book.pages_for_select
 
   end
 
@@ -38,5 +39,10 @@ class PagesController < ApplicationController
   end
 
   def index
+
+    return render_404 unless params.has_key? :id
+    redirect_to book_page_path(params)
+
   end
+
 end
