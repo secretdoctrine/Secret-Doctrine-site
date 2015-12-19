@@ -1,1 +1,7 @@
 brew install sphinx --mysql
+
+rake ts:index
+rake ts:start
+
+
+rake ts:reindex
