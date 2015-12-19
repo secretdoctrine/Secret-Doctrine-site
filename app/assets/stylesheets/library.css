@@ -430,7 +430,7 @@ object.pdf_page,
 
 #jstree_container {
     background:#6E92AA none repeat scroll 0 0;
-    color:#000099;
+    color:#000055;
     margin-top: 5px;
     max-width: 300px;
     width: 100%;
@@ -441,6 +441,11 @@ object.pdf_page,
     height: auto;
     padding: 1px 2px;
 }
+
+#jstree_container .tree_leaf {
+    color: #000099;
+}
+
 /*
 #tree_container_div .library_toggle input {
     width: 100%;
