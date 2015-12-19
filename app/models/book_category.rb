@@ -18,7 +18,13 @@ class BookCategory < ActiveRecord::Base
 
     db_element.books.sort{ |x, y| x.order_number <=> y.order_number }.each do |book|
 
-      book_element = TreeElement.new(display_name: book.name, controller: :books, action: :show, id: book.id)
+      book_element = TreeElement.new(
+          name: book.name,
+          controller: :books,
+          action: :show,
+          id: book.id,
+          tree_prefix: book.tree_prefix
+      )
       tree_element.data_elements.push(book_element)
 
     end
@@ -28,11 +34,12 @@ class BookCategory < ActiveRecord::Base
   def self.add_tree_element(current_element, tree_parent, db_element)
 
     tree_element = TreeElement.new(
-        display_name: db_element.name,
+        name: db_element.name,
         controller: :book_categories,
         action: :show,
         id: db_element.id,
-        is_open: ((not current_element.nil?) and current_element.id == db_element.id ? true : false))
+        is_open: ((not current_element.nil?) and current_element.id == db_element.id ? true : false)
+    )
 
     process_own_books(db_element, tree_element)
 
