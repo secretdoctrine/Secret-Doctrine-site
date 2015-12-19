@@ -1,3 +1,5 @@
+require 'zip'
+
 class Page < ActiveRecord::Base
 
   belongs_to :book
@@ -5,8 +7,39 @@ class Page < ActiveRecord::Base
 
   RESULTS_ON_PAGE = 20
   MAX_SEARCH_RESULTS = 1000
+  PAGE_NAME_EXPORT_LIMIT = 30
 
-  def self.sphinx_search(params)
+  def self.zip_for_search(params, temp_file)
+
+    params[:page] = 1
+    search_results = sphinx_search(params, MAX_SEARCH_RESULTS)
+
+    #Initialize the temp file as a zip file
+    Zip::OutputStream.open(temp_file)  do |z|
+
+      search_results[:search_results].each do |page|
+
+        next if page.pdf_content.nil?
+        title = page.short_book_and_page_name + '.pdf'
+        z.put_next_entry(title)
+        z.print(IO.read(File.expand_path(page.pdf_content.path)))
+
+      end
+
+    end
+
+
+  end
+
+  def short_book_and_page_name
+    book_and_page_name.first(PAGE_NAME_EXPORT_LIMIT)
+  end
+
+  def book_and_page_name
+    book.name + '. ' + display_name
+  end
+
+  def self.sphinx_search(params, results_per_page = RESULTS_ON_PAGE)
 
 
     #@search_results = Page.search(params[:search_text], :excerpts => {
@@ -35,7 +68,7 @@ class Page < ActiveRecord::Base
         params[:search_text],
         words: {around: 0, chunk_separator: WordsConverter::SEPARATOR, before_match: '', after_match: ''},
         page: page,
-        per_page: RESULTS_ON_PAGE,
+        per_page: results_per_page,
         with: with_hash,
         order: 'weight() DESC, book_id ASC, internal_order ASC'
     )
@@ -46,7 +79,7 @@ class Page < ActiveRecord::Base
 
   end
 
-  def pdf_content_id
+  def pdf_content
 
     external_page_contents.find_by_content_type(ExternalPageContent::PDF_TYPE)
 
