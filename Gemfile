@@ -28,6 +28,13 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'refinerycms', '~> 3.0.0'
 gem 'haml'
 
+gem 'mysql2', '~> 0.3.13'
+gem 'thinking-sphinx'
+gem 'thin'
+
+gem 'sanitize'
+gem 'will_paginate'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

@@ -115,7 +115,7 @@ module ImportHelper
           url_name = page_num.to_s
         end
 
-        page = Page.create!(book_id: book.id, internal_order: page_num, url_name: url_name)
+        page = Page.create!(book_id: book.id, internal_order: page_num, url_name: url_name, page_text: '')
         dir_entries.each do |file_name|
 
           match = /#{yaml_object['pdf_regex']}/.match(file_name)
@@ -137,6 +137,16 @@ module ImportHelper
                   page_id: page.id,
                   content_type: ExternalPageContent::HTML_TYPE,
                   path: File.join(yaml_object['files_path'], file_name))
+
+              begin
+                content = Nokogiri::HTML(File.read(File.expand_path(File.join(yaml_object['files_path'], file_name))))
+                content.css('style,script').remove
+                page.page_text = content.text
+                page.save!
+              rescue Exception => e
+                print e
+              end
+
             end
           end
 

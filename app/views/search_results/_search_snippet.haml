@@ -1,0 +1,6 @@
+%p
+  = link_to page.book.name + ' (' + page.url_name + ')', book_page_path(page.book.id, page.url_name, highlight_words: WordsConverter.convert(page.words.page_text))
+  %br
+  = page.excerpts.page_text.html_safe
+%p
+  %br

@@ -6,8 +6,9 @@
       %td{id: 'book_header'}
         = @page.book.name
       %td{id: 'search_block'}
-        %form
-          %input{id: 'search_lite'}
+        = form_tag search_results_path, {:method => :get} do
+          %input{type: :hidden, name: 'book_id', value: @page.book.id}
+          %input{id: 'search_lite', name: 'search_text'}
           %button{type: 'submit'}
             =I18n.t('library.search')
     %tr
@@ -17,7 +18,7 @@
   %div{id: 'page_container'}
     - unless @page.prev.nil?
       = link_to '<', book_page_path(@page.book, @page.prev.url_name), id: 'previous_page'
-    %iframe{src: "#{book_page_external_page_content_path(@page.book, @page, @page.html_content)}"}
+    %iframe{src: "#{book_page_external_page_content_path(@page.book, @page, @page.html_content, highlight_words: params[:highlight_words])}"}
     - unless @page.next.nil?
       = link_to '>', book_page_path(@page.book, @page.next.url_name), id: 'next_page'
 

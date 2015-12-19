@@ -3,6 +3,49 @@ class Page < ActiveRecord::Base
   belongs_to :book
   has_many :external_page_contents
 
+  RESULTS_ON_PAGE = 20
+  MAX_SEARCH_RESULTS = 1000
+
+  def self.sphinx_search(params)
+
+
+    #@search_results = Page.search(params[:search_text], :excerpts => {
+    #                                                      :around => 0, :chunk_separator => '|', :before_match => '', :after_match => ''})
+    result = {}
+    with_hash = {}
+    with_hash[:book_id] = params[:book_id] if params.has_key? :book_id
+    #with_hash[:book_category_id] = params[:book_category_id] if params.has_key? :book_category_id
+
+    result[:count] = Page.search_count(params[:search_text], with: with_hash)
+    result[:too_many_results] = result[:count] >= MAX_SEARCH_RESULTS
+    result[:show_html] = (params.has_key?(:show_html) and params[:show_html] == 'true')
+    result[:book_category_ids] = Page.search(
+        params[:search_text],
+        per_page: MAX_SEARCH_RESULTS,
+        group_by: 'book_category_id'
+    ).collect{|x| x.book.book_category_id}
+
+    page = params[:page]
+    if page.to_i*RESULTS_ON_PAGE > result[:count]
+      page = (result[:count].to_f / RESULTS_ON_PAGE).ceil
+    end
+
+
+    result[:search_results] = Page.search(
+        params[:search_text],
+        words: {around: 0, chunk_separator: WordsConverter::SEPARATOR, before_match: '', after_match: ''},
+        page: page,
+        per_page: RESULTS_ON_PAGE,
+        with: with_hash,
+        order: 'weight() DESC, book_id ASC, internal_order ASC'
+    )
+    result[:search_results].context[:panes] << ThinkingSphinx::Panes::ExcerptsPane
+    result[:search_results].context[:panes] << ThinkingSphinx::Panes::WordsPane
+
+    result
+
+  end
+
   def pdf_content_id
 
     external_page_contents.find_by_content_type(ExternalPageContent::PDF_TYPE)

@@ -1,0 +1,9 @@
+brew install mariadb
+mysql.server start
+
+mysql -uroot
+
+create user 'doctrine_user'@'localhost' identified by 'doctrine_password'
+create database 'doctrine_db'
+
+grant all on doctrine_db.* to 'doctrine_user'@'localhost'

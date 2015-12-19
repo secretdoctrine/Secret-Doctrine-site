@@ -1,5 +1,5 @@
-pdf_regex: 'td1 - (.+)\.pdf'
-html_regex: 'td1 - (.+)\.html'
+pdf_regex: '^td1 - (.+)\.pdf$'
+html_regex: '^td1 - (.+)\.html$'
 files_path: '~/pdf-ocr/td1'
 
 shift_modifier: '26'

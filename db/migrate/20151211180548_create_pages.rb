@@ -5,6 +5,7 @@ class CreatePages < ActiveRecord::Migration
       t.references  :book,            index:true, foreign_key:true, null:false
       t.integer     :internal_order,  null:false
       t.string      :url_name,        null:false
+      t.text        :page_text,       null:false
 
     end
   end

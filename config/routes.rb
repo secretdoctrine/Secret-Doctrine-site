@@ -9,6 +9,10 @@ Rails.application.routes.draw do
   # We ask that you don't use the :as option here, as Refinery relies on it being the default of "refinery"
   mount Refinery::Core::Engine, :at => '/cms'
 
+  resources :search_results, :only => [:index] do
+    get 'export', on: :collection
+  end
+
   resources :indexes, :only => [:index]
   resources :books, :only => [:show] do
     resources :pages, :only => [:show] do
