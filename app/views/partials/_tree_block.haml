@@ -18,16 +18,16 @@
   - if defined? contents and contents
     %h2
       %a
-        - if @book.name_prefix
+        - if book.name_prefix
           %i
-            = @book.name_prefix
+            = book.name_prefix
           %br
-        - if @book.name
-          = @book.name
-        - if @book.name_comment
+        - if book.name
+          = book.name
+        - if book.name_comment
           %br
           %span{class: 'nobold'}
-            = @book.name_comment
+            = book.name_comment
       %br
       = image_tag 'roscherkl.gif'
     %ul

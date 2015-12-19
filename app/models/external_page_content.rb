@@ -5,4 +5,8 @@ class ExternalPageContent < ActiveRecord::Base
   PDF_TYPE = 0
   HTML_TYPE = 1
 
+  def is_html
+    content_type == HTML_TYPE
+  end
+
 end
