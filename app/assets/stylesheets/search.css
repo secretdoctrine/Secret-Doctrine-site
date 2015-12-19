@@ -3,18 +3,24 @@
     color: #254CBF;
 }
 
-.serch_results_container {
+.search_results_container {
     color: #ffffff;
     padding: 10px 30px;
 }
 
-.serch_results_container a {
+.search_results_container a {
     color: #91C0D2;
 }
 
 a.search_type_link {
     display: inline-block;
     border: 1px solid #aaaaaa;
-    color: #0a6aa1;
+    color: #91C0D2;
     padding: 3px 5px;
+}
+
+a.search_type_link:hover, a.search_type_link:focus {
+    border-color: #003366;
+    background: #0063dc;
+    color: white;
 }
