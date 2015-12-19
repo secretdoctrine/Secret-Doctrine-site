@@ -38,7 +38,7 @@ class PagesController < ApplicationController
 
   end
 
-  def index
+  def redirect
 
     return render_404 unless params.has_key? :id
     redirect_to book_page_path(params)
