@@ -83,10 +83,10 @@ ActiveRecord::Schema.define(version: 20151215181722) do
   end
 
   create_table "pages", force: :cascade do |t|
-    t.integer "book_id",        limit: 4,     null: false
-    t.integer "internal_order", limit: 4,     null: false
-    t.string  "url_name",       limit: 255,   null: false
-    t.text    "page_text",      limit: 65535, null: false
+    t.integer "book_id",        limit: 4,                    null: false
+    t.decimal "internal_order",               precision: 10, null: false
+    t.string  "url_name",       limit: 255,                  null: false
+    t.text    "page_text",      limit: 65535,                null: false
   end
 
   add_index "pages", ["book_id"], name: "index_pages_on_book_id", using: :btree

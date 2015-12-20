@@ -45,3 +45,7 @@ ru:
       view_snippet: 'Только вхождения'
       export: 'Скачать результаты поиска (PDF)'
       export_page: 'Скачать в PDF'
+      search_exact_words: 'Искать без словоформ'
+      ignore_relevance: 'Группировать результаты без учета релевантности'
+      results_per_page: 'Результатов на странице'
+      too_many_results: 'Слишком много результатов'

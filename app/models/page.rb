@@ -39,38 +39,52 @@ class Page < ActiveRecord::Base
     book.name + '. ' + display_name
   end
 
-  def self.sphinx_search(params, results_per_page = RESULTS_ON_PAGE)
+  def self.sphinx_search(params, results_per_page = nil)
 
-
-    #@search_results = Page.search(params[:search_text], :excerpts => {
-    #                                                      :around => 0, :chunk_separator => '|', :before_match => '', :after_match => ''})
     result = {}
     with_hash = {}
+    search_text = params[:search_text]
+
+    per_page = RESULTS_ON_PAGE
+    per_page = results_per_page unless results_per_page.nil?
+    per_page = params['per_page'].to_i if params.has_key?('per_page')
+
+    search_text_array = search_text.split(' ').collect{ |x| x.strip }.select{|x| not x.empty?}
+    if params.has_key?('search_exact_words') and params['search_exact_words'] == 'true'
+      search_text_array = search_text_array.collect{ |x| "=#{x}" }
+    end
+    search_text = search_text_array.join(' | ')
     with_hash[:book_id] = params[:book_id] if params.has_key? :book_id
     #with_hash[:book_category_id] = params[:book_category_id] if params.has_key? :book_category_id
 
-    result[:count] = Page.search_count(params[:search_text], with: with_hash)
+    result[:per_page] = per_page
+    result[:count] = Page.search_count(search_text, with: with_hash)
     result[:too_many_results] = result[:count] >= MAX_SEARCH_RESULTS
     result[:show_snippets] = (params.has_key?(:show_snippets) and params[:show_snippets] == 'true')
     result[:book_category_ids] = Page.search(
-        params[:search_text],
+        search_text,
         per_page: MAX_SEARCH_RESULTS,
         group_by: 'book_category_id'
     ).collect{|x| x.book.book_category_id}
 
     page = params[:page]
-    if page.to_i*RESULTS_ON_PAGE > result[:count]
-      page = (result[:count].to_f / RESULTS_ON_PAGE).ceil
+    if page.to_i*per_page > result[:count]
+      page = (result[:count].to_f / per_page).ceil
     end
 
+    order_string = ''
+    unless params.has_key?('ignore_relevance') and params['ignore_relevance']
+      order_string += 'weight() DESC, '
+    end
+    order_string+= 'book_id ASC, internal_order ASC'
 
     result[:search_results] = Page.search(
-        params[:search_text],
+        search_text,
         words: {around: 0, chunk_separator: WordsConverter::SEPARATOR, before_match: '', after_match: ''},
         page: page,
-        per_page: results_per_page,
+        per_page: per_page,
         with: with_hash,
-        order: 'weight() DESC, book_id ASC, internal_order ASC'
+        order: order_string
     )
     result[:search_results].context[:panes] << ThinkingSphinx::Panes::ExcerptsPane
     result[:search_results].context[:panes] << WordsPane
