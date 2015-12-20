@@ -67,10 +67,12 @@ class Page < ActiveRecord::Base
         group_by: 'book_category_id'
     ).collect{|x| x.book.book_category_id}
 
-    page = params[:page]
-    if page.to_i*per_page > result[:count]
+    page = 1
+    page = params[:page].to_i if params.has_key? :page
+    if page*per_page > result[:count]
       page = (result[:count].to_f / per_page).ceil
     end
+    page = 1 if page <= 0
 
     order_string = ''
     unless params.has_key?('ignore_relevance') and params['ignore_relevance']
