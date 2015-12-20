@@ -55,6 +55,14 @@ class Page < ActiveRecord::Base
     end
     search_text = search_text_array.join(' | ')
     with_hash[:book_id] = params[:book_id] if params.has_key? :book_id
+
+    if params.has_key? :book_category_id
+
+      category = BookCategory.find_by_id(params[:book_category_id])
+      with_hash[:book_category_id] = category.categories_array
+
+    end
+
     #with_hash[:book_category_id] = params[:book_category_id] if params.has_key? :book_category_id
 
     result[:per_page] = per_page
@@ -67,10 +75,12 @@ class Page < ActiveRecord::Base
         group_by: 'book_category_id'
     ).collect{|x| x.book.book_category_id}
 
-    page = params[:page]
-    if page.to_i*per_page > result[:count]
+    page = 1
+    page = params[:page].to_i if params.has_key? :page
+    if page*per_page > result[:count]
       page = (result[:count].to_f / per_page).ceil
     end
+    page = 1 if page <= 0
 
     order_string = ''
     unless params.has_key?('ignore_relevance') and params['ignore_relevance']
