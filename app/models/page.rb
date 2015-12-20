@@ -51,7 +51,7 @@ class Page < ActiveRecord::Base
 
     result[:count] = Page.search_count(params[:search_text], with: with_hash)
     result[:too_many_results] = result[:count] >= MAX_SEARCH_RESULTS
-    result[:show_html] = (params.has_key?(:show_html) and params[:show_html] == 'true')
+    result[:show_snippets] = (params.has_key?(:show_snippets) and params[:show_snippets] == 'true')
     result[:book_category_ids] = Page.search(
         params[:search_text],
         per_page: MAX_SEARCH_RESULTS,
