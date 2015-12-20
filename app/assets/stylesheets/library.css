@@ -494,7 +494,11 @@ object.pdf_page,
 #search_block .but_24:hover .s1 {background: url(button_down.png) 100% -79px no-repeat;}
 #search_block .but_24:hover .s2 {background: url(button_down.png) 0 -39px;}
 
-.search_results_container {font-size: 14px;}
+.search_results_container a,
+#search_block button,
+#search_block a {
+    font-size: 12px;
+}
 
 .search_results_container .but_24 { height: auto; min-height: 0; padding: 0; margin: 0; background: none; border: none; -webkit-border-fit: lines;}
 .search_results_container .but_24 .s0,
