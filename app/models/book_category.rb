@@ -93,4 +93,19 @@ class BookCategory < ActiveRecord::Base
 
   end
 
+  def recursive_categories_array(array, category)
+
+    array.push(category.id)
+    category.book_categories.each {|x| recursive_categories_array(array, x)}
+
+  end
+
+  def categories_array
+
+    array = []
+    recursive_categories_array(array, self)
+    array
+
+  end
+
 end

@@ -55,6 +55,14 @@ class Page < ActiveRecord::Base
     end
     search_text = search_text_array.join(' | ')
     with_hash[:book_id] = params[:book_id] if params.has_key? :book_id
+
+    if params.has_key? :book_category_id
+
+      category = BookCategory.find_by_id(params[:book_category_id])
+      with_hash[:book_category_id] = category.categories_array
+
+    end
+
     #with_hash[:book_category_id] = params[:book_category_id] if params.has_key? :book_category_id
 
     result[:per_page] = per_page
