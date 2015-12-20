@@ -93,7 +93,7 @@ class BookCategory < ActiveRecord::Base
 
   end
 
-  def recursive_categories_array(array, category)
+  def self.recursive_categories_array(array, category)
 
     array.push(category.id)
     category.book_categories.each {|x| recursive_categories_array(array, x)}
@@ -103,7 +103,23 @@ class BookCategory < ActiveRecord::Base
   def categories_array
 
     array = []
-    recursive_categories_array(array, self)
+    BookCategory.recursive_categories_array(array, self)
+    array
+
+  end
+
+  def self.categories_for_select_recursive(array, category, nest_level)
+
+    array.push(['-'*nest_level + category.name, category.id])
+    category.book_categories.each {|x| categories_for_select_recursive(array, x, nest_level + 1)}
+
+  end
+
+  def self.categories_for_select
+
+    root = get_root!
+    array = []
+    categories_for_select_recursive(array, root, 0)
     array
 
   end
