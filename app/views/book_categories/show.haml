@@ -7,15 +7,16 @@
         %td{id: 'book_header'}
           = @category.name
         %td{id: 'search_block'}
-          = form_tag search_results_path, {:method => :get} do
+          = form_tag search_results_path, {:method => :get, id: 'search_form'} do
             %input{type: :hidden, name: 'book_category_id', value: @category.id}
+            %input{type: :hidden, name: 'is_ext_search', value: false, id: 'is_ext_search'}
             %input{id: 'search_lite', name: 'search_text'}
-            %button.but_24{type: 'submit'}
+            %a{onclick: '$("#search_form")[0].submit();', class: 'but_24'}
               %span.s0
                 %span.s1
                   %span.s2
                     = I18n.t('library.search')
-            = link_to search_results_path, class: 'but_24' do
+            %a{onclick: '$("#is_ext_search")[0].value = true; $("#search_form")[0].submit();', class: 'but_24'}
               %span.s0
                 %span.s1
                   %span.s2
