@@ -1,6 +1,10 @@
 %p
   = link_to page.book_and_page_name, book_page_path(page.book.id, page.url_name, highlight_words: WordsConverter.convert(page.words.page_text))
-  = link_to I18n.t('library.search_page.export_page'), export_book_page_path(page.book.id, page.url_name), class: 'search_type_link'
+  = link_to export_book_page_path(page.book.id, page.url_name), class: 'but_24' do
+    %span.s0
+      %span.s1
+        %span.s2
+          = I18n.t('library.search_page.export_page')
   %br
   = page.excerpts.page_text.html_safe
 %p

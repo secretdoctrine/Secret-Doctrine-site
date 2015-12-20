@@ -2,6 +2,21 @@
 
 %div{:id => "main_container_div", :class => "fullheight"}
   %div{id: 'library_news_feed'}
+    %table{id: 'category_headers'}
+      %tr
+        %td{id: 'search_block', style: 'text-align: center;'}
+          = form_tag search_results_path, {:method => :get} do
+            %input{id: 'search_lite', name: 'search_text'}
+            %button.but_24{type: 'submit'}
+              %span.s0
+                %span.s1
+                  %span.s2
+                    = I18n.t('library.search')
+            = link_to search_results_path, class: 'but_24' do
+              %span.s0
+                %span.s1
+                  %span.s2
+                    = I18n.t('library.search_more')
     = render partial: 'library_news', collection: @library_news, as: :news_item
 
 

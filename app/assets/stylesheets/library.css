@@ -43,7 +43,14 @@ body.library {
     border: none;
 }
 
-#book_headers td {
+#category_headers {
+    width: 100%;
+    border: none;
+    margin-bottom: 10px;
+}
+
+#book_headers td,
+#category_headers td{
     color: #ffffff;
     padding: 10px 10px 0px 20px;
 }
@@ -53,6 +60,10 @@ body.library {
     margin: 0px 10px;
     vertical-align: top;
     text-align: right;
+}
+
+#search_block {
+
 }
 
 #book_header {
@@ -101,7 +112,8 @@ object.pdf_page,
     background-color: #27419E;
 }
 
-#library_feed {
+#library_feed,
+#library_news_feed {
     padding: 15px 30px 30px 40px;
 }
 
@@ -466,3 +478,33 @@ object.pdf_page,
 #jstree_container .tree_prefix {
     color: #dd0022;
 }
+
+/* buttons */
+/* 24 */
+#search_block .but_24 { height: auto; min-height: 0; padding: 0; margin: 0; background: none; border: none; -webkit-border-fit: lines;}
+#search_block .but_24 .s0,
+#search_block .but_24 .s1,
+#search_block .but_24 .s2 { display: inline-block; height: 35px; background-image: url(button.png); background-repeat: no-repeat;}
+
+#search_block .but_24 .s0 { padding: 0 0 0 15px; background-position: 0 0;}
+#search_block .but_24 .s1 { padding: 0 15px 0 0; background-position: 100% -80px;}
+#search_block .but_24 .s2 { background-position: 0 -40px; background-repeat: repeat-x; line-height: 35px; font-weight: bold; color: #91C0C9; min-width: 50px;}
+
+#search_block .but_24:hover .s0 {background: url(button_down.png) 0 1px no-repeat;}
+#search_block .but_24:hover .s1 {background: url(button_down.png) 100% -79px no-repeat;}
+#search_block .but_24:hover .s2 {background: url(button_down.png) 0 -39px;}
+
+.search_results_container {font-size: 14px;}
+
+.search_results_container .but_24 { height: auto; min-height: 0; padding: 0; margin: 0; background: none; border: none; -webkit-border-fit: lines;}
+.search_results_container .but_24 .s0,
+.search_results_container .but_24 .s1,
+.search_results_container .but_24 .s2 { display: inline-block; height: 35px; background-image: url(button.png); background-repeat: no-repeat;}
+
+.search_results_container .but_24 .s0 { padding: 0 0 0 15px; background-position: 0 0;}
+.search_results_container .but_24 .s1 { padding: 0 15px 0 0; background-position: 100% -80px;}
+.search_results_container .but_24 .s2 { background-position: 0 -40px; background-repeat: repeat-x; line-height: 35px; font-weight: bold; color: #91C0C9; min-width: 50px;}
+
+.search_results_container .but_24:hover .s0 {background: url(button_down.png) 0 1px no-repeat;}
+.search_results_container .but_24:hover .s1 {background: url(button_down.png) 100% -79px no-repeat;}
+.search_results_container .but_24:hover .s2 {background: url(button_down.png) 0 -39px;}

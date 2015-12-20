@@ -2,6 +2,24 @@
 
 %div{id: 'main_container_div', class: 'fullheight'}
   %div{id: 'library_feed'}
+    %table{id: 'category_headers', cols: '*, 200px'}
+      %tr
+        %td{id: 'book_header'}
+          = @category.name
+        %td{id: 'search_block'}
+          = form_tag search_results_path, {:method => :get} do
+            %input{type: :hidden, name: 'book_category_id', value: @category.id}
+            %input{id: 'search_lite', name: 'search_text'}
+            %button.but_24{type: 'submit'}
+              %span.s0
+                %span.s1
+                  %span.s2
+                    = I18n.t('library.search')
+            = link_to search_results_path, class: 'but_24' do
+              %span.s0
+                %span.s1
+                  %span.s2
+                    = I18n.t('library.search_more')
     = render partial: 'book_synopsis', collection: @books, as: :book
 
 

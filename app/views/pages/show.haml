@@ -9,8 +9,16 @@
         = form_tag search_results_path, {:method => :get} do
           %input{type: :hidden, name: 'book_id', value: @page_info[:page].book.id}
           %input{id: 'search_lite', name: 'search_text'}
-          %button{type: 'submit'}
-            = I18n.t('library.search')
+          %button.but_24{type: 'submit'}
+            %span.s0
+              %span.s1
+                %span.s2
+                  = I18n.t('library.search')
+          = link_to search_results_path, class: 'but_24' do
+            %span.s0
+              %span.s1
+                %span.s2
+                  = I18n.t('library.search_more')
     %tr
       %td{id: 'page_header'}
         = @page_info[:page].display_name
