@@ -117,11 +117,11 @@ ActiveRecord::Schema.define(version: 20151215181722) do
   end
 
   create_table "refinery_page_part_translations", force: :cascade do |t|
-    t.integer  "refinery_page_part_id", limit: 4,     null: false
-    t.string   "locale",                limit: 255,   null: false
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.text     "body",                  limit: 65535
+    t.integer  "refinery_page_part_id", limit: 4,          null: false
+    t.string   "locale",                limit: 255,        null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.text     "body",                  limit: 4294967295
   end
 
   add_index "refinery_page_part_translations", ["locale"], name: "index_refinery_page_part_translations_on_locale", using: :btree
@@ -130,7 +130,7 @@ ActiveRecord::Schema.define(version: 20151215181722) do
   create_table "refinery_page_parts", force: :cascade do |t|
     t.integer  "refinery_page_id", limit: 4
     t.string   "slug",             limit: 255
-    t.text     "body",             limit: 65535
+    t.text     "body",             limit: 4294967295
     t.integer  "position",         limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"

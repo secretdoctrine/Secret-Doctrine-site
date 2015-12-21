@@ -4,7 +4,7 @@ class CreateRefinerycmsPagesSchema < ActiveRecord::Migration
     create_table :refinery_page_parts do |t|
       t.integer  :refinery_page_id
       t.string   :title
-      t.text     :body
+      t.text     :body, :limit => 4294967295
       t.integer  :position
 
       t.timestamps
@@ -41,7 +41,7 @@ class CreateRefinerycmsPagesSchema < ActiveRecord::Migration
 
     begin
       ::Refinery::PagePart.create_translation_table!({
-        :body => :text
+        :body => {:type => :text, :limit => 4294967295}
       })
     rescue NameError
       warn "Refinery::PagePart was not defined!"

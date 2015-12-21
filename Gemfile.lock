@@ -170,6 +170,8 @@ GEM
       dragonfly (~> 1.0.0)
       globalize (>= 4.0.0, < 5.2)
       refinerycms-core (= 3.0.0)
+    refinerycms-wymeditor (1.0.6)
+      refinerycms-core (~> 3.0, >= 3.0.0)
     riddle (1.5.12)
     routing-filter (0.5.1)
       actionpack (~> 4.2)
@@ -239,6 +241,7 @@ DEPENDENCIES
   mysql2 (~> 0.3.13)
   rails (= 4.2.4)
   refinerycms (~> 3.0.0)
+  refinerycms-wymeditor
   rubyzip
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)

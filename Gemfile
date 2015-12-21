@@ -26,6 +26,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'refinerycms', '~> 3.0.0'
+gem 'refinerycms-wymeditor'
 gem 'haml'
 
 gem 'mysql2', '~> 0.3.13'
