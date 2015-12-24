@@ -9,7 +9,10 @@
 
   - csrf_meta_tags
 
-  %body{:class => @body_class}
+  - body_class = 'bluegamma'
+  - if defined? @page and @page.html_class_name
+    - body_class = @page.html_class_name
+  %body{:class => body_class}
     #header
       =image_tag 'Header_Slava2.jpg', {:title => 'Н. К. Рерих. Слава Гималаев'}
       =image_tag 'Header_Slava_right2.gif', {:alt => 'Тайная Доктрина Востока в творчестве Ларисы Дмитриевой', :class => :right}

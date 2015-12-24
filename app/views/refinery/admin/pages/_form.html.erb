@@ -8,6 +8,7 @@
   <div class="field">
     <%= f.label :title %>
     <%= f.text_field :title, :class => "larger widest" %>
+    <%= f.select :html_class_name, options_for_select(@page.array_for_select, selected: @page.html_class_name) %>
   </div>
 
   <%= render 'form_fields_after_title', :f => f %>

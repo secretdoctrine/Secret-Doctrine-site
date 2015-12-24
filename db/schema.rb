@@ -214,6 +214,7 @@ ActiveRecord::Schema.define(version: 20171215181722) do
     t.string   "layout_template",     limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "html_class_name",     limit: 255
   end
 
   add_index "refinery_pages", ["depth"], name: "index_refinery_pages_on_depth", using: :btree
