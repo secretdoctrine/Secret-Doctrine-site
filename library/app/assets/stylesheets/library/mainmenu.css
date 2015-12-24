@@ -1,0 +1,376 @@
+* { padding:0; margin:0; }
+BODY { behavior:url("/csshover2.htc"); } /* Fix for IE (css hover on any tag) */
+
+/* Îáùèå äëÿ ìåíþ è ñóáìåíþ */
+#mainmenu, #mainmenu UL { /* Ãëàâíîå ìåíþ è âûïàäàþùèå ñóáìåíþ */
+    float:left;
+    list-style:none;
+    line-height:1em;
+}
+
+#mainmenu {
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 13px;
+    width: 100%;
+    border-collapse: collapse;
+    /*margin-bottom: 10px;*/
+}
+
+/* ñóáìåíþ */
+#mainmenu td UL { /* ñóáìåíþ */
+    font-weight: bold;
+    position:absolute;
+    top:-999em;
+    width:24em;
+    height:auto;
+    background: url(library/iefix.gif);
+    z-index:1000;
+}
+
+#mainmenu td:last-of-type UL {
+    right: 0px;
+    left: auto;
+}
+
+#mainmenu td LI { /* Ýëåìíòû ñóáìåíþ */
+    width:24em;
+}
+#mainmenu UL A { /* Ññûëêè â ñóáìåíþ */
+    text-align:left;
+    text-decoration: none;
+    color:#FFFFFF;
+    display: block;
+    padding: 0.3em .8em;
+    width:22em;
+}
+
+#mainmenu td UL UL {
+    margin:-2em 0 0 24em; /* Ïîëîæåíèå ñóáìåíþ òðåòüåãî óðîâíÿ */
+}
+
+/* HOVER */
+
+/* Ñïðÿòàòü ñóáìåíþ */
+#mainmenu td:hover UL UL,
+#mainmenu td:hover UL UL UL {
+    top:-999em;
+}
+
+/* Ïîêàçàòü ñóáìåíþ */
+#mainmenu td:hover UL,
+#mainmenu td LI:hover UL,
+#mainmenu td LI LI:hover UL {
+    top:auto;
+}
+
+/* ýôôåêòû íàæàòèÿ êíîïêè*/
+#mainmenu LI A,
+#mainmenu LI:hover LI A,
+#mainmenu LI:hover LI:hover LI A,
+#mainmenu LI:hover LI:hover LI:hover LI A /* */
+{
+    border-left: solid 2px #BAD6CE;/*green#ECFF93;*/
+    border-top: solid 2px #BAD6CE;
+    border-right: solid 2px #4B5653;/*#333720;*/
+    border-bottom: solid 2px #4B5653;
+    background: #839792; /*green#99A55F;*/
+}
+#mainmenu LI:hover A,
+#mainmenu LI:hover LI:hover A,
+#mainmenu LI:hover LI:hover LI:hover A,
+#mainmenu LI:hover LI:hover LI:hover LI:hover A
+{
+    border-left: solid 2px #4B5653;
+    border-top: solid 2px #4B5653;
+    border-right: solid 2px #BAD6CE;
+    border-bottom: solid 2px #BAD6CE;
+    background: #768883;
+}
+/* êíîïêè â ñòðîêå ìåíþ*/
+#mainmenu td {
+    background: #335F40 top left url(buttons/buttondgreen.gif) no-repeat
+}
+#mainmenu a.button  {
+    font-weight: bold;
+    text-decoration:none;
+    text-align:center;
+    white-space: nowrap;
+    color:#FFFFFF;
+    display:block;
+    padding: 15px;
+    background: top right url(buttons/buttondgreenr.gif) no-repeat;
+}
+#mainmenu td:hover {
+    background:#335F40 top left url(buttons/buttondgreenh.gif) no-repeat
+}
+#mainmenu td:hover a.button {
+    background:top right url(buttons/buttondgreenhr.gif) no-repeat
+}
+
+#search {
+    width:150px;
+    margin-left:20px;
+    padding:0;
+}
+
+#searchbox {
+    line-height:16px;
+    font-size:13px;
+    width:120px;
+    height:16px;
+    border: #000 solid 1px;
+}
+/*---------------- Ïîêðàñêà ìåíþ -----------------*/
+
+.greengamma #mainmenu td {
+    background: #99A55F top left url(buttons/buttongreen.gif) no-repeat
+}
+
+.greengamma #mainmenu a.button {
+    background: top right url(buttons/buttongreenr.gif) no-repeat
+}
+
+.greengamma #mainmenu td:hover {
+    background:#99A55F top left url(buttons/buttongreenh.gif) no-repeat
+}
+
+.greengamma #mainmenu td:hover a.button {
+    color:#FFFFFF;
+    background:top right url(buttons/buttongreenhr.gif) no-repeat
+}
+
+.dgreengamma #mainmenu td {
+    background: #335F40 top left url(buttons/buttondgreen.gif) no-repeat
+}
+
+.dgreengamma #mainmenu a.button {
+    color:#7DBA8F;
+    background: top right url(buttons/buttondgreenr.gif) no-repeat
+}
+
+.dgreengamma #mainmenu td:hover {
+    background:#335F40 top left url(buttons/buttondgreenh.gif) no-repeat
+}
+
+.dgreengamma #mainmenu td:hover a.button {
+    color:#FFFFFF;
+    background:top right url(buttons/buttondgreenhr.gif) no-repeat
+}
+
+.bluegamma #mainmenu td {
+    background: #41559C top left url(buttons/buttonblue.gif) no-repeat
+}
+
+.bluegamma #mainmenu td a.button {
+    color:#91C0E0;
+    background: top right url(buttons/buttonbluer.gif) no-repeat
+}
+
+.bluegamma #mainmenu td:hover {
+    background:#41559C top left url(buttons/buttonblueh.gif) no-repeat
+}
+
+.bluegamma #mainmenu td:hover a.button {
+    color:#FFFFFF;
+    background:top right url(buttons/buttonbluehr.gif) no-repeat
+}
+
+.magentagamma #mainmenu td {
+    background: #D368CB top left url(buttons/buttonmagenta.gif) no-repeat
+}
+
+.magentagamma #mainmenu td a.button {
+    color:#EE86FF;
+    background: top right url(buttons/buttonmagentar.gif) no-repeat
+}
+
+.magentagamma #mainmenu td:hover {
+    background:#D368CB top left url(buttons/buttonmagentah.gif) no-repeat
+}
+
+.magentagamma #mainmenu td:hover a.button {
+    color:#FFFFFF;
+    background:top right url(buttons/buttonmagentahr.gif) no-repeat
+}
+
+.redgamma #mainmenu td {
+    background: #862929 top left url(buttons/buttonred.gif) no-repeat
+}
+
+.redgamma #mainmenu td a.button {
+    color:#EC6060;
+    background: top right url(buttons/buttonredr.gif) no-repeat
+}
+
+.redgamma #mainmenu td:hover {
+    background:#862929 top left url(buttons/buttonredh.gif) no-repeat
+}
+
+.redgamma #mainmenu td:hover a.button {
+    color:#FFFFFF;
+    background:top right url(buttons/buttonredhr.gif) no-repeat
+}
+
+/*======================================*/
+.bluegamma #mainmenu LI A,
+.bluegamma #mainmenu LI:hover LI A,
+.bluegamma #mainmenu LI:hover LI:hover LI A,
+.bluegamma #mainmenu LI:hover LI:hover LI:hover LI A
+{
+    border-left: solid 2px #7DD4FF;
+    border-top: solid 2px #7DD4FF;
+    border-right: solid 2px #243A61;
+    border-bottom: solid 2px #243A61;
+    background: #41559C;
+}
+
+.bluegamma #mainmenu LI:hover A,
+.bluegamma #mainmenu LI:hover LI:hover A,
+.bluegamma #mainmenu LI:hover LI:hover LI:hover A,
+.bluegamma #mainmenu LI:hover LI:hover LI:hover LI:hover A
+{
+    border-left: solid 2px #243A61;
+    border-top: solid 2px #243A61;
+    border-right: solid 2px #7DD4FF;
+    border-bottom: solid 2px #7DD4FF;
+}
+
+
+.greengamma #mainmenu LI A,
+.greengamma #mainmenu LI:hover LI A,
+.greengamma #mainmenu LI:hover LI:hover LI A,
+.greengamma #mainmenu LI:hover LI:hover LI:hover LI A
+{
+    border-left: solid 2px #ACB96A;
+    border-top: solid 2px #ACB96A;
+    border-right: solid 2px #333720;
+    border-bottom: solid 2px #333720;
+    background: #99A55F;
+}
+
+.greengamma #mainmenu LI:hover A,
+.greengamma #mainmenu LI:hover LI:hover A,
+.greengamma #mainmenu LI:hover LI:hover LI:hover A,
+.greengamma #mainmenu LI:hover LI:hover LI:hover LI:hover A
+{
+    border-left: solid 2px #333720;
+    border-top: solid 2px #333720;
+    border-right: solid 2px #ACB96A;
+    border-bottom: solid 2px #ACB96A;
+}
+
+.dgreengamma #mainmenu LI A,
+.dgreengamma #mainmenu LI:hover LI A,
+.dgreengamma #mainmenu LI:hover LI:hover LI A,
+.dgreengamma #mainmenu LI:hover LI:hover LI:hover LI A
+{
+    border-left: solid 2px #ACB96A;
+    border-top: solid 2px #ACB96A;
+    border-right: solid 2px #333720;
+    border-bottom: solid 2px #333720;
+    background: #335F40;
+}
+
+.dgreengamma #mainmenu LI:hover A,
+.dgreengamma #mainmenu LI:hover LI:hover A,
+.dgreengamma #mainmenu LI:hover LI:hover LI:hover A,
+.dgreengamma #mainmenu LI:hover LI:hover LI:hover LI:hover A
+{
+    border-left: solid 2px #333720;
+    border-top: solid 2px #333720;
+    border-right: solid 2px #ACB96A;
+    border-bottom: solid 2px #ACB96A;
+}
+
+.magentagamma #mainmenu LI A,
+.magentagamma #mainmenu LI:hover LI A,
+.magentagamma #mainmenu LI:hover LI:hover LI A,
+.magentagamma #mainmenu LI:hover LI:hover LI:hover LI A
+{
+    border-left: solid 2px #FFA3F9;
+    border-top: solid 2px #FFA3F9;
+    border-right: solid 2px #4C214A;
+    border-bottom: solid 2px #4C214A;
+    background: #D368CB;
+}
+
+.magentagamma #mainmenu LI:hover A,
+.magentagamma #mainmenu LI:hover LI:hover A,
+.magentagamma #mainmenu LI:hover LI:hover LI:hover A,
+.magentagamma #mainmenu LI:hover LI:hover LI:hover LI:hover A
+{
+    border-left: solid 2px #4C214A;
+    border-top: solid 2px #4C214A;
+    border-right: solid 2px #FFA3F9;
+    border-bottom: solid 2px #FFA3F9;
+}
+
+.redgamma #mainmenu LI A,
+.redgamma #mainmenu LI:hover LI A,
+.redgamma #mainmenu LI:hover LI:hover LI A,
+.redgamma #mainmenu LI:hover LI:hover LI:hover LI A
+{
+    border-left: solid 2px #B33737;
+    border-top: solid 2px #B33737;
+    border-right: solid 2px #491616;
+    border-bottom: solid 2px #491616;
+    background: #862929;
+}
+
+.redgamma #mainmenu LI:hover A,
+.redgamma #mainmenu LI:hover LI:hover A,
+.redgamma #mainmenu LI:hover LI:hover LI:hover A,
+.redgamma #mainmenu LI:hover LI:hover LI:hover LI:hover A
+{
+    border-left: solid 2px #491616;
+    border-top: solid 2px #491616;
+    border-right: solid 2px #B33737;
+    border-bottom: solid 2px #B33737;
+}
+
+/*======================================*/
+.dgreengamma #searchbox {
+    color:#8DFFAE;
+    background:#345E40;
+}
+
+.bluegamma #searchbox {
+    color:#C2D1FF;
+    background:#254CBF;
+}
+
+.magentagamma  #searchbox {
+    color:#F2AAFF;
+    background:#832C92;
+}
+
+.redgamma #searchbox {
+    color:#FF8379;
+    background:#821D15;
+}
+
+/*======================================*/
+#footermenu {
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-size:60%;
+    color:#FFFFFF;
+    text-align:center;
+    clear:both;
+    margin:15px 0;
+}
+
+#footermenu,
+#footermenu a {
+    text-decoration:none;
+    color:#FFFFFF;
+}
+
+#footermenu a:hover {
+    text-decoration:underline;
+}
+
+.whitebg #footermenu,
+.whitebg #footermenu a {
+    color:#000000;
+}

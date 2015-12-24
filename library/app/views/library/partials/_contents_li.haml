@@ -1,0 +1,30 @@
+- contents.child_elements.each do |child_element|
+  - selected = child_element.selected ? ' selected_li' : ''
+  - li_class = child_element.class_name
+  - if li_class == 'section' or li_class == 'chapter'
+    %li{class: li_class + selected}
+      %a{href: book_page_path(child_element.book_id, child_element.page_internal_number, pdf: pdf)}
+        - if child_element.name_prefix
+          %i
+            = child_element.name_prefix
+          %br
+        - if child_element.display_name
+          = child_element.display_name
+        - if child_element.name_comment
+          %br
+          %span{class: 'nobold'}
+            = child_element.name_comment
+
+  - if li_class == 'part' or li_class == 'page'
+    %li{class: 'li_background'}
+      %ul
+        %li{class: li_class + selected}
+          %a{href: book_page_path(child_element.book_id, child_element.page_internal_number, pdf: pdf)}
+            = child_element.display_name
+            - if child_element.name_comment
+              %span{class: 'nobold'}
+                = ' ' + child_element.name_comment
+
+  - if not child_element.child_elements.empty?
+    %ul
+      = render partial: 'library/partials/contents_li', locals: {contents: child_element, pdf: pdf}

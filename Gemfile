@@ -3,10 +3,6 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
-# Use sqlite3 as the database for Active Record
-group :development, :test do
-  gem 'sqlite3'
-end
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -19,22 +15,11 @@ gem 'coffee-rails', '~> 4.1.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+#gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
-
-gem 'refinerycms', '~> 3.0.0'
-gem 'refinerycms-wymeditor'
-gem 'haml'
-
-gem 'mysql2', '~> 0.3.13'
-gem 'thinking-sphinx'
-gem 'thin'
-
-gem 'will_paginate'
-gem 'rubyzip', require: 'zip'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -44,6 +29,17 @@ gem 'rubyzip', require: 'zip'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
+gem 'mysql2', '~> 0.3.13'
+gem 'thinking-sphinx'
+gem 'thin'
+
+gem 'will_paginate'
+gem 'rubyzip', require: 'zip'
+
+gem 'haml'
+
+gem 'library', path: 'library'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -55,6 +51,20 @@ group :development do
   gem 'web-console', '~> 2.0'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
+  #gem 'spring'
 end
 
+gem 'sprockets-rails', '~> 2.3.3'
+gem 'sprockets', '~> 3.4.0'
+
+# Refinery CMS
+gem 'refinerycms', '~> 3.0'
+
+# Optionally, specify additional Refinery CMS Extensions here:
+gem 'refinerycms-acts-as-indexed', ['~> 2.0', '>= 2.0.1']
+gem 'refinerycms-wymeditor', ['~> 1.0', '>= 1.0.6']
+gem 'refinerycms-authentication-devise', '~> 1.0'
+#  gem 'refinerycms-blog', ['~> 3.0', '>= 3.0.0']
+#  gem 'refinerycms-inquiries', ['~> 3.0', '>= 3.0.0']
+#  gem 'refinerycms-search', ['~> 3.0', '>= 3.0.0']
+#  gem 'refinerycms-page-images', ['~> 3.0', '>= 3.0.0']

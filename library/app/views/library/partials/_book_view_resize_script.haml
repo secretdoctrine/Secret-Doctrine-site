@@ -1,0 +1,23 @@
+%script{:type => 'text/javascript'}
+  function resize()
+  {
+
+  //for correct resize handling we need to set body overflow to hidden
+  $("body")[0].style.overflow = "hidden";
+
+  var heights = window.innerHeight;
+  array = $(".fullheight")
+
+  for (index = 0; index < array.length; ++index) {
+  array[index].style.height = heights - 209 + "px";
+  }
+
+  var widths = window.innerWidth;
+
+  $("#main_container_div")[0].style.width = widths - 310 + "px";
+
+  }
+  resize();
+  window.onresize = function() {
+  resize();
+  };

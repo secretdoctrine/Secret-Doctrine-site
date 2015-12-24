@@ -1,4 +1,4 @@
-ThinkingSphinx::Index.define :page, :with => :active_record do
+ThinkingSphinx::Index.define 'library/page', :with => :active_record do
   # fields
   indexes page_text
 

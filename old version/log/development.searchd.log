@@ -1,0 +1,71 @@
+[Sat Dec 19 00:54:38.650 2015] [36087] watchdog: main process 36088 forked ok
+[Sat Dec 19 00:54:38.654 2015] [36088] listening on 127.0.0.1:9306
+[Sat Dec 19 00:54:38.668 2015] [36088] accepting connections
+[Sat Dec 19 01:10:01.961 2015] [36088] caught SIGTERM, shutting down
+[Sat Dec 19 01:10:05.005 2015] [36088] shutdown complete
+[Sat Dec 19 01:10:05.006 2015] [36087] watchdog: main process 36088 forked ok
+[Sat Dec 19 01:10:05.006 2015] [36087] watchdog: main process 36088 exited cleanly (exit code 0), shutting down
+[Sat Dec 19 01:10:05.425 2015] [36194] watchdog: main process 36195 forked ok
+[Sat Dec 19 01:10:05.427 2015] [36195] listening on 127.0.0.1:9306
+[Sat Dec 19 01:10:05.429 2015] [36195] accepting connections
+[Sat Dec 19 17:00:49.158 2015] [36195] caught SIGTERM, shutting down
+[Sat Dec 19 17:00:49.293 2015] [36195] shutdown complete
+[Sat Dec 19 17:00:49.294 2015] [36194] watchdog: main process 36195 forked ok
+[Sat Dec 19 17:00:49.295 2015] [36194] watchdog: main process 36195 exited cleanly (exit code 0), shutting down
+[Sat Dec 19 17:00:49.755 2015] [40819] watchdog: main process 40820 forked ok
+[Sat Dec 19 17:00:49.756 2015] [40820] listening on 127.0.0.1:9306
+[Sat Dec 19 17:00:49.759 2015] [40820] accepting connections
+[Sat Dec 19 17:06:01.648 2015] [40820] caught SIGTERM, shutting down
+[Sat Dec 19 17:06:01.783 2015] [40820] shutdown complete
+[Sat Dec 19 17:06:01.784 2015] [40819] watchdog: main process 40820 forked ok
+[Sat Dec 19 17:06:01.784 2015] [40819] watchdog: main process 40820 exited cleanly (exit code 0), shutting down
+[Sat Dec 19 17:06:02.302 2015] [40926] watchdog: main process 40927 forked ok
+[Sat Dec 19 17:06:02.304 2015] [40927] listening on 127.0.0.1:9306
+[Sat Dec 19 17:06:02.306 2015] [40927] accepting connections
+[Sat Dec 19 17:11:17.757 2015] [40927] caught SIGTERM, shutting down
+[Sat Dec 19 17:11:20.910 2015] [40927] shutdown complete
+[Sat Dec 19 17:11:20.911 2015] [40926] watchdog: main process 40927 forked ok
+[Sat Dec 19 17:11:20.911 2015] [40926] watchdog: main process 40927 exited cleanly (exit code 0), shutting down
+[Sat Dec 19 17:11:20.970 2015] [40977] watchdog: main process 40978 forked ok
+[Sat Dec 19 17:11:20.971 2015] [40978] listening on 127.0.0.1:9306
+[Sat Dec 19 17:11:20.972 2015] [40978] WARNING: index 'page_core': preload: failed to open /Users/schrecknetuser/sdoctrine/Secret-Doctrine-site/db/sphinx/development/page_core.sph: No such file or directory; NOT SERVING
+[Sat Dec 19 17:11:20.972 2015] [40978] accepting connections
+[Sat Dec 19 17:11:48.383 2015] [40978] caught SIGTERM, shutting down
+[Sat Dec 19 17:11:48.517 2015] [40978] shutdown complete
+[Sat Dec 19 17:11:48.518 2015] [40977] watchdog: main process 40978 forked ok
+[Sat Dec 19 17:11:48.518 2015] [40977] watchdog: main process 40978 exited cleanly (exit code 0), shutting down
+[Sat Dec 19 17:11:49.021 2015] [41025] watchdog: main process 41026 forked ok
+[Sat Dec 19 17:11:49.022 2015] [41026] listening on 127.0.0.1:9306
+[Sat Dec 19 17:11:49.024 2015] [41026] accepting connections
+[Sat Dec 19 18:08:39.157 2015] [41026] caught SIGTERM, shutting down
+[Sat Dec 19 18:08:42.208 2015] [41026] shutdown complete
+[Sat Dec 19 18:08:42.209 2015] [41025] watchdog: main process 41026 forked ok
+[Sat Dec 19 18:08:42.209 2015] [41025] watchdog: main process 41026 exited cleanly (exit code 0), shutting down
+[Sat Dec 19 18:08:42.738 2015] [41274] watchdog: main process 41275 forked ok
+[Sat Dec 19 18:08:42.740 2015] [41275] listening on 127.0.0.1:9306
+[Sat Dec 19 18:08:42.742 2015] [41275] accepting connections
+[Sun Dec 20 20:48:56.311 2015] [41275] caught SIGHUP (seamless=1, in queue=1)
+[Sun Dec 20 20:48:56.336 2015] [41275] rotating index 'page_core': started
+[Sun Dec 20 20:48:56.342 2015] [41275] rotating index 'page_core': success
+[Sun Dec 20 20:48:56.342 2015] [41275] rotating index: all indexes done
+[Sun Dec 20 20:49:11.688 2015] [41275] caught SIGTERM, shutting down
+[Sun Dec 20 20:49:11.757 2015] [41275] shutdown complete
+[Sun Dec 20 20:49:11.759 2015] [41274] watchdog: main process 41275 forked ok
+[Sun Dec 20 20:49:11.759 2015] [41274] watchdog: main process 41275 exited cleanly (exit code 0), shutting down
+[Sun Dec 20 20:49:12.610 2015] [43584] watchdog: main process 43585 forked ok
+[Sun Dec 20 20:49:12.611 2015] [43585] listening on 127.0.0.1:9306
+[Sun Dec 20 20:49:12.615 2015] [43585] accepting connections
+[Sun Dec 20 21:26:46.229 2015] [43585] caught SIGTERM, shutting down
+[Sun Dec 20 21:26:49.381 2015] [43585] shutdown complete
+[Sun Dec 20 21:26:49.382 2015] [43584] watchdog: main process 43585 forked ok
+[Sun Dec 20 21:26:49.383 2015] [43584] watchdog: main process 43585 exited cleanly (exit code 0), shutting down
+[Sun Dec 20 21:26:50.219 2015] [43764] watchdog: main process 43765 forked ok
+[Sun Dec 20 21:26:50.220 2015] [43765] listening on 127.0.0.1:9306
+[Sun Dec 20 21:26:50.224 2015] [43765] accepting connections
+[Mon Dec 21 00:41:13.230 2015] [43765] caught SIGTERM, shutting down
+[Mon Dec 21 00:41:13.273 2015] [43765] shutdown complete
+[Mon Dec 21 00:41:13.275 2015] [43764] watchdog: main process 43765 forked ok
+[Mon Dec 21 00:41:13.275 2015] [43764] watchdog: main process 43765 exited cleanly (exit code 0), shutting down
+[Mon Dec 21 00:41:14.101 2015] [44321] watchdog: main process 44322 forked ok
+[Mon Dec 21 00:41:14.103 2015] [44322] listening on 127.0.0.1:9306
+[Mon Dec 21 00:41:14.107 2015] [44322] accepting connections

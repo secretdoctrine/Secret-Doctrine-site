@@ -1,0 +1,51 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+ru:
+  importer:
+    page: 'Страница'
+  menu:
+    index: 'Главная'
+    news: 'Новости'
+    library: 'Библиотека'
+    symbols: 'Символы'
+    poetry: 'Поэзия'
+    audio: 'Мультимедиа'
+    archive: 'Архив'
+    feedback: 'Гостевая'
+  library:
+    show_categories: 'Показать категории'
+    show_contents: 'Показать оглавление'
+    search: 'Искать...'
+    search_more: 'Опции...'
+    enter_category: 'Войти в раздел'
+    read: 'Читать'
+    download: 'Скачать'
+    go_to_page_prefix: 'Страница: '
+    go_to_page: 'Перейти'
+    search_page:
+      view_html: 'Страницы целиком'
+      view_snippet: 'Только вхождения'
+      export: 'Скачать результаты поиска (PDF)'
+      export_page: 'Скачать в PDF'
+      search_exact_words: 'Точное соответствие слов (без словоформ)'
+      ignore_relevance: 'Сортировать по номерам страниц'
+      results_per_page: 'Результатов на странице: '
+      too_many_results: 'Внимание! Ваш запрос вернул более 1000 результатов. Показана первая 1000 результатов. Рекомендуем уточнить поисковый запрос.'

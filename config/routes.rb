@@ -1,40 +1,20 @@
 Rails.application.routes.draw do
-
-
   # This line mounts Refinery's routes at the root of your application.
   # This means, any requests to the root URL of your application will go to Refinery::PagesController#home.
   # If you would like to change where this extension is mounted, simply change the
   # configuration option `mounted_path` to something different in config/initializers/refinery/core.rb
   #
   # We ask that you don't use the :as option here, as Refinery relies on it being the default of "refinery"
-  mount Refinery::Core::Engine, :at => '/cms'
+  mount Refinery::Core::Engine, at: '/refinery'#Refinery::Core.mounted_path
 
-  resources :search_results, :only => [:index] do
-    get 'export', on: :collection
-  end
+  mount Library::Engine, at: '/library', as: 'library'
 
-  resources :indexes, :only => [:index]
-  resources :books, :only => [:show] do
-    resources :pages, :only => [:show] do
-      get 'export', on: :member
-      get 'redirect', on: :collection
-      resources :external_page_contents, :only => [:show]
-    end
-  end
-  resources :menu, :only => [:show, :get]
-  resources :pages, :only => [:show, :index]
-  resources :book_categories, :only => [:show, :index]
-  resources :poems, :only => [:show, :index]
-  resources :audios, :only => [:show, :index]
-  resources :symbols, :only => [:show, :index]
-  resources :news, :only => [:index]
-  resources :feedbacks, :only => [:index]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'indexes#index'
+  root 'refinery/pages#home'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
