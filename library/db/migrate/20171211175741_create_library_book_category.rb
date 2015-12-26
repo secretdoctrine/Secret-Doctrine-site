@@ -7,6 +7,7 @@ class CreateLibraryBookCategory < ActiveRecord::Migration
       t.string      :name,              null:false
       t.boolean     :is_root
       t.integer     :order_number,      null:false
+      t.text        :synopsis
 
     end
 

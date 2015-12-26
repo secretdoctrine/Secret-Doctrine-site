@@ -7,24 +7,26 @@ module Library
     attr_accessor :id
     attr_accessor :name
     attr_accessor :is_root
-    attr_accessor :data_elements
     attr_accessor :is_open
     attr_accessor :tree_prefix
+    attr_accessor :is_data
+    attr_accessor :order_number
 
     def initialize(
         child_elements: [],
-        data_elements: [],
+        is_data: false,
         name: '',
         controller: '',
         action: '',
         id: 0,
         is_root: false,
         is_open: false,
-        tree_prefix: nil
+        tree_prefix: nil,
+        order_number: 0
     )
 
       @child_elements = child_elements
-      @data_elements = data_elements
+      @is_data = is_data
       @name = name
       @controller = controller
       @action = action
@@ -32,6 +34,7 @@ module Library
       @is_root = is_root
       @is_open = is_open
       @tree_prefix = tree_prefix
+      @order_number = order_number
 
     end
 

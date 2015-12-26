@@ -17,16 +17,18 @@ module Library
 
     def self.process_own_books(db_element, tree_element)
 
-      db_element.books.sort{ |x, y| x.order_number <=> y.order_number }.each do |book|
+      db_element.books.each do |book|
 
         book_element = TreeElement.new(
             name: book.name,
             controller: :books,
             action: :show,
             id: book.id,
-            tree_prefix: book.tree_prefix
+            tree_prefix: book.tree_prefix,
+            is_data: true,
+            order_number: book.order_number
         )
-        tree_element.data_elements.push(book_element)
+        tree_element.child_elements.push(book_element)
 
       end
 
@@ -39,16 +41,19 @@ module Library
           controller: :book_categories,
           action: :show,
           id: db_element.id,
-          is_open: ((not current_element.nil?) and current_element.id == db_element.id ? true : false)
+          is_open: ((not current_element.nil?) and current_element.id == db_element.id ? true : false),
+          order_number: db_element.order_number
       )
 
       process_own_books(db_element, tree_element)
 
       child_elements = db_element.book_categories.includes(:books)
 
-      child_elements.sort{ |x, y| x.order_number <=> y.order_number }.each {
+      child_elements.each {
           |child| add_tree_element(current_element, tree_element, child)
       }
+
+      tree_element.child_elements.sort_by!{|x| x.order_number}
 
       tree_parent.child_elements.push(tree_element)
 
@@ -65,11 +70,13 @@ module Library
       root = includes(book_categories: [:books], books: []).find_by(name: ROOT_NAME)
       root_element = TreeElement.new(is_root: true)
 
-      root.book_categories.sort{ |x, y| x.order_number <=> y.order_number }.each {
+      root.book_categories.each {
           |child_category| add_tree_element(current_element, root_element, child_category)
       }
 
       process_own_books(root, root_element)
+
+      root_element.child_elements.sort_by!{|x| x.order_number}
 
       root_element
 
@@ -91,6 +98,17 @@ module Library
     def recursive_books_array
 
       self.class.recursive_books_for_category(self)
+
+    end
+
+    def category_content
+
+      content = []
+      books.each {|x| content.push(CategoryContentElement.new(is_book: true, model: x))}
+      book_categories.each {|x| content.push(CategoryContentElement.new(is_book: false, model: x))}
+      content.sort_by!{|x| x.model.order_number}
+
+      content
 
     end
 

@@ -8,7 +8,3 @@
     - if not child_element.child_elements.empty?
       %ul
         = render partial: 'library/partials/tree_level_li', locals: {tree_element: child_element}
-    - if not child_element.data_elements.empty?
-      %ul
-        = render partial: 'library/partials/tree_data_element', collection: child_element.data_elements, as: :item
-= render partial: 'library/partials/tree_data_element', collection: tree_element.data_elements, as: :item

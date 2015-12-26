@@ -15,9 +15,10 @@ ActiveRecord::Schema.define(version: 20171215181722) do
 
   create_table "library_book_categories", force: :cascade do |t|
     t.integer "book_category_id", limit: 4
-    t.string  "name",             limit: 255, null: false
+    t.string  "name",             limit: 255,   null: false
     t.boolean "is_root"
-    t.integer "order_number",     limit: 4,   null: false
+    t.integer "order_number",     limit: 4,     null: false
+    t.text    "synopsis",         limit: 65535
   end
 
   add_index "library_book_categories", ["book_category_id"], name: "index_library_book_categories_on_book_category_id", using: :btree

@@ -42,6 +42,7 @@ ru:
     download: 'Скачать'
     go_to_page_prefix: 'Страница: '
     go_to_page: 'Перейти'
+    open_subcategory: 'Войти в раздел'
     search_page:
       view_html: 'Страницы целиком'
       view_snippet: 'Только вхождения'

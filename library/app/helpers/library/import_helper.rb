@@ -174,13 +174,20 @@ module Library
         td1 = YAML.load(File.read("#{Rails.root}/db/configs/td1.yml"))
         import_yaml(td1, 0, root_category)
 
-        td2 = YAML.load(File.read("#{Rails.root}/db/configs/td2.yml"))
-        import_yaml(td2, 1, root_category)
-
-        subcategory1 = BookCategory.create!(name: 'Subcategory 1', book_category_id: root_category.id, order_number: 0)
+        subcategory1 = BookCategory.create!(
+            name: 'Subcategory 1',
+            book_category_id: root_category.id,
+            order_number: 1,
+            synopsis: 'Subcategory 1 synopsis'
+        )
 
         td3 = YAML.load(File.read("#{Rails.root}/db/configs/td3.yml"))
         import_yaml(td3, 0, subcategory1)
+
+        td2 = YAML.load(File.read("#{Rails.root}/db/configs/td2.yml"))
+        import_yaml(td2, 2, root_category)
+
+
 
       end
 
