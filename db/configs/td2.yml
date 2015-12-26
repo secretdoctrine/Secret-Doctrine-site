@@ -1,6 +1,7 @@
 pdf_regex: '^td2 - (.+)\.pdf$'
 html_regex: '^td2 - (.+)\.html$'
 files_path: '~/pdf-ocr/td2'
+book_path: '~/pdf-ocr/td2.pdf'
 
 shift_modifier: '14'
 

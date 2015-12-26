@@ -3,7 +3,14 @@ module Library
 
     has_many :pages
     has_many :contents_elements
+    has_many :external_book_contents
     belongs_to :book_category
+
+    def pdf_content
+
+      external_book_contents.find_by_content_type(ExternalBookContent::PDF_TYPE)
+
+    end
 
     def add_contents_element(tree_parent, db_element, page)
 

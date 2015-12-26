@@ -10,6 +10,7 @@ Library::Engine.routes.draw do
       get 'redirect', on: :collection
       resources :external_page_contents, :only => [:show]
     end
+    resources :external_book_contents, :only => [:show]
   end
   resources :pages, :only => [:show, :index]
   resources :book_categories, :only => [:show, :index]

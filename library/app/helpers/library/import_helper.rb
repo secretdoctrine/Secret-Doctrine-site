@@ -71,6 +71,13 @@ module Library
           name_comment: yaml_object['book'].has_key?('name_comment') ? yaml_object['book']['name_comment'] : nil
       )
 
+      if yaml_object.has_key?('book_path')
+        ExternalBookContent.create!(
+            book_id: book.id,
+            path: yaml_object['book_path'],
+            content_type: ExternalBookContent::PDF_TYPE)
+      end
+
       if yaml_object['book']['parts']
         yaml_object['book']['parts'].each { |part| create_part(book, part, nil) }
       end

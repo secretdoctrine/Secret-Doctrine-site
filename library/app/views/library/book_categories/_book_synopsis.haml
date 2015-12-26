@@ -8,10 +8,12 @@
     %p
       = book.synopsis
   %div{class: 'footer'}
-    %a{class: 'first last', href: 'http://eee'}
-      %span{class: 's1'}
-        %span{class: 's2'}
-          =I18n.t('library.download')
+    - pdf_content = book.pdf_content
+    - if pdf_content
+      %a{class: 'first last', href: "#{book_external_book_content_path(book.id, pdf_content.id)}"}
+        %span{class: 's1'}
+          %span{class: 's2'}
+            =I18n.t('library.download')
     %a{class: 'first last', href: "#{book_path(book.id)}"}
       %span{class: 's1'}
         %span{class: 's2'}
