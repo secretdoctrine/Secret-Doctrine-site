@@ -1,3 +1,5 @@
+require 'will_paginate/array'
+
 module Library
   require 'zip'
 
@@ -41,12 +43,22 @@ module Library
       book.name + '. ' + display_name
     end
 
+    def self.make_tree(selected_book_ids, selected_category_ids)
+
+      tree = BookCategory.build_categories_tree(
+          selected_book_ids: selected_book_ids,
+          selected_category_ids: selected_category_ids)
+      tree
+
+    end
+
     def self.sphinx_search(params, results_per_page = nil)
 
       result = {}
       with_hash = {}
       search_text = params[:search_text]
 
+      show_extended_search = (params.has_key?('is_ext_search') and params['is_ext_search'] == 'true')
       per_page = RESULTS_ON_PAGE
       per_page = results_per_page unless results_per_page.nil?
       per_page = params['per_page'].to_i if params.has_key?('per_page')
@@ -55,27 +67,70 @@ module Library
       if params.has_key?('search_exact_words') and params['search_exact_words'] == 'true'
         search_text_array = search_text_array.collect{ |x| "=#{x}" }
       end
-      search_text = search_text_array.join(' | ')
-      with_hash[:book_id] = params[:book_id] if params.has_key? :book_id
+      search_text = search_text_array.join(' & ')
+
+      selected_book_ids = []
+      selected_category_ids = []
+      use_tree_selected = true
 
       if params.has_key? :book_category_id
 
+        use_tree_selected = false
         category = BookCategory.find_by_id(params[:book_category_id])
-        with_hash[:book_category_id] = category.categories_array
+        selected_category_ids = category.categories_array
+        with_hash[:book_category_id] = selected_category_ids
 
       end
 
-      #with_hash[:book_category_id] = params[:book_category_id] if params.has_key? :book_category_id
+      if params.has_key? :book_id
 
+        use_tree_selected = false
+        selected_book_ids = [params['book_id'].to_i]
+        with_hash[:book_id] = selected_book_ids
+
+      end
+
+      if use_tree_selected and params.has_key?('tree_selected')
+
+        params['tree_selected'].split(', ').each do |selected_element|
+
+          split_element = selected_element.split('#')
+          selected_book_ids.push(split_element[1].to_i) if split_element[0] == TreeElement::BOOK_TYPE
+          selected_category_ids.push(split_element[1].to_i) if split_element[0] == TreeElement::CATEGORY_TYPE
+
+        end
+
+        # to make displayed tree not empty
+        if selected_book_ids.empty? and selected_category_ids.empty?
+          selected_category_ids.push(BookCategory.get_root!.id)
+        end
+
+      end
+
+      if use_tree_selected
+        with_hash[:book_id] = selected_book_ids if selected_book_ids.any?
+      end
+      #with_hash[:book_category_id] = selected_category_ids if selected_category_ids.any?
+
+      result[:tree] = make_tree(selected_book_ids, selected_category_ids)
       result[:per_page] = per_page
-      result[:count] = Page.search_count(search_text, with: with_hash)
+      if show_extended_search
+        result[:count] = 0
+      else
+        result[:count] = Page.search_count(search_text, with: with_hash)
+      end
       result[:too_many_results] = result[:count] >= MAX_SEARCH_RESULTS
       result[:show_snippets] = (params.has_key?(:show_snippets) and params[:show_snippets] == 'true')
-      result[:book_category_ids] = Page.search(
-          search_text,
-          per_page: MAX_SEARCH_RESULTS,
-          group_by: 'book_category_id'
-      ).collect{|x| x.book.book_category_id}
+
+      if show_extended_search
+        result[:book_category_ids] = []
+      else
+        result[:book_category_ids] = Page.search(
+            search_text,
+            per_page: MAX_SEARCH_RESULTS,
+            group_by: 'book_category_id'
+        ).collect{|x| x.book.book_category_id}
+      end
 
       page = 1
       page = params[:page].to_i if params.has_key? :page
@@ -90,16 +145,21 @@ module Library
       end
       order_string+= 'book_id ASC, internal_order ASC'
 
-      result[:search_results] = Page.search(
-          search_text,
-          words: {around: 0, chunk_separator: WordsConverter::SEPARATOR, before_match: '', after_match: ''},
-          page: page,
-          per_page: per_page,
-          with: with_hash,
-          order: order_string
-      )
-      result[:search_results].context[:panes] << ThinkingSphinx::Panes::ExcerptsPane
-      result[:search_results].context[:panes] << WordsPane
+      if show_extended_search
+        result[:search_results] = [].paginate(:page => page, :per_page => per_page)
+      else
+        result[:search_results] = Page.search(
+            search_text,
+            words: {around: 0, chunk_separator: WordsConverter::SEPARATOR, before_match: '', after_match: ''},
+            page: page,
+            per_page: per_page,
+            with: with_hash,
+            order: order_string
+        )
+        result[:search_results].context[:panes] << ThinkingSphinx::Panes::ExcerptsPane
+        result[:search_results].context[:panes] << WordsPane
+      end
+
 
       result
 

@@ -11,6 +11,14 @@ module Library
     attr_accessor :tree_prefix
     attr_accessor :is_data
     attr_accessor :order_number
+    attr_accessor :selected
+
+    BOOK_TYPE = 'book'
+    CATEGORY_TYPE = 'category'
+
+    def type
+      is_data ? BOOK_TYPE : CATEGORY_TYPE
+    end
 
     def initialize(
         child_elements: [],
@@ -22,9 +30,11 @@ module Library
         is_root: false,
         is_open: false,
         tree_prefix: nil,
-        order_number: 0
+        order_number: 0,
+        selected: false
     )
 
+      @selected = selected
       @child_elements = child_elements
       @is_data = is_data
       @name = name

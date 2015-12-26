@@ -10,7 +10,7 @@ module Library
     end
 
     def build_tree
-      @tree = BookCategory.build_categories_tree(BookCategory.find_by_id(params[:id]))
+      @tree = BookCategory.build_categories_tree(current_element: BookCategory.find_by_id(params[:id]))
     end
 
     def index

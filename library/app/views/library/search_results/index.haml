@@ -1,3 +1,4 @@
+- jstree_div = 'jstree_container'
 %div{class: 'search_results_container'}
   %div#warning_too_many_results
     - if @result[:too_many_results]
@@ -6,6 +7,7 @@
   %div{class: :extended_search}
     = form_tag search_results_path, {method: :get, id: 'search_form'} do
       = hidden_field_tag(:page, params[:page])
+      = hidden_field_tag(:tree_selected)
       %table
         %tr
           %td.search_option{colspan: '2'}
@@ -35,7 +37,19 @@
               = I18n.t('library.search_page.results_per_page')
               = number_field_tag('per_page', @result[:per_page], :min => 5, :step => 5, id: :per_page_field)
           %td
-            -# need a tree here
+            %div{id: jstree_div}
+              %ul
+                - root_element = @result[:tree]
+                %li{class: "jstree-open", selected: "#{root_element.selected}", type: "#{root_element.type + '#' + root_element.id.to_s}"}
+                  = link_to controller: root_element.controller, action: root_element.action do
+                    %span{class: 'tree_prefix'}
+                      = root_element.tree_prefix
+                    = root_element.name
+                  %ul
+                    = render partial: 'library/partials/tree_level_li', locals: {tree_element: root_element}
+
+  %div{class: 'flickr_pagination', style: 'margin-top: 10px;'}
+    = will_paginate @result[:search_results]
 
   %div#buttons_block
     = link_to params.merge(show_snippets: false), class: 'but_24' do
@@ -54,9 +68,6 @@
           %span.s2
             = I18n.t('library.search_page.export')
 
-  %div{class: 'flickr_pagination', style: 'margin-top: 10px;'}
-    = will_paginate @result[:search_results]
-
   - if @result[:show_snippets]
     = render partial: 'search_snippet', collection: @result[:search_results], as: :page
   - else
@@ -64,3 +75,28 @@
 
   %div{class: 'flickr_pagination'}
     = will_paginate @result[:search_results]
+
+:javascript
+  var tree = $("##{jstree_div}")
+  .jstree({
+    "plugins" : ["checkbox"],
+    "checkbox" : {"tie_selection" : false},
+    "core" : {"themes" : {"icons" : false}}
+  });
+
+  tree.on("check_node.jstree uncheck_node.jstree", function(e, data) {
+    var checked_ids = [];
+    $("##{jstree_div}").jstree("get_checked",null,true).forEach
+        (function (element_id) {
+          checked_ids.push($("#" + element_id)[0].type);
+        });
+    hidden_field = $("#tree_selected")[0];
+    hidden_field.value = checked_ids.join(", ");
+  });
+
+  tree.jstree(true).open_all();
+  $('li[selected="true"]').each(function() {
+    tree.jstree('check_node', $(this))
+  });
+
+  $("#options_block")[0].style.display = "#{(params.has_key?('is_ext_search') and params['is_ext_search'] == 'true') ? 'block' : 'none'}"

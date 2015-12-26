@@ -15,7 +15,7 @@ module Library
 
     end
 
-    def self.process_own_books(db_element, tree_element)
+    def self.process_own_books(db_element, tree_element, selected_book_ids: [])
 
       db_element.books.each do |book|
 
@@ -26,15 +26,17 @@ module Library
             id: book.id,
             tree_prefix: book.tree_prefix,
             is_data: true,
-            order_number: book.order_number
+            order_number: book.order_number,
+            selected: selected_book_ids.any?{ |x| x == book.id }
         )
+
         tree_element.child_elements.push(book_element)
 
       end
 
     end
 
-    def self.add_tree_element(current_element, tree_parent, db_element)
+    def self.add_tree_element(current_element, tree_parent, db_element, selected_book_ids: [], selected_category_ids: [])
 
       tree_element = TreeElement.new(
           name: db_element.name,
@@ -42,16 +44,24 @@ module Library
           action: :show,
           id: db_element.id,
           is_open: ((not current_element.nil?) and current_element.id == db_element.id ? true : false),
-          order_number: db_element.order_number
+          order_number: db_element.order_number,
+          selected: selected_category_ids.any?{|x| x == db_element.id}
       )
 
-      process_own_books(db_element, tree_element)
+      process_own_books(db_element, tree_element, selected_book_ids: selected_book_ids)
 
       child_elements = db_element.book_categories.includes(:books)
 
-      child_elements.each {
-          |child| add_tree_element(current_element, tree_element, child)
-      }
+      child_elements.each do |child|
+        add_tree_element(
+            current_element,
+            tree_element,
+            child,
+            selected_book_ids: selected_book_ids,
+            selected_category_ids: selected_category_ids
+        )
+      end
+
 
       tree_element.child_elements.sort_by!{|x| x.order_number}
 
@@ -61,20 +71,31 @@ module Library
 
     def self.build_categories_tree_for_book(book)
 
-      build_categories_tree(book.nil? ? nil : book.book_category)
+      build_categories_tree(current_element: book.nil? ? nil : book.book_category)
 
     end
 
-    def self.build_categories_tree(current_element = nil)
+    def self.build_categories_tree(current_element: nil, selected_book_ids: [], selected_category_ids: [])
 
       root = includes(book_categories: [:books], books: []).find_by(name: ROOT_NAME)
-      root_element = TreeElement.new(is_root: true)
+      root_element = TreeElement.new(
+          is_root: true,
+          controller: :book_categories,
+          action: :index,
+          name: root.name,
+          selected: selected_category_ids.any?{|x| x == root.id}
+      )
 
-      root.book_categories.each {
-          |child_category| add_tree_element(current_element, root_element, child_category)
-      }
+      root.book_categories.each do |child_category|
+          self.add_tree_element(
+              current_element,
+              root_element,
+              child_category,
+              selected_book_ids: selected_book_ids,
+              selected_category_ids: selected_category_ids)
+      end
 
-      process_own_books(root, root_element)
+      process_own_books(root, root_element, selected_book_ids: selected_book_ids)
 
       root_element.child_elements.sort_by!{|x| x.order_number}
 
