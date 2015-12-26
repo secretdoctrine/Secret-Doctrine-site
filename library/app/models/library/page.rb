@@ -9,6 +9,7 @@ module Library
     RESULTS_ON_PAGE = 20
     MAX_SEARCH_RESULTS = 1000
     PAGE_NAME_EXPORT_LIMIT = 30
+    NAME_SEPARATOR = ' / '
 
     def self.zip_for_search(params, temp_file)
 
@@ -143,6 +144,25 @@ module Library
 
       name += '. ' + contents_element.name
       name
+
+    end
+
+    def full_path_name
+
+      parents = []
+      parent = book.get_parent_for_page(internal_order)
+
+      while parent
+        parents.unshift(parent)
+        parent = parent.contents_element
+      end
+
+      full_name = book.name + NAME_SEPARATOR
+      full_name += parents.collect{|x| x.name}.join(NAME_SEPARATOR)
+      full_name += NAME_SEPARATOR if parents.any?
+      full_name += display_name
+
+      full_name
 
     end
 

@@ -1,5 +1,5 @@
 %div{class: 'page_result'}
-  = link_to page.book_and_page_name, book_page_path(page.book.id, page.url_name, highlight_words: Library::WordsConverter.convert(page.words.page_text))
+  = link_to page.full_path_name, book_page_path(page.book.id, page.url_name, highlight_words: Library::WordsConverter.convert(page.words.page_text))
   = link_to export_book_page_path(page.book.id, page.url_name), class: 'but_24' do
     %span.s0
       %span.s1

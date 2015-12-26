@@ -5,7 +5,7 @@ module Library
     has_many :book_categories
     has_many :books
 
-    ROOT_NAME = 'root'
+    ROOT_NAME = I18n.t('library.categories_root_name')
 
     def self.get_root!
 
