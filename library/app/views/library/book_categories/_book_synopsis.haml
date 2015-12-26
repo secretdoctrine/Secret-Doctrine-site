@@ -1,7 +1,7 @@
 %div{class: 'pro'}
   %div{class: 'cover'}
-    %a{href: 'http://eee'}
-      %img
+    = link_to cover_book_path(book.id), {'data-lightbox' => "#{book.id}"} do
+      = image_tag cover_book_path(book.id)
   %div{class: 'anonce'}
     %h2
       = link_to(book.name, book_path(book.id))

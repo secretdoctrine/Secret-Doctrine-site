@@ -21,6 +21,7 @@
  *= require library/search
  *= require library/paginating
  *= require library/jstree
+ *= require library/lightbox
  */
 
 body {

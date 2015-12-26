@@ -6,6 +6,7 @@ book_path: '~/pdf-ocr/td3.pdf'
 shift_modifier: '12'
 
 book:
+  picture_path: '~/pdf-ocr/td3_cover.gif'
   name_prefix: 'Часть третья'
   tree_prefix: 'III.'
   name: 'Великие облики Учителей и понятие об Агни Йоге'

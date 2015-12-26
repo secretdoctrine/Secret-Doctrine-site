@@ -25,3 +25,4 @@
       =image_tag 'library/Header_Slava_right2.gif', {:alt => 'Тайная Доктрина Востока в творчестве Ларисы Дмитриевой', :class => :right}
     = Refinery::Pages::MenuPresenter.new(refinery_menu_pages, self).to_html
     = yield
+    = javascript_include_tag 'library/lightbox'

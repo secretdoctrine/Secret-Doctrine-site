@@ -6,6 +6,7 @@ book_path: '~/pdf-ocr/td2.pdf'
 shift_modifier: '14'
 
 book:
+  picture_path: '~/pdf-ocr/td2_cover.gif'
   name_prefix: 'Часть вторая'
   tree_prefix: 'II.'
   name: 'Антропогенезис'

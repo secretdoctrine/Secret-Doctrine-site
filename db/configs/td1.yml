@@ -6,6 +6,7 @@ book_path: '~/pdf-ocr/td1.pdf'
 shift_modifier: '26'
 
 book:
+  picture_path: '~/pdf-ocr/td1_cover.gif'
   name_prefix: 'Часть первая'
   tree_prefix: 'I.'
   name: 'Космогенезис'
