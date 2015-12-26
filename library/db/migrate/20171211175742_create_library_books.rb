@@ -12,6 +12,7 @@ class CreateLibraryBooks < ActiveRecord::Migration
       t.integer     :year
       t.string      :author
       t.integer     :page_count
+      t.boolean     :can_buy,       null:false, default:false
       t.integer     :book_category_id, index:true
 
     end

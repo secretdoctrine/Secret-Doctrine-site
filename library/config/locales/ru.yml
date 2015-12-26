@@ -31,6 +31,7 @@ ru:
     archive: 'Архив'
     feedback: 'Гостевая'
   library:
+    buy: 'Купить'
     categories_root_name: 'Все категории'
     show_categories: 'Показать категории'
     show_contents: 'Показать оглавление'

@@ -23,16 +23,17 @@ ActiveRecord::Schema.define(version: 20171215181722) do
   add_index "library_book_categories", ["book_category_id"], name: "index_library_book_categories_on_book_category_id", using: :btree
 
   create_table "library_books", force: :cascade do |t|
-    t.string  "name",             limit: 255, null: false
+    t.string  "name",             limit: 255,                 null: false
     t.string  "name_prefix",      limit: 255
     t.string  "tree_prefix",      limit: 255
     t.string  "name_comment",     limit: 255
-    t.integer "order_number",     limit: 4,   null: false
+    t.integer "order_number",     limit: 4,                   null: false
     t.string  "picture_path",     limit: 255
     t.string  "synopsis",         limit: 255
     t.integer "year",             limit: 4
     t.string  "author",           limit: 255
     t.integer "page_count",       limit: 4
+    t.boolean "can_buy",                      default: false, null: false
     t.integer "book_category_id", limit: 4
   end
 

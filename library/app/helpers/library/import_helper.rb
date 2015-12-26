@@ -69,7 +69,8 @@ module Library
           name_prefix: yaml_object['book'].has_key?('name_prefix') ? yaml_object['book']['name_prefix'] : nil,
           tree_prefix: yaml_object['book'].has_key?('tree_prefix') ? yaml_object['book']['tree_prefix'] : nil,
           name_comment: yaml_object['book'].has_key?('name_comment') ? yaml_object['book']['name_comment'] : nil,
-          picture_path: yaml_object['book'].has_key?('picture_path') ? yaml_object['book']['picture_path'] : nil
+          picture_path: yaml_object['book'].has_key?('picture_path') ? yaml_object['book']['picture_path'] : nil,
+          can_buy: yaml_object['book'].has_key?('can_buy') ? yaml_object['book']['can_buy'] == 'true' : false
       )
 
       if yaml_object.has_key?('book_path')

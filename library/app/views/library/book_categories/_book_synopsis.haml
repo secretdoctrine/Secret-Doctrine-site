@@ -18,3 +18,8 @@
       %span{class: 's1'}
         %span{class: 's2'}
           =I18n.t('library.read')
+    - if book.can_buy
+      %a{class: 'first last', href: "#"}
+        %span{class: 's1'}
+          %span{class: 's2'}
+            =I18n.t('library.buy')
