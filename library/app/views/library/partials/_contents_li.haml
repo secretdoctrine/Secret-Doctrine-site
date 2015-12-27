@@ -6,24 +6,24 @@
       %a{href: book_page_path(child_element.book_id, child_element.page_internal_number, pdf: pdf)}
         - if child_element.name_prefix
           %i
-            = child_element.name_prefix
+            = child_element.name_prefix.html_safe
           %br
         - if child_element.display_name
-          = child_element.display_name
+          = child_element.display_name.html_safe
         - if child_element.name_comment
           %br
           %span{class: 'nobold'}
-            = child_element.name_comment
+            = child_element.name_comment.html_safe
 
   - if li_class == 'part' or li_class == 'page'
     %li{class: 'li_background'}
       %ul
         %li{class: li_class + selected}
           %a{href: book_page_path(child_element.book_id, child_element.page_internal_number, pdf: pdf)}
-            = child_element.display_name
+            = child_element.display_name.html_safe
             - if child_element.name_comment
               %span{class: 'nobold'}
-                = ' ' + child_element.name_comment
+                = ' ' + child_element.name_comment.html_safe
 
   - if not child_element.child_elements.empty?
     %ul

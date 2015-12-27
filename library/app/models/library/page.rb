@@ -207,7 +207,7 @@ module Library
       return name if contents_element.nil? or contents_element.page_number != internal_order
 
       name += '. ' + contents_element.name
-      name
+      name.html_safe
 
     end
 
@@ -227,7 +227,7 @@ module Library
       full_name += NAME_SEPARATOR if parents.any?
       full_name += display_name
 
-      full_name
+      full_name.html_safe
 
     end
 
