@@ -22,7 +22,8 @@
                 %span.s1
                   %span.s2
                     = I18n.t('library.search_more')
-        %tr#options_block
+        - display = (params.has_key?('is_ext_search') and params['is_ext_search'] == 'true') ? 'block': 'none'
+        %tr#options_block{style: 'display: ' + display + ';' }
           %td
             %label
               = check_box_tag('show_snippets', 'true', @result[:show_snippets])
@@ -76,7 +77,9 @@
   %div{class: 'flickr_pagination'}
     = will_paginate @result[:search_results]
 
+
 :javascript
+
   var tree = $("##{jstree_div}")
   .jstree({
     "plugins" : ["checkbox"],
@@ -99,7 +102,5 @@
     tree.jstree('check_node', $(this))
   });
 
-  $("#options_block")[0].style.display = "#{(params.has_key?('is_ext_search') and params['is_ext_search'] == 'true') ? 'block' : 'none'}"
-
-
+= render partial: 'library/partials/highlighter_script'
 
