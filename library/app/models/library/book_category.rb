@@ -78,6 +78,9 @@ module Library
     def self.build_categories_tree(current_element: nil, selected_book_ids: [], selected_category_ids: [])
 
       root = includes(book_categories: [:books], books: []).find_by(name: ROOT_NAME)
+
+      return TreeElement.new(is_root: true) if root.nil?
+
       root_element = TreeElement.new(
           is_root: true,
           controller: :book_categories,
