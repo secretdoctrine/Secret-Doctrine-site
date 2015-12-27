@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 20171215181722) do
 
   add_index "library_internal_page_contents", ["page_id"], name: "index_library_internal_page_contents_on_page_id", using: :btree
 
-  create_table "library_news", force: :cascade do |t|
+  create_table "library_news_items", force: :cascade do |t|
     t.text     "body",          limit: 65535,                 null: false
     t.boolean  "library_news",                default: false, null: false
     t.boolean  "site_news",                   default: false, null: false

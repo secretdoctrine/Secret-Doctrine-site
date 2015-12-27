@@ -4,6 +4,13 @@ PATH
     library (0.0.1)
       rails (~> 4.2.4)
 
+PATH
+  remote: vendor/extensions
+  specs:
+    refinerycms-news_items (1.0)
+      acts_as_indexed (~> 0.8.0)
+      refinerycms-core (~> 3.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -269,6 +276,7 @@ DEPENDENCIES
   refinerycms (~> 3.0)
   refinerycms-acts-as-indexed (~> 2.0, >= 2.0.1)
   refinerycms-authentication-devise (~> 1.0)
+  refinerycms-news_items!
   refinerycms-wymeditor (~> 1.0, >= 1.0.6)
   rubyzip
   sass-rails (~> 5.0)

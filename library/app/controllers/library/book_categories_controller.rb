@@ -15,7 +15,7 @@ module Library
 
     def index
 
-      @library_news = News.where(library_news: true).sort_by{ |x| x.news_datetime }
+      @library_news = NewsItem.where(library_news: true).sort_by{ |x| x.news_datetime }
 
     end
 
