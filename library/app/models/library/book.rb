@@ -60,6 +60,22 @@ module Library
       max_named_page = preceding_elements.max_by{|x| x.page_number}.page_number
 
       element = contents_elements.select{|x| x.page_number == max_named_page}.sort_by{|x| -x.get_nest_level}.first
+      element
+
+    end
+
+    def get_non_page_parent_for_page(page_num)
+
+      preceding_elements = contents_elements.select{|x| x.page_number <= page_num}
+      return nil if preceding_elements.empty?
+      max_named_page = preceding_elements.max_by{|x| x.page_number}.page_number
+
+      element =
+          contents_elements
+            .select{|x| x.page_number == max_named_page and x.get_nest_level != ContentsElement::PAGE_CE_TYPE}
+            .sort_by{|x| -x.get_nest_level}
+            .first
+      element
 
     end
 

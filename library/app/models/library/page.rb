@@ -210,7 +210,7 @@ module Library
     def full_path_name
 
       parents = []
-      parent = book.get_parent_for_page(internal_order)
+      parent = book.get_non_page_parent_for_page(internal_order)
 
       while parent
         parents.unshift(parent)
