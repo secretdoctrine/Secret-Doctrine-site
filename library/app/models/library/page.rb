@@ -212,10 +212,11 @@ module Library
       parents = []
       parent = book.get_non_page_parent_for_page(internal_order)
 
-      while parent
-        parents.unshift(parent)
-        parent = parent.contents_element
-      end
+      #while parent
+      #  parents.unshift(parent)
+      #  parent = parent.contents_element
+      #end
+      parents.unshift(parent) if parent
 
       full_name = book.name + NAME_SEPARATOR
       full_name += parents.collect{|x| x.name}.join(NAME_SEPARATOR)
