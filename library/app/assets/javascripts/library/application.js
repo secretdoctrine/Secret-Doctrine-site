@@ -12,4 +12,10 @@
 //
 //= require library/jquery-2.1.4
 //= require library/jstree
+//= require library/rangy-core
+//= require library/rangy-classapplier
+//= require library/rangy-highlighter
+//= require library/rangy-selectionsaverestore
+//= require library/rangy-serializer
+//= require library/rangy-textrange
 //= require_tree .

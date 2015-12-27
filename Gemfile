@@ -33,6 +33,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'mysql2', '~> 0.3.13'
 gem 'thinking-sphinx'
 gem 'thin'
+gem 'rangy-rails'
 
 gem 'will_paginate'
 gem 'rubyzip', require: 'zip'
