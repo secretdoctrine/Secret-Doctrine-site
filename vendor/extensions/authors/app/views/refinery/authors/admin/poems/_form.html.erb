@@ -1,0 +1,49 @@
+<%= form_for [refinery, :authors_admin, @poem] do |f| -%>
+  <%= render '/refinery/admin/error_messages',
+              :object => @poem,
+              :include_object_name => true %>
+
+    <div class='field'>
+      <%= f.label :title -%>
+      <%= f.text_field :title -%>
+    </div>
+
+  <div class='field'>
+    <%= f.label :order -%>
+    <%= f.number_field :order -%>
+  </div>
+
+  <div class='field'>
+    <%= render '/refinery/admin/wysiwyg',
+                :f => f,
+                :fields => [:content, :short_content],
+                :object => "authors/poem" -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :picture -%>
+    <%= render '/refinery/admin/image_picker',
+               :f => f,
+               :field => :picture_id,
+               :image => @poem.picture,
+               :toggle_image_display => false -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :author_id -%>
+    <%= f.select(:author_id, @authors.collect { |a| [a.name, a.id] })%>
+  </div>
+
+  <%= render '/refinery/admin/form_actions', :f => f,
+             :continue_editing => false,
+             :delete_title => t('delete', :scope => 'refinery.poems.admin.poems.poem'),
+             :delete_confirmation => t('message', :scope => 'refinery.admin.delete') -%>
+<% end -%>
+
+<% content_for :javascripts do -%>
+  <script>
+    $(document).ready(function(){
+      page_options.init(false, '', '');
+    });
+  </script>
+<% end -%>

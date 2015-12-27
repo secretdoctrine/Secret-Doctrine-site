@@ -1,3 +1,12 @@
+GIT
+  remote: git://github.com/rails/activerecord-session_store.git
+  revision: e7bcf7f849fa39b5581f51a2162efe6701eb0d4f
+  specs:
+    activerecord-session_store (0.1.2)
+      actionpack (>= 4.0.0, < 5)
+      activerecord (>= 4.0.0, < 5)
+      railties (>= 4.0.0, < 5)
+
 PATH
   remote: library
   specs:
@@ -7,6 +16,9 @@ PATH
 PATH
   remote: vendor/extensions
   specs:
+    refinerycms-authors (1.0)
+      acts_as_indexed (~> 0.8.0)
+      refinerycms-core (~> 3.0.0)
     refinerycms-news_items (1.0)
       acts_as_indexed (~> 0.8.0)
       refinerycms-core (~> 3.0.0)
@@ -266,6 +278,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-session_store!
   byebug
   coffee-rails (~> 4.1.0)
   haml
@@ -278,6 +291,7 @@ DEPENDENCIES
   refinerycms (~> 3.0)
   refinerycms-acts-as-indexed (~> 2.0, >= 2.0.1)
   refinerycms-authentication-devise (~> 1.0)
+  refinerycms-authors!
   refinerycms-news_items!
   refinerycms-wymeditor (~> 1.0, >= 1.0.6)
   rubyzip

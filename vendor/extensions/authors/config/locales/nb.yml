@@ -1,0 +1,57 @@
+nb:
+  refinery:
+    plugins:
+      poems:
+        title: Poems
+      authors:
+        title: Authors
+    authors:
+      admin:
+        poems:
+          actions:
+            create_new: Lag en ny Poem
+            reorder: Endre rekkefølgen på Poems
+            reorder_done: Ferdig å endre rekkefølgen Poems
+          records:
+            title: Poems
+            sorry_no_results: Beklager! Vi fant ikke noen resultater.
+            no_items_yet: Det er ingen Poems enda. Klikk på "Lag en ny Poem" for å
+              legge til din første poem.
+          poem:
+            view_live_html: Vis hvordan denne poem ser ut offentlig <br/><em>(åpner
+              i et nytt vindu)</em>
+            edit: Rediger denne poem
+            delete: Fjern denne poem permanent
+        authors:
+          actions:
+            create_new: Lag en ny Author
+            reorder: Endre rekkefølgen på Authors
+            reorder_done: Ferdig å endre rekkefølgen Authors
+          records:
+            title: Authors
+            sorry_no_results: Beklager! Vi fant ikke noen resultater.
+            no_items_yet: Det er ingen Authors enda. Klikk på "Lag en ny Author" for
+              å legge til din første author.
+          author:
+            view_live_html: Vis hvordan denne author ser ut offentlig <br/><em>(åpner
+              i et nytt vindu)</em>
+            edit: Rediger denne author
+            delete: Fjern denne author permanent
+      poems:
+        show:
+          other: Andre Poems
+      authors:
+        show:
+          other: Andre Authors
+  activerecord:
+    attributes:
+      refinery/authors/poem:
+        order: Order
+        content: Content
+        short_content: Short Content
+        picture: Picture
+        author_id: Author
+      refinery/authors/author:
+        name: Name
+        poetry_header: Poetry Header
+        about_text: About Text

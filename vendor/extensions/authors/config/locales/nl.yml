@@ -1,0 +1,57 @@
+nl:
+  refinery:
+    plugins:
+      poems:
+        title: Poems
+      authors:
+        title: Authors
+    authors:
+      admin:
+        poems:
+          actions:
+            create_new: Nieuwe Poem toevoegen
+            reorder: De volgorde van de Poems wijzigen
+            reorder_done: Klaar met het wijzingen van de van de Poem-volgorde
+          records:
+            title: Poems
+            sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
+            no_items_yet: Er zijn nog geen Poems. Druk op 'Nieuwe Poem toevoegen'
+              om de eerste toe te voegen.
+          poem:
+            view_live_html: Deze poem op de website bekijken <br/><em>(opent in een
+              nieuw venster)</em>
+            edit: Bewerk deze poem
+            delete: Deze poem definitief verwijderen
+        authors:
+          actions:
+            create_new: Nieuwe Author toevoegen
+            reorder: De volgorde van de Authors wijzigen
+            reorder_done: Klaar met het wijzingen van de van de Author-volgorde
+          records:
+            title: Authors
+            sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
+            no_items_yet: Er zijn nog geen Authors. Druk op 'Nieuwe Author toevoegen'
+              om de eerste toe te voegen.
+          author:
+            view_live_html: Deze author op de website bekijken <br/><em>(opent in
+              een nieuw venster)</em>
+            edit: Bewerk deze author
+            delete: Deze author definitief verwijderen
+      poems:
+        show:
+          other: Andere Poems
+      authors:
+        show:
+          other: Andere Authors
+  activerecord:
+    attributes:
+      refinery/authors/poem:
+        order: Order
+        content: Content
+        short_content: Short Content
+        picture: Picture
+        author_id: Author
+      refinery/authors/author:
+        name: Name
+        poetry_header: Poetry Header
+        about_text: About Text

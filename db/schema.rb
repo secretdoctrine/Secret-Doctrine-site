@@ -141,6 +141,7 @@ ActiveRecord::Schema.define(version: 20171215181722) do
 
   create_table "library_news_items", force: :cascade do |t|
     t.text     "body",          limit: 65535,                 null: false
+    t.string   "title",         limit: 255,                   null: false
     t.boolean  "library_news",                default: false, null: false
     t.boolean  "site_news",                   default: true,  null: false
     t.datetime "news_datetime",                               null: false
@@ -215,6 +216,31 @@ ActiveRecord::Schema.define(version: 20171215181722) do
 
   add_index "refinery_authentication_devise_users", ["id"], name: "index_refinery_authentication_devise_users_on_id", using: :btree
   add_index "refinery_authentication_devise_users", ["slug"], name: "index_refinery_authentication_devise_users_on_slug", using: :btree
+
+  create_table "refinery_authors", force: :cascade do |t|
+    t.string   "slug",            limit: 255
+    t.string   "friendly_header", limit: 255
+    t.string   "name",            limit: 255
+    t.string   "poetry_header",   limit: 255
+    t.text     "about_text",      limit: 65535
+    t.integer  "position",        limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "refinery_authors", ["slug"], name: "index_refinery_authors_on_slug", using: :btree
+
+  create_table "refinery_authors_poems", force: :cascade do |t|
+    t.integer  "order",         limit: 4
+    t.string   "title",         limit: 255
+    t.text     "content",       limit: 65535
+    t.text     "short_content", limit: 65535
+    t.integer  "picture_id",    limit: 4
+    t.integer  "author_id",     limit: 4
+    t.integer  "position",      limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "refinery_image_translations", force: :cascade do |t|
     t.integer  "refinery_image_id", limit: 4,   null: false
@@ -348,6 +374,16 @@ ActiveRecord::Schema.define(version: 20171215181722) do
 
   add_index "seo_meta", ["id"], name: "index_seo_meta_on_id", using: :btree
   add_index "seo_meta", ["seo_meta_id", "seo_meta_type"], name: "id_type_index_on_seo_meta", using: :btree
+
+  create_table "sessions", force: :cascade do |t|
+    t.string   "session_id", limit: 255,   null: false
+    t.text     "data",       limit: 65535
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sessions", ["session_id"], name: "index_sessions_on_session_id", unique: true, using: :btree
+  add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
 
   add_foreign_key "book_categories", "book_categories"
   add_foreign_key "books", "book_categories"

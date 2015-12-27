@@ -1,0 +1,57 @@
+tr:
+  refinery:
+    plugins:
+      poems:
+        title: Poems
+      authors:
+        title: Authors
+    authors:
+      admin:
+        poems:
+          actions:
+            create_new: Yeni Ekle Poem
+            reorder: Tekrar sirala Poems
+            reorder_done: Tekrar siralama tamamlandiPoems
+          records:
+            title: Poems
+            sorry_no_results: Uzgunum! Herhangi bir sonuc bulunamadi.
+            no_items_yet: Herhangi bir Poems yok henuz.  Tikla "Yeni Ekle Poem" eklemek
+              senin ilk poem.
+          poem:
+            view_live_html: Bunu canlu poem goruntule <br/><em>(yeni bir pencerede
+              acar)</em>
+            edit: Bunu Duzenle poem
+            delete: Bunu Sil poem sonsuza dek
+        authors:
+          actions:
+            create_new: Yeni Ekle Author
+            reorder: Tekrar sirala Authors
+            reorder_done: Tekrar siralama tamamlandiAuthors
+          records:
+            title: Authors
+            sorry_no_results: Uzgunum! Herhangi bir sonuc bulunamadi.
+            no_items_yet: Herhangi bir Authors yok henuz.  Tikla "Yeni Ekle Author"
+              eklemek senin ilk author.
+          author:
+            view_live_html: Bunu canlu author goruntule <br/><em>(yeni bir pencerede
+              acar)</em>
+            edit: Bunu Duzenle author
+            delete: Bunu Sil author sonsuza dek
+      poems:
+        show:
+          other: Diger Poems
+      authors:
+        show:
+          other: Diger Authors
+  activerecord:
+    attributes:
+      refinery/authors/poem:
+        order: Order
+        content: Content
+        short_content: Short Content
+        picture: Picture
+        author_id: Author
+      refinery/authors/author:
+        name: Name
+        poetry_header: Poetry Header
+        about_text: About Text

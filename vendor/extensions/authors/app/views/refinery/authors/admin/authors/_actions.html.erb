@@ -1,0 +1,20 @@
+<ul>
+  <% if ::Refinery::Authors::Admin::AuthorsController.searchable? %>
+    <li>
+      <%= render '/refinery/admin/search', :url => refinery.authors_admin_authors_path %>
+    </li>
+  <% end %>
+  <li>
+    <%= action_label :add, refinery.new_authors_admin_author_path, t('.create_new') %>
+  </li>
+<% if !searching? && ::Refinery::Authors::Admin::AuthorsController.sortable? && ::Refinery::Authors::Author.many? %>
+  <li>
+    <%= action_label :reorder,
+                     refinery.authors_admin_authors_path,
+                     t('.reorder', what:  "Authors"), id: 'reorder_action'%>
+    <%= action_label :reorder_done,
+                     refinery.authors_admin_authors_path,
+                      t('.reorder_done', what: "Authors"), id: 'reorder_action_done', class: 'hidden'%>
+  </li>
+<% end %>
+</ul>
