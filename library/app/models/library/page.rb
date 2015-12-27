@@ -114,7 +114,11 @@ module Library
 
       result[:tree] = make_tree(selected_book_ids, selected_category_ids)
       result[:per_page] = per_page
-      if show_extended_search
+
+      should_not_search = (show_extended_search or search_text.empty?)
+      result[:should_not_search] = should_not_search
+
+      if should_not_search
         result[:count] = 0
       else
         result[:count] = Page.search_count(search_text, with: with_hash)
@@ -122,7 +126,7 @@ module Library
       result[:too_many_results] = result[:count] >= MAX_SEARCH_RESULTS
       result[:show_snippets] = (params.has_key?(:show_snippets) and params[:show_snippets] == 'true')
 
-      if show_extended_search
+      if should_not_search
         result[:book_category_ids] = []
       else
         result[:book_category_ids] = Page.search(
@@ -145,7 +149,7 @@ module Library
       end
       order_string+= 'book_id ASC, internal_order ASC'
 
-      if show_extended_search
+      if should_not_search
         result[:search_results] = [].paginate(:page => page, :per_page => per_page)
       else
         result[:search_results] = Page.search(

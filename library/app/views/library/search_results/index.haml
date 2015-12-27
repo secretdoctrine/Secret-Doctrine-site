@@ -51,22 +51,23 @@
   %div{class: 'flickr_pagination', style: 'margin-top: 10px;'}
     = will_paginate @result[:search_results]
 
-  %div#buttons_block
-    = link_to params.merge(show_snippets: false), class: 'but_24' do
-      %span.s0
-        %span.s1
-          %span.s2
-            = I18n.t('library.search_page.view_html')
-    = link_to params.merge(show_snippets: true), class: 'but_24' do
-      %span.s0
-        %span.s1
-          %span.s2
-            = I18n.t('library.search_page.view_snippet')
-    = link_to params.merge(action: :export), class: 'but_24' do
-      %span.s0
-        %span.s1
-          %span.s2
-            = I18n.t('library.search_page.export')
+  - unless @result[:should_not_search]
+    %div#buttons_block
+      = link_to params.merge(show_snippets: false), class: 'but_24' do
+        %span.s0
+          %span.s1
+            %span.s2
+              = I18n.t('library.search_page.view_html')
+      = link_to params.merge(show_snippets: true), class: 'but_24' do
+        %span.s0
+          %span.s1
+            %span.s2
+              = I18n.t('library.search_page.view_snippet')
+      = link_to params.merge(action: :export), class: 'but_24' do
+        %span.s0
+          %span.s1
+            %span.s2
+              = I18n.t('library.search_page.export')
 
   - if @result[:show_snippets]
     = render partial: 'search_snippet', collection: @result[:search_results], as: :page
