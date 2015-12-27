@@ -1,6 +1,6 @@
 <li class='clearfix record <%= cycle("on", "on-hover") %>' id="<%= dom_id(news_item) -%>">
   <span class='title'>
-    <%= I18n.l(news_item.news_datetime, locale: :ru, format: :long) %>
+    <%= news_item.title << ' ' << I18n.l(news_item.news_datetime, locale: :ru, format: :long) %>
 
   </span>
   <span class='actions'>
