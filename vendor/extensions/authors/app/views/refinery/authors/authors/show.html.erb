@@ -1,0 +1,41 @@
+<% content_for :body_content_title do %>
+  <%= @author.name %>
+<% end %>
+
+<% content_for :body do %>
+  <section>
+    <h1>Name</h1>
+    <p>
+      <%=raw @author.name %>
+    </p>
+  </section>
+  <section>
+    <h1>Poetry Header</h1>
+    <p>
+      <%=raw @author.poetry_header %>
+    </p>
+  </section>
+  <section>
+    <h1>About Text</h1>
+    <p>
+      <%=raw @author.about_text %>
+    </p>
+  </section>
+<% end %>
+
+<%= render partial: 'poem', collection: @author.poems, as: :poem %>
+
+<% content_for :side_body do %>
+  <aside>
+    <h2><%= t('.other') %></h2>
+    <ul id="authors">
+      <% @authors.each do |author| %>
+        <li>
+          <%= link_to author.name, refinery.authors_author_path(author) %>
+        </li>
+      <% end %>
+    </ul>
+  </aside>
+<% end %>
+
+<%= render '/refinery/content_page' %>

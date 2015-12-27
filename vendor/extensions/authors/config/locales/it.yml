@@ -1,0 +1,55 @@
+it:
+  refinery:
+    plugins:
+      poems:
+        title: Poems
+      authors:
+        title: Authors
+    authors:
+      admin:
+        poems:
+          actions:
+            create_new: Aggiungi Nuovo Poem
+            reorder: Riordina Poems
+            reorder_done: Termina il Riordino di Poems
+          records:
+            title: Poems
+            sorry_no_results: Spiacenti! Nessun risultato trovato
+            no_items_yet: Non ci sono ancora Poems. Clicca "Aggiungi Nuovo Poem" per
+              aggiungere il tuo primo poem.
+          poem:
+            view_live_html: Guarda live questo poem <br/><em>(apre una nuova finestra)</em>
+            edit: Modifica questo poem
+            delete: Rimuovi per sempre questo poem
+        authors:
+          actions:
+            create_new: Aggiungi Nuovo Author
+            reorder: Riordina Authors
+            reorder_done: Termina il Riordino di Authors
+          records:
+            title: Authors
+            sorry_no_results: Spiacenti! Nessun risultato trovato
+            no_items_yet: Non ci sono ancora Authors. Clicca "Aggiungi Nuovo Author"
+              per aggiungere il tuo primo author.
+          author:
+            view_live_html: Guarda live questo author <br/><em>(apre una nuova finestra)</em>
+            edit: Modifica questo author
+            delete: Rimuovi per sempre questo author
+      poems:
+        show:
+          other: Altri Poems
+      authors:
+        show:
+          other: Altri Authors
+  activerecord:
+    attributes:
+      refinery/authors/poem:
+        order: Order
+        content: Content
+        short_content: Short Content
+        picture: Picture
+        author_id: Author
+      refinery/authors/author:
+        name: Name
+        poetry_header: Poetry Header
+        about_text: About Text

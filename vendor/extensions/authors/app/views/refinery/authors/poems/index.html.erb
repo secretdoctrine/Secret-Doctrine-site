@@ -1,0 +1,11 @@
+<% content_for :body do %>
+  <ul id="poems">
+    <% @poems.each do |poem| %>
+      <li>
+        <%= link_to poem, refinery.authors_poem_path(poem) %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= render '/refinery/content_page' %>

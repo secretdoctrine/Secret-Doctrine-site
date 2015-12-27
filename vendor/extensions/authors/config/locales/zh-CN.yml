@@ -1,0 +1,53 @@
+zh-CN:
+  refinery:
+    plugins:
+      poems:
+        title: Poems
+      authors:
+        title: Authors
+    authors:
+      admin:
+        poems:
+          actions:
+            create_new: "建立新的 Poem"
+            reorder: "对 Poems 重新排序"
+            reorder_done: "对 Poems 的重新排序结束"
+          records:
+            title: Poems
+            sorry_no_results: "对不起，未找到结果。"
+            no_items_yet: 目前没有 Poems . 点击 "Add New Poem" 创建一个poem.
+          poem:
+            view_live_html: "查看 poem 的最新内容.<br/><em>(新窗口中打开)</em>"
+            edit: "编辑 poem"
+            delete: "永久删除 poem"
+        authors:
+          actions:
+            create_new: "建立新的 Author"
+            reorder: "对 Authors 重新排序"
+            reorder_done: "对 Authors 的重新排序结束"
+          records:
+            title: Authors
+            sorry_no_results: "对不起，未找到结果。"
+            no_items_yet: 目前没有 Authors . 点击 "Add New Author" 创建一个author.
+          author:
+            view_live_html: "查看 author 的最新内容.<br/><em>(新窗口中打开)</em>"
+            edit: "编辑 author"
+            delete: "永久删除 author"
+      poems:
+        show:
+          other: "其他 Poems"
+      authors:
+        show:
+          other: "其他 Authors"
+  activerecord:
+    attributes:
+      refinery/authors/poem:
+        order: Order
+        content: Content
+        short_content: Short Content
+        picture: Picture
+        author_id: Author
+      refinery/authors/author:
+        name: Name
+        poetry_header: Poetry Header
+        about_text: About Text

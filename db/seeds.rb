@@ -12,3 +12,6 @@ Refinery::Pages::Engine.load_seed
 Refinery::NewsItems::Engine.load_seed
 
 Library::Engine.load_seed
+
+# Added by Refinery CMS Authors extension
+Refinery::Authors::Engine.load_seed

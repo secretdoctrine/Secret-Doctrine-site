@@ -4,6 +4,7 @@ class CreateLibraryNewsItems < ActiveRecord::Migration
     create_table :library_news_items do |t|
 
       t.text      :body,          :limit => 65535, :null => false
+      t.string    :title,         :null => false
       t.boolean   :library_news,  :default => false, :null => false
       t.boolean   :site_news,     :default => true, :null => false
       t.datetime  :news_datetime, :null => false

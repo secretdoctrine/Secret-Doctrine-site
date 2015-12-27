@@ -1,0 +1,40 @@
+<%= form_for [refinery, :authors_admin, @author] do |f| -%>
+  <%= render '/refinery/admin/error_messages',
+              :object => @author,
+              :include_object_name => true %>
+
+  <div class='field'>
+    <%= f.label :name -%>
+    <%= f.text_field :name, :class => 'larger widest' -%>
+  </div>
+
+    <div class='field'>
+      <%= f.label :friendly_header -%>
+      <%= f.text_field :friendly_header -%>
+    </div>
+
+  <div class='field'>
+    <%= f.label :poetry_header -%>
+    <%= f.text_field :poetry_header -%>
+  </div>
+
+  <div class='field'>
+    <%= render '/refinery/admin/wysiwyg',
+                :f => f,
+                :fields => [:about_text],
+                :object => "authors/author" -%>
+  </div>
+
+  <%= render '/refinery/admin/form_actions', :f => f,
+             :continue_editing => false,
+             :delete_title => t('delete', :scope => 'refinery.authors.admin.authors.author'),
+             :delete_confirmation => t('message', :scope => 'refinery.admin.delete', :title => @author.name) -%>
+<% end -%>
+
+<% content_for :javascripts do -%>
+  <script>
+    $(document).ready(function(){
+      page_options.init(false, '', '');
+    });
+  </script>
+<% end -%>

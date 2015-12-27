@@ -7,7 +7,7 @@ Refinery::I18n.frontend_locales.each do |lang|
     )
   end if defined?(Refinery::User)
 
-  Refinery::Page.where(link_url: (url = "/cms/news_items")).first_or_create!(
+  Refinery::Page.where(link_url: (url = "#{Rails.application.config.refinery_root}/news_items")).first_or_create!(
     title: 'Новости',
     html_class_name: 'bluegamma',
     deletable: false,

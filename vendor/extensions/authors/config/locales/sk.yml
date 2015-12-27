@@ -1,0 +1,55 @@
+sk:
+  refinery:
+    plugins:
+      poems:
+        title: Poems
+      authors:
+        title: Authors
+    authors:
+      admin:
+        poems:
+          actions:
+            create_new: Pridať Poem
+            reorder: Preusporiadať Poems
+            reorder_done: Koniec radenia Poems
+          records:
+            title: Poems
+            sorry_no_results: "Ľutujeme, ale neboli nájdené žiadne výsledky."
+            no_items_yet: Nie sú vytvorené žiadne Poems. Kliknite na "Pridať Poem"
+              pre pridanie prvého poem.
+          poem:
+            view_live_html: Zobraziť náhľad poem<br/><em>(otvorí sa v novom okne)</em>
+            edit: Upraviť poem
+            delete: Zmazať poem
+        authors:
+          actions:
+            create_new: Pridať Author
+            reorder: Preusporiadať Authors
+            reorder_done: Koniec radenia Authors
+          records:
+            title: Authors
+            sorry_no_results: "Ľutujeme, ale neboli nájdené žiadne výsledky."
+            no_items_yet: Nie sú vytvorené žiadne Authors. Kliknite na "Pridať Author"
+              pre pridanie prvého author.
+          author:
+            view_live_html: Zobraziť náhľad author<br/><em>(otvorí sa v novom okne)</em>
+            edit: Upraviť author
+            delete: Zmazať author
+      poems:
+        show:
+          other: Daľšie Poems
+      authors:
+        show:
+          other: Daľšie Authors
+  activerecord:
+    attributes:
+      refinery/authors/poem:
+        order: Order
+        content: Content
+        short_content: Short Content
+        picture: Picture
+        author_id: Author
+      refinery/authors/author:
+        name: Name
+        poetry_header: Poetry Header
+        about_text: About Text
