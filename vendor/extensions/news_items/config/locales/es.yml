@@ -1,0 +1,31 @@
+es:
+  refinery:
+    plugins:
+      news_items:
+        title: News Items
+#        article: masculino/femenino
+    news_items:
+      admin:
+        news_items:
+          actions:
+            create_new: Crear nuevo news item
+            reorder: Reordenar news items
+            reorder_done: Reordenación de news items completada
+          records:
+            title: News Items
+            sorry_no_results: Lo siento, no hay resultados
+            no_items_yet: No hay news items todavía. Pulsa en "Crear nuevo News Item" para crear tu primer news item.
+          news_item:
+            view_live_html: Ver este news item como abierto al público <br/><em>(abre en ventana nueva)</em>
+            edit: Editar este news item
+            delete: Borrar este news item para siempre
+      news_items:
+        show:
+          other: Otros news items
+  activerecord:
+    attributes:
+      'refinery/news_items/news_item':
+        body: Body
+        library_news: Library News
+        site_news: Site News
+        news_datetime: News Datetime

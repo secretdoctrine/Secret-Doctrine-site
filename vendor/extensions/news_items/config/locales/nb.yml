@@ -1,0 +1,30 @@
+nb:
+  refinery:
+    plugins:
+      news_items:
+        title: News Items
+    news_items:
+      admin:
+        news_items:
+          actions:
+            create_new: Lag en ny News Item
+            reorder: Endre rekkefølgen på News Items
+            reorder_done: Ferdig å endre rekkefølgen News Items
+          records:
+            title: News Items
+            sorry_no_results: Beklager! Vi fant ikke noen resultater.
+            no_items_yet: Det er ingen News Items enda. Klikk på "Lag en ny News Item" for å legge til din første news item.
+          news_item:
+            view_live_html: Vis hvordan denne news item ser ut offentlig <br/><em>(åpner i et nytt vindu)</em>
+            edit: Rediger denne news item
+            delete: Fjern denne news item permanent
+      news_items:
+        show:
+          other: Andre News Items
+  activerecord:
+    attributes:
+      'refinery/news_items/news_item':
+        body: Body
+        library_news: Library News
+        site_news: Site News
+        news_datetime: News Datetime

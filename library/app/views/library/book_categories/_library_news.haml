@@ -2,4 +2,4 @@
   %p{class: 'time'}
     = I18n.l(news_item.news_datetime, locale: :ru, format: :long)
   %p
-    = news_item.body
+    = raw news_item.body

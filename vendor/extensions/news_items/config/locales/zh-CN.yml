@@ -1,0 +1,32 @@
+zh-CN:
+  refinery:
+    plugins:
+      news_items:
+        title: News Items
+    news_items:
+      admin:
+        news_items:
+          actions:
+            create_new: 建立新的 News Item
+            reorder: 对 News Items 重新排序
+            reorder_done: 对 News Items 的重新排序结束
+          records:
+            title: News Items
+            sorry_no_results: 对不起，未找到结果。 #Sorry! There are no results found.
+
+            # There are no News Items yet. Click "Add New News Item" to add your first news item.
+            no_items_yet: 目前没有 News Items . 点击 "Add New News Item" 创建一个news item.
+          news_item:
+            view_live_html: 查看 news item 的最新内容.<br/><em>(新窗口中打开)</em>
+            edit: 编辑 news item
+            delete: 永久删除 news item
+      news_items:
+        show:
+          other: 其他 News Items
+  activerecord:
+    attributes:
+      'refinery/news_items/news_item':
+        body: Body
+        library_news: Library News
+        site_news: Site News
+        news_datetime: News Datetime

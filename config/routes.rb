@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   # configuration option `mounted_path` to something different in config/initializers/refinery/core.rb
   #
   # We ask that you don't use the :as option here, as Refinery relies on it being the default of "refinery"
-  mount Refinery::Core::Engine, at: '/refinery'#Refinery::Core.mounted_path
+  Rails.application.config.refinery_root = '/cms'
+  mount Refinery::Core::Engine, at: Rails.application.config.refinery_root#Refinery::Core.mounted_path
 
   mount Library::Engine, at: '/library', as: 'library'
 

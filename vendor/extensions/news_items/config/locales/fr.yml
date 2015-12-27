@@ -1,0 +1,30 @@
+fr:
+  refinery:
+    plugins:
+      news_items:
+        title: News Items
+    news_items:
+      admin:
+        news_items:
+          actions:
+            create_new: Créer un(e) nouve(au/l/lle) News Item
+            reorder: Réordonner les News Items
+            reorder_done: Fin de réordonnancement des News Items
+          records:
+            title: News Items
+            sorry_no_results: "Désolé ! Aucun résultat."
+            no_items_yet: 'Il n''y a actuellement aucun(e) News Item. Cliquer sur "Créer un(e) nouve(au/l/lle) News Item" pour créer votre premi(er/ère) news item.'
+          news_item:
+            view_live_html: Voir ce(t/tte) news item <br/><em>(Ouvre une nouvelle fenêtre)</em>
+            edit: Modifier ce(t/tte) news item
+            delete: Supprimer définitivement ce(t/tte) news item
+      news_items:
+        show:
+          other: Autres News Items
+  activerecord:
+    attributes:
+      'refinery/news_items/news_item':
+        body: Body
+        library_news: Library News
+        site_news: Site News
+        news_datetime: News Datetime

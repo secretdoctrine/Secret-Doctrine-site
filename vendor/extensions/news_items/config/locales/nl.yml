@@ -1,0 +1,30 @@
+nl:
+  refinery:
+    plugins:
+      news_items:
+        title: News Items
+    news_items:
+      admin:
+        news_items:
+          actions:
+            create_new: Nieuwe News Item toevoegen
+            reorder: De volgorde van de News Items wijzigen
+            reorder_done: Klaar met het wijzingen van de van de News Item-volgorde
+          records:
+            title: News Items
+            sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
+            no_items_yet: Er zijn nog geen News Items. Druk op 'Nieuwe News Item toevoegen' om de eerste toe te voegen.
+          news_item:
+            view_live_html: Deze news item op de website bekijken <br/><em>(opent in een nieuw venster)</em>
+            edit: Bewerk deze news item
+            delete: Deze news item definitief verwijderen
+      news_items:
+        show:
+          other: Andere News Items
+  activerecord:
+    attributes:
+      'refinery/news_items/news_item':
+        body: Body
+        library_news: Library News
+        site_news: Site News
+        news_datetime: News Datetime

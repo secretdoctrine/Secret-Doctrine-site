@@ -1,0 +1,30 @@
+tr:
+  refinery:
+    plugins:
+      news_items:
+        title: News Items
+    news_items:
+      admin:
+        news_items:
+          actions:
+            create_new: Yeni Ekle News Item
+            reorder: Tekrar sirala News Items
+            reorder_done: Tekrar siralama tamamlandiNews Items
+          records:
+            title: News Items
+            sorry_no_results: Uzgunum! Herhangi bir sonuc bulunamadi.
+            no_items_yet: Herhangi bir News Items yok henuz.  Tikla "Yeni Ekle News Item" eklemek senin ilk news item.
+          news_item:
+            view_live_html: Bunu canlu news item goruntule <br/><em>(yeni bir pencerede acar)</em>
+            edit: Bunu Duzenle news item
+            delete: Bunu Sil news item sonsuza dek
+      news_items:
+        show:
+          other: Diger News Items
+  activerecord:
+    attributes:
+      'refinery/news_items/news_item':
+        body: Body
+        library_news: Library News
+        site_news: Site News
+        news_datetime: News Datetime

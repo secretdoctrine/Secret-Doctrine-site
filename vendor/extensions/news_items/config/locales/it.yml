@@ -1,0 +1,30 @@
+it:
+  refinery:
+    plugins:
+      news_items:
+        title: News Items
+    news_items:
+      admin:
+        news_items:
+          actions:
+            create_new: Aggiungi Nuovo News Item
+            reorder: Riordina News Items
+            reorder_done: Termina il Riordino di News Items
+          records:
+            title: News Items
+            sorry_no_results: "Spiacenti! Nessun risultato trovato"
+            no_items_yet: Non ci sono ancora News Items. Clicca "Aggiungi Nuovo News Item" per aggiungere il tuo primo news item.
+          news_item:
+            view_live_html: Guarda live questo news item <br/><em>(apre una nuova finestra)</em>
+            edit: Modifica questo news item
+            delete: Rimuovi per sempre questo news item
+      news_items:
+        show:
+          other: Altri News Items
+  activerecord:
+    attributes:
+      'refinery/news_items/news_item':
+        body: Body
+        library_news: Library News
+        site_news: Site News
+        news_datetime: News Datetime
