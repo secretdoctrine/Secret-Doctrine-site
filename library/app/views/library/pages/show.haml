@@ -41,13 +41,15 @@
 
   %div{id: 'page_container'}
     - unless @page_info[:page].prev.nil?
-      = link_to '<', book_page_path(params.merge(id: @page_info[:page].prev.url_name)), id: 'previous_page'
+      = link_to '<', book_page_path(params.merge(id: @page_info[:page].prev.url_name).except(:highlight_words)), id: 'previous_page'
     - if @page_info[:pdf]
       %object.pdf_page{data: "#{book_page_external_page_content_path(@page_info[:page].book, @page_info[:page], @page_info[:page].pdf_content)}"}
     - else
-      %iframe{src: "#{book_page_external_page_content_path(@page_info[:page].book, @page_info[:page], @page_info[:page].html_content, highlight_words: params[:highlight_words])}"}
+      %iframe{src: "#{book_page_external_page_content_path(@page_info[:page].book, @page_info[:page], @page_info[:page].html_content)}", highlight_words: params.has_key?(:highlight_words) ? params[:highlight_words] : ''}
 
     - unless @page_info[:page].next.nil?
-      = link_to '>', book_page_path(params.merge(id: @page_info[:page].next.url_name)), id: 'next_page'
+      = link_to '>', book_page_path(params.merge(id: @page_info[:page].next.url_name).except(:highlight_words)), id: 'next_page'
 
 = render partial: 'library/partials/book_view_resize_script'
+
+= render partial: 'library/partials/highlighter_script'
