@@ -2,5 +2,5 @@
   function scroll_to_element(selector) {
   $(selector)[0].scrollIntoView(true);
   }
-  
-  scroll_to_element('li.selected_li');
+
+  if($('li.selected_li').length) { scroll_to_element('li.selected_li'); }

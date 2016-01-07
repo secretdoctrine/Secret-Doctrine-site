@@ -41,9 +41,10 @@
 
   function highlightSearchInFrames() {
     $("iframe").each(function () {
-      if(this.attributes.highlight_words)
+      if(this.attributes.highlight_words && this.attributes.highlight_words.nodeValue.length) {
         var regexp = new RegExp(this.attributes.highlight_words.nodeValue, "gi");
         doSearch(regexp, this);
+      }
     });
   }
 
