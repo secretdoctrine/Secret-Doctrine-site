@@ -43,7 +43,6 @@
     $("iframe").each(function () {
       if(this.attributes.highlight_words)
         var regexp = new RegExp(this.attributes.highlight_words.nodeValue, "gi");
-        alert(regexp);
         doSearch(regexp, this);
     });
   }
