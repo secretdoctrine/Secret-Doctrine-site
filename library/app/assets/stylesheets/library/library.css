@@ -89,17 +89,41 @@ object.pdf_page,
 #page_container iframe,
 .page_result iframe{
     width: 700px;
-    border: 1px solid #254CBF;
+    border: 1px solid #91C0E0;
 }
 
-#previous_page, #next_page {
-    width: 30px;
-    border: 1px solid #254CBF;
+#previous_page, #next_page,
+.pre_next_page_placeholder {
+    width: 70px;
+    border: none;
     vertical-align: top;
-    background-color: #17317E;
-    color: #FFFFFF;
     display: inline-block;
 }
+
+#previous_page {
+    background: url("button1_left.png") center no-repeat;
+    background-size: contain;
+}
+
+#previous_page:hover {
+    background: url("button1_left_h.png") center no-repeat;
+    background-size: contain;
+}
+
+#next_page {
+    background: url("button1_right.png") center no-repeat;
+    background-size: contain;
+}
+
+#next_page:hover {
+    background: url("button1_right_h.png") center no-repeat;
+    background-size: contain;
+}
+
+#previous_page:hover, #next_page:hover {
+    cursor: pointer;
+}
+
 
 #previous_page,
 #next_page,
@@ -107,11 +131,6 @@ object.pdf_page,
 #page_container iframe,
 .page_result iframe {
     height: 950px;
-}
-
-#previous_page:hover, #next_page:hover {
-    cursor: pointer;
-    background-color: #27419E;
 }
 
 #library_feed,

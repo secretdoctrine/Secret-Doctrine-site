@@ -6,7 +6,7 @@
       %td{id: 'book_header'}
         = @page_info[:page].book.name
       %td{id: 'search_block'}
-        = form_tag search_results_path, {:method => :get, id: 'search_form'} do
+        = form_tag search_results_path, {method: :get, id: 'search_form'} do
           %input{type: :hidden, name: 'book_id', value: @page_info[:page].book.id}
           %input{id: 'search_lite', name: 'search_text'}
           %input{type: :hidden, name: 'is_ext_search', value: false, id: 'is_ext_search'}
@@ -24,13 +24,16 @@
       %td{id: 'page_header'}
         = @page_info[:page].display_name
       %td{id: 'page_selector'}
-        = form_tag redirect_book_pages_path, {:method => :get} do
+        = form_tag redirect_book_pages_path, {method: :get, id: 'page_redirector_form'} do
           = I18n.t('library.go_to_page_prefix')
           = hidden_field_tag(:book_id, @page_info[:page].book.id)
           = hidden_field_tag(:pdf, @page_info[:pdf])
           = select_tag :id, options_for_select(@page_info[:pages_for_select], @page_info[:page].url_name)
-          %button{type: 'submit'}
-            = I18n.t('library.go_to_page')
+          %a{onclick: '$("#page_redirector_form")[0].submit();', class: 'but_24'}
+            %span.s0
+              %span.s1
+                %span.s2
+                  = I18n.t('library.go_to_page')
     %tr
       %td{id: 'page_buttons', colspan: '2'}
         = link_to book_page_path(@page_info[:page].book.id, @page_info[:page].url_name) do
@@ -40,15 +43,19 @@
 
 
   %div{id: 'page_container'}
-    - unless @page_info[:page].prev.nil?
-      = link_to '<', book_page_path(params.merge(id: @page_info[:page].prev.url_name).except(:highlight_words)), id: 'previous_page'
+    - if @page_info[:page].prev.nil?
+      %div.pre_next_page_placeholder
+    - else
+      = link_to ' ', book_page_path(params.merge(id: @page_info[:page].prev.url_name).except(:highlight_words)), id: 'previous_page'
     - if @page_info[:pdf]
       %object.pdf_page{data: "#{book_page_external_page_content_path(@page_info[:page].book, @page_info[:page], @page_info[:page].pdf_content)}"}
     - else
       %iframe{src: "#{book_page_external_page_content_path(@page_info[:page].book, @page_info[:page], @page_info[:page].html_content)}", highlight_words: params.has_key?(:highlight_words) ? params[:highlight_words] : ''}
 
-    - unless @page_info[:page].next.nil?
-      = link_to '>', book_page_path(params.merge(id: @page_info[:page].next.url_name).except(:highlight_words)), id: 'next_page'
+    - if @page_info[:page].next.nil?
+      %div.pre_next_page_placeholder
+    - else
+      = link_to ' ', book_page_path(params.merge(id: @page_info[:page].next.url_name).except(:highlight_words)), id: 'next_page'
 
 = render partial: 'library/partials/book_view_resize_script'
 
