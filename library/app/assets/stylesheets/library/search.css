@@ -107,11 +107,11 @@ a.search_type_link:hover, a.search_type_link:focus {
 .extended_search label {
     display: block;
     cursor: pointer;
-    margin: 3px;
+    margin: 3px 10px;
 }
 
-div.search_option {
-    margin: 3px;
+.search_option {
+    margin: 3px 10px;
 }
 
 .extended_search label input {
@@ -119,7 +119,7 @@ div.search_option {
 }
 
 .extended_search #search_string {
-    width: 300px;
+    width: 500px;
 }
 
 .extended_search #per_page_field {
@@ -127,9 +127,18 @@ div.search_option {
     width: 50px;
 }
 
+.extended_search #jstree_container {
+    height: 300px;
+    overflow-y: auto;
+}
+
 .extended_search table {
     border-collapse: collapse;
     border: none;
+}
+
+.extended_search td {
+    vertical-align: top;
 }
 
 .extended_search td {

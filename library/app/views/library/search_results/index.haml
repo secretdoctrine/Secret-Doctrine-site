@@ -25,6 +25,19 @@
         - display = (params.has_key?('is_ext_search') and params['is_ext_search'] == 'true') ? 'block': 'none'
         %tr#options_block{style: 'display: ' + display + ';' }
           %td
+            %div#jstree_container
+              %div{id: jstree_div}
+                %ul
+                  - root_element = @result[:tree]
+                  %li{class: "jstree-open", selected: "#{root_element.selected}", type: "#{root_element.type + '#' + root_element.id.to_s}"}
+                    = link_to controller: root_element.controller, action: root_element.action do
+                      %span{class: 'tree_prefix'}
+                        = root_element.tree_prefix
+                      = root_element.name
+                    %ul
+                      = render partial: 'library/partials/tree_level_li', locals: {tree_element: root_element}
+
+          %td
             %label
               = check_box_tag('show_snippets', 'true', @result[:show_snippets])
               = I18n.t('library.search_page.view_snippet')
@@ -37,17 +50,7 @@
             %div.search_option
               = I18n.t('library.search_page.results_per_page')
               = number_field_tag('per_page', @result[:per_page], :min => 5, :step => 5, id: :per_page_field)
-          %td
-            %div{id: jstree_div}
-              %ul
-                - root_element = @result[:tree]
-                %li{class: "jstree-open", selected: "#{root_element.selected}", type: "#{root_element.type + '#' + root_element.id.to_s}"}
-                  = link_to controller: root_element.controller, action: root_element.action do
-                    %span{class: 'tree_prefix'}
-                      = root_element.tree_prefix
-                    = root_element.name
-                  %ul
-                    = render partial: 'library/partials/tree_level_li', locals: {tree_element: root_element}
+
 
   %div{class: 'flickr_pagination', style: 'margin-top: 10px;'}
     = will_paginate @result[:search_results]
