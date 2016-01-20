@@ -8,6 +8,7 @@
     = form_tag search_results_path, {method: :get, id: 'search_form'} do
       = hidden_field_tag(:page, params[:page])
       = hidden_field_tag(:tree_selected)
+      %input{type: :submit, style: 'display: none;'}
       %table
         %tr
           %td.search_option{colspan: '2'}
