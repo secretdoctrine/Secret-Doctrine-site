@@ -1,5 +1,5 @@
 module Library
-  class ApplicationController < ActionController::Base
+  class ApplicationController < ::ApplicationController#ActionController::Base
 
     def render_404
       respond_to do |format|
