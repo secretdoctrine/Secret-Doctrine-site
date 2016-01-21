@@ -154,7 +154,11 @@ module Library
       else
         result[:search_results] = Page.search(
             search_text,
-            words: {around: 0, chunk_separator: WordsConverter::SEPARATOR, before_match: '', after_match: ''},
+            words: {
+                around: 0,
+                chunk_separator: WordsConverter::SEPARATOR,
+                before_match: WordsConverter::BEFORE_STRING,
+                after_match: WordsConverter::AFTER_STRING},
             page: page,
             per_page: per_page,
             with: with_hash,
