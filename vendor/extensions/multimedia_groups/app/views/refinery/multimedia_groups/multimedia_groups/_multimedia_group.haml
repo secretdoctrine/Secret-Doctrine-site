@@ -1,0 +1,8 @@
+- if multimedia_group.multimedia_items.any?
+  %article
+    %h2
+      = multimedia_group.title
+    %ul{:class => :list}
+      = render :partial => 'multimedia_item', :collection => multimedia_group.multimedia_items, :as => :item
+
+= render :partial => 'multimedia_group', :collection => multimedia_group.multimedia_groups, :as => :multimedia_group

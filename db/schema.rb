@@ -267,6 +267,25 @@ ActiveRecord::Schema.define(version: 20171215181722) do
     t.string   "image_alt",       limit: 255
   end
 
+  create_table "refinery_multimedia_groups", force: :cascade do |t|
+    t.string   "title",               limit: 255
+    t.integer  "multimedia_group_id", limit: 4
+    t.integer  "position",            limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "refinery_multimedia_groups_multimedia_items", force: :cascade do |t|
+    t.integer  "audio_file_id",       limit: 4
+    t.string   "title",               limit: 255
+    t.string   "video_link",          limit: 255
+    t.string   "book_link",           limit: 255
+    t.integer  "multimedia_group_id", limit: 4
+    t.integer  "position",            limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "refinery_news_items", force: :cascade do |t|
     t.text     "body",          limit: 65535
     t.boolean  "library_news"

@@ -10,3 +10,5 @@ Rails.application.config.assets.version = '1.0'
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
 Rails.application.config.assets.precompile += %w( library/lightbox.js )
+Rails.application.config.assets.precompile += %w( multimedia_groups/jquery.jplayer.js )
+Rails.application.config.assets.precompile += %w( multimedia_groups/jplayer.blue.monday.css )

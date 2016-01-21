@@ -1,0 +1,56 @@
+cs:
+  refinery:
+    plugins:
+      multimedia_items:
+        title: Multimedia Items
+      multimedia_groups:
+        title: Multimedia Groups
+    multimedia_groups:
+      admin:
+        multimedia_items:
+          actions:
+            create_new: Přidat Multimedia Item
+            reorder: "Řadit Multimedia Items"
+            reorder_done: Konec řazení Multimedia Items
+          records:
+            title: Multimedia Items
+            sorry_no_results: Litujeme, ale nebyly nalezny žádné výsledky.
+            no_items_yet: Zatím nebyly vytvořeny žádné Multimedia Items. Zvolte "Přidat
+              Multimedia Item" pro přidání prvního multimedia item.
+          multimedia_item:
+            view_live_html: Zobrazit náhled multimedia item<br/><em>(otevře se v novém
+              okně)</em>
+            edit: Upravit multimedia item
+            delete: Smazat multimedia item
+        multimedia_groups:
+          actions:
+            create_new: Přidat Multimedia Group
+            reorder: "Řadit Multimedia Groups"
+            reorder_done: Konec řazení Multimedia Groups
+          records:
+            title: Multimedia Groups
+            sorry_no_results: Litujeme, ale nebyly nalezny žádné výsledky.
+            no_items_yet: Zatím nebyly vytvořeny žádné Multimedia Groups. Zvolte "Přidat
+              Multimedia Group" pro přidání prvního multimedia group.
+          multimedia_group:
+            view_live_html: Zobrazit náhled multimedia group<br/><em>(otevře se v
+              novém okně)</em>
+            edit: Upravit multimedia group
+            delete: Smazat multimedia group
+      multimedia_items:
+        show:
+          other: Další Multimedia Items
+      multimedia_groups:
+        show:
+          other: Další Multimedia Groups
+  activerecord:
+    attributes:
+      refinery/multimedia_groups/multimedia_item:
+        audio_file: Audio File
+        title: Title
+        video_link: Video Link
+        book_link: Book Link
+        multimedia_group_id: Multimedia Group
+      refinery/multimedia_groups/multimedia_group:
+        title: Title
+        multimedia_group_id: Multimedia Group

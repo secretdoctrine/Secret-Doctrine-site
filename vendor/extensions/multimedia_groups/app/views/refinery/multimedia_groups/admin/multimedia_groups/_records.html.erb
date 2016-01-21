@@ -1,0 +1,16 @@
+<%= render 'refinery/admin/search_header', :url => refinery.multimedia_groups_admin_multimedia_groups_path %>
+<div class='pagination_container'>
+  <% if @multimedia_groups.any? %>
+    <%= render 'multimedia_groups' %>
+  <% else %>
+    <p>
+      <% if searching? %>
+        <%= t('no_results', :scope => 'refinery.admin.search') %>
+      <% else %>
+        <strong>
+          <%= t('.no_items_yet') %>
+        </strong>
+      <% end %>
+    </p>
+  <% end %>
+</div>

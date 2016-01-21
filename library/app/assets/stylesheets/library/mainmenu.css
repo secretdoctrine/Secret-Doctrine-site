@@ -3,7 +3,7 @@ BODY { behavior:url("/csshover2.htc"); } /* Fix for IE (css hover on any tag) */
 
 /* Îáùèå äëÿ ìåíþ è ñóáìåíþ */
 #mainmenu, #mainmenu UL { /* Ãëàâíîå ìåíþ è âûïàäàþùèå ñóáìåíþ */
-    float:left;
+    /*float:left;*/
     list-style:none;
     line-height:1em;
 }

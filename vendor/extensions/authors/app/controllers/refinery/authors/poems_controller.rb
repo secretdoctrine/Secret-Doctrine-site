@@ -26,7 +26,7 @@ module Refinery
       end
 
       def find_page
-        @page = ::Refinery::Page.where(:link_url => "#{Rails.application.config.refinery_root}/poems").first
+        @page = ::Refinery::Page.where(:link_url => "#{Rails.application.config.refinery_root}/authors").first
       end
 
     end

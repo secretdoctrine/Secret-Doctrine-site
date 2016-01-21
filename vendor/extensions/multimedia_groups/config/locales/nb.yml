@@ -1,0 +1,56 @@
+nb:
+  refinery:
+    plugins:
+      multimedia_items:
+        title: Multimedia Items
+      multimedia_groups:
+        title: Multimedia Groups
+    multimedia_groups:
+      admin:
+        multimedia_items:
+          actions:
+            create_new: Lag en ny Multimedia Item
+            reorder: Endre rekkefølgen på Multimedia Items
+            reorder_done: Ferdig å endre rekkefølgen Multimedia Items
+          records:
+            title: Multimedia Items
+            sorry_no_results: Beklager! Vi fant ikke noen resultater.
+            no_items_yet: Det er ingen Multimedia Items enda. Klikk på "Lag en ny
+              Multimedia Item" for å legge til din første multimedia item.
+          multimedia_item:
+            view_live_html: Vis hvordan denne multimedia item ser ut offentlig <br/><em>(åpner
+              i et nytt vindu)</em>
+            edit: Rediger denne multimedia item
+            delete: Fjern denne multimedia item permanent
+        multimedia_groups:
+          actions:
+            create_new: Lag en ny Multimedia Group
+            reorder: Endre rekkefølgen på Multimedia Groups
+            reorder_done: Ferdig å endre rekkefølgen Multimedia Groups
+          records:
+            title: Multimedia Groups
+            sorry_no_results: Beklager! Vi fant ikke noen resultater.
+            no_items_yet: Det er ingen Multimedia Groups enda. Klikk på "Lag en ny
+              Multimedia Group" for å legge til din første multimedia group.
+          multimedia_group:
+            view_live_html: Vis hvordan denne multimedia group ser ut offentlig <br/><em>(åpner
+              i et nytt vindu)</em>
+            edit: Rediger denne multimedia group
+            delete: Fjern denne multimedia group permanent
+      multimedia_items:
+        show:
+          other: Andre Multimedia Items
+      multimedia_groups:
+        show:
+          other: Andre Multimedia Groups
+  activerecord:
+    attributes:
+      refinery/multimedia_groups/multimedia_item:
+        audio_file: Audio File
+        title: Title
+        video_link: Video Link
+        book_link: Book Link
+        multimedia_group_id: Multimedia Group
+      refinery/multimedia_groups/multimedia_group:
+        title: Title
+        multimedia_group_id: Multimedia Group

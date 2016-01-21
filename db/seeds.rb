@@ -15,3 +15,7 @@ Library::Engine.load_seed
 
 # Added by Refinery CMS Authors extension
 Refinery::Authors::Engine.load_seed
+
+
+# Added by Refinery CMS MultimediaGroups extension
+Refinery::MultimediaGroups::Engine.load_seed

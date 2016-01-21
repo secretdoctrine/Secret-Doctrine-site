@@ -1,0 +1,56 @@
+tr:
+  refinery:
+    plugins:
+      multimedia_items:
+        title: Multimedia Items
+      multimedia_groups:
+        title: Multimedia Groups
+    multimedia_groups:
+      admin:
+        multimedia_items:
+          actions:
+            create_new: Yeni Ekle Multimedia Item
+            reorder: Tekrar sirala Multimedia Items
+            reorder_done: Tekrar siralama tamamlandiMultimedia Items
+          records:
+            title: Multimedia Items
+            sorry_no_results: Uzgunum! Herhangi bir sonuc bulunamadi.
+            no_items_yet: Herhangi bir Multimedia Items yok henuz.  Tikla "Yeni Ekle
+              Multimedia Item" eklemek senin ilk multimedia item.
+          multimedia_item:
+            view_live_html: Bunu canlu multimedia item goruntule <br/><em>(yeni bir
+              pencerede acar)</em>
+            edit: Bunu Duzenle multimedia item
+            delete: Bunu Sil multimedia item sonsuza dek
+        multimedia_groups:
+          actions:
+            create_new: Yeni Ekle Multimedia Group
+            reorder: Tekrar sirala Multimedia Groups
+            reorder_done: Tekrar siralama tamamlandiMultimedia Groups
+          records:
+            title: Multimedia Groups
+            sorry_no_results: Uzgunum! Herhangi bir sonuc bulunamadi.
+            no_items_yet: Herhangi bir Multimedia Groups yok henuz.  Tikla "Yeni Ekle
+              Multimedia Group" eklemek senin ilk multimedia group.
+          multimedia_group:
+            view_live_html: Bunu canlu multimedia group goruntule <br/><em>(yeni bir
+              pencerede acar)</em>
+            edit: Bunu Duzenle multimedia group
+            delete: Bunu Sil multimedia group sonsuza dek
+      multimedia_items:
+        show:
+          other: Diger Multimedia Items
+      multimedia_groups:
+        show:
+          other: Diger Multimedia Groups
+  activerecord:
+    attributes:
+      refinery/multimedia_groups/multimedia_item:
+        audio_file: Audio File
+        title: Title
+        video_link: Video Link
+        book_link: Book Link
+        multimedia_group_id: Multimedia Group
+      refinery/multimedia_groups/multimedia_group:
+        title: Title
+        multimedia_group_id: Multimedia Group

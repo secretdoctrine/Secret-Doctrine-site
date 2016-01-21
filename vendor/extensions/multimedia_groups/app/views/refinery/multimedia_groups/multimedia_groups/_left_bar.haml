@@ -1,0 +1,16 @@
+%div{:clear => 'both'}
+%aside#left
+  = render :partial => 'player'
+  %div.multimedia_jstree_div
+    %ul
+      = render :partial => 'tree_group_li', :collection => root_multimedia_groups, :as => :group
+  = raw page.content_for(:body)
+
+:javascript
+  $('.multimedia_jstree_div').jstree({
+    "core" : {"themes" : {"icons" : false}}
+  });
+
+  $('.multimedia_jstree_div').on("activate_node.jstree", function(e,data){
+    window.location.href = data.node.a_attr.href;
+  })
