@@ -11,7 +11,7 @@ Refinery::Pages::Engine.load_seed
 # Added by Refinery CMS NewsItems extension
 Refinery::NewsItems::Engine.load_seed
 
-Library::Engine.load_seed
+#Library::Engine.load_seed
 
 # Added by Refinery CMS Authors extension
 Refinery::Authors::Engine.load_seed
@@ -19,3 +19,6 @@ Refinery::Authors::Engine.load_seed
 
 # Added by Refinery CMS MultimediaGroups extension
 Refinery::MultimediaGroups::Engine.load_seed
+
+# Added by Refinery CMS Books extension
+Refinery::Books::Engine.load_seed

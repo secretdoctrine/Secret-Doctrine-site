@@ -75,90 +75,6 @@ ActiveRecord::Schema.define(version: 20171215181722) do
 
   add_index "internal_page_contents", ["page_id"], name: "index_internal_page_contents_on_page_id", using: :btree
 
-  create_table "library_book_categories", force: :cascade do |t|
-    t.integer "book_category_id", limit: 4
-    t.string  "name",             limit: 255,   null: false
-    t.boolean "is_root"
-    t.integer "order_number",     limit: 4,     null: false
-    t.text    "synopsis",         limit: 65535
-  end
-
-  add_index "library_book_categories", ["book_category_id"], name: "index_library_book_categories_on_book_category_id", using: :btree
-
-  create_table "library_books", force: :cascade do |t|
-    t.string  "name",             limit: 255,                 null: false
-    t.string  "name_prefix",      limit: 255
-    t.string  "tree_prefix",      limit: 255
-    t.string  "name_comment",     limit: 255
-    t.integer "order_number",     limit: 4,                   null: false
-    t.string  "picture_path",     limit: 255
-    t.string  "synopsis",         limit: 255
-    t.integer "year",             limit: 4
-    t.string  "author",           limit: 255
-    t.integer "page_count",       limit: 4
-    t.boolean "can_buy",                      default: false, null: false
-    t.integer "book_category_id", limit: 4
-  end
-
-  add_index "library_books", ["book_category_id"], name: "index_library_books_on_book_category_id", using: :btree
-
-  create_table "library_contents_elements", force: :cascade do |t|
-    t.integer "book_id",             limit: 4,   null: false
-    t.integer "contents_element_id", limit: 4
-    t.integer "page_number",         limit: 4,   null: false
-    t.string  "name_prefix",         limit: 255
-    t.string  "name",                limit: 255, null: false
-    t.string  "name_comment",        limit: 255
-    t.integer "ce_type",             limit: 4,   null: false
-  end
-
-  add_index "library_contents_elements", ["book_id"], name: "index_library_contents_elements_on_book_id", using: :btree
-  add_index "library_contents_elements", ["contents_element_id"], name: "index_library_contents_elements_on_contents_element_id", using: :btree
-
-  create_table "library_external_book_contents", force: :cascade do |t|
-    t.integer "book_id",      limit: 4,   null: false
-    t.integer "content_type", limit: 4,   null: false
-    t.string  "path",         limit: 255, null: false
-  end
-
-  add_index "library_external_book_contents", ["book_id"], name: "index_library_external_book_contents_on_book_id", using: :btree
-
-  create_table "library_external_page_contents", force: :cascade do |t|
-    t.integer "page_id",      limit: 4,   null: false
-    t.integer "content_type", limit: 4,   null: false
-    t.string  "path",         limit: 255, null: false
-  end
-
-  add_index "library_external_page_contents", ["page_id"], name: "index_library_external_page_contents_on_page_id", using: :btree
-
-  create_table "library_internal_page_contents", force: :cascade do |t|
-    t.integer "page_id",      limit: 4,   null: false
-    t.integer "content_type", limit: 4,   null: false
-    t.string  "content",      limit: 255, null: false
-  end
-
-  add_index "library_internal_page_contents", ["page_id"], name: "index_library_internal_page_contents_on_page_id", using: :btree
-
-  create_table "library_news_items", force: :cascade do |t|
-    t.text     "body",          limit: 65535,                 null: false
-    t.string   "title",         limit: 255,                   null: false
-    t.boolean  "library_news",                default: false, null: false
-    t.boolean  "site_news",                   default: true,  null: false
-    t.datetime "news_datetime",                               null: false
-    t.integer  "position",      limit: 4
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "library_pages", force: :cascade do |t|
-    t.integer "book_id",        limit: 4,                    null: false
-    t.decimal "internal_order",               precision: 10, null: false
-    t.string  "url_name",       limit: 255,                  null: false
-    t.text    "page_text",      limit: 65535,                null: false
-  end
-
-  add_index "library_pages", ["book_id"], name: "index_library_pages_on_book_id", using: :btree
-
   create_table "news", force: :cascade do |t|
     t.text     "body",          limit: 65535,                 null: false
     t.boolean  "library_news",                default: false, null: false
@@ -237,6 +153,96 @@ ActiveRecord::Schema.define(version: 20171215181722) do
     t.text     "short_content", limit: 65535
     t.integer  "picture_id",    limit: 4
     t.integer  "author_id",     limit: 4
+    t.integer  "position",      limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "refinery_books", force: :cascade do |t|
+    t.string   "name",             limit: 255,                   null: false
+    t.string   "name_prefix",      limit: 255
+    t.string   "tree_prefix",      limit: 255
+    t.string   "name_comment",     limit: 255
+    t.integer  "order_number",     limit: 4,                     null: false
+    t.string   "picture_path",     limit: 255
+    t.text     "synopsis",         limit: 65535
+    t.integer  "year",             limit: 4
+    t.string   "author",           limit: 255
+    t.integer  "page_count",       limit: 4
+    t.boolean  "can_buy",                        default: false, null: false
+    t.integer  "book_category_id", limit: 4
+    t.integer  "position",         limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "refinery_books", ["book_category_id"], name: "index_refinery_books_on_book_category_id", using: :btree
+
+  create_table "refinery_books_book_categories", force: :cascade do |t|
+    t.integer  "book_category_id", limit: 4
+    t.string   "name",             limit: 255,   null: false
+    t.boolean  "is_root"
+    t.integer  "order_number",     limit: 4,     null: false
+    t.text     "synopsis",         limit: 65535
+    t.integer  "position",         limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "refinery_books_book_categories", ["book_category_id"], name: "index_refinery_books_book_categories_on_book_category_id", using: :btree
+
+  create_table "refinery_books_book_pages", force: :cascade do |t|
+    t.integer "book_id",        limit: 4,                    null: false
+    t.decimal "internal_order",               precision: 10, null: false
+    t.string  "url_name",       limit: 255,                  null: false
+    t.text    "page_text",      limit: 65535,                null: false
+  end
+
+  add_index "refinery_books_book_pages", ["book_id"], name: "index_refinery_books_book_pages_on_book_id", using: :btree
+
+  create_table "refinery_books_contents_elements", force: :cascade do |t|
+    t.integer "book_id",             limit: 4,   null: false
+    t.integer "contents_element_id", limit: 4
+    t.integer "page_number",         limit: 4,   null: false
+    t.string  "name_prefix",         limit: 255
+    t.string  "name",                limit: 255, null: false
+    t.string  "name_comment",        limit: 255
+    t.integer "ce_type",             limit: 4,   null: false
+  end
+
+  add_index "refinery_books_contents_elements", ["book_id"], name: "index_refinery_books_contents_elements_on_book_id", using: :btree
+  add_index "refinery_books_contents_elements", ["contents_element_id"], name: "index_refinery_books_contents_elements_on_contents_element_id", using: :btree
+
+  create_table "refinery_books_external_book_contents", force: :cascade do |t|
+    t.integer "book_id",      limit: 4,   null: false
+    t.integer "content_type", limit: 4,   null: false
+    t.string  "path",         limit: 255, null: false
+  end
+
+  add_index "refinery_books_external_book_contents", ["book_id"], name: "index_refinery_books_external_book_contents_on_book_id", using: :btree
+
+  create_table "refinery_books_external_page_contents", force: :cascade do |t|
+    t.integer "book_page_id", limit: 4,   null: false
+    t.integer "content_type", limit: 4,   null: false
+    t.string  "path",         limit: 255, null: false
+  end
+
+  add_index "refinery_books_external_page_contents", ["book_page_id"], name: "index_refinery_books_external_page_contents_on_book_page_id", using: :btree
+
+  create_table "refinery_books_internal_page_contents", force: :cascade do |t|
+    t.integer "book_page_id", limit: 4,   null: false
+    t.integer "content_type", limit: 4,   null: false
+    t.string  "content",      limit: 255, null: false
+  end
+
+  add_index "refinery_books_internal_page_contents", ["book_page_id"], name: "index_refinery_books_internal_page_contents_on_book_page_id", using: :btree
+
+  create_table "refinery_books_news_items", force: :cascade do |t|
+    t.text     "body",          limit: 65535,                 null: false
+    t.string   "title",         limit: 255,                   null: false
+    t.boolean  "library_news",                default: false, null: false
+    t.boolean  "site_news",                   default: true,  null: false
+    t.datetime "news_datetime",                               null: false
     t.integer  "position",      limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -411,13 +417,13 @@ ActiveRecord::Schema.define(version: 20171215181722) do
   add_foreign_key "external_book_contents", "books"
   add_foreign_key "external_page_contents", "pages"
   add_foreign_key "internal_page_contents", "pages"
-  add_foreign_key "library_book_categories", "library_book_categories", column: "book_category_id", on_delete: :cascade
-  add_foreign_key "library_books", "library_book_categories", column: "book_category_id", on_delete: :cascade
-  add_foreign_key "library_contents_elements", "library_books", column: "book_id", on_delete: :cascade
-  add_foreign_key "library_contents_elements", "library_contents_elements", column: "contents_element_id", on_delete: :cascade
-  add_foreign_key "library_external_book_contents", "library_books", column: "book_id", on_delete: :cascade
-  add_foreign_key "library_external_page_contents", "library_pages", column: "page_id", on_delete: :cascade
-  add_foreign_key "library_internal_page_contents", "library_pages", column: "page_id", on_delete: :cascade
-  add_foreign_key "library_pages", "library_books", column: "book_id", on_delete: :cascade
   add_foreign_key "pages", "books"
+  add_foreign_key "refinery_books", "refinery_books_book_categories", column: "book_category_id", on_delete: :cascade
+  add_foreign_key "refinery_books_book_categories", "refinery_books_book_categories", column: "book_category_id", on_delete: :cascade
+  add_foreign_key "refinery_books_book_pages", "refinery_books", column: "book_id", on_delete: :cascade
+  add_foreign_key "refinery_books_contents_elements", "refinery_books", column: "book_id", on_delete: :cascade
+  add_foreign_key "refinery_books_contents_elements", "refinery_books_contents_elements", column: "contents_element_id", on_delete: :cascade
+  add_foreign_key "refinery_books_external_book_contents", "refinery_books", column: "book_id", on_delete: :cascade
+  add_foreign_key "refinery_books_external_page_contents", "refinery_books_book_pages", column: "book_page_id", on_delete: :cascade
+  add_foreign_key "refinery_books_internal_page_contents", "refinery_books_book_pages", column: "book_page_id", on_delete: :cascade
 end

@@ -1,0 +1,66 @@
+es:
+  refinery:
+    plugins:
+      book_categories:
+        title: Book Categories
+      books:
+        title: Books
+    books:
+      admin:
+        book_categories:
+          actions:
+            create_new: Crear nuevo book category
+            reorder: Reordenar book categories
+            reorder_done: Reordenación de book categories completada
+          records:
+            title: Book Categories
+            sorry_no_results: Lo siento, no hay resultados
+            no_items_yet: No hay book categories todavía. Pulsa en "Crear nuevo Book
+              Category" para crear tu primer book category.
+          book_category:
+            view_live_html: Ver este book category como abierto al público <br/><em>(abre
+              en ventana nueva)</em>
+            edit: Editar este book category
+            delete: Borrar este book category para siempre
+        books:
+          actions:
+            create_new: Crear nuevo book
+            reorder: Reordenar books
+            reorder_done: Reordenación de books completada
+          records:
+            title: Books
+            sorry_no_results: Lo siento, no hay resultados
+            no_items_yet: No hay books todavía. Pulsa en "Crear nuevo Book" para crear
+              tu primer book.
+          book:
+            view_live_html: Ver este book como abierto al público <br/><em>(abre en
+              ventana nueva)</em>
+            edit: Editar este book
+            delete: Borrar este book para siempre
+      book_categories:
+        show:
+          other: Otros book categories
+      books:
+        show:
+          other: Otros books
+  activerecord:
+    attributes:
+      refinery/books/book_category:
+        book_category_id: Book Category
+        name: Name
+        is_root: Is Root
+        order_number: Order Number
+        synopsis: Synopsis
+      refinery/books/book:
+        name: Name
+        name_prefix: Name Prefix
+        tree_prefix: Tree Prefix
+        name_comment: Name Comment
+        order_number: Order Number
+        picture_path: Picture Path
+        synopsis: Synopsis
+        year: Year
+        author: Author
+        page_count: Page Count
+        can_buy: Can Buy
+        book_category_id: Book Category

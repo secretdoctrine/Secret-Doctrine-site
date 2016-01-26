@@ -1,0 +1,68 @@
+:javascript
+
+  function gEBI(id) {
+    return document.getElementById(id);
+  }
+
+  var searchResultApplier;
+
+  function toggleStyleForFoundSpans() {
+    $("iframe").each(function () {
+      $(this.contentWindow.document.body).find("span.match").each(function() {
+        this.style.backgroundColor = "#FFFF00";
+        this.style.color = "#254CBF";
+      });
+    });
+  }
+
+  function doSearch(searchTerm, targetFrame) {
+    // Remove existing highlights
+    var range = rangy.createRange();
+    var searchScopeRange = rangy.createRange();
+    searchScopeRange.selectNodeContents(targetFrame.contentWindow.document.body);
+    var options = {
+      caseSensitive: false,
+      wholeWordsOnly: false,
+      withinRange: searchScopeRange,
+      direction: "forward" // This is redundant because "forward" is the default
+    };
+    range.selectNodeContents(targetFrame.contentWindow.document.body);
+    searchResultApplier.undoToRange(range);
+    if (searchTerm !== "") {
+      // Iterate over matches
+      while (range.findText(searchTerm, options)) {
+        // range now encompasses the first text match
+        searchResultApplier.applyToRange(range);
+        // Collapse the range to the position immediately after the match
+        range.collapse(false);
+      }
+    }
+  }
+
+  function highlightSearchInFrames() {
+    $("iframe").each(function () {
+      if(this.attributes.highlight_words && this.attributes.highlight_words.nodeValue.length) {
+        var searchregexp = this.attributes.highlight_words.nodeValue.replace(/['!"#$%&\\'()\*+,\-\.\/:;<=>?@\[\\\]\^_`{}~'«»]/g,"");
+        searchregexp = searchregexp.replace(/\s{2,}/g," ");
+        searchregexp = searchregexp.replace(/\s{1,}\|/g,"|");
+        searchregexp = searchregexp.replace(/\|\s{1,}/g,"|");
+        var regexp = new RegExp(searchregexp, "gi");
+        doSearch(regexp, this);
+      }
+    });
+  }
+
+  function initFind() {
+    // Enable buttons
+    var classApplierModule = rangy.modules.ClassApplier;
+    if (rangy.supported && classApplierModule && classApplierModule.supported) {
+      searchResultApplier = rangy.createClassApplier("match");
+    }
+  }
+
+  window.onload = function() {
+    rangy.init();
+    initFind();
+    highlightSearchInFrames();
+    toggleStyleForFoundSpans();
+  };

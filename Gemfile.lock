@@ -8,15 +8,12 @@ GIT
       railties (>= 4.0.0, < 5)
 
 PATH
-  remote: library
-  specs:
-    library (0.0.1)
-      rails (~> 4.2.4)
-
-PATH
   remote: vendor/extensions
   specs:
     refinerycms-authors (1.0)
+      acts_as_indexed (~> 0.8.0)
+      refinerycms-core (~> 3.0.0)
+    refinerycms-books (1.0)
       acts_as_indexed (~> 0.8.0)
       refinerycms-core (~> 3.0.0)
     refinerycms-multimedia_groups (1.0)
@@ -287,7 +284,6 @@ DEPENDENCIES
   haml
   jbuilder (~> 2.0)
   jquery-rails
-  library!
   mysql2 (~> 0.3.13)
   rails (= 4.2.4)
   rangy-rails
@@ -295,6 +291,7 @@ DEPENDENCIES
   refinerycms-acts-as-indexed (~> 2.0, >= 2.0.1)
   refinerycms-authentication-devise (~> 1.0)
   refinerycms-authors!
+  refinerycms-books!
   refinerycms-multimedia_groups!
   refinerycms-news_items!
   refinerycms-wymeditor (~> 1.0, >= 1.0.6)

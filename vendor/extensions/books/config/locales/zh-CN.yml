@@ -1,0 +1,63 @@
+zh-CN:
+  refinery:
+    plugins:
+      book_categories:
+        title: Book Categories
+      books:
+        title: Books
+    books:
+      admin:
+        book_categories:
+          actions:
+            create_new: "建立新的 Book Category"
+            reorder: "对 Book Categories 重新排序"
+            reorder_done: "对 Book Categories 的重新排序结束"
+          records:
+            title: Book Categories
+            sorry_no_results: "对不起，未找到结果。"
+            no_items_yet: 目前没有 Book Categories . 点击 "Add New Book Category" 创建一个book
+              category.
+          book_category:
+            view_live_html: "查看 book category 的最新内容.<br/><em>(新窗口中打开)</em>"
+            edit: "编辑 book category"
+            delete: "永久删除 book category"
+        books:
+          actions:
+            create_new: "建立新的 Book"
+            reorder: "对 Books 重新排序"
+            reorder_done: "对 Books 的重新排序结束"
+          records:
+            title: Books
+            sorry_no_results: "对不起，未找到结果。"
+            no_items_yet: 目前没有 Books . 点击 "Add New Book" 创建一个book.
+          book:
+            view_live_html: "查看 book 的最新内容.<br/><em>(新窗口中打开)</em>"
+            edit: "编辑 book"
+            delete: "永久删除 book"
+      book_categories:
+        show:
+          other: "其他 Book Categories"
+      books:
+        show:
+          other: "其他 Books"
+  activerecord:
+    attributes:
+      refinery/books/book_category:
+        book_category_id: Book Category
+        name: Name
+        is_root: Is Root
+        order_number: Order Number
+        synopsis: Synopsis
+      refinery/books/book:
+        name: Name
+        name_prefix: Name Prefix
+        tree_prefix: Tree Prefix
+        name_comment: Name Comment
+        order_number: Order Number
+        picture_path: Picture Path
+        synopsis: Synopsis
+        year: Year
+        author: Author
+        page_count: Page Count
+        can_buy: Can Buy
+        book_category_id: Book Category

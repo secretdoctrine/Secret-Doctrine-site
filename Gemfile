@@ -40,7 +40,7 @@ gem 'rubyzip', require: 'zip'
 
 gem 'haml'
 
-gem 'library', path: 'library'
+#gem 'library', path: 'library'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -74,3 +74,4 @@ gem 'refinerycms-news_items', path: 'vendor/extensions'
 gem 'refinerycms-authors', path: 'vendor/extensions'
 gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
 gem 'refinerycms-multimedia_groups', path: 'vendor/extensions'
+gem 'refinerycms-books', path: 'vendor/extensions'

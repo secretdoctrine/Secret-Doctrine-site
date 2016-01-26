@@ -42,7 +42,7 @@ module Library
     def redirect
 
       return render_404 unless params.has_key? :id
-      redirect_to book_page_path(params)
+      redirect_to refinery.books_book_page_path(params)
 
     end
 

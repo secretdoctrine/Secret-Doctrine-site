@@ -1,0 +1,35 @@
+%div{class: 'pro'}
+  %div{class: 'cover'}
+    - if element.is_book
+      = link_to refinery.cover_books_book_path(element.model.id), {'data-lightbox' => "#{element.model.id}"} do
+        = image_tag refinery.cover_books_book_path(element.model.id)
+  %div{class: 'anonce'}
+    %h2
+      - if element.is_book
+        = link_to(element.model.name, refinery.books_book_path(element.model.id))
+      - else
+        = link_to(element.model.name, refinery.books_book_category_path(element.model.id))
+    %p
+      = element.model.synopsis
+  %div{class: 'footer'}
+    - if element.is_book
+      - pdf_content = element.model.pdf_content
+      - if pdf_content
+        %a{class: 'first last', href: "#{refinery.books_book_external_book_content_path(element.model.id, pdf_content.id)}"}
+          %span{class: 's1'}
+            %span{class: 's2'}
+              =I18n.t('library.download')
+      %a{class: 'first last', href: "#{refinery.books_book_path(element.model.id)}"}
+        %span{class: 's1'}
+          %span{class: 's2'}
+            =I18n.t('library.read')
+      - if element.model.can_buy
+        %a{class: 'first last', href: "#"}
+          %span{class: 's1'}
+            %span{class: 's2'}
+              =I18n.t('library.buy')
+    - else
+      %a{class: 'first last', href: "#{refinery.books_book_category_path(element.model.id)}"}
+        %span{class: 's1'}
+          %span{class: 's2'}
+            = I18n.t('library.open_subcategory')

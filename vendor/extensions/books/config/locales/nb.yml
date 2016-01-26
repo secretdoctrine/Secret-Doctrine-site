@@ -1,0 +1,66 @@
+nb:
+  refinery:
+    plugins:
+      book_categories:
+        title: Book Categories
+      books:
+        title: Books
+    books:
+      admin:
+        book_categories:
+          actions:
+            create_new: Lag en ny Book Category
+            reorder: Endre rekkefølgen på Book Categories
+            reorder_done: Ferdig å endre rekkefølgen Book Categories
+          records:
+            title: Book Categories
+            sorry_no_results: Beklager! Vi fant ikke noen resultater.
+            no_items_yet: Det er ingen Book Categories enda. Klikk på "Lag en ny Book
+              Category" for å legge til din første book category.
+          book_category:
+            view_live_html: Vis hvordan denne book category ser ut offentlig <br/><em>(åpner
+              i et nytt vindu)</em>
+            edit: Rediger denne book category
+            delete: Fjern denne book category permanent
+        books:
+          actions:
+            create_new: Lag en ny Book
+            reorder: Endre rekkefølgen på Books
+            reorder_done: Ferdig å endre rekkefølgen Books
+          records:
+            title: Books
+            sorry_no_results: Beklager! Vi fant ikke noen resultater.
+            no_items_yet: Det er ingen Books enda. Klikk på "Lag en ny Book" for å
+              legge til din første book.
+          book:
+            view_live_html: Vis hvordan denne book ser ut offentlig <br/><em>(åpner
+              i et nytt vindu)</em>
+            edit: Rediger denne book
+            delete: Fjern denne book permanent
+      book_categories:
+        show:
+          other: Andre Book Categories
+      books:
+        show:
+          other: Andre Books
+  activerecord:
+    attributes:
+      refinery/books/book_category:
+        book_category_id: Book Category
+        name: Name
+        is_root: Is Root
+        order_number: Order Number
+        synopsis: Synopsis
+      refinery/books/book:
+        name: Name
+        name_prefix: Name Prefix
+        tree_prefix: Tree Prefix
+        name_comment: Name Comment
+        order_number: Order Number
+        picture_path: Picture Path
+        synopsis: Synopsis
+        year: Year
+        author: Author
+        page_count: Page Count
+        can_buy: Can Buy
+        book_category_id: Book Category

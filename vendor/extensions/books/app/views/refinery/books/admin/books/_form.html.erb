@@ -1,0 +1,83 @@
+<%= form_for [refinery, :books_admin, @book] do |f| -%>
+  <%= render '/refinery/admin/error_messages',
+              :object => @book,
+              :include_object_name => true %>
+
+  <div class='field'>
+    <%= f.label :name -%>
+    <%= f.text_field :name, :class => 'larger widest' -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :name_prefix -%>
+    <%= f.text_field :name_prefix -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :tree_prefix -%>
+    <%= f.text_field :tree_prefix -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :name_comment -%>
+    <%= f.text_field :name_comment -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :order_number -%>
+    <%= f.number_field :order_number -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :picture_path -%>
+    <%= render '/refinery/admin/resource_picker',
+               :f => f,
+               :field => :picture_path_id,
+               :resource => @book.picture_path -%>
+  </div>
+
+  <div class='field'>
+    <%= render '/refinery/admin/wysiwyg',
+                :f => f,
+                :fields => [:synopsis],
+                :object => "books/book" -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :year -%>
+    <%= f.number_field :year -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :author -%>
+    <%= f.text_field :author -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :page_count -%>
+    <%= f.number_field :page_count -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :can_buy -%>
+    <%= f.check_box :can_buy, :checked => @book[:can_buy] -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :book_category_id -%>
+    <%= f.number_field :book_category_id -%>
+  </div>
+
+  <%= render '/refinery/admin/form_actions', :f => f,
+             :continue_editing => false,
+             :delete_title => t('delete', :scope => 'refinery.books.admin.books.book'),
+             :delete_confirmation => t('message', :scope => 'refinery.admin.delete', :title => @book.name) -%>
+<% end -%>
+
+<% content_for :javascripts do -%>
+  <script>
+    $(document).ready(function(){
+      page_options.init(false, '', '');
+    });
+  </script>
+<% end -%>

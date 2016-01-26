@@ -3,9 +3,9 @@
 
     %meta{:@content_item => "text/html; charset=windows-1251", "http-equiv" => "Content-Type"}
     %title Тайная Доктрина Востока в творчестве Ларисы Дмитриевой
-    = stylesheet_link_tag 'library/application.css'
+    = stylesheet_link_tag 'refinery/books/application.css'
     = stylesheet_link_tag 'application.css'
-    = javascript_include_tag 'library/application'
+    = javascript_include_tag 'refinery/books/application'
     %link{:href => "/favicon.ico", :rel => "shortcut icon"}
 
   - csrf_meta_tags
@@ -21,4 +21,4 @@
     = yield
 
     = render partial: 'refinery/footer'
-    = javascript_include_tag 'library/lightbox'
+    = javascript_include_tag 'refinery/books/lightbox'

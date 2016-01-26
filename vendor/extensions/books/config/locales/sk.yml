@@ -1,0 +1,65 @@
+sk:
+  refinery:
+    plugins:
+      book_categories:
+        title: Book Categories
+      books:
+        title: Books
+    books:
+      admin:
+        book_categories:
+          actions:
+            create_new: Pridať Book Category
+            reorder: Preusporiadať Book Categories
+            reorder_done: Koniec radenia Book Categories
+          records:
+            title: Book Categories
+            sorry_no_results: "Ľutujeme, ale neboli nájdené žiadne výsledky."
+            no_items_yet: Nie sú vytvorené žiadne Book Categories. Kliknite na "Pridať
+              Book Category" pre pridanie prvého book category.
+          book_category:
+            view_live_html: Zobraziť náhľad book category<br/><em>(otvorí sa v novom
+              okne)</em>
+            edit: Upraviť book category
+            delete: Zmazať book category
+        books:
+          actions:
+            create_new: Pridať Book
+            reorder: Preusporiadať Books
+            reorder_done: Koniec radenia Books
+          records:
+            title: Books
+            sorry_no_results: "Ľutujeme, ale neboli nájdené žiadne výsledky."
+            no_items_yet: Nie sú vytvorené žiadne Books. Kliknite na "Pridať Book"
+              pre pridanie prvého book.
+          book:
+            view_live_html: Zobraziť náhľad book<br/><em>(otvorí sa v novom okne)</em>
+            edit: Upraviť book
+            delete: Zmazať book
+      book_categories:
+        show:
+          other: Daľšie Book Categories
+      books:
+        show:
+          other: Daľšie Books
+  activerecord:
+    attributes:
+      refinery/books/book_category:
+        book_category_id: Book Category
+        name: Name
+        is_root: Is Root
+        order_number: Order Number
+        synopsis: Synopsis
+      refinery/books/book:
+        name: Name
+        name_prefix: Name Prefix
+        tree_prefix: Tree Prefix
+        name_comment: Name Comment
+        order_number: Order Number
+        picture_path: Picture Path
+        synopsis: Synopsis
+        year: Year
+        author: Author
+        page_count: Page Count
+        can_buy: Can Buy
+        book_category_id: Book Category

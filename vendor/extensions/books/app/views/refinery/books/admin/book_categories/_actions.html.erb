@@ -1,0 +1,20 @@
+<ul>
+  <% if ::Refinery::Books::Admin::BookCategoriesController.searchable? %>
+    <li>
+      <%= render '/refinery/admin/search', :url => refinery.books_admin_book_categories_path %>
+    </li>
+  <% end %>
+  <li>
+    <%= action_label :add, refinery.new_books_admin_book_category_path, t('.create_new') %>
+  </li>
+<% if !searching? && ::Refinery::Books::Admin::BookCategoriesController.sortable? && ::Refinery::Books::BookCategory.many? %>
+  <li>
+    <%= action_label :reorder,
+                     refinery.books_admin_book_categories_path,
+                     t('.reorder', what:  "Book Categories"), id: 'reorder_action'%>
+    <%= action_label :reorder_done,
+                     refinery.books_admin_book_categories_path,
+                      t('.reorder_done', what: "Book Categories"), id: 'reorder_action_done', class: 'hidden'%>
+  </li>
+<% end %>
+</ul>

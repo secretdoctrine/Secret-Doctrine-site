@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   Rails.application.config.refinery_root = '/cms'
   mount Refinery::Core::Engine, at: Rails.application.config.refinery_root#Refinery::Core.mounted_path
 
-  mount Library::Engine, at: '/library', as: 'library'
+  #mount Library::Engine, at: '/library', as: 'library'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,0 +1,15 @@
+<li class='clearfix record <%= cycle("on", "on-hover") %>' id="<%= dom_id(book_category) -%>">
+  <span class='title'>
+    <%= book_category.name %>
+
+  </span>
+  <span class='actions'>
+    
+      <%= action_icon(:preview, refinery.books_book_category_path(book_category), t('.view_live_html')) %>
+    
+    <%= action_icon(:edit,    refinery.edit_books_admin_book_category_path(book_category), t('.edit') ) %>
+    <%= action_icon(:delete,  refinery.books_admin_book_category_path(book_category), t('.delete'),
+      { class: "cancel confirm-delete",
+        data: {confirm: t('message',  scope: 'refinery.admin.delete', title: book_category.name)}}  ) %>
+  </span>
+</li>

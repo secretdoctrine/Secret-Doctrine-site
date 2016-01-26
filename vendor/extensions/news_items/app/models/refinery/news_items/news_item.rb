@@ -2,7 +2,7 @@ module Refinery
   module NewsItems
     class NewsItem < Refinery::Core::BaseModel
       #self.table_name = 'refinery_news_items'
-      self.table_name = 'library_news_items'
+      self.table_name = 'refinery_books_news_items'
 
 
       validates :body, :presence => true, :uniqueness => true

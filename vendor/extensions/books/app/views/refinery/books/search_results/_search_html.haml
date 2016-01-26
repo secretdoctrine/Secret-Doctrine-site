@@ -1,0 +1,10 @@
+%div{class: 'page_result'}
+  = link_to page.full_path_name, refinery.books_book_page_path(page.book.id, page.url_name, highlight_words: Refinery::Books::WordsConverter.convert(page.words.page_text))
+  = link_to refinery.export_books_book_page_path(page.book.id, page.url_name), class: 'but_24' do
+    %span.s0
+      %span.s1
+        %span.s2
+          = I18n.t('library.search_page.export_page')
+
+  %br
+  %iframe{src: "#{refinery.books_book_page_external_page_content_path(page.book, page, page.html_content, search_text: params[:search_text])}", highlight_words: Refinery::Books::WordsConverter.convert(page.words.page_text)}
