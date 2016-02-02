@@ -5,3 +5,9 @@ rake ts:start
 
 
 rake ts:reindex
+
+
+sudo add-apt-repository ppa:builds/sphinxsearch-rel22
+sudo apt-get update
+sudo apt-get install sphinxsearch
+sudo service sphinxsearch stop
