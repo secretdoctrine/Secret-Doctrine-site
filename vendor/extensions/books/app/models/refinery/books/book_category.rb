@@ -68,6 +68,8 @@ module Refinery
 
       end
 
+
+
       def self.build_categories_tree_for_book(book)
 
         build_categories_tree(current_element: book.nil? ? nil : book.book_category)
@@ -103,6 +105,56 @@ module Refinery
         root_element
 
       end
+
+      def add_tree_element_to_choose_parent(tree_parent, db_element)
+
+        return if db_element.id == id
+
+        tree_element = TreeElement.new(
+            name: db_element.name,
+            id: db_element.id,
+            is_open: (book_category and book_category.id == db_element.id),
+            order_number: db_element.order_number,
+            selected: (book_category and book_category.id == db_element.id)
+        )
+
+        child_elements = db_element.book_categories
+
+        child_elements.each do |child|
+          add_tree_element(
+              tree_element,
+              child
+          )
+        end
+
+        tree_element.child_elements.sort_by!{|x| x.order_number}
+        tree_parent.child_elements.push(tree_element)
+
+      end
+
+      def categories_tree_to_choose_parent
+
+        root = BookCategory.includes(:book_categories).find_by(name: ROOT_NAME)
+        return TreeElement.new(is_root: true) if root.nil?
+
+        root_element = TreeElement.new(
+            is_root: true,
+            link_target: Refinery::Core::Engine.routes.url_helpers.books_book_categories_path,
+            name: root.name,
+            id: root.id,
+            selected: (book_category and book_category.id == root.id)
+        )
+
+        root.book_categories.each do |child_category|
+          add_tree_element_to_choose_parent(root_element, child_category)
+        end
+
+        root_element.child_elements.sort_by!{|x| x.order_number}
+
+        root_element
+
+      end
+
 
       def self.recursive_books_for_category(category)
 

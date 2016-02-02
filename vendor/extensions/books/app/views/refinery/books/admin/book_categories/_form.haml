@@ -1,0 +1,78 @@
+- jstree_div = 'jstree_container'
+= form_for [refinery, :books_admin, @book_category] do |f|
+
+  = render '/refinery/admin/error_messages', :object => @book_category, :include_object_name => true
+
+  %div.field
+    %div{:id => jstree_div}
+      %ul
+        - root_element = @book_category.categories_tree_to_choose_parent
+        %li{class: "jstree-open", selected: "#{root_element.selected}"}
+          = root_element.name
+          %ul
+            = render partial: 'choose_parent_element', locals: {tree_element: root_element}
+    = f.label :book_category_id
+    = f.number_field :book_category_id
+
+
+  %div.field
+    = f.label :name
+    = f.text_field :name
+
+  %div.field
+    = f.label :is_root
+    = f.check_box :is_root, :checked => @book_category[:is_root]
+
+  %div.field
+    = f.label :order_number
+    = f.number_field :order_number
+
+  %div.field
+    = render '/refinery/admin/wysiwyg', :f => f, :fields => [:synopsis], :object => "books/book_category"
+
+  = render '/refinery/admin/form_actions', :f => f, :continue_editing => false, :delete_title => t('delete', :scope => 'refinery.book_categories.admin.book_categories.book_category'),:delete_confirmation => t('message', :scope => 'refinery.admin.delete', :title => @book_category.name)
+
+= javascript_include_tag 'refinery/books/jstree'
+= stylesheet_link_tag 'refinery/books/application'
+:javascript
+  $(document).ready(function(){
+    page_options.init(false, '', '');
+  });
+
+
+  var tree = $("##{jstree_div}")
+  .jstree({
+    "plugins" : ["checkbox"],
+    "checkbox" : {"tie_selection" : false, "three_state" : false, "cascade" : "none"},
+    "core" : {"themes" : {"icons" : false}, "multiple" : false}
+  });
+
+  var resetting = false;
+  tree.on('changed.jstree', function (e, data) {
+    if (resetting) //ignoring the changed event
+    {
+      resetting = false;
+      return;
+    }
+    if ($("#multiselect").is(':checked') == false && data.selected.length > 1) {
+      resetting = true; //ignore next changed event
+      data.instance.uncheck_all(); //will invoke the changed event once
+      data.instance.check_node(data.node/*currently selected node*/);
+    }
+  });
+
+  /*tree.on("check_node.jstree uncheck_node.jstree", function(e, data) {
+    var checked_ids = [];
+    $("##{jstree_div}").jstree("get_checked",null,true).forEach
+        (function (element_id) {
+          checked_ids.push($("#" + element_id)[0].type);
+        });
+    hidden_field = $("#tree_selected")[0];
+    hidden_field.value = checked_ids.join(", ");
+  });
+
+  tree.jstree(true).open_all();
+  $('li[selected="true"]').each(function() {
+    tree.jstree('check_node', $(this))
+  });*/
+

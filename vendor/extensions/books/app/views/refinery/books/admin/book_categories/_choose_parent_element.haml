@@ -1,0 +1,7 @@
+- tree_element.child_elements.each do |child_element|
+  - li_class = child_element.is_open ? 'jstree-open' : nil
+  %li{class: "#{li_class}", selected: "#{child_element.selected}"}
+    = child_element.name
+    - if not child_element.child_elements.empty?
+      %ul
+        = render :partial => 'choose_parent_element', :locals => {:tree_element => child_element}
