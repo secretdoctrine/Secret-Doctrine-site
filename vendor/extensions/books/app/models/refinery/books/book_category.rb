@@ -8,6 +8,67 @@ module Refinery
 
       ROOT_NAME = ::I18n.t('library.categories_root_name')
 
+      def update_position(new_parent_id, old_parent_id, new_position, old_position)
+
+        items_to_increase = []
+        items_to_reduce = []
+
+        new_parent = BookCategory.find(new_parent_id)
+        old_parent = BookCategory.find(old_parent_id)
+
+        if new_parent_id != old_parent_id
+
+          items_to_increase = new_parent.book_categories.select{|x| x.order_number >= new_position}
+          items_to_reduce = old_parent.book_categories.select{|x| x.order_number > old_position}
+
+        else
+
+          if new_position > old_position
+
+            items_to_reduce = old_parent.book_categories.select{|x| x.order_number > old_position and x.order_number <= new_position}
+
+          elsif new_position < old_position
+
+            items_to_increase = old_parent.book_categories.select{|x| x.order_number >= new_position and x.order_number < old_position}
+
+          end
+
+        end
+
+        ActiveRecord::Base.transaction do
+
+          items_to_increase.each do |item|
+
+            item.order_number += 1
+            item.save
+
+          end
+
+          items_to_reduce.each do |item|
+
+            item.order_number -= 1
+            item.save
+
+          end
+
+          self.book_category_id = new_parent_id
+          self.order_number = new_position
+
+          save
+
+        end
+
+      end
+
+      def get_next_order_number
+
+        last_child = book_categories.sort_by{|x| x.order_number}.last
+
+        return 0 if last_child.nil?
+        last_child.order_number + 1
+
+      end
+
       def self.get_root!
 
         root_category = find_by(name: ROOT_NAME)

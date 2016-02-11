@@ -1,0 +1,93 @@
+= javascript_include_tag 'refinery/books/jstree'
+= javascript_include_tag 'refinery/books/jstree-actions'
+= stylesheet_link_tag 'refinery/books/jstree'
+
+
+- jstree_div = 'jstree_container'
+%section#records
+  %div{:id => jstree_div}
+    %ul
+      = render :partial => 'book_category_tree_element', :locals => {book_category: @root}
+
+
+
+:javascript
+
+  function get_jstree() {
+    return $("##{jstree_div}").jstree(true);
+  }
+
+
+  function get_node(node_id) {
+    return get_jstree().get_node(node_id);
+  }
+
+  function create_child(parent_id) {
+    parent = get_node(parent_id);
+    child = get_jstree().create_node(parent);
+    if(child)
+      get_jstree().edit(child);
+  }
+
+  function rename_node(node_id) {
+    node = get_node(node_id);
+    get_jstree().edit(node);
+  }
+
+  $("##{jstree_div}").jstree({
+    "plugins" : ["actions", "dnd"],
+    "core" : {"themes" : {"icons" : false}, "multiple" : false, check_callback: "true"}
+  })
+  .on('move_node.jstree', function(e, data) {
+    // alert("!");
+    // parent
+    // position
+    // old_position
+    $.ajax({
+      url: data.node.li_attr.update_path,
+      dataType: "json",
+      type: 'PUT',
+      success: function(data) {
+        alert('!');
+        return false;
+      },
+      data: {new_parent: data.parent,
+            old_parent: data.old_parent,
+            new_position: data.position,
+            old_position: data.old_position}
+    });
+  })
+  .on('ready.jstree', function () {
+    var book_category_ids = $(".book_category_add").map(function() { return parseInt($(this).attr("id")) }).get();
+    for(var i = 0; i < book_category_ids.length; i++)
+    {
+      $("##{jstree_div}").jstree(true).add_action(book_category_ids[i], {
+          "id": "action_add",
+          "class": "action_add pull-right",
+          "text": "+",
+          "after": true,
+          "selector": "a",
+          "event": "click",
+          "callback": function(node_id, node, action_id, action_el){
+              document.location.href = "#{refinery.new_books_admin_book_category_path}?book_category_id=" + node.id;
+          }
+      });
+    }
+
+    book_category_ids = $(".book_category_edit").map(function() { return parseInt($(this).attr("id")) }).get();
+    for(var i = 0; i < book_category_ids.length; i++)
+    {
+      $("##{jstree_div}").jstree(true).add_action(book_category_ids[i], {
+          "id": "action_rename",
+          "class": "action_rename pull-right",
+          "text": "=",
+          "after": true,
+          "selector": "a",
+          "event": "click",
+          "callback": function(node_id, node, action_id, action_el){
+              document.location.href = node.li_attr.edit_path;
+          }
+      });
+    }
+
+  });
