@@ -12,5 +12,6 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w( books/lightbox.js )
 Rails.application.config.assets.precompile += %w( multimedia_groups/jquery.jplayer.js )
 Rails.application.config.assets.precompile += %w( multimedia_groups/jplayer.blue.monday.css )
+Rails.application.config.assets.precompile += %w( poetry.css )
 Rails.application.config.assets.precompile += %w( refinery/books/jstree.css )
 Rails.application.config.assets.precompile += %w( refinery/books/jstree-actions.js )

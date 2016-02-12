@@ -1,3 +1,15 @@
-= image_fu poem.picture
-= poem.title
-= raw poem.short_content
+%td
+  = link_to refinery.authors_poem_path(poem.id) do
+    %div.img_wrapper
+      /= image_fu poem.picture, nil, {class: 'img_restricted'}
+      %div.image_tile_holder{style: "background-image: url(#{poem.picture.url})"}
+    %article
+      %h2
+        %strong
+          = poem.order
+          \.
+        “
+        = poem.title
+        ”
+      %div
+        = raw poem.short_content

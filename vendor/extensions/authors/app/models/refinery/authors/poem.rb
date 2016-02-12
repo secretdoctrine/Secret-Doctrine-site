@@ -12,6 +12,26 @@ module Refinery
       #
       #   acts_as_indexed :fields => [:title]
 
+      def has_next_poem?
+        !next_poem.nil?
+      end
+
+      def next_poem
+
+        author.poems.sort_by{|x| x.order}.select{|x| x.order > order}.first
+
+      end
+
+      def has_prev_poem?
+        !prev_poem.nil?
+      end
+
+      def prev_poem
+
+        author.poems.sort_by{|x| x.order}.select{|x| x.order < order}.last
+
+      end
+
     end
   end
 end

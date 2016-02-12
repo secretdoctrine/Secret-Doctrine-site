@@ -2,6 +2,8 @@
   <%= @author.name %>
 <% end %>
 
+
+
 <% content_for :body do %>
   <section>
     <h1>Name</h1>
