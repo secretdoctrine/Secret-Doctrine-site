@@ -1,0 +1,8 @@
+- node_class = 'jstree-open'
+- node_class += ' jstree-edit'
+%li{:id => 'book_' + book.id.to_s,
+    :edit_path => refinery.edit_books_admin_book_path(book.id),
+    :class => node_class,
+    :update_path => refinery.books_admin_book_path(book.id),
+    :node_type => :book}
+  = book.name

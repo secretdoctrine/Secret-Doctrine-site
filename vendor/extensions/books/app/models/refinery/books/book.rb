@@ -9,6 +9,12 @@ module Refinery
       has_many :external_book_contents
       belongs_to :book_category
 
+      def update_position(new_parent_id, old_parent_id, new_position, old_position)
+
+        OrderableHelper.process_orderable(self, new_parent_id, old_parent_id, new_position, old_position)
+
+      end
+
       def pdf_content
 
         external_book_contents.find_by_content_type(ExternalBookContent::PDF_TYPE)

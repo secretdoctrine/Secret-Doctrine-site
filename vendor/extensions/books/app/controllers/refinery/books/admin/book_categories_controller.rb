@@ -35,8 +35,8 @@ module Refinery
             }
             format.json {
               @book_category.update_position(
-                  params[:new_parent].to_i,
-                  params[:old_parent].to_i,
+                  params[:new_parent].split('book_category_')[1].to_i,
+                  params[:old_parent].split('book_category_')[1].to_i,
                   params[:new_position].to_i,
                   params[:old_position].to_i)
               render :nothing => true

@@ -36,13 +36,21 @@
 
   $("##{jstree_div}").jstree({
     "plugins" : ["actions", "dnd"],
-    "core" : {"themes" : {"icons" : false}, "multiple" : false, check_callback: "true"}
+    "core" : {
+      "themes" : {"icons" : false},
+      "multiple" : false,
+      "check_callback": function(operation, node, node_parent, node_position, more) {
+          // operation can be 'create_node', 'rename_node', 'delete_node', 'move_node' or 'copy_node'
+          // in case of 'rename_node' node_position is filled with the new node name
+
+          if (operation === "move_node") {
+              return node_parent.li_attr.node_type === "category"; //only allow dropping inside nodes of type 'Parent'
+          }
+          return true;  //allow all other operations
+      }
+    }
   })
   .on('move_node.jstree', function(e, data) {
-    // alert("!");
-    // parent
-    // position
-    // old_position
     $.ajax({
       url: data.node.li_attr.update_path,
       dataType: "json",
@@ -58,7 +66,7 @@
     });
   })
   .on('ready.jstree', function () {
-    var book_category_ids = $(".book_category_add").map(function() { return parseInt($(this).attr("id")) }).get();
+    var book_category_ids = $(".jstree-add").map(function() { return $(this).attr("id") }).get();
     for(var i = 0; i < book_category_ids.length; i++)
     {
       $("##{jstree_div}").jstree(true).add_action(book_category_ids[i], {
@@ -69,12 +77,12 @@
           "selector": "a",
           "event": "click",
           "callback": function(node_id, node, action_id, action_el){
-              document.location.href = "#{refinery.new_books_admin_book_category_path}?book_category_id=" + node.id;
+              document.location.href = node.li_attr.new_path;//"#{refinery.new_books_admin_book_category_path}?book_category_id=" + node.id;
           }
       });
     }
 
-    book_category_ids = $(".book_category_edit").map(function() { return parseInt($(this).attr("id")) }).get();
+    book_category_ids = $(".jstree-edit").map(function() { return $(this).attr("id") }).get();
     for(var i = 0; i < book_category_ids.length; i++)
     {
       $("##{jstree_div}").jstree(true).add_action(book_category_ids[i], {
