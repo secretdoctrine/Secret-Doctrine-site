@@ -35,17 +35,5 @@
   </section>
 <% end %>
 
-<% content_for :side_body do %>
-  <aside>
-    <h2><%= t('.other') %></h2>
-    <ul id="poems">
-      <% @poems.each do |poem| %>
-        <li>
-          <%= link_to poem.title, refinery.authors_poem_path(poem) %>
-        </li>
-      <% end %>
-    </ul>
-  </aside>
-<% end %>
 
 <%= render '/refinery/content_page' %>

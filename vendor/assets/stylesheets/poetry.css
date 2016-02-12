@@ -1,0 +1,117 @@
+@charset "utf-8";
+
+body { background: url(bg_green.jpg) repeat #051D0D; font: 16px Verdana, Arial, Helvetica, sans-serif; color: #fc6;}
+a { color: #fc6; text-decoration: none;}
+a:hover { color: red;}
+
+hgroup { border-top: 1px solid; margin-top: 55px;}
+
+h1, h2, h3, h4 { text-align:center; font-weight: bold; margin: 0;}
+h1 { margin-top: 55px; font-size: 32px;}
+h2 { margin-top: 25px; font-size: 21px; line-height: 1.4; letter-spacing: 1px;}
+h3 { margin-top: 75px; font-size: 24px; line-height: 1.4;}
+
+.centered { width: 900px; margin: 0 auto;}
+.bodycontent { padding: 30px 0; width: auto;}
+
+.cite_l, .cite_r, .sub_cites { font-size: 16px; color: #FFCC66; border: 1px solid #FFCC66; background: #2F3418;}
+.cite_l,
+.cite_r { float: left; text-align: right; background: #0C2C16 url(moria.jpg) no-repeat 0 0; padding: 45px 15px 15px; width: 330px;}
+.cite_l a,
+.cite_r a { color: #FFCC66; text-decoration: none;}
+.cite_l cite,
+.cite_r cite { display: block; font-weight: bold; font-style: normal; margin: 0 0 25px;}
+.cite_l q,
+.cite_r q { display: block;}
+.cite_r { float: right; text-align: left; background: url(agniyoga.gif) no-repeat 100% 0 #0C2C16;}
+
+
+.stih { font: 18px Arial, "Helvetica CY", "Nimbus Sans L", sans-serif; width: 400px; margin: 50px 0 0 300px;}
+.stih p { margin: 0;}
+.stih img { margin-top: 15px;}
+
+marquee { font: 10px Verdana, Arial, Helvetica, sans-serif; color: #FC6;}
+.p_divider { color: transparent; clear: both; height: 27px; background: url(roscherkGreen.gif) no-repeat center; margin: 1em 0;}
+
+/* table of contents */
+
+table.contents_tab { width: 925px; margin: 0 0 0 -25px; background: #E3BC6C; table-layout: fixed;}
+table.contents_tab td { background: #F1DDA5 url(bg_brown.gif); border: outset 3px #E3BC6C; padding: 15px; vertical-align: top;}
+table.contents_tab img { /*float: left; padding: 10px; background: #EFE1BB; border: #E3BC6C inset 3px; min-height: 140px; max-width: 180px;*/}
+table.contents_tab .img_wrapper { float: left; padding: 10px; background: #EFE1BB; border: #E3BC6C inset 3px; height: 140px; width: 180px; text-align: center;}
+table.contents_tab a { color: #865105; text-decoration: none;}
+table.contents_tab a:hover { color: blue;}
+table.contents_tab article { margin: 10px 0 0 207px;}
+table.contents_tab article > div { background: #EFE1BB; padding: 7px 7px 5px; min-height: 100px; font: 12px Arial, "Helvetica CY", "Nimbus Sans L", sans-serif;}
+table.contents_tab h2 { font: 16px Arial, "Helvetica CY", "Nimbus Sans L", sans-serif; letter-spacing: normal; margin: 0 0 10px;}
+table.contents_tab h2 strong { color: red;}
+table.contents_tab p { margin: 0 0 5px;}
+table.contents_tab .prepared_td { background: #EFE1BB; font: 13px Arial, "Helvetica CY", "Nimbus Sans L", sans-serif; color: #865105; text-align: center;}
+table.contents_tab .prepared_td h4 { font-size: 16px; font-weight: normal; color: #FF0000; margin: 0;}
+table.contents_tab .prepared_td h3 { font-size: 16px; font-weight: normal; margin: 0;}
+
+
+/* info */
+.info { padding: 65px 150px; min-height: 120px; font: 14px Arial, "Helvetica CY", "Nimbus Sans L", sans-serif;}
+.info .owl { float: left; margin: 0 3ex 0 0;}
+.info p { margin: 0; text-indent: 3ex;}
+
+/*______________________ inner __________________________*/
+body.poesy_inner {}
+body.poesy_inner .bodycontent { padding-bottom: 0;}
+
+.copyright { width: 705px; margin: 0 auto;}
+
+.art { width: 500px; padding: 65px 150px; margin: 0 auto; background: url(stihi2.jpg) repeat-y center top; color: #865105; font-family: "Times New Roman", Times, serif;}
+.art figure { border: #FDDEA8 ridge 8px; width: 400px; margin: 0 auto 3em; text-align: center;}
+.art figure img { width: 100%; border: none;}
+.art figcaption { padding: 8px; font-size: 13px;}
+.art h1 { font-size: 19px; text-transform: uppercase; color: #900; margin: 0 0 1em;}
+
+.footnote { font-size: 29px; font-weight: bold; color: red;}
+.footnote small { font-size: 18px; background: #ffc; color: #000; text-transform: none; font-weight: normal; font-style: normal; text-align: left; display: none;}
+.footnote:hover small { display: block;}
+
+.verse { margin: 0 0 1.4em 70px;}
+.verse p { margin: 0;}
+
+.tab1 {	margin-left: 4ex; }
+.tab2 {	margin-left: 8ex; }
+.tab3 {	margin-left: 12ex; }
+.tab4 {	margin-left: 16ex; }
+.tab5 {	margin-left: 20ex; }
+
+nav { text-align: center;}
+
+.other_pages a { color: #FFF;}
+body.poesy_inner .other_pages { display: none;}
+
+#recents .box_inner li a { margin: 0; padding: 0; font-size: 100%; background: transparent; color: #91C0D2; text-decoration: underline;}
+
+.clear {
+    clear: both;
+    height: 0;
+    overflow: hidden;
+    font-size: 0;
+}
+
+q {
+    quotes: none;
+}
+
+.image_tile_holder {
+    display: inline-block;
+    height: 140px;
+    width: 180px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.upper {
+    text-transform: uppercase;
+}
+
+p, pre, blockquote, ul, ol, dl {
+    margin: 1em 0;
+}

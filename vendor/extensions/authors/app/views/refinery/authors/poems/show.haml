@@ -1,0 +1,30 @@
+= stylesheet_link_tag 'poetry.css'
+
+%article.bodycontent
+
+  %div.copyright
+    %marquee
+      © Л. П. Дмитриева, 1984-1989, 1992, 1994 гг. Все права защищены.
+      Для публикации стихотворений необходимо письменное разрешение автора или редакции сайта.
+      При размещении отдельных стихотворений в электронном виде ссылка на сайт и автора обязательна. Также обязательна ссылка на автора при цитировании.
+  %div.art
+    %figure
+      = link_to @poem.picture.url, {class: :highslide, onclick: 'return hs.expand(this);'} do
+        = image_fu @poem.picture, nil, {alt: "“На вершинах”"}
+      %figcaption
+        Н. К. Рерих. Тум-мо. На вершинах. 1936 г.
+
+    %h1.upper
+      = @poem.title
+
+    =raw @poem.content
+
+  %nav
+    - if @poem.has_prev_poem?
+      = link_to refinery.authors_poem_path(@poem.prev_poem) do
+        = image_tag 'arrow2_l.gif'
+    = link_to refinery.authors_author_path(@poem.author) do
+      = image_tag 'cont.gif'
+    - if @poem.has_next_poem?
+      = link_to refinery.authors_poem_path(@poem.next_poem) do
+        = image_tag 'arrow2_r.gif'
