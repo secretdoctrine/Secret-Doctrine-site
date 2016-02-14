@@ -4,10 +4,15 @@ module Refinery
 
       self.table_name = 'refinery_books'
 
+      validates :name, :presence => true, :uniqueness => true
+
       has_many :book_pages
       has_many :contents_elements
       has_many :external_book_contents
       belongs_to :book_category
+
+      belongs_to :cover_picture, :class_name => '::Refinery::Image'
+      belongs_to :book_file, :class_name => '::Refinery::Resource'
 
       def update_position(new_parent_id, old_parent_id, new_position, old_position)
 

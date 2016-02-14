@@ -77,7 +77,7 @@
           "selector": "a",
           "event": "click",
           "callback": function(node_id, node, action_id, action_el){
-              document.location.href = node.li_attr.new_path;//"#{refinery.new_books_admin_book_category_path}?book_category_id=" + node.id;
+              document.location.href = node.li_attr.new_path;
           }
       });
     }
@@ -94,6 +94,22 @@
           "event": "click",
           "callback": function(node_id, node, action_id, action_el){
               document.location.href = node.li_attr.edit_path;
+          }
+      });
+    }
+
+    var book_category_ids = $(".jstree-book-add").map(function() { return $(this).attr("id") }).get();
+    for(var i = 0; i < book_category_ids.length; i++)
+    {
+      $("##{jstree_div}").jstree(true).add_action(book_category_ids[i], {
+          "id": "action_book_add",
+          "class": "action_book_add pull-right",
+          "text": "B",
+          "after": true,
+          "selector": "a",
+          "event": "click",
+          "callback": function(node_id, node, action_id, action_el){
+              document.location.href = node.li_attr.new_book_path;
           }
       });
     }

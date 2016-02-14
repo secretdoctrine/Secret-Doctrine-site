@@ -164,7 +164,8 @@ ActiveRecord::Schema.define(version: 20171215181722) do
     t.string   "tree_prefix",      limit: 255
     t.string   "name_comment",     limit: 255
     t.integer  "order_number",     limit: 4,                     null: false
-    t.string   "picture_path",     limit: 255
+    t.integer  "cover_picture_id", limit: 4
+    t.integer  "book_file_id",     limit: 4
     t.text     "synopsis",         limit: 65535
     t.integer  "year",             limit: 4
     t.string   "author",           limit: 255

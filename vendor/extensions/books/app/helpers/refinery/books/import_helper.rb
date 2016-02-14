@@ -70,15 +70,26 @@ module Refinery
             name_prefix: yaml_object['book'].has_key?('name_prefix') ? yaml_object['book']['name_prefix'] : nil,
             tree_prefix: yaml_object['book'].has_key?('tree_prefix') ? yaml_object['book']['tree_prefix'] : nil,
             name_comment: yaml_object['book'].has_key?('name_comment') ? yaml_object['book']['name_comment'] : nil,
-            picture_path: yaml_object['book'].has_key?('picture_path') ? yaml_object['book']['picture_path'] : nil,
+            #picture_path: yaml_object['book'].has_key?('picture_path') ? yaml_object['book']['picture_path'] : nil,
             can_buy: yaml_object['book'].has_key?('can_buy') ? yaml_object['book']['can_buy'] == 'true' : false
         )
 
+        if yaml_object['book'].has_key?('picture_path')
+          book.cover_picture = ::Refinery::Image.new
+          book.cover_picture.image = File.open(File.expand_path(yaml_object['book']['picture_path']))
+          book.cover_picture.save
+          book.save
+        end
+
         if yaml_object.has_key?('book_path')
-          ExternalBookContent.create!(
-              book_id: book.id,
-              path: yaml_object['book_path'],
-              content_type: ExternalBookContent::PDF_TYPE)
+          book.book_file = ::Refinery::Resource.new
+          book.book_file.file = File.open(File.expand_path(yaml_object['book_path']))
+          book.book_file.save
+          book.save
+          #ExternalBookContent.create!(
+          #    book_id: book.id,
+          #    path: yaml_object['book_path'],
+          #    content_type: ExternalBookContent::PDF_TYPE)
         end
 
         if yaml_object['book']['parts']

@@ -6,6 +6,13 @@ module Refinery
         crudify :'refinery/books/book',
                 :title_attribute => 'name'
 
+        def new
+
+          @book = Book.new
+          @parent = BookCategory.find(params[:book_category_id])
+
+        end
+
         def update
           respond_to do |format|
 

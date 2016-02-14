@@ -8,8 +8,9 @@ class CreateBooksBooks < ActiveRecord::Migration
       t.string    :tree_prefix
       t.string    :name_comment
       t.integer   :order_number,      null:false
-      #t.integer   :picture_path_id
-      t.string    :picture_path
+      t.integer   :cover_picture_id
+      t.integer   :book_file_id
+      #t.string    :picture_path
       t.text      :synopsis
       t.integer   :year
       t.string    :author

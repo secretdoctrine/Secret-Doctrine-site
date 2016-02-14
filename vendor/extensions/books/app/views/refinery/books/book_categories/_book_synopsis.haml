@@ -1,8 +1,10 @@
 %div{class: 'pro'}
   %div{class: 'cover'}
     - if element.is_book
-      = link_to refinery.cover_books_book_path(element.model.id), {'data-lightbox' => "#{element.model.id}"} do
-        = image_tag refinery.cover_books_book_path(element.model.id)
+      = link_to element.model.cover_picture.url, {'data-lightbox' => "#{element.model.id}"} do
+        = image_tag element.model.cover_picture.url
+      /= link_to refinery.cover_books_book_path(element.model.id), {'data-lightbox' => "#{element.model.id}"} do
+      /  = image_tag refinery.cover_books_book_path(element.model.id)
   %div{class: 'anonce'}
     %h2
       - if element.is_book
@@ -13,9 +15,9 @@
       = element.model.synopsis
   %div{class: 'footer'}
     - if element.is_book
-      - pdf_content = element.model.pdf_content
+      - pdf_content = element.model.book_file
       - if pdf_content
-        %a{class: 'first last', href: "#{refinery.books_book_external_book_content_path(element.model.id, pdf_content.id)}"}
+        %a{class: 'first last', href: pdf_content.file.url}
           %span{class: 's1'}
             %span{class: 's2'}
               =I18n.t('library.download')

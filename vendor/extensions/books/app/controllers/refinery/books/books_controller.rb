@@ -24,10 +24,12 @@ module Refinery
 
         @book = Book.find_by_id(params[:id])
         return render_404 if @book.nil?
-        return render_404 if @book.picture_path.nil? or not File.exist?(File.expand_path(@book.picture_path))
-
+        return render_404 if @book.cover_picture.nil?
+#::Refinery::Image
         send_file(
-            File.expand_path(@book.picture_path),
+            #File.expand_path(@book.picture_path), #
+            # @book.cover_picture.image,
+            "#{Rails.root}/public/#{@book.cover_picture.url}",
             disposition: :inline)
 
       end
