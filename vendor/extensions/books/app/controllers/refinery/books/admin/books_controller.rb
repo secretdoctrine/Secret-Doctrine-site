@@ -13,6 +13,14 @@ module Refinery
 
         end
 
+        def edit
+          @new_contents_element = ContentsElement.new
+          @new_contents_element.book_id = @book.id
+          @new_contents_element.ce_type = ContentsElement::SECTION_CE_TYPE
+          @new_contents_element.name = ::I18n.t('contents_elements.new_section')
+          @new_contents_element.page_number = 1
+        end
+
         def update
           respond_to do |format|
 

@@ -44,6 +44,15 @@ module Refinery
 
       end
 
+      def array_for_select
+
+        [[::I18n.t('contents_elements.section'), SECTION_CE_TYPE],
+         [::I18n.t('contents_elements.chapter'), CHAPTER_CE_TYPE],
+         [::I18n.t('contents_elements.part'), PART_CE_TYPE],
+         [::I18n.t('contents_elements.page'), PAGE_CE_TYPE]]
+
+      end
+
     end
   end
 end

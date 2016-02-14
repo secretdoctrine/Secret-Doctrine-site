@@ -19,6 +19,8 @@ Refinery::Core::Engine.routes.draw do
           post :update_positions
         end
       end
+
+      resources :contents_elements
     end
   end
 

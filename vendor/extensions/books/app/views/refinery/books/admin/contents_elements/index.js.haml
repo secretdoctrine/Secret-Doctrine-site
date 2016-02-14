@@ -1,0 +1,4 @@
+- new_content = j(render :partial => '/refinery/books/admin/contents_elements/contents_element', :collection => @contents_elements)
+$("#contents_elements").html("#{new_content}")
+- if @scroll_element
+  $("#ce_#{@scroll_element.id}")[0].scrollIntoView(true);

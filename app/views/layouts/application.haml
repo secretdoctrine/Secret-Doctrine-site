@@ -8,7 +8,7 @@
     = javascript_include_tag 'refinery/books/application'
     %link{:href => "/favicon.ico", :rel => "shortcut icon"}
 
-  - csrf_meta_tags
+  = csrf_meta_tags
 
   - body_class = 'bluegamma'
   - if defined? @page and @page.html_class_name
