@@ -1,4 +1,6 @@
-= render :partial => 'left_bar', :locals => {:page => @page, :root_multimedia_groups => @root_multimedia_groups}
+= stylesheet_link_tag 'multimedia.css'
 
-= render :partial => 'multimedia_group', :locals => {:multimedia_group => @multimedia_group}
 
+%div.mainclear
+  = render :partial => 'multimedia_group', :locals => {:multimedia_group => @multimedia_group}
+  = render :partial => 'left_bar', :locals => {:page => @page, :root_multimedia_groups => @root_multimedia_groups}
