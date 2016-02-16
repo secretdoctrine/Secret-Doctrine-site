@@ -283,7 +283,9 @@ module Refinery
 
         end
 
-
+        spec = Gem::Specification.find_by_name('thinking-sphinx')
+        load("#{spec.gem_dir}/lib/thinking_sphinx/tasks.rb")
+        Rake::Task['ts:index'].execute
 
         result
 
