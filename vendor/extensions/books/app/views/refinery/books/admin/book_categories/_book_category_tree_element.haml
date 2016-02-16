@@ -2,6 +2,7 @@
 - node_class += ' jstree-add'
 - node_class += ' jstree-book-add'
 - node_class += ' jstree-edit' unless book_category.is_root
+- node_class += ' jstree-destroy' unless book_category.is_root
 
 %li{:id => "book_category_" + book_category.id.to_s,
     :edit_path => refinery.edit_books_admin_book_category_path(book_category.id),
@@ -9,6 +10,7 @@
     :new_book_path => refinery.new_books_admin_book_path + '?book_category_id=' + book_category.id.to_s,
     :class => node_class,
     :update_path => refinery.books_admin_book_category_path(book_category.id),
+    :destroy_path => refinery.books_admin_book_category_path(book_category.id),
     :node_type => :category}
   = book_category.name
   - book_category.children_array.each do |child|

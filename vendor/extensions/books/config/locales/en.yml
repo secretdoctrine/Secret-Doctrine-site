@@ -1,4 +1,69 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
 en:
+  contents_elements:
+    section: 'Раздел'
+    chapter: 'Глава'
+    part: 'Часть'
+    page: 'Страница'
+    new_section: 'Новый раздел'
+    delete: 'Удалить'
+    delete_confirm: 'Вы уверены?'
+  importer:
+    page: 'Страница'
+    invalid_book_category: 'Неверная родительская категория'
+    invalid_config_file: 'Неверный файл конфигурации'
+    unable_to_create_dir: 'Невозможно создать каталог'
+    no_pdf_file: 'Отсутствует pdf файл для страницы'
+    no_html_file: 'Отсутствует html файл для страницы'
+  menu:
+    index: 'Главная'
+    news: 'Новости'
+    library: 'Библиотека'
+    symbols: 'Символы'
+    poetry: 'Поэзия'
+    audio: 'Мультимедиа'
+    archive: 'Архив'
+    feedback: 'Гостевая'
+  library:
+    delete_confirm: 'Вы уверены?'
+    categories_root_name: 'Все категории'
+    show_categories: 'Показать категории'
+    show_contents: 'Показать оглавление'
+    search: 'Искать...'
+    search_more: 'Опции...'
+    enter_category: 'Войти в раздел'
+    read: 'Читать'
+    download: 'Скачать'
+    go_to_page_prefix: 'Страница: '
+    go_to_page: 'Перейти'
+    search_page:
+      view_html: 'Страницы целиком'
+      view_snippet: 'Только вхождения'
+      export: 'Скачать результаты поиска (PDF)'
+      export_page: 'Скачать в PDF'
+      search_exact_words: 'Искать без словоформ'
+      ignore_relevance: 'Группировать результаты без учета релевантности'
+      results_per_page: 'Результатов на странице'
+      too_many_results: 'Слишком много результатов'
   refinery:
     plugins:
       book_categories:
@@ -42,24 +107,24 @@ en:
       books:
         show:
           other: Other Books
-  activerecord:
-    attributes:
-      refinery/books/book_category:
-        book_category_id: Book Category
-        name: Name
-        is_root: Is Root
-        order_number: Order Number
-        synopsis: Synopsis
-      refinery/books/book:
-        name: Name
-        name_prefix: Name Prefix
-        tree_prefix: Tree Prefix
-        name_comment: Name Comment
-        order_number: Order Number
-        picture_path: Picture Path
-        synopsis: Synopsis
-        year: Year
-        author: Author
-        page_count: Page Count
-        can_buy: Can Buy
-        book_category_id: Book Category
+    activerecord:
+      attributes:
+        refinery/books/book_category:
+          book_category_id: Book Category
+          name: Name
+          is_root: Is Root
+          order_number: Order Number
+          synopsis: Synopsis
+        refinery/books/book:
+          name: Name
+          name_prefix: Name Prefix
+          tree_prefix: Tree Prefix
+          name_comment: Name Comment
+          order_number: Order Number
+          picture_path: Picture Path
+          synopsis: Synopsis
+          year: Year
+          author: Author
+          page_count: Page Count
+          can_buy: Can Buy
+          book_category_id: Book Category

@@ -18,6 +18,7 @@ class CreateBooksBooks < ActiveRecord::Migration
       t.boolean   :can_buy,           null:false, default:false
       t.integer   :book_category_id,  index:true
       t.integer   :position
+      t.string    :local_path
 
       t.timestamps
 

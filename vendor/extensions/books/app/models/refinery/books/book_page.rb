@@ -211,6 +211,7 @@ module Refinery
         return name if contents_element.nil? or contents_element.page_number != internal_order
 
         name += '. ' + contents_element.name
+        name += ' ' + contents_element.name_comment unless contents_element.name_comment.blank?
         name.html_safe
 
       end

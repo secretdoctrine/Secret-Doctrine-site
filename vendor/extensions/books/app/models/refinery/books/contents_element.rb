@@ -22,6 +22,17 @@ module Refinery
       PART_CE_TYPE_NAME = 'part'
       PAGE_CE_TYPE_NAME = 'page'
 
+      def self.type_name_to_ce_type(type_name)
+
+        return SECTION_CE_TYPE if type_name == SECTION_CE_TYPE_NAME
+        return CHAPTER_CE_TYPE if type_name == CHAPTER_CE_TYPE_NAME
+        return PART_CE_TYPE    if type_name == PART_CE_TYPE_NAME
+        return PAGE_CE_TYPE    if type_name == PAGE_CE_TYPE_NAME
+
+        nil
+
+      end
+
       def get_nest_level
 
         return NEST_LEVEL_SECTION_CE_TYPE if ce_type == SECTION_CE_TYPE

@@ -10,6 +10,7 @@ module Refinery
 
           @book = Book.new
           @parent = BookCategory.find(params[:book_category_id])
+          @import_options = Importer.books_to_load
 
         end
 
@@ -19,20 +20,40 @@ module Refinery
           @new_contents_element.ce_type = ContentsElement::SECTION_CE_TYPE
           @new_contents_element.name = ::I18n.t('contents_elements.new_section')
           @new_contents_element.page_number = 1
+
+          @import_options = Importer.books_to_load
+
         end
 
         def update
           respond_to do |format|
 
             format.html {
-              if @book.update_attributes(book_params)
-                flash.notice = t(
-                    'refinery.crudify.updated',
-                    :what => "'#{@book.name}'"
-                )
-                create_or_update_successful
+              @parent = BookCategory.find(params[:book][:book_category_id])
+              @import_options = Importer.books_to_load
+
+              if params.has_key? :file_upload
+                result = Importer.import_yaml(@book, params[:file_upload], params[:book][:book_category_id].to_i, params[:book][:order_number].to_i)
+                @book = result[:book]
+                if result[:success]
+                  flash.notice = t(
+                      'refinery.crudify.updated',
+                      :what => @book.name
+                  )
+                else
+                  flash.alert = result[:message]
+                end
+                redirect_to refinery.edit_books_admin_book_path(@book.id)
               else
-                create_or_update_unsuccessful 'edit'
+                if @book.update_attributes(book_params)
+                  flash.notice = t(
+                      'refinery.crudify.updated',
+                      :what => "'#{@book.name}'"
+                  )
+                  create_or_update_successful
+                else
+                  create_or_update_unsuccessful 'edit'
+                end
               end
             }
             format.json {
@@ -44,6 +65,40 @@ module Refinery
               render :nothing => true
             }
           end
+        end
+
+        def create
+
+          @parent = BookCategory.find(params[:book][:book_category_id])
+          @import_options = Importer.books_to_load
+
+          if params.has_key? :file_upload
+            result = Importer.import_yaml(Book.new, params[:file_upload], params[:book][:book_category_id].to_i, params[:book][:order_number].to_i)
+            @book = result[:book]
+            if result[:success]
+              flash.notice = t(
+                  'refinery.crudify.created',
+                  :what => @book.name
+              )
+              create_or_update_successful
+            else
+              flash.alert = result[:message]
+              @book = Book.new
+              create_or_update_unsuccessful 'new'
+            end
+          else
+            if (@book = Book.create(book_params)).valid?
+              flash.notice = t(
+                  'refinery.crudify.created',
+                  :what => @book.name
+              )
+              create_or_update_successful
+            else
+              #@book = Book.new
+              create_or_update_unsuccessful 'new'
+            end
+          end
+
         end
 
         private

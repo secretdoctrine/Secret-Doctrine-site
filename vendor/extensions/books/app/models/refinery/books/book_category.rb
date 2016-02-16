@@ -10,6 +10,12 @@ module Refinery
 
       ROOT_NAME = ::I18n.t('library.categories_root_name')
 
+      def destroy
+        book_categories.each {|x| x.destroy}
+        books.each {|x| x.destroy}
+        super
+      end
+
       def children_array
 
         result = []
@@ -37,7 +43,7 @@ module Refinery
 
       def self.get_root!
 
-        root_category = find_by(name: ROOT_NAME)
+        root_category = find_by(is_root: true)
         root_category = create!(name: ROOT_NAME, is_root: true, order_number: 0) if root_category.nil?
         root_category
 

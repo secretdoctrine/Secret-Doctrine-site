@@ -173,6 +173,7 @@ ActiveRecord::Schema.define(version: 20171215181722) do
     t.boolean  "can_buy",                        default: false, null: false
     t.integer  "book_category_id", limit: 4
     t.integer  "position",         limit: 4
+    t.string   "local_path",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end

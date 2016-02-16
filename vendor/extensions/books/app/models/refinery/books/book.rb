@@ -2,9 +2,19 @@ module Refinery
   module Books
     class Book < Refinery::Core::BaseModel
 
+      def destroy
+        begin
+          if File.expand_path(local_path).start_with?(File.expand_path(File.join(Rails.root, "public")))
+            FileUtils.rm_r(local_path)
+          end
+        rescue
+        end
+        super
+      end
+
       self.table_name = 'refinery_books'
 
-      validates :name, :presence => true, :uniqueness => true
+      validates :name, :presence => true#, :uniqueness => true
 
       has_many :book_pages
       has_many :contents_elements
