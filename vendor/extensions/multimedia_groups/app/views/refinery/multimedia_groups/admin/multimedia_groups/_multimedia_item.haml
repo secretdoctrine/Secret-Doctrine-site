@@ -1,0 +1,11 @@
+- node_class = 'jstree-open'
+- node_class += ' jstree-edit'
+- node_class += ' jstree-destroy'
+%li{:id => 'item_' + multimedia_item.id.to_s,
+    :edit_path => refinery.edit_multimedia_groups_admin_multimedia_item_path(multimedia_item.id),
+    :class => node_class,
+    :update_path => refinery.multimedia_groups_admin_multimedia_item_path(multimedia_item.id),
+    :destroy_path => refinery.multimedia_groups_admin_multimedia_item_path(multimedia_item.id),
+    :parent_group_id => "group_" + multimedia_item.multimedia_group.id.to_s,
+    :node_type => :item}
+  = multimedia_item.title

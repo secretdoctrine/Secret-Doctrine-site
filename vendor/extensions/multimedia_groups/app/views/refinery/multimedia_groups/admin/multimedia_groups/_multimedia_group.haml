@@ -1,0 +1,22 @@
+- node_class = 'jstree-open'
+- node_class += ' jstree-group-add'
+- node_class += ' jstree-item-add' unless multimedia_group.is_root
+- node_class += ' jstree-edit' unless multimedia_group.is_root
+- node_class += ' jstree-destroy' unless multimedia_group.is_root
+
+%li{:id => "group_" + multimedia_group.id.to_s,
+    :edit_path => refinery.edit_multimedia_groups_admin_multimedia_group_path(multimedia_group.id),
+    :new_group_path => refinery.new_multimedia_groups_admin_multimedia_group_path + '?multimedia_group_id=' + multimedia_group.id.to_s,
+    :new_item_path => refinery.new_multimedia_groups_admin_multimedia_item_path + '?multimedia_group_id=' + multimedia_group.id.to_s,
+    :class => node_class,
+    :update_path => refinery.multimedia_groups_admin_multimedia_group_path(multimedia_group.id),
+    :destroy_path => refinery.multimedia_groups_admin_multimedia_group_path(multimedia_group.id),
+    :is_root => multimedia_group.is_root ? 'true' : 'false',
+    :node_type => :group}
+  = multimedia_group.title
+  - multimedia_group.children_array.each do |child|
+    %ul
+      - if child.is_a?(Refinery::MultimediaGroups::MultimediaGroup)
+        = render :partial => 'multimedia_group', :locals => {multimedia_group: child}
+      - else
+        = render :partial => 'multimedia_item', :locals => {multimedia_item: child}

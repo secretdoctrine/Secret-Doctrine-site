@@ -164,8 +164,7 @@ ActiveRecord::Schema.define(version: 20171215181722) do
     t.string   "tree_prefix",      limit: 255
     t.string   "name_comment",     limit: 255
     t.integer  "order_number",     limit: 4,                     null: false
-    t.integer  "cover_picture_id", limit: 4
-    t.integer  "book_file_id",     limit: 4
+    t.string   "picture_path",     limit: 255
     t.text     "synopsis",         limit: 65535
     t.integer  "year",             limit: 4
     t.string   "author",           limit: 255
@@ -173,7 +172,6 @@ ActiveRecord::Schema.define(version: 20171215181722) do
     t.boolean  "can_buy",                        default: false, null: false
     t.integer  "book_category_id", limit: 4
     t.integer  "position",         limit: 4
-    t.string   "local_path",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -281,6 +279,8 @@ ActiveRecord::Schema.define(version: 20171215181722) do
     t.integer  "position",            limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "order_number",        limit: 4,   default: 0,     null: false
+    t.boolean  "is_root",                         default: false, null: false
   end
 
   create_table "refinery_multimedia_groups_multimedia_items", force: :cascade do |t|
@@ -292,6 +292,8 @@ ActiveRecord::Schema.define(version: 20171215181722) do
     t.integer  "position",            limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "order_number",        limit: 4,   default: 0, null: false
+    t.integer  "hidef_audio_file_id", limit: 4
   end
 
   create_table "refinery_news_items", force: :cascade do |t|

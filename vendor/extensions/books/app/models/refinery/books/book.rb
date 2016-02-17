@@ -2,6 +2,10 @@ module Refinery
   module Books
     class Book < Refinery::Core::BaseModel
 
+      def parent_id=(new_id)
+        self.book_category_id = new_id
+      end
+
       def destroy
         begin
           if File.expand_path(local_path).start_with?(File.expand_path(File.join(Rails.root, "public")))
@@ -26,7 +30,7 @@ module Refinery
 
       def update_position(new_parent_id, old_parent_id, new_position, old_position)
 
-        OrderableHelper.process_orderable(self, new_parent_id, old_parent_id, new_position, old_position)
+        OrderableHelper.process_orderable(self, new_parent_id, old_parent_id, new_position, old_position, BookCategory)
 
       end
 

@@ -2,13 +2,13 @@ module Refinery
   module Books
     class OrderableHelper
 
-      def self.process_orderable(orderable_item, new_parent_id, old_parent_id, new_position, old_position)
+      def self.process_orderable(orderable_item, new_parent_id, old_parent_id, new_position, old_position, parent_class)
 
         items_to_increase = []
         items_to_reduce = []
 
-        new_parent = BookCategory.find(new_parent_id)
-        old_parent = BookCategory.find(old_parent_id)
+        new_parent = parent_class.find(new_parent_id)
+        old_parent = parent_class.find(old_parent_id)
 
         if new_parent_id != old_parent_id
 
@@ -46,7 +46,7 @@ module Refinery
 
           end
 
-          orderable_item.book_category_id = new_parent_id
+          orderable_item.parent_id = new_parent_id
           orderable_item.order_number = new_position
 
           orderable_item.save

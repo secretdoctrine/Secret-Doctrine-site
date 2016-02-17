@@ -1,0 +1,44 @@
+= form_for [refinery, :multimedia_groups_admin, @multimedia_item] do |f|
+  = render '/refinery/admin/error_messages',
+    :object => @multimedia_item,
+              :include_object_name => true
+
+  - if @multimedia_item.id.nil?
+    / This is 'new'
+    = f.hidden_field :multimedia_group_id, {:value => @parent.id}
+    = f.hidden_field :order_number, {:value => @parent.get_next_order_number}
+  - else
+    / This is 'edit'
+    = f.hidden_field :multimedia_group_id, {:value => @multimedia_item.multimedia_group_id}
+    = f.hidden_field :order_number, {:value => @multimedia_item.order_number}
+
+  %div.field
+    = f.label :audio_file
+    = render '/refinery/admin/resource_picker',
+      :f => f,
+               :field => :audio_file_id,
+               :resource => @multimedia_item.audio_file
+
+  %div.field
+    = f.label :hidef_audio_file
+    = render '/refinery/admin/resource_picker',
+      :f => f,
+               :field => :hidef_audio_file_id,
+               :resource => @multimedia_item.hidef_audio_file
+
+  %div.field
+    = f.label :title
+    = f.text_field :title
+
+  %div.field
+    = f.label :video_link
+    = f.text_field :video_link
+
+  %div.field
+    = f.label :book_link
+    = f.text_field :book_link
+
+  = render '/refinery/admin/form_actions', :f => f,
+    :continue_editing => false,
+             :delete_title => t('delete', :scope => 'refinery.multimedia_items.admin.multimedia_items.multimedia_item'),
+             :delete_confirmation => t('message', :scope => 'refinery.admin.delete', :title => @multimedia_item.title)

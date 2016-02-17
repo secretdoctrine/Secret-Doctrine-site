@@ -10,6 +10,10 @@ module Refinery
 
       ROOT_NAME = ::I18n.t('library.categories_root_name')
 
+      def parent_id=(new_id)
+        self.book_category_id = new_id
+      end
+
       def destroy
         book_categories.each {|x| x.destroy}
         books.each {|x| x.destroy}
@@ -28,7 +32,7 @@ module Refinery
 
       def update_position(new_parent_id, old_parent_id, new_position, old_position)
 
-        OrderableHelper.process_orderable(self, new_parent_id, old_parent_id, new_position, old_position)
+        OrderableHelper.process_orderable(self, new_parent_id, old_parent_id, new_position, old_position, BookCategory)
 
       end
 

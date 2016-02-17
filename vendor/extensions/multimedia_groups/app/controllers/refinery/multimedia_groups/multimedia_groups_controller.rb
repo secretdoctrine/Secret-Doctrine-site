@@ -22,7 +22,8 @@ module Refinery
     protected
 
       def find_root_multimedia_groups
-        @root_multimedia_groups = MultimediaGroup.where(:multimedia_group_id => nil).order('position ASC')
+        @root_multimedia_groups = MultimediaGroup.get_root!.multimedia_groups.sort_by{|x| x.order_number}
+        #@root_multimedia_groups = MultimediaGroup.where(:multimedia_group_id => nil).order('position ASC')
       end
 
       def find_page
