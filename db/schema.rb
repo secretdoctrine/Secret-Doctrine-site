@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171215181722) do
+ActiveRecord::Schema.define(version: 20200218122338) do
 
   create_table "book_categories", force: :cascade do |t|
     t.integer "book_category_id", limit: 4
@@ -167,7 +167,8 @@ ActiveRecord::Schema.define(version: 20171215181722) do
     t.string   "tree_prefix",      limit: 255
     t.string   "name_comment",     limit: 255
     t.integer  "order_number",     limit: 4,                     null: false
-    t.string   "picture_path",     limit: 255
+    t.integer  "cover_picture_id", limit: 4
+    t.integer  "book_file_id",     limit: 4
     t.text     "synopsis",         limit: 65535
     t.integer  "year",             limit: 4
     t.string   "author",           limit: 255
@@ -175,6 +176,7 @@ ActiveRecord::Schema.define(version: 20171215181722) do
     t.boolean  "can_buy",                        default: false, null: false
     t.integer  "book_category_id", limit: 4
     t.integer  "position",         limit: 4
+    t.string   "local_path",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
