@@ -7,15 +7,6 @@ class DoctrineMailer < ApplicationMailer
   #
 
   def create_delivery_options
-    #config.action_mailer.delivery_method = :smtp
-    #config.action_mailer.smtp_settings = {
-    #    address:              'smtp.gmail.com',
-    #    port:                 587,
-    #    domain:               'gmail.com',
-    #    user_name:            'alex.roev@gmail.com',
-    #    password:             'mfbiMFL7',
-    #    authentication:       :login,
-    #    enable_starttls_auto: true  }
 
     options = {
         address:              'smtp.gmail.com',
