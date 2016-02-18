@@ -1,0 +1,31 @@
+es:
+  refinery:
+    plugins:
+      feedback_entries:
+        title: Feedback Entries
+#        article: masculino/femenino
+    feedback_entries:
+      admin:
+        feedback_entries:
+          actions:
+            create_new: Crear nuevo feedback entry
+            reorder: Reordenar feedback entries
+            reorder_done: Reordenación de feedback entries completada
+          records:
+            title: Feedback Entries
+            sorry_no_results: Lo siento, no hay resultados
+            no_items_yet: No hay feedback entries todavía. Pulsa en "Crear nuevo Feedback Entry" para crear tu primer feedback entry.
+          feedback_entry:
+            view_live_html: Ver este feedback entry como abierto al público <br/><em>(abre en ventana nueva)</em>
+            edit: Editar este feedback entry
+            delete: Borrar este feedback entry para siempre
+      feedback_entries:
+        show:
+          other: Otros feedback entries
+  activerecord:
+    attributes:
+      'refinery/feedback_entries/feedback_entry':
+        poster_name: Poster Name
+        poster_email: Poster Email
+        entry_title: Entry Title
+        entry_text: Entry Text

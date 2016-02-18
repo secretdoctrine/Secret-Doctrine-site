@@ -1,0 +1,20 @@
+<ul>
+  <% if ::Refinery::FeedbackEntries::Admin::FeedbackEntriesController.searchable? %>
+    <li>
+      <%= render '/refinery/admin/search', :url => refinery.feedback_entries_admin_feedback_entries_path %>
+    </li>
+  <% end %>
+  <li>
+    <%= action_label :add, refinery.new_feedback_entries_admin_feedback_entry_path, t('.create_new') %>
+  </li>
+<% if !searching? && ::Refinery::FeedbackEntries::Admin::FeedbackEntriesController.sortable? && ::Refinery::FeedbackEntries::FeedbackEntry.many? %>
+  <li>
+    <%= action_label :reorder,
+                     refinery.feedback_entries_admin_feedback_entries_path,
+                     t('.reorder', what:  "Feedback Entries"), id: 'reorder_action'%>
+    <%= action_label :reorder_done,
+                     refinery.feedback_entries_admin_feedback_entries_path,
+                      t('.reorder_done', what: "Feedback Entries"), id: 'reorder_action_done', class: 'hidden'%>
+  </li>
+<% end %>
+</ul>

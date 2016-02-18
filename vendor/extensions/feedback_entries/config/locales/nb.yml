@@ -1,0 +1,30 @@
+nb:
+  refinery:
+    plugins:
+      feedback_entries:
+        title: Feedback Entries
+    feedback_entries:
+      admin:
+        feedback_entries:
+          actions:
+            create_new: Lag en ny Feedback Entry
+            reorder: Endre rekkefølgen på Feedback Entries
+            reorder_done: Ferdig å endre rekkefølgen Feedback Entries
+          records:
+            title: Feedback Entries
+            sorry_no_results: Beklager! Vi fant ikke noen resultater.
+            no_items_yet: Det er ingen Feedback Entries enda. Klikk på "Lag en ny Feedback Entry" for å legge til din første feedback entry.
+          feedback_entry:
+            view_live_html: Vis hvordan denne feedback entry ser ut offentlig <br/><em>(åpner i et nytt vindu)</em>
+            edit: Rediger denne feedback entry
+            delete: Fjern denne feedback entry permanent
+      feedback_entries:
+        show:
+          other: Andre Feedback Entries
+  activerecord:
+    attributes:
+      'refinery/feedback_entries/feedback_entry':
+        poster_name: Poster Name
+        poster_email: Poster Email
+        entry_title: Entry Title
+        entry_text: Entry Text

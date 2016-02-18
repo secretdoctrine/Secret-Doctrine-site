@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200218122338) do
+ActiveRecord::Schema.define(version: 20200218122339) do
 
   create_table "book_categories", force: :cascade do |t|
     t.integer "book_category_id", limit: 4
@@ -249,6 +249,16 @@ ActiveRecord::Schema.define(version: 20200218122338) do
     t.boolean  "site_news",                   default: true,  null: false
     t.datetime "news_datetime",                               null: false
     t.integer  "position",      limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "refinery_feedback_entries", force: :cascade do |t|
+    t.string   "poster_name",    limit: 255
+    t.string   "poster_email",   limit: 255
+    t.string   "entry_title",    limit: 255
+    t.text     "entry_text",     limit: 65535
+    t.datetime "entry_datetime"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

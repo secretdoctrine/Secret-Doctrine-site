@@ -1,0 +1,40 @@
+<%= form_for [refinery, :feedback_entries_admin, @feedback_entry] do |f| -%>
+  <%= render '/refinery/admin/error_messages',
+              :object => @feedback_entry,
+              :include_object_name => true %>
+
+  <div class='field'>
+    <%= f.label :poster_name -%>
+    <%= f.text_field :poster_name, :class => 'larger widest' -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :poster_email -%>
+    <%= f.text_field :poster_email -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :entry_title -%>
+    <%= f.text_field :entry_title -%>
+  </div>
+
+  <div class='field'>
+    <%= render '/refinery/admin/wysiwyg',
+                :f => f,
+                :fields => [:entry_text],
+                :object => "feedback_entries/feedback_entry" -%>
+  </div>
+
+  <%= render '/refinery/admin/form_actions', :f => f,
+             :continue_editing => false,
+             :delete_title => t('delete', :scope => 'refinery.feedback_entries.admin.feedback_entries.feedback_entry'),
+             :delete_confirmation => t('message', :scope => 'refinery.admin.delete', :title => @feedback_entry.poster_name) -%>
+<% end -%>
+
+<% content_for :javascripts do -%>
+  <script>
+    $(document).ready(function(){
+      page_options.init(false, '', '');
+    });
+  </script>
+<% end -%>

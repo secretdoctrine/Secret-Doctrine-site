@@ -1,0 +1,30 @@
+tr:
+  refinery:
+    plugins:
+      feedback_entries:
+        title: Feedback Entries
+    feedback_entries:
+      admin:
+        feedback_entries:
+          actions:
+            create_new: Yeni Ekle Feedback Entry
+            reorder: Tekrar sirala Feedback Entries
+            reorder_done: Tekrar siralama tamamlandiFeedback Entries
+          records:
+            title: Feedback Entries
+            sorry_no_results: Uzgunum! Herhangi bir sonuc bulunamadi.
+            no_items_yet: Herhangi bir Feedback Entries yok henuz.  Tikla "Yeni Ekle Feedback Entry" eklemek senin ilk feedback entry.
+          feedback_entry:
+            view_live_html: Bunu canlu feedback entry goruntule <br/><em>(yeni bir pencerede acar)</em>
+            edit: Bunu Duzenle feedback entry
+            delete: Bunu Sil feedback entry sonsuza dek
+      feedback_entries:
+        show:
+          other: Diger Feedback Entries
+  activerecord:
+    attributes:
+      'refinery/feedback_entries/feedback_entry':
+        poster_name: Poster Name
+        poster_email: Poster Email
+        entry_title: Entry Title
+        entry_text: Entry Text

@@ -1,0 +1,32 @@
+zh-CN:
+  refinery:
+    plugins:
+      feedback_entries:
+        title: Feedback Entries
+    feedback_entries:
+      admin:
+        feedback_entries:
+          actions:
+            create_new: 建立新的 Feedback Entry
+            reorder: 对 Feedback Entries 重新排序
+            reorder_done: 对 Feedback Entries 的重新排序结束
+          records:
+            title: Feedback Entries
+            sorry_no_results: 对不起，未找到结果。 #Sorry! There are no results found.
+
+            # There are no Feedback Entries yet. Click "Add New Feedback Entry" to add your first feedback entry.
+            no_items_yet: 目前没有 Feedback Entries . 点击 "Add New Feedback Entry" 创建一个feedback entry.
+          feedback_entry:
+            view_live_html: 查看 feedback entry 的最新内容.<br/><em>(新窗口中打开)</em>
+            edit: 编辑 feedback entry
+            delete: 永久删除 feedback entry
+      feedback_entries:
+        show:
+          other: 其他 Feedback Entries
+  activerecord:
+    attributes:
+      'refinery/feedback_entries/feedback_entry':
+        poster_name: Poster Name
+        poster_email: Poster Email
+        entry_title: Entry Title
+        entry_text: Entry Text

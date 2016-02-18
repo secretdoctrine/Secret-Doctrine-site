@@ -1,0 +1,12 @@
+%tr
+  %td
+    = entry.title
+  %td
+    = entry.entry_datetime.strftime("%d.%m.%Y %H:%M")
+  %td
+    %span.actions
+      = action_icon(:preview, refinery.feedback_entries_admin_feedback_entry_path(entry), t('.view_live_html'))
+      = action_icon(:delete,  refinery.feedback_entries_admin_feedback_entry_path(entry), t('.delete'),
+          { class: "cancel confirm-delete",
+            data: {confirm: t('message',  scope: 'refinery.admin.delete', title: entry.title)}})
+

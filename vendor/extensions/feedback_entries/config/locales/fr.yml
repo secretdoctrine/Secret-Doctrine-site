@@ -1,0 +1,30 @@
+fr:
+  refinery:
+    plugins:
+      feedback_entries:
+        title: Feedback Entries
+    feedback_entries:
+      admin:
+        feedback_entries:
+          actions:
+            create_new: Créer un(e) nouve(au/l/lle) Feedback Entry
+            reorder: Réordonner les Feedback Entries
+            reorder_done: Fin de réordonnancement des Feedback Entries
+          records:
+            title: Feedback Entries
+            sorry_no_results: "Désolé ! Aucun résultat."
+            no_items_yet: 'Il n''y a actuellement aucun(e) Feedback Entry. Cliquer sur "Créer un(e) nouve(au/l/lle) Feedback Entry" pour créer votre premi(er/ère) feedback entry.'
+          feedback_entry:
+            view_live_html: Voir ce(t/tte) feedback entry <br/><em>(Ouvre une nouvelle fenêtre)</em>
+            edit: Modifier ce(t/tte) feedback entry
+            delete: Supprimer définitivement ce(t/tte) feedback entry
+      feedback_entries:
+        show:
+          other: Autres Feedback Entries
+  activerecord:
+    attributes:
+      'refinery/feedback_entries/feedback_entry':
+        poster_name: Poster Name
+        poster_email: Poster Email
+        entry_title: Entry Title
+        entry_text: Entry Text

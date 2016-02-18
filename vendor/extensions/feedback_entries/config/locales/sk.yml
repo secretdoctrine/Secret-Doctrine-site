@@ -1,0 +1,30 @@
+sk:
+  refinery:
+    plugins:
+      feedback_entries:
+        title: Feedback Entries
+    feedback_entries:
+      admin:
+        feedback_entries:
+          actions:
+            create_new: Pridať Feedback Entry
+            reorder: Preusporiadať Feedback Entries
+            reorder_done: Koniec radenia Feedback Entries
+          records:
+            title: Feedback Entries
+            sorry_no_results: Ľutujeme, ale neboli nájdené žiadne výsledky.
+            no_items_yet: Nie sú vytvorené žiadne Feedback Entries. Kliknite na "Pridať Feedback Entry" pre pridanie prvého feedback entry.
+          feedback_entry:
+            view_live_html: Zobraziť náhľad feedback entry<br/><em>(otvorí sa v novom okne)</em>
+            edit: Upraviť feedback entry
+            delete: Zmazať feedback entry
+      feedback_entries:
+        show:
+          other: Daľšie Feedback Entries
+  activerecord:
+    attributes:
+      'refinery/feedback_entries/feedback_entry':
+        poster_name: Poster Name
+        poster_email: Poster Email
+        entry_title: Entry Title
+        entry_text: Entry Text

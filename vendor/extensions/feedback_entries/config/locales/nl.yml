@@ -1,0 +1,30 @@
+nl:
+  refinery:
+    plugins:
+      feedback_entries:
+        title: Feedback Entries
+    feedback_entries:
+      admin:
+        feedback_entries:
+          actions:
+            create_new: Nieuwe Feedback Entry toevoegen
+            reorder: De volgorde van de Feedback Entries wijzigen
+            reorder_done: Klaar met het wijzingen van de van de Feedback Entry-volgorde
+          records:
+            title: Feedback Entries
+            sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
+            no_items_yet: Er zijn nog geen Feedback Entries. Druk op 'Nieuwe Feedback Entry toevoegen' om de eerste toe te voegen.
+          feedback_entry:
+            view_live_html: Deze feedback entry op de website bekijken <br/><em>(opent in een nieuw venster)</em>
+            edit: Bewerk deze feedback entry
+            delete: Deze feedback entry definitief verwijderen
+      feedback_entries:
+        show:
+          other: Andere Feedback Entries
+  activerecord:
+    attributes:
+      'refinery/feedback_entries/feedback_entry':
+        poster_name: Poster Name
+        poster_email: Poster Email
+        entry_title: Entry Title
+        entry_text: Entry Text

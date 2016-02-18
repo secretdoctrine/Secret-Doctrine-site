@@ -1,0 +1,32 @@
+%div.flash_container
+  = render '/refinery/no_script'
+  = render '/refinery/message'
+
+
+= form_for [refinery, :feedback_entries, @feedback_entry] do |f|
+  = render '/refinery/admin/error_messages',
+           :object => @feedback_entry,
+           :include_object_name => true
+
+  %div.field
+    = f.label :poster_name
+    = f.text_field :poster_name, :class => 'larger widest'
+
+  %div.field
+    = f.label :poster_email
+    = f.text_field :poster_email
+
+  %div.field
+    = f.label :entry_title
+    = f.text_field :entry_title
+
+  %div.field
+    = f.label :entry_text
+    = f.text_area :entry_text
+
+  = render '/refinery/admin/form_actions', :f => f,
+             :continue_editing => false,
+             :hide_cancel => true,
+             :hide_delete => true
+
+
