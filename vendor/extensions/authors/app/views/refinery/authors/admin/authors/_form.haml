@@ -1,0 +1,37 @@
+= form_for [refinery, :authors_admin, @author] do |f|
+  = render '/refinery/admin/error_messages',
+    :object => @author,
+              :include_object_name => true
+
+  - if @author.id.nil?
+    / This is 'new'
+    = f.hidden_field :author_id, {:value => @parent.id}
+    = f.hidden_field :order_number, {:value => @parent.get_next_order_number}
+  - else
+    / This is 'edit'
+    = f.hidden_field :author_id, {:value => @author.author_id}
+    = f.hidden_field :order_number, {:value => @author.order_number}
+
+  %div.field
+    = f.label :name
+    = f.text_field :name, :class => 'larger widest'
+
+  %div.field
+    = f.label :friendly_header
+    = f.text_field :friendly_header
+
+  %div.field
+    = f.label :poetry_header
+    = f.text_field :poetry_header
+
+  %div.field
+    = render '/refinery/admin/wysiwyg',
+                :f => f,
+                :fields => [:about_text],
+                :object => "authors/author"
+
+  = render '/refinery/admin/form_actions', :f => f,
+    :continue_editing => false,
+             :delete_title => t('delete', :scope => 'refinery.authors.admin.authors.author'),
+             :delete_confirmation => t('message', :scope => 'refinery.admin.delete', :title => @author.name)
+

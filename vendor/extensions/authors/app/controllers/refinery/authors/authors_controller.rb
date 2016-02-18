@@ -8,6 +8,9 @@ module Refinery
       def index
         # you can use meta fields from your model instead (e.g. browser_title)
         # by swapping @page for @author in the line below:
+        root = Author.get_root!
+        author = root.authors.sort_by{|x| x.order_number}.first
+        return redirect_to refinery.authors_author_path(author.id) if author
         present(@page)
       end
 

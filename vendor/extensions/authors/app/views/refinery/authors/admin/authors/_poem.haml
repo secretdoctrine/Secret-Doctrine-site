@@ -1,0 +1,11 @@
+- node_class = 'jstree-open'
+- node_class += ' jstree-edit'
+- node_class += ' jstree-destroy'
+%li{:id => 'poem_' + poem.id.to_s,
+    :edit_path => refinery.edit_authors_admin_poem_path(poem.id),
+    :class => node_class,
+    :update_path => refinery.authors_admin_poem_path(poem.id),
+    :destroy_path => refinery.authors_admin_poem_path(poem.id),
+    :parent_id => "author_" + poem.author_id.to_s,
+    :node_type => :poem}
+  = poem.title

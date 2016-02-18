@@ -1,4 +1,8 @@
 en:
+  authors:
+    no_authors: Отсутствует информация для вывода
+    root_name: Все авторы
+    delete_confirm: Вы уверены?
   refinery:
     plugins:
       poems:

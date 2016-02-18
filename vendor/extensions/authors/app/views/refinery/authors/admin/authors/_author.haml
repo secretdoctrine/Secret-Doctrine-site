@@ -1,0 +1,23 @@
+- node_class = 'jstree-open'
+- node_class += ' jstree-author-add' if author.is_root
+- node_class += ' jstree-poem-add' unless author.is_root
+- node_class += ' jstree-edit' unless author.is_root
+- node_class += ' jstree-destroy' unless author.is_root
+
+%li{:id => "author_" + author.id.to_s,
+    :edit_path => refinery.edit_authors_admin_author_path(author.id),
+    :new_author_path => refinery.new_authors_admin_author_path + '?author_id=' + author.id.to_s,
+    :new_poem_path => refinery.new_authors_admin_poem_path + '?author_id=' + author.id.to_s,
+    :class => node_class,
+    :update_path => refinery.authors_admin_author_path(author.id),
+    :destroy_path => refinery.authors_admin_author_path(author.id),
+    :is_root => author.is_root ? 'true' : 'false',
+    :parent_id => "author_" + author.author_id.to_s,
+    :node_type => :author}
+  = author.name
+  - author.children_array.each do |child|
+    %ul
+      - if child.is_a?(Refinery::Authors::Author)
+        = render :partial => 'author', :locals => {author: child}
+      - else
+        = render :partial => 'poem', :locals => {poem: child}

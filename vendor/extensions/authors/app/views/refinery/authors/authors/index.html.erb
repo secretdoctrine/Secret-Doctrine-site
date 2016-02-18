@@ -1,11 +1,16 @@
-<% content_for :body do %>
-  <ul id="authors">
-    <% @authors.each do |author| %>
-      <li>
-        <%= link_to author.name, refinery.authors_author_path(author) %>
-      </li>
-    <% end %>
-  </ul>
+<%= ::I18n.t('authors.no_authors') %>
+
+<% if false %>
+  <% content_for :body do %>
+    <ul id="authors">
+      <% @authors.each do |author| %>
+        <li>
+          <%= link_to author.name, refinery.authors_author_path(author) %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= render '/refinery/content_page' %>
 <% end %>
 
-<%= render '/refinery/content_page' %>

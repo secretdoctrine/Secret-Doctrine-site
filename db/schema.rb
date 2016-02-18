@@ -142,12 +142,14 @@ ActiveRecord::Schema.define(version: 20171215181722) do
     t.integer  "position",        limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "is_root",                       default: false, null: false
+    t.integer  "order_number",    limit: 4,     default: 0,     null: false
+    t.integer  "author_id",       limit: 4
   end
 
   add_index "refinery_authors", ["slug"], name: "index_refinery_authors_on_slug", using: :btree
 
   create_table "refinery_authors_poems", force: :cascade do |t|
-    t.integer  "order",         limit: 4
     t.string   "title",         limit: 255
     t.text     "content",       limit: 65535
     t.text     "short_content", limit: 65535
@@ -156,6 +158,7 @@ ActiveRecord::Schema.define(version: 20171215181722) do
     t.integer  "position",      limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "order_number",  limit: 4,     default: 0, null: false
   end
 
   create_table "refinery_books", force: :cascade do |t|

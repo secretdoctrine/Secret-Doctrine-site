@@ -19,6 +19,23 @@ module Refinery
 
         end
 
+        def create
+
+          @parent = MultimediaGroup.find(params[:multimedia_group][:multimedia_group_id])
+
+          if (@multimedia_group = MultimediaGroup.create(multimedia_group_params)).valid?
+            flash.notice = t(
+                'refinery.crudify.created',
+                :what => @multimedia_group.title
+            )
+            create_or_update_successful
+          else
+            #@book = Book.new
+            create_or_update_unsuccessful 'new'
+          end
+
+        end
+
         def update
           respond_to do |format|
 

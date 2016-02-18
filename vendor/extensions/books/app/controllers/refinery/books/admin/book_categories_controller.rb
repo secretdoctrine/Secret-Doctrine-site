@@ -19,6 +19,23 @@ module Refinery
 
         end
 
+        def create
+
+          @parent = BookCategory.find(params[:book_category][:book_category_id])
+
+          if (@book_category = BookCategory.create(book_category_params)).valid?
+            flash.notice = t(
+                'refinery.crudify.created',
+                :what => @book_category.name
+            )
+            create_or_update_successful
+          else
+            #@book = Book.new
+            create_or_update_unsuccessful 'new'
+          end
+
+        end
+
         def update
           respond_to do |format|
 
