@@ -23,6 +23,7 @@ module Refinery
             'refinery.crudify.created',
             :what => @feedback_entry.entry_title
           )
+          DoctrineMailer.new_feedback(@feedback_entry).deliver_later
           @feedback_entry = FeedbackEntry.new
           return redirect_to refinery.new_feedback_entries_feedback_entry_path
         end
