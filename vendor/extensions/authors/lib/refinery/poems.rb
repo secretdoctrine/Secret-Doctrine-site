@@ -1,6 +1,7 @@
 require 'refinerycms-core'
 
 module Refinery
+=begin
   autoload :AuthorsGenerator, 'generators/refinery/authors_generator'
 
   module Poems
@@ -18,4 +19,5 @@ module Refinery
       end
     end
   end
+=end
 end

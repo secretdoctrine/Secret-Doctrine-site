@@ -1,6 +1,7 @@
 require 'refinerycms-core'
 
 module Refinery
+=begin
   autoload :MultimediaGroupsGenerator, 'generators/refinery/multimedia_groups_generator'
 
   module MultimediaItems
@@ -18,4 +19,5 @@ module Refinery
       end
     end
   end
+=end
 end

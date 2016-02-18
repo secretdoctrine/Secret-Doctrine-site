@@ -1,6 +1,7 @@
 require 'refinerycms-core'
 
 module Refinery
+=begin
   autoload :BooksGenerator, 'generators/refinery/books_generator'
 
   module Books
@@ -18,4 +19,5 @@ module Refinery
       end
     end
   end
+=end
 end
