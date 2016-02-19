@@ -8,6 +8,7 @@ class CreateFeedbackEntriesFeedbackEntries < ActiveRecord::Migration
       t.string    :entry_title
       t.text      :entry_text
       t.datetime  :entry_datetime
+      t.string    :attachment
 
       t.timestamps
     end

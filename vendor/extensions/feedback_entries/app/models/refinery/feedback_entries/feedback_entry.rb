@@ -5,6 +5,7 @@ module Refinery
 
       MAX_ELEMENT_LENGTH = 20
 
+      mount_uploader :attachment, FeedbackAttachmentUploader
       validates :poster_name, :presence => true
       validates :entry_title, :presence => true
 

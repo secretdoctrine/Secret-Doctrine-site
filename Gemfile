@@ -76,3 +76,5 @@ gem 'activerecord-session_store', git: 'https://github.com/rails/activerecord-se
 gem 'refinerycms-multimedia_groups', path: 'vendor/extensions'
 gem 'refinerycms-books', path: 'vendor/extensions'
 gem 'refinerycms-feedback_entries', path: 'vendor/extensions'
+
+gem 'carrierwave'

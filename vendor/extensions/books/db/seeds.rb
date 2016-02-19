@@ -38,8 +38,8 @@ Refinery::I18n.frontend_locales.each do |lang|
   end if defined?(Refinery::Page)
 end
 
-importer = Refinery::Books::ImportHelper.new
-importer.import_all
+#importer = Refinery::Books::ImportHelper.new
+#importer.import_all
 
 Refinery::Books::NewsItem.create!(title: 'заголовок 1', body: 'td1 added', news_datetime: DateTime.new(2015, 11, 10, 5, 30), library_news: true, site_news:false)
 Refinery::Books::NewsItem.create!(title: 'заголовок 2', body: 'td2 added', news_datetime: DateTime.new(2015, 11, 12, 6, 45), library_news: true, site_news:false)

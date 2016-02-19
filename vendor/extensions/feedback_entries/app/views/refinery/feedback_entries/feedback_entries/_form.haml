@@ -24,6 +24,10 @@
     = f.label :entry_text
     = f.text_area :entry_text
 
+  %div.field
+    = f.label :attachment
+    = f.file_field :attachment
+
   = render '/refinery/admin/form_actions', :f => f,
              :continue_editing => false,
              :hide_cancel => true,
