@@ -24,13 +24,13 @@ class DoctrineMailer < ApplicationMailer
 
   end
 
-  def new_feedback(feedback_entry)
+  def new_feedback(email, feedback_entry)
     @feedback_entry = feedback_entry
 
     yaml_object = YAML.load(File.read(File.join(Rails.root, 'config', 'mail_settings.yml')))
 
     mail from: yaml_object['from'],
-         to: yaml_object['to'],
+         to: email,
          subject: 'new feedback',
          delivery_method_options: create_delivery_options(yaml_object)
   end
