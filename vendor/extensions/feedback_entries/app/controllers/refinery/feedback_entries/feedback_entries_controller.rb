@@ -41,7 +41,7 @@ module Refinery
       end
 
       def feedback_entry_params
-        params.require(:feedback_entry).permit(:poster_name, :poster_email, :entry_title, :entry_text)
+        params.require(:feedback_entry).permit(:poster_name, :poster_email, :entry_title, :entry_text, :attachment)
       end
 
     end
