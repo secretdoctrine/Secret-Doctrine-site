@@ -56,6 +56,7 @@ en:
     go_to_page_prefix: 'Страница: '
     go_to_page: 'Перейти'
     search_page:
+      results_count: 'Всего результатов: '
       view_html: 'Страницы целиком'
       view_snippet: 'Только вхождения'
       export: 'Скачать результаты поиска (PDF)'
