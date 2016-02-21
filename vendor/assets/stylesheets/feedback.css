@@ -1,0 +1,28 @@
+@charset "utf-8";
+
+.bodycontent { padding: 40px 0; width: 724px; margin: auto;}
+body { background: #006889;}
+.other_pages { font-size: 12px;}
+.other_pages > a { color: #91C0D2; text-decoration: underline;}
+.other_pages > a:hover { text-decoration: none;}
+
+#guest_form { background: #0091BF; font-size: 10px; color: #00FFFF; border: 2px solid; border-color: #007CA3 #003C4F #003C4F #007CA3; min-height: 0; padding: 40px 40px 15px;}
+#guest_form > form { min-height: 0; text-align: right;}
+#guest_form .lotos_pic { float: left; border: #0091BF ridge 8px; text-align: left; margin: 0 0 5px;}
+#guest_form .lotos_pic figcaption { padding: 6px;}
+#guest_form .marka { height: 136px; background: url(marka.jpg) no-repeat 100% 0;}
+#guest_form .field { padding: 0 0 5px;}
+#guest_form .field:after { clear: none;}
+#guest_form input[type="text"],
+#guest_form input[type="submit"],
+#guest_form textarea { background: #00C9E3; border: 1px solid #FFF; font-size: 12px; color: #FFF; outline: none;}
+
+#guest_form input[type="text"] { width: 246px; height: 14px; padding: 1px 2px;}
+#guest_form .comments { clear: both; text-align: left;}
+#guest_form textarea { width: 636px; height: 96px; padding: 2px;}
+#guest_form .submiting { text-align: left;}
+#guest_form input[type="submit"] { -webkit-border-fit: lines; height: 22px; padding: 0 23px; border: 1px solid #00FFEF; background: none; color: #00FFEF;}
+
+
+.footer { padding-left: 10px; padding-right: 10px;}
+.counters { padding-left: 0; padding-right: 0;}

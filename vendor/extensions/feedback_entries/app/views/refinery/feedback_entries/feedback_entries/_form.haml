@@ -3,34 +3,68 @@
   = render '/refinery/message'
 
 
-= form_for [refinery, :feedback_entries, @feedback_entry] do |f|
-  = render '/refinery/admin/error_messages',
-           :object => @feedback_entry,
-           :include_object_name => true
-
-  %div.field
-    = f.label :poster_name
-    = f.text_field :poster_name, :class => 'larger widest'
-
-  %div.field
-    = f.label :poster_email
-    = f.text_field :poster_email
-
-  %div.field
-    = f.label :entry_title
-    = f.text_field :entry_title
-
-  %div.field
-    = f.label :entry_text
-    = f.text_area :entry_text
-
-  %div.field
-    = f.label :attachment
-    = f.file_field :attachment
-
-  = render '/refinery/admin/form_actions', :f => f,
+%article.bodycontent
+  %div#guest_form
+    = form_for [refinery, :feedback_entries, @feedback_entry] do |f|
+      = render '/refinery/admin/error_messages',
+               :object => @feedback_entry,
+               :include_object_name => true
+      %figure.lotos_pic
+        = link_to image_path 'lotos_big.jpg', title: 'Лотос в Индии - символ жизни в трех мирах' do
+          = image_tag 'lotos_big.jpg', {height: '188', width: '205'}
+        %figcaption
+          Лотос
+      %div.marka
+      %div{ class: "field text_form div_form"}
+        = f.label :poster_name do
+          %span.required
+            *
+          ваше имя, профессия:
+        = f.text_field :poster_name, { type: "text", size: "30", maxlength: "100", value: ""}
+      %div{ class: "field text_form div_form"}
+        = f.label :poster_email do
+          %span.required
+            *
+          ваш e-mail:
+        = f.text_field :poster_email, { type: "text", size: "30", maxlength: "100", value: ""}
+      %div{ class: "field text_form div_form"}
+        = f.label :entry_title do
+          %span.required
+            *
+          тема письма, страна:
+        = f.text_field :entry_title, { type: "text", size: "30", maxlength: "100", value: ""}
+      %div{ class: "field comments  textarea_form div_form"}
+        = f.label :entry_text do
+          %span.required
+            *
+          Текст сообщения:
+          = f.text_area :entry_text, { cols: "50", rows: "7"}
+      %div{ class: "field captcha_form div_form"}
+        %label{ for: "d[3]"}
+          %span.required
+            *
+          Введите код, изображенный на картинке:
+        %div.captcha_block
+          %img class="captcha" src="http://captcha.oml.ru/captcha.php?hash=DFcBdcVJIz6tmg%3D%3D&amp;key=7b91e6f7fb80860fcb2c203de89038f9&amp;id=cms&amp;format=.gif" alt=""
+          %br
+          %input{ id: "d[3]", type: "text", size: "5", maxlength: "4", name: "_cn"}
+        %input type="hidden" value="7b91e6f7fb80860fcb2c203de89038f9" name="_cs"
+      %div.field
+        = f.label :attachment
+        = f.file_field :attachment
+      %div{ class: "field submiting"}
+        = render '/refinery/admin/form_actions', :f => f,
              :continue_editing => false,
              :hide_cancel => true,
-             :hide_delete => true
+             :hide_delete => true,
+             :submit_button_text => 'Отправить'
+
+
+      %div.clear
+
+  %div.clear
+
+
+
 
 
