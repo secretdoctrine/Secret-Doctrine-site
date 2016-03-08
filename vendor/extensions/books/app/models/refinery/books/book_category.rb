@@ -115,7 +115,7 @@ module Refinery
 
       def self.build_categories_tree(current_element: nil, selected_book_ids: [], selected_category_ids: [])
 
-        root = includes(book_categories: [:books], books: []).find_by(name: ROOT_NAME)
+        root = get_root!
 
         return TreeElement.new(is_root: true) if root.nil?
 
