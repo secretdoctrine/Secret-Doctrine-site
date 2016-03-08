@@ -1,0 +1,50 @@
+body {
+    background: url(body_bg.jpg) repeat #1A266F;
+    color: #fff;
+    text-align: left;
+    font: 12px/1.25 Arial, "Helvetica CY", "Nimbus Sans L", sans-serif;
+}
+
+a {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    background: transparent;
+    color: #91C0D2;
+    text-decoration: underline;
+}
+
+a:hover {
+    text-decoration: none;
+    text-decoration: none;
+}
+
+aside.left { display: none;}
+.content { padding-left: 0;}
+.bodycontent { width: 700px; margin: 0 auto; padding-top: 0; padding-bottom: 10px;}
+
+.subscription_news { padding: 0 17px 25px; min-height: 0; color: #91C0D2;}
+.subscription_news h2 { font-size: 1em; margin: 0; color: #FFF; font-weight: bold;}
+.subscription_news  p { margin: 0 0 10px;}
+.subscription_news form { padding: 10px 0 0; min-height: 0; width: 556px;}
+.subscription_news form .field { padding: 0 0 7px;}
+.subscription_news form .field label { float: left; width: 222px; margin: 0 10px 0 0; line-height: 21px; color: #FFF; text-align: right;}
+.subscription_news form .field input[type="text"] { width: 318px; height: 15px; background: #FFF; border: 1px solid #fff; padding: 2px;}
+.subscription_news form .submiting { text-align: center; min-height: 0; padding: 1px 0 0 232px;}
+.subscription_news form .submiting .but_29 .s2 { min-width: 220px;}
+
+.news_list { min-height: 0;}
+.news_list article { background: url(news_69.png) repeat; border: 6px groove #3F539E; color: #91C0D2; padding: 15px 10px; margin-bottom: 20px;}
+.news_list article a { color: #FFF;}
+.news_list article time { display: block; margin: 0 0 10px; color: #FFF; font-weight: bold;}
+.news_list article .time { color: #FFF;}
+
+.page_list { text-align: center; min-height: 0; padding: 0 0 10px;}
+.page_list a { color: #FFF; margin: 0 6px;}
+.page_list .cur { font-size: 22px; font-weight: bold; color: #91C0D2; margin: 0 6px;}
+.page_list .l,
+.page_list .r { text-decoration: none; font-size: 18px; text-decoration: none;}
+
+.other_pages { font-size: 12px;}
+.other_pages a { color: #91C0D2; text-decoration: underline;}
+.counters { padding-left: 0; padding-right: 0;}

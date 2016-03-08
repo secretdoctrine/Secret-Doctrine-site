@@ -1,5 +1,4 @@
-%div{class: 'last_book'}
-  %p{class: 'time'}
+%article
+  %time{datetime: news_item.news_datetime}
     = I18n.l(news_item.news_datetime, locale: :ru, format: :long)
-  %p
-    = raw news_item.body
+  = raw news_item.body

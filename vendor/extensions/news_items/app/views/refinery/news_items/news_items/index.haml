@@ -1,3 +1,31 @@
-%div
-  %div{id: 'library_news_feed'}
+= stylesheet_link_tag 'news.css'
+
+%article.bodycontent
+  %section.subscription_news
+    %h2
+      Подписка на новости
+    %p
+      Вы можете оформить подписку на новости чтобы получать их на ваш e-mail. Таким образом, вы всегда будете в курсе последних изменений на нашем сайте.
+    /= raw page.content_for(:body)
+    %form
+      %div.field
+        %label
+          Имя:
+        %input{ type: "text"}
+      %div.field
+        %label
+          Ваш e-mail:
+        %input{ type: "text"}
+      %div.field
+        %label
+          Город, профессия, возраст:
+        %input{ type: "text"}
+      %div.submiting
+        %button.but_29{type: :submit}
+          %span.s0
+            %span.s1
+              %span.s2
+                Подписаться
+
+  %section.news_list
     = render partial: 'site_news', collection: @news_items, as: :news_item
