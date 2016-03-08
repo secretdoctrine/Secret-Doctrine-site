@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 .bodycontent { padding: 40px 0; width: 724px; margin: auto;}
-body { background: #006889;}
+body { background: #006889 !important;}
 .other_pages { font-size: 12px;}
 .other_pages > a { color: #91C0D2; text-decoration: underline;}
 .other_pages > a:hover { text-decoration: none;}
@@ -24,5 +24,5 @@ body { background: #006889;}
 #guest_form input[type="submit"] { -webkit-border-fit: lines; height: 22px; padding: 0 23px; border: 1px solid #00FFEF; background: none; color: #00FFEF;}
 
 
-.footer { padding-left: 10px; padding-right: 10px;}
+.footer_feedback { padding-left: 10px; padding-right: 10px; margin-top: 90px; clear: both; }
 .counters { padding-left: 0; padding-right: 0;}
