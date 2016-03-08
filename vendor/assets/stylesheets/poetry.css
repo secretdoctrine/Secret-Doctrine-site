@@ -112,6 +112,6 @@ q {
     text-transform: uppercase;
 }
 
-p, pre, blockquote, ul, ol, dl {
+p, pre, blockquote, article.bodycontent ul, article.bodycontent ol, article.bodycontent dl {
     margin: 1em 0;
 }

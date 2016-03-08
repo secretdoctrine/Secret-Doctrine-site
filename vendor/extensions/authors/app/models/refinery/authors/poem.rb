@@ -28,7 +28,7 @@ module Refinery
 
       def next_poem
 
-        author.poems.sort_by{|x| x.order}.select{|x| x.order > order}.first
+        author.poems.sort_by{|x| x.order_number}.select{|x| x.order_number > order_number}.first
 
       end
 
@@ -38,7 +38,7 @@ module Refinery
 
       def prev_poem
 
-        author.poems.sort_by{|x| x.order}.select{|x| x.order < order}.last
+        author.poems.sort_by{|x| x.order_number}.select{|x| x.order_number < order_number}.last
 
       end
 
