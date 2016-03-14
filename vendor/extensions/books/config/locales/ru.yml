@@ -29,6 +29,11 @@ ru:
     delete_confirm: 'Вы уверены?'
   importer:
     page: 'Страница'
+    invalid_book_category: 'Неверная родительская категория'
+    invalid_config_file: 'Неверный файл конфигурации'
+    unable_to_create_dir: 'Невозможно создать каталог'
+    no_pdf_file: 'Отсутствует pdf файл для страницы'
+    no_html_file: 'Отсутствует html файл для страницы'
   menu:
     index: 'Главная'
     news: 'Новости'
@@ -39,6 +44,8 @@ ru:
     archive: 'Архив'
     feedback: 'Гостевая'
   library:
+    delete_confirm: 'Вы уверены?'
+    categories_root_name: 'Все категории'
     show_categories: 'Показать категории'
     show_contents: 'Показать оглавление'
     search: 'Искать...'
@@ -49,6 +56,7 @@ ru:
     go_to_page_prefix: 'Страница: '
     go_to_page: 'Перейти'
     search_page:
+      results_count: 'Всего результатов: '
       view_html: 'Страницы целиком'
       view_snippet: 'Только вхождения'
       export: 'Скачать результаты поиска (PDF)'
