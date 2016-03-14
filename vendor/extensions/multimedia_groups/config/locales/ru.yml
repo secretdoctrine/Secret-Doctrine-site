@@ -1,4 +1,7 @@
 ru:
+  multimedia_groups:
+    root_name: Все альбомы
+    delete_confirm: Вы уверены?
   refinery:
     plugins:
       multimedia_items:

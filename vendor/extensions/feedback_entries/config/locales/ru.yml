@@ -1,0 +1,30 @@
+ru:
+  refinery:
+    plugins:
+      feedback_entries:
+        title: Feedback Entries
+    feedback_entries:
+      admin:
+        feedback_entries:
+          actions:
+            create_new: Add New Feedback Entry
+            reorder: Reorder Feedback Entries
+            reorder_done: Done Reordering Feedback Entries
+          records:
+            title: Feedback Entries
+            sorry_no_results: Sorry! There are no results found.
+            no_items_yet: There are no Feedback Entries yet. Click "Add New Feedback Entry" to add your first feedback entry.
+          feedback_entry:
+            view_live_html: View this feedback entry live <br/><em>(opens in a new window)</em>
+            edit: Edit this feedback entry
+            delete: Remove this feedback entry forever
+      feedback_entries:
+        show:
+          other: Other Feedback Entries
+  activerecord:
+    attributes:
+      'refinery/feedback_entries/feedback_entry':
+        poster_name: Poster Name
+        poster_email: Poster Email
+        entry_title: Entry Title
+        entry_text: Entry Text

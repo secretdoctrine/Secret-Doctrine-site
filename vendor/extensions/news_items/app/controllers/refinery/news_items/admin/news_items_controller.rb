@@ -18,7 +18,7 @@ module Refinery
                 DoctrineMailer.new_news_item(recipient.email, @news_item).deliver_later
               rescue Exception => e
 
-                print e
+                #print e
 
               end
             end
