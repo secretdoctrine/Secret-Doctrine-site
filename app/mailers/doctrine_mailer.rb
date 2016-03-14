@@ -48,4 +48,17 @@ class DoctrineMailer < ApplicationMailer
 
   end
 
+  def new_news_subscription(news_recipient)
+
+    @news_recipient = news_recipient
+
+    yaml_object = YAML.load(File.read(File.join(Rails.root, 'config', 'mail_settings.yml')))
+
+    mail from: yaml_object['from'],
+         to: news_recipient.email,
+         subject: 'News item added',
+         delivery_method_options: create_delivery_options(yaml_object)
+
+  end
+
 end
