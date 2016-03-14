@@ -21,7 +21,7 @@ a:hover {
 
 aside.left { display: none;}
 .content { padding-left: 0;}
-.bodycontent { width: 700px; margin: 0 auto; padding-top: 0; padding-bottom: 10px;}
+.bodycontent { width: 700px; margin: 20px auto; padding-top: 0; padding-bottom: 10px;}
 
 .subscription_news { padding: 0 17px 25px; min-height: 0; color: #91C0D2;}
 .subscription_news h2 { font-size: 1em; margin: 0; color: #FFF; font-weight: bold;}
@@ -48,3 +48,35 @@ aside.left { display: none;}
 .other_pages { font-size: 12px;}
 .other_pages a { color: #91C0D2; text-decoration: underline;}
 .counters { padding-left: 0; padding-right: 0;}
+
+.clear{clear: both;}
+
+.flash_notice {
+    margin-top: 20px;
+    padding: 10px;
+    text-align: center;
+}
+
+.flash_notice div {
+    display: inline-block;
+    width: 70%;
+    padding: 10px 30px;
+    border: 1px solid #ffff00;
+    background-color: #666600;
+    opacity: 0.7;
+}
+
+.flash_alert {
+    margin-top: 20px;
+    padding: 10px;
+    text-align: center;
+}
+
+.flash_alert div {
+    display: inline-block;
+    width: 70%;
+    padding: 10px 30px;
+    border: 1px solid #ff0000;
+    background-color: #660000;
+    opacity: 0.7;
+}

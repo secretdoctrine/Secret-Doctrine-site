@@ -2,6 +2,11 @@ ru:
   news_recipients:
     subscription_successful: Вы успешно подписались на обновления
     incorrect_data: Данные указаны неверно
+    email: Ваш e-mail
+    name: Имя
+    city: Город, профессия, возраст
+    alert_prefix: Поле "
+    alert_suffix: '" '
   refinery:
     plugins:
       news_items:
