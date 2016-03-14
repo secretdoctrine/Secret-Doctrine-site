@@ -1,4 +1,7 @@
 en:
+  news_recipients:
+    subscription_successful: Вы успешно подписались на обновления
+    incorrect_data: Данные указаны неверно
   refinery:
     plugins:
       news_items:

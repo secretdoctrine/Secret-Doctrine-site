@@ -78,3 +78,4 @@ gem 'refinerycms-books', path: 'vendor/extensions'
 gem 'refinerycms-feedback_entries', path: 'vendor/extensions'
 
 gem 'carrierwave'
+gem 'mailkick'
