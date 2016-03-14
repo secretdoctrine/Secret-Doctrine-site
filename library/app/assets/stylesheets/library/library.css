@@ -371,7 +371,7 @@ object.pdf_page,
 
 #contents_div li.part {
     font-size:100%;
-    padding: 3px 5px;
+    padding: 3px 5px 3px 0;
     margin: 0 0 0 20px;
     list-style-image:url(kvad_ry.gif);
     color:#000099;
@@ -415,7 +415,7 @@ object.pdf_page,
 }
 
 #contents_div li {
-    padding-left:6px;
+    padding-left:0;
     padding-right:6px;
     margin-left:0;
     margin-right:0;
