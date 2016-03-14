@@ -132,6 +132,7 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
+    mailkick (0.1.4)
     middleware (0.1.0)
     mime-types (2.99)
     mini_portile2 (2.0.0)
@@ -293,6 +294,7 @@ DEPENDENCIES
   haml
   jbuilder (~> 2.0)
   jquery-rails
+  mailkick
   mysql2 (~> 0.3.13)
   rails (= 4.2.4)
   rangy-rails

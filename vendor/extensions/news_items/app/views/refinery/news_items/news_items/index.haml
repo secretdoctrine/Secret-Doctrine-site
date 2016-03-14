@@ -1,5 +1,12 @@
 = stylesheet_link_tag 'news.css'
 
+- if flash.notice
+  %div.flash_notice
+    = flash.notice
+- if flash.alert
+  %div.flash_alert
+    = flash.alert
+
 %article.bodycontent
   %section.subscription_news
     %h2
@@ -7,19 +14,19 @@
     %p
       Вы можете оформить подписку на новости чтобы получать их на ваш e-mail. Таким образом, вы всегда будете в курсе последних изменений на нашем сайте.
     /= raw page.content_for(:body)
-    %form
+    = form_for [refinery, :news_items, @news_recipient] do |f|
       %div.field
         %label
           Имя:
-        %input{ type: "text"}
+        = f.text_field :name
       %div.field
         %label
           Ваш e-mail:
-        %input{ type: "text"}
+        = f.text_field :email
       %div.field
         %label
           Город, профессия, возраст:
-        %input{ type: "text"}
+        = f.text_field :city
       %div.submiting
         %button.but_29{type: :submit}
           %span.s0

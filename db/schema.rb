@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200218122339) do
+ActiveRecord::Schema.define(version: 20200218122338) do
 
   create_table "book_categories", force: :cascade do |t|
     t.integer "book_category_id", limit: 4
@@ -74,6 +74,20 @@ ActiveRecord::Schema.define(version: 20200218122339) do
   end
 
   add_index "internal_page_contents", ["page_id"], name: "index_internal_page_contents_on_page_id", using: :btree
+
+  create_table "mailkick_opt_outs", force: :cascade do |t|
+    t.string   "email",      limit: 255
+    t.integer  "user_id",    limit: 4
+    t.string   "user_type",  limit: 255
+    t.boolean  "active",                 default: true, null: false
+    t.string   "reason",     limit: 255
+    t.string   "list",       limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "mailkick_opt_outs", ["email"], name: "index_mailkick_opt_outs_on_email", using: :btree
+  add_index "mailkick_opt_outs", ["user_id", "user_type"], name: "index_mailkick_opt_outs_on_user_id_and_user_type", using: :btree
 
   create_table "news", force: :cascade do |t|
     t.text     "body",          limit: 65535,                 null: false
@@ -259,6 +273,7 @@ ActiveRecord::Schema.define(version: 20200218122339) do
     t.string   "entry_title",    limit: 255
     t.text     "entry_text",     limit: 65535
     t.datetime "entry_datetime"
+    t.string   "attachment",     limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -317,6 +332,14 @@ ActiveRecord::Schema.define(version: 20200218122339) do
     t.boolean  "site_news"
     t.datetime "news_datetime"
     t.integer  "position",      limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "refinery_news_items_news_recipients", force: :cascade do |t|
+    t.string   "email",      limit: 255
+    t.string   "name",       limit: 255
+    t.string   "city",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end

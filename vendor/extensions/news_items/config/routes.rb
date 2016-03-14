@@ -3,6 +3,7 @@ Refinery::Core::Engine.routes.draw do
   # Frontend routes
   namespace :'news_items' do
     resources :'news_items', :path => '', :only => [:index, :show]
+    resources :'news_recipients', :only => [:create]
   end
 
   # Admin routes
