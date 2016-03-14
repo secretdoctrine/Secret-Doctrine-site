@@ -21,7 +21,8 @@
  *= require refinery/books/search
  *= require refinery/books/paginating
  *= require refinery/books/jstree
- *= require refinery/books/lightbox
+ *= require refinery/books/highslide
+ *= require refinery/books/highslide-custom
  */
 
 body {
