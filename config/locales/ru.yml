@@ -1,0 +1,5 @@
+ru:
+  recaptcha:
+    errors:
+      verification_failed: 'Верификация не пройдена'
+      recaptcha_unreachable: 'Сервис recaptcha недоступен'

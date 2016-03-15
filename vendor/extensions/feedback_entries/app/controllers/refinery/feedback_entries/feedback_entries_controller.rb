@@ -18,13 +18,18 @@ module Refinery
 
       def create
 
-        if (@feedback_entry = FeedbackEntry.create(feedback_entry_params)).valid?
+        @feedback_entry = FeedbackEntry.new(feedback_entry_params)
+        if verify_recaptcha(model: @feedback_entry) and @feedback_entry.save and @feedback_entry.valid?
           flash.notice = t(
             'refinery.crudify.created',
             :what => @feedback_entry.entry_title
           )
           Refinery::Authentication::Devise::User.all.collect{|x| x.email}.each do |email|
-            DoctrineMailer.new_feedback(email, @feedback_entry).deliver_later
+            begin
+              DoctrineMailer.new_feedback(email, @feedback_entry).deliver_later
+            rescue Exception => e
+              #print e
+            end
           end
           @feedback_entry = FeedbackEntry.new
           return redirect_to refinery.new_feedback_entries_feedback_entry_path
