@@ -19,3 +19,4 @@ Rails.application.config.assets.precompile += %w( refinery/books/highslide-full.
 Rails.application.config.assets.precompile += %w( multimedia.css )
 Rails.application.config.assets.precompile += %w( feedback.css )
 Rails.application.config.assets.precompile += %w( news.css )
+Rails.application.config.assets.precompile += %w( admin_tree.css )

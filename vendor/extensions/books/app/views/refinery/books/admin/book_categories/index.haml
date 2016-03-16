@@ -1,7 +1,7 @@
 = javascript_include_tag 'refinery/books/jstree'
 = javascript_include_tag 'refinery/books/jstree-actions'
 = stylesheet_link_tag 'refinery/books/jstree'
-
+= stylesheet_link_tag 'admin_tree'
 
 - jstree_div = 'jstree_container'
 %section#records
@@ -37,7 +37,7 @@
   $("##{jstree_div}").jstree({
     "plugins" : ["actions", "dnd"],
     "core" : {
-      "themes" : {"icons" : false},
+      "themes" : {"icons" : false, "stripes": true},
       "multiple" : false,
       "check_callback": function(operation, node, node_parent, node_position, more) {
           // operation can be 'create_node', 'rename_node', 'delete_node', 'move_node' or 'copy_node'
@@ -71,12 +71,28 @@
       $("##{jstree_div}").jstree(true).add_action(book_category_ids[i], {
           "id": "action_add",
           "class": "action_add pull-right",
-          "text": "+",
+          "text": " ",
           "after": true,
           "selector": "a",
           "event": "click",
           "callback": function(node_id, node, action_id, action_el){
               document.location.href = node.li_attr.new_path;
+          }
+      });
+    }
+
+    book_category_ids = $(".jstree-book-add").map(function() { return $(this).attr("id") }).get();
+    for(var i = 0; i < book_category_ids.length; i++)
+    {
+      $("##{jstree_div}").jstree(true).add_action(book_category_ids[i], {
+          "id": "action_book_add",
+          "class": "action_item_add pull-right",
+          "text": " ",
+          "after": true,
+          "selector": "a",
+          "event": "click",
+          "callback": function(node_id, node, action_id, action_el){
+              document.location.href = node.li_attr.new_book_path;
           }
       });
     }
@@ -87,28 +103,12 @@
       $("##{jstree_div}").jstree(true).add_action(book_category_ids[i], {
           "id": "action_rename",
           "class": "action_rename pull-right",
-          "text": "=",
+          "text": " ",
           "after": true,
           "selector": "a",
           "event": "click",
           "callback": function(node_id, node, action_id, action_el){
               document.location.href = node.li_attr.edit_path;
-          }
-      });
-    }
-
-    book_category_ids = $(".jstree-book-add").map(function() { return $(this).attr("id") }).get();
-    for(var i = 0; i < book_category_ids.length; i++)
-    {
-      $("##{jstree_div}").jstree(true).add_action(book_category_ids[i], {
-          "id": "action_book_add",
-          "class": "action_book_add pull-right",
-          "text": "B",
-          "after": true,
-          "selector": "a",
-          "event": "click",
-          "callback": function(node_id, node, action_id, action_el){
-              document.location.href = node.li_attr.new_book_path;
           }
       });
     }
@@ -119,7 +119,7 @@
       $("##{jstree_div}").jstree(true).add_action(book_category_ids[i], {
           "id": "action_destroy",
           "class": "action_destroy pull-right",
-          "text": "x",
+          "text": " ",
           "after": true,
           "selector": "a",
           "event": "click",
