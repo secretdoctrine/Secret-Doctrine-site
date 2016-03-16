@@ -8,10 +8,10 @@ module Refinery
 
       before_inclusion do
         Refinery::Plugin.register do |plugin|
-          plugin.name = "book_categories"
+          plugin.name = "books"
           plugin.url = proc { Refinery::Core::Engine.routes.url_helpers.books_admin_book_categories_path }
           plugin.pathname = root
-          plugin.menu_match = %r{refinery/books/book_categories(/.*)?$}
+          #plugin.menu_match = %r{refinery/books/book_categories(/.*)?$}
         end
       end
 
