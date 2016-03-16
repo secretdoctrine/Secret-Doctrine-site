@@ -15,7 +15,7 @@ module Refinery
             )
             Refinery::NewsItems::NewsRecipient.not_opted_out.each do |recipient|
               begin
-                DoctrineMailer.new_news_item(recipient.email, @news_item).deliver_later
+                DoctrineMailer.new_news_item(recipient, @news_item).deliver_later
               rescue Exception => e
 
                 #print e

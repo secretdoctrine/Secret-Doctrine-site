@@ -1,3 +1,19 @@
-new piece of news has just been added
+%div{margin: '5'}
+  %p{style: 'font-weight: bold;'}
+    Добрый день, #{@news_recipient.name},
 
-= link_to "Unsubscribe", mailkick_unsubscribe_url
+  %p
+    Сообщаем, что на сайт ?????? была добавлена новость.
+
+  %div{style: 'padding: 5px 10px; margin: 5px 0; background-color: #fefefe; border: solid 1px #eeeeee;'}
+    %p{style: 'font-weight: bold;'}
+      = @news_item.title
+    %p
+      = @news_item.body.html_safe
+
+  %p
+    С уважением, администрация сайта.
+    
+  %p{style: 'font-size: 80%; border-top: solid 1px #eeeeee;'}
+    Если вы более не хотите получать уведомления о новостях сайта, перейдите по ссылке:
+    = link_to mailkick_unsubscribe_url, mailkick_unsubscribe_url

@@ -1,3 +1,21 @@
-new mail!
+%div{margin: '5'}
+  %p{style: 'font-weight: bold;'}
+    Добрый день!
 
-= @feedback_entry.entry_title
+  %p
+    Уведомляем вас о том, что пользователь #{@feedback_entry.poster_name} (#{@feedback_entry.poster_email}) оставил сообщение через форму обратной связи на сайте. Ниже приведен текст сообщения.
+
+  %div{style: 'padding: 5px 10px; margin: 5px 0; background-color: #fefefe; border: solid 1px #eeeeee;'}
+    %p{style: 'font-weight: bold;'}
+      = @feedback_entry.entry_title
+    %p
+      = simple_format(@feedback_entry.entry_text)
+
+  %p
+    Просмотреть сообщение вы можете по ссылке:
+
+  %p
+    = refinery.feedback_entries_admin_feedback_entry_path(@feedback_entry)
+
+  %p
+    С уважением, сервис автоматических уведомлений.

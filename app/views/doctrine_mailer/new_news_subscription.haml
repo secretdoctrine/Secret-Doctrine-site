@@ -1,3 +1,16 @@
-Поздравляем, вы успешно подписались на наши новости
+%div{margin: '5'}
+  %p{style: 'font-weight: bold;'}
+    Добрый день, #{@news_recipient.name},
 
-= link_to "Unsubscribe", mailkick_unsubscribe_url
+  %p
+    Вы успешно подписались на новостную рассылку сайта ?????.
+    Если вы не указывали этот адрес для получения новостной рассылки, перейдите по
+    = link_to 'этой ссылке', mailkick_unsubscribe_url
+    , чтобы отписаться.
+
+  %p
+    С уважением, администрация сайта.
+
+  %p{style: 'font-size: 80%; border-top: solid 1px #eeeeee;'}
+    Если вы более не хотите получать уведомления о новостях сайта, перейдите по ссылке:
+    = link_to mailkick_unsubscribe_url, mailkick_unsubscribe_url
