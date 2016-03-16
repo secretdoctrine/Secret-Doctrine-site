@@ -68,9 +68,9 @@ ru:
   refinery:
     plugins:
       book_categories:
-        title: Book Categories
+        title: Библиотека
       books:
-        title: Books
+        title: Книги
     books:
       admin:
         book_categories:

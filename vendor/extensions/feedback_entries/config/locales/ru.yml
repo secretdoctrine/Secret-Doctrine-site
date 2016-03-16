@@ -2,7 +2,7 @@ ru:
   refinery:
     plugins:
       feedback_entries:
-        title: Feedback Entries
+        title: Гостевая
     feedback_entries:
       admin:
         feedback_entries:

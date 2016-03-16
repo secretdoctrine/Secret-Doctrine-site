@@ -10,7 +10,7 @@ ru:
   refinery:
     plugins:
       news_items:
-        title: News Items
+        title: Новости
     news_items:
       admin:
         news_items:
