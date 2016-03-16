@@ -4,7 +4,7 @@
 = stylesheet_link_tag 'admin_tree'
 
 - jstree_div = 'jstree_container'
-%section#records
+%section
   %div{:id => jstree_div}
     %ul
       = render :partial => 'book_category_tree_element', :locals => {book_category: @root}
