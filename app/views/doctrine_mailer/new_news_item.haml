@@ -3,7 +3,7 @@
     Добрый день, #{@news_recipient.name},
 
   %p
-    Сообщаем, что на сайт ?????? была добавлена новость.
+    Сообщаем, что на сайт #{ActionMailer::Base.default_url_options[:host]} была добавлена новость.
 
   %div{style: 'padding: 5px 10px; margin: 5px 0; background-color: #fefefe; border: solid 1px #eeeeee;'}
     %p{style: 'font-weight: bold;'}

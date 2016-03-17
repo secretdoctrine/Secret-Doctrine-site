@@ -15,7 +15,7 @@
     Просмотреть сообщение вы можете по ссылке:
 
   %p
-    = refinery.feedback_entries_admin_feedback_entry_path(@feedback_entry)
+    = ActionMailer::Base.default_url_options[:host] + refinery.feedback_entries_admin_feedback_entry_path(@feedback_entry)
 
   %p
     С уважением, сервис автоматических уведомлений.
