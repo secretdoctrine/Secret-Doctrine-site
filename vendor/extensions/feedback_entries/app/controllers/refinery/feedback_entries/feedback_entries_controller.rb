@@ -21,8 +21,7 @@ module Refinery
         @feedback_entry = FeedbackEntry.new(feedback_entry_params)
         if verify_recaptcha(model: @feedback_entry) and @feedback_entry.save and @feedback_entry.valid?
           flash.notice = t(
-            'refinery.crudify.created',
-            :what => @feedback_entry.entry_title
+            'feedback.send_successful'
           )
           Refinery::Authentication::Devise::User.all.collect{|x| x.email}.each do |email|
             begin
@@ -37,7 +36,7 @@ module Refinery
 
         flash.alert = @feedback_entry.errors.messages
 
-        render :new
+        redirect_to :back
 
       end
 

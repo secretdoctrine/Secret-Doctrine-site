@@ -1,4 +1,13 @@
 ru:
+  feedback:
+      send_successful: Ваше сообщение успешно отправлено. Спасибо!
+      incorrect_data: Данные указаны неверно
+      poster_email: ваш e-mail
+      poster_name: ваше имя, профессия
+      entry_title: тема письма, страна
+      entry_text: Текст сообщения
+      alert_prefix: Поле "
+      alert_suffix: '" '
   refinery:
     plugins:
       feedback_entries:

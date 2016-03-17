@@ -11,7 +11,10 @@
     - next if flash.alert[key].nil? or flash.alert[key].empty?
     %div.flash_alert
       %div
-        = I18n.t('news_items.alert_prefix') + I18n.t("news_items.#{key}") + I18n.t('news_items.alert_suffix') + flash.alert[key].first
+        - if key == :base
+          = flash.alert[key].first
+        - else
+          = I18n.t('feedback.alert_prefix') + I18n.t("feedback.#{key}") + I18n.t('feedback.alert_suffix') + flash.alert[key].first
 
 
 = render 'form'
