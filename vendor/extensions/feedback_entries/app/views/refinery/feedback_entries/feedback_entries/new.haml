@@ -1,5 +1,19 @@
 = stylesheet_link_tag 'feedback.css'
 
+%div.clear
+
+- if flash.notice
+  %div.flash_notice
+    %div
+      = flash.notice
+- if flash.alert
+  - flash.alert.each_key do |key|
+    - next if flash.alert[key].nil? or flash.alert[key].empty?
+    %div.flash_alert
+      %div
+        = I18n.t('news_items.alert_prefix') + I18n.t("news_items.#{key}") + I18n.t('news_items.alert_suffix') + flash.alert[key].first
+
+
 = render 'form'
 
 %div.footer_feedback

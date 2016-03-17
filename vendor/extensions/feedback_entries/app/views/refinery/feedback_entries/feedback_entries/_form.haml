@@ -1,13 +1,6 @@
-%div.flash_container
-  = render '/refinery/no_script'
-
-
 %article.bodycontent
   %div#guest_form
     = form_for [refinery, :feedback_entries, @feedback_entry] do |f|
-      = render '/refinery/admin/error_messages',
-               :object => @feedback_entry,
-               :include_object_name => true
       %figure.lotos_pic
         = link_to image_path 'lotos_big.jpg', title: 'Лотос в Индии - символ жизни в трех мирах' do
           = image_tag 'lotos_big.jpg', {height: '188', width: '205'}

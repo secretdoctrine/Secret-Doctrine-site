@@ -35,6 +35,8 @@ module Refinery
           return redirect_to refinery.new_feedback_entries_feedback_entry_path
         end
 
+        flash.alert = @feedback_entry.errors.messages
+
         render :new
 
       end
