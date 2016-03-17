@@ -59,6 +59,12 @@ module Refinery
 
         private
 
+        def create_or_update_unsuccessful(action)
+
+          redirect_to :back
+
+        end
+
         def find_all_authors
           @authors = Refinery::Authors::Author.all
         end

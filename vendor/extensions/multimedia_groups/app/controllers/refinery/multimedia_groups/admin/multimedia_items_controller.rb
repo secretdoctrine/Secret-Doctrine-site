@@ -57,6 +57,12 @@ module Refinery
 
         private
 
+        def create_or_update_unsuccessful(action)
+
+          redirect_to :back
+
+        end
+
         # Only allow a trusted parameter "white list" through.
         def multimedia_item_params
           params.require(:multimedia_item).permit(

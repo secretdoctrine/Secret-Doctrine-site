@@ -31,6 +31,12 @@ module Refinery
 
         private
 
+        def create_or_update_unsuccessful(action)
+
+          redirect_to :back
+
+        end
+
         # Only allow a trusted parameter "white list" through.
         def news_item_params
           params.require(:news_item).permit(:body, :library_news, :site_news, :news_datetime, :title)

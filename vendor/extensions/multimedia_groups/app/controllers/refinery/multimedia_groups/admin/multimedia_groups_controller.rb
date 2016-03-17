@@ -63,6 +63,12 @@ module Refinery
 
         private
 
+        def create_or_update_unsuccessful(action)
+
+          redirect_to :back
+
+        end
+
         # Only allow a trusted parameter "white list" through.
         def multimedia_group_params
           params.require(:multimedia_group).permit(:title, :multimedia_group_id, :order_number)

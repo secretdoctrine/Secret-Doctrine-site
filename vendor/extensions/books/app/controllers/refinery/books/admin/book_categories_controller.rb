@@ -63,6 +63,12 @@ module Refinery
 
         private
 
+        def create_or_update_unsuccessful(action)
+
+          redirect_to :back
+
+        end
+
         # Only allow a trusted parameter "white list" through.
         def book_category_params
           params.require(:book_category).permit(:book_category_id, :name, :is_root, :order_number, :synopsis)
