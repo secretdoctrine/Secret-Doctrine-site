@@ -17,9 +17,9 @@
     = f.text_field :title
 
   %div.field
-    = render '/refinery/admin/wysiwyg',
+    = render '/refinery/admin/tabbed_fields',
                 :f => f,
-                :fields => [:content, :short_content],
+                :tabbed_fields => [:content, :short_content],
                 :object => "authors/poem"
 
   %div.field
@@ -29,6 +29,10 @@
                :field => :picture_id,
                :image => @poem.picture,
                :toggle_image_display => false
+
+  %div.field
+    = f.label :image_caption
+    = f.text_field :image_caption
 
   = render '/refinery/admin/form_actions', :f => f,
              :continue_editing => false,

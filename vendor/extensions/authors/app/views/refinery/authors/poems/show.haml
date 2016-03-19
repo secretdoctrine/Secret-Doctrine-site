@@ -10,9 +10,9 @@
   %div.art
     %figure
       = link_to @poem.picture.url, {class: :highslide, onclick: 'return hs.expand(this);'} do
-        = image_fu @poem.picture, nil, {alt: "“На вершинах”"}
+        = image_tag @poem.picture.url, {alt: @poem.title, height: :auto, width: :auto}
       %figcaption
-        Н. К. Рерих. Тум-мо. На вершинах. 1936 г.
+        = @poem.image_caption
 
     %h1.upper
       = @poem.title

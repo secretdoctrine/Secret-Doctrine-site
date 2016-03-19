@@ -25,10 +25,15 @@
     = f.text_field :poetry_header
 
   %div.field
-    = render '/refinery/admin/wysiwyg',
+    = render '/refinery/admin/tabbed_fields',
                 :f => f,
-                :fields => [:about_text],
+                :tabbed_fields => [:about_text, :additional_info, :last_poem_placeholder],
                 :object => "authors/author"
+
+  %div.field
+    = f.label :need_placeholder
+    = f.check_box :need_placeholder, :checked => @author.need_placeholder
+
 
   = render '/refinery/admin/form_actions', :f => f,
     :continue_editing => false,

@@ -62,8 +62,8 @@ body.poesy_inner .bodycontent { padding-bottom: 0;}
 
 .copyright { width: 705px; margin: 0 auto;}
 
-.art { width: 500px; padding: 65px 150px; margin: 0 auto; background: url(stihi2.jpg) repeat-y center top; color: #865105; font-family: "Times New Roman", Times, serif;}
-.art figure { border: #FDDEA8 ridge 8px; width: 400px; margin: 0 auto 3em; text-align: center;}
+.art { width: 500px; padding: 65px 150px; margin: 0 auto; background: url(stihi2.jpg) repeat-y center top; color: #865105; font-family: "Times New Roman", Times, serif; text-align: center;}
+.art figure { border: #FDDEA8 ridge 8px; width: auto; max-width: 400px; margin: 0 auto 3em; text-align: center; display: inline-block}
 .art figure img { width: 100%; border: none;}
 .art figcaption { padding: 8px; font-size: 13px;}
 .art h1 { font-size: 19px; text-transform: uppercase; color: #900; margin: 0 0 1em;}
@@ -114,4 +114,9 @@ q {
 
 p, pre, blockquote, article.bodycontent ul, article.bodycontent ol, article.bodycontent dl {
     margin: 1em 0;
+}
+
+#overlay_box.zelenyi_slonik {
+    background-color: #112617;
+    background-image: none;
 }
