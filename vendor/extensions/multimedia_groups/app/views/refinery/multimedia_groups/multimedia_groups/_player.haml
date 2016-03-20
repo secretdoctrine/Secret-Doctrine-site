@@ -1,45 +1,25 @@
 = javascript_include_tag 'multimedia_groups/jquery.jplayer'
-= stylesheet_link_tag 'multimedia_groups/jplayer.blue.monday'
+= stylesheet_link_tag 'multimedia_groups/jplayer-style'
+= stylesheet_link_tag 'multimedia_groups/themicons'
 
 %div#jplayer_div
-%div{:id => "jplayer_container_div", :class => "jp-audio", :role => "application", 'aria-label' => "media player"}
+%div#jplayer_container_div{ :class => "jp-audio", :role => "application", 'aria-label' => "media player"}
   %div.jp-type-single
     %div{:class=>"jp-gui jp-interface"}
-      %div.jp-controls
+      %div{ class: "jp-button jp-playpause-button"}
         %button.jp-play{:role=>"button", :tabindex=>"0"}
           play
-        %button.jp-stop{:role=>"button", :tabindex=>"0"}
-          stop
 
-      %div.jp-progress
-        %div.jp-seek-bar
-          %div.jp-play-bar
+      %div.jp-time-rail
+        %div.jp-progress
+          %div.jp-seek-bar{ style: 'width: 100%;'}
+            %div.jp-play-bar{ style: 'width: 0%;'}
 
-      %div.jp-volume-controls
-        %button.jp-mute{:role=>"button", :tabindex=>"0"}
-          mute
-        %button.jp-volume-max{:role=>"button", :tabindex=>"0"}
+      %div{ class: 'jp-button jp-volume-button'}
+        %button.jp-mute{ role: "button", tabindex: '0'}
           max volume
-        %div.jp-volume-bar
-          %div.jp-volume-bar-value
-
-      %div.jp-time-holder
-        %div.jp-current-time{:role=>"timer", 'aria-label'=>"time"}
-          &nbsp;
-        %div.jp-duration{:role=>"timer", 'aria-label'=>"duration"}
-          &nbsp;
-        %div.jp-toggles
-          %button.jp-repeat{:role=>"button", :tabindex=>"0"}
-            repeat
-
-    %div.jp-details
-      %div.jp-title{'aria-label'=>"title"}
-        &nbsp;
-    %div.jp-no-solution
-      %span
-        Update Required
-      To play the media you will need to either update your browser to a recent version or update your
-      = link_to 'Flash plugin', "http://get.adobe.com/flashplayer/", :target=>"_blank"
+      %div.jp-volume-bar
+        %div{ class: 'jp-volume-bar-value', style: 'width: 80%;'}
 
 
 :javascript
