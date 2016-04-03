@@ -23,11 +23,14 @@
 
 
 :javascript
-  function play_file(file, title) {
-    $('#jplayer_div').jPlayer({
+
+  $('#jplayer_div').jPlayer({
       solution: 'html',
-      supplied: 'mp3, oga',
+      supplied: 'mp3',
       cssSelectorAncestor: '#jplayer_container_div',
       useStateClassSkin: true
-    }).jPlayer('setMedia', {mp3: file, title: title}).jPlayer('play');
+    })
+
+  function play_file(file, title) {
+    $('#jplayer_div').jPlayer('setMedia', {mp3: file}).jPlayer('play');
   }
