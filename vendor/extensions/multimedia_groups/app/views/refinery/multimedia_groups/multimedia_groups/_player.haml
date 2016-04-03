@@ -25,10 +25,9 @@
 :javascript
   function play_file(file, title) {
     $('#jplayer_div').jPlayer({
-      swfPath: 'multimedia_groups/jquery.jplayer.swf',
-      solution: 'html, flash',
-      supplied: 'm4a, oga',
+      solution: 'html',
+      supplied: 'mp3, oga',
       cssSelectorAncestor: '#jplayer_container_div',
       useStateClassSkin: true
-    }).jPlayer('setMedia', {m4a: file, title: title}).jPlayer('play');
+    }).jPlayer('setMedia', {mp3: file, title: title}).jPlayer('play');
   }

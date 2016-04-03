@@ -2,7 +2,7 @@
   - if item.video_link.blank?
     %span{:style => 'width:16px; height: 16px; display: block; float: right;'}
   - else
-    = link_to '', item.video_link, :class => 'youtube_i', :onclick => '"return hs.htmlExpand(this, {objectType: \'iframe\', width: 560, height: 315, allowSizeReduction: false, wrapperClassName: \'draggable-header no-footer\', preserveContent: false, objectLoadTime: \'after\'})"'
+    = link_to '', item.video_link, :class => 'youtube_i', :onclick => "return hs.htmlExpand(this, {objectType: 'iframe', width: 560, height: 315, allowSizeReduction: false, wrapperClassName: 'draggable-header no-footer', preserveContent: false, objectLoadTime: 'after'})"
   - if item.book_link.blank?
     %span{:style => 'width:16px; height: 16px; display: block; float: right;'}
   - else
