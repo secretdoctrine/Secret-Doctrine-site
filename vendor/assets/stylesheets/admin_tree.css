@@ -36,3 +36,7 @@
 #jstree_container a {
     border: none;
 }
+
+.jstree-node {
+    white-space: normal !important;
+}
