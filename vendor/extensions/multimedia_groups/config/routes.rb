@@ -2,7 +2,11 @@ Refinery::Core::Engine.routes.draw do
 
   # Frontend routes
   namespace :multimedia_groups do
-    resources :multimedia_groups, :path => '', :only => [:index, :show]
+    resources :multimedia_groups, :path => '', :only => [:index, :show] do
+      resources :multimedia_items, :only => [] do
+        get 'file', on: :member
+      end
+    end
   end
 
   # Admin routes
