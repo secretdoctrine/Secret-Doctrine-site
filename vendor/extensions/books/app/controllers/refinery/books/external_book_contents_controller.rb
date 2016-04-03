@@ -1,5 +1,5 @@
 module Refinery
-  module Library
+  module Books
     class ExternalBookContentsController < BaseController
 
       def show
