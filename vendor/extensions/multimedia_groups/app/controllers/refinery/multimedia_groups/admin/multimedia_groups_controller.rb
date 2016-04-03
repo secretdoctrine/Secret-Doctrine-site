@@ -71,7 +71,7 @@ module Refinery
 
         # Only allow a trusted parameter "white list" through.
         def multimedia_group_params
-          params.require(:multimedia_group).permit(:title, :multimedia_group_id, :order_number)
+          params.require(:multimedia_group).permit(:title, :multimedia_group_id, :order_number, :extended_name)
         end
 
         def find_all_multimedia_groups
