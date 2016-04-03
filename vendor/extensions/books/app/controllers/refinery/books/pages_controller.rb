@@ -4,10 +4,14 @@ module Refinery
 
       layout 'layouts/library.haml', :only => [:index, :show]
 
-      before_action :set_body_class
+      before_action :set_body_class, :set_page_title
 
       def set_body_class
         @body_class = 'bluegamma'
+      end
+
+      def set_page_title
+        @page_title = t('headers.library')
       end
 
       def show
@@ -22,6 +26,8 @@ module Refinery
         @page_info[:contents] = @page.book.build_contents(@page)
         @page_info[:pdf] = (params.has_key?('pdf') and params['pdf'] == 'true')
         @page_info[:pages_for_select] = @page.book.pages_for_select
+
+        @page_title += t('headers.separator') + @page.book.name + t('headers.separator') + t('headers.page_number') + @page.url_name
 
       end
 

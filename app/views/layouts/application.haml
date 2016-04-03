@@ -2,7 +2,10 @@
   %head
 
     %meta{:@content_item => "text/html; charset=windows-1251", "http-equiv" => "Content-Type"}
-    %title Тайная Доктрина Востока в творчестве Ларисы Дмитриевой
+    - title = 'Тайная Доктрина Востока в творчестве Ларисы Дмитриевой'
+    - if @page_title
+      - title += t('headers.separator') + @page_title
+    %title #{title}
     = stylesheet_link_tag 'refinery/books/application.css'
     = stylesheet_link_tag 'application.css'
     = javascript_include_tag 'refinery/books/application'

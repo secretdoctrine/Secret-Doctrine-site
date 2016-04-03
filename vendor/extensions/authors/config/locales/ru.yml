@@ -57,3 +57,5 @@ ru:
         name: Name
         poetry_header: Poetry Header
         about_text: About Text
+  headers:
+    authors: Поэзия

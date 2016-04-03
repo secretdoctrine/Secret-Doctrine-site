@@ -19,7 +19,7 @@ Refinery::Core::Engine.routes.draw do
 
   # Frontend routes
   namespace :authors do
-    resources :poems, :only => [:index, :show]
+    resources :poems, :only => [:show]
   end
 
   # Admin routes

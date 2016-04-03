@@ -131,3 +131,8 @@ ru:
           page_count: Page Count
           can_buy: Can Buy
           book_category_id: Book Category
+  headers:
+    library: Библиотека
+    search: Поиск
+    results_found: ' результатов найдено'
+    page_number: 'Страница '

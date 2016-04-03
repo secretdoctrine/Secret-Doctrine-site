@@ -2,22 +2,7 @@ module Refinery
   module MultimediaGroups
     class MultimediaItemsController < ::ApplicationController
 
-      before_action :find_all_multimedia_items
-      before_action :find_page
-
-      def index
-        # you can use meta fields from your model instead (e.g. browser_title)
-        # by swapping @page for @multimedia_item in the line below:
-        present(@page)
-      end
-
-      def show
-        @multimedia_item = MultimediaItem.find(params[:id])
-
-        # you can use meta fields from your model instead (e.g. browser_title)
-        # by swapping @page for @multimedia_item in the line below:
-        present(@page)
-      end
+      before_action :find_all_multimedia_items, :find_page
 
     protected
 

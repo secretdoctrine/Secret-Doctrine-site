@@ -36,3 +36,5 @@ ru:
         library_news: Library News
         site_news: Site News
         news_datetime: News Datetime
+  headers:
+    news: Новости

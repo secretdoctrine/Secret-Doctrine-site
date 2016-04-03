@@ -16,12 +16,6 @@ Refinery::Core::Engine.routes.draw do
     end
   end
 
-
-  # Frontend routes
-  namespace :multimedia_groups do
-    resources :multimedia_items, :only => [:index, :show]
-  end
-
   # Admin routes
   namespace :multimedia_groups, :path => '' do
     namespace :admin, :path => "#{Refinery::Core.backend_route}/multimedia_groups" do
