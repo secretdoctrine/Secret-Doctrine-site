@@ -82,7 +82,6 @@ body { background: #8F94C0 !important;}
 .other_pages a { text-decoration: underline;}
 
 .mainclear { color: #000; background: #D9DDFF;}
-html.ie7 .mainclear  {//z-index: expression(runtimeStyle.zIndex = 1, insertAdjacentHTML('afterBegin', '<ins class="bg_before"></ins>'));}
 .mainclear:before,
 .mainclear .bg_before { content: ""; display: block; position: absolute; top: 0; right: 0; left: 392px; width: 10px; height: 100%; background: #8F94C0;}
 .mainclear a { color: #000;}
