@@ -2,10 +2,14 @@ module Refinery
   module FeedbackEntries
     class FeedbackEntriesController < ::ApplicationController
 
-      before_action :find_page
+      before_action :find_page, :set_page_title
+
+      def set_page_title
+        @page_title = t('headers.feedback')
+      end
 
       def index
-        return redirect_to refinery.new_feedback_entries_feedback_entry_path
+        redirect_to refinery.new_feedback_entries_feedback_entry_path
       end
 
       def new

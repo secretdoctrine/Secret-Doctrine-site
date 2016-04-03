@@ -2,8 +2,11 @@ module Refinery
   module Authors
     class AuthorsController < ::ApplicationController
 
-      before_action :find_all_authors
-      before_action :find_page
+      before_action :find_all_authors, :find_page, :set_page_title
+
+      def set_page_title
+        @page_title = t('headers.authors')
+      end
 
       def index
         # you can use meta fields from your model instead (e.g. browser_title)
@@ -16,6 +19,8 @@ module Refinery
 
       def show
         @author = Author.friendly.find(params[:id])
+
+        @page_title += t('headers.separator') + @author.name
 
         # you can use meta fields from your model instead (e.g. browser_title)
         # by swapping @page for @author in the line below:

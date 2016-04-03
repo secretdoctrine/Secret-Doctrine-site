@@ -2,8 +2,11 @@ module Refinery
   module MultimediaGroups
     class MultimediaGroupsController < ::ApplicationController
 
-      before_action :find_root_multimedia_groups
-      before_action :find_page
+      before_action :find_root_multimedia_groups, :find_page, :set_page_title
+
+      def set_page_title
+        @page_title = t('headers.multimedia')
+      end
 
       def index
         # you can use meta fields from your model instead (e.g. browser_title)
@@ -14,6 +17,7 @@ module Refinery
       def show
         @multimedia_group = MultimediaGroup.find(params[:id])
 
+        @page_title += t('headers.separator') + @multimedia_group.title
         # you can use meta fields from your model instead (e.g. browser_title)
         # by swapping @page for @multimedia_group in the line below:
         present(@page)

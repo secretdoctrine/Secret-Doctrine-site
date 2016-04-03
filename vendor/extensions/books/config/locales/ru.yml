@@ -19,6 +19,8 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 ru:
+  will_paginate:
+    page_gap: ...
   contents_elements:
     section: 'Раздел'
     chapter: 'Глава'
@@ -129,3 +131,8 @@ ru:
           page_count: Page Count
           can_buy: Can Buy
           book_category_id: Book Category
+  headers:
+    library: Библиотека
+    search: Поиск
+    results_found: ' результатов найдено'
+    page_number: 'Страница '

@@ -472,13 +472,20 @@ object.pdf_page,
 #jstree_container a {
     white-space: normal !important;
     height: auto;
-    width: auto;
-    padding: 1px 2px;
 }
 
 #jstree_container .tree_leaf {
     color: #000099;
 }
+
+.jstree-anchor {
+    margin-right: 24px !important;
+}
+
+#tree_container_div {
+    overflow-x: hidden;
+}
+
 
 /*
 #tree_container_div .library_toggle input {

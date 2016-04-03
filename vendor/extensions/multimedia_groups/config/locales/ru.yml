@@ -57,3 +57,5 @@ ru:
       refinery/multimedia_groups/multimedia_group:
         title: Title
         multimedia_group_id: Multimedia Group
+  headers:
+    multimedia: Мультимедиа

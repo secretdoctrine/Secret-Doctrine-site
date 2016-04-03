@@ -2,8 +2,11 @@ module Refinery
   module NewsItems
     class NewsItemsController < ::ApplicationController
 
-      before_action :find_all_news_items
-      before_action :find_page
+      before_action :find_all_news_items, :find_page, :set_page_title
+
+      def set_page_title
+        @page_title = t('headers.news')
+      end
 
       def index
         # you can use meta fields from your model instead (e.g. browser_title)
