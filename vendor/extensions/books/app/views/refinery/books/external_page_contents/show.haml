@@ -5,7 +5,7 @@
     var body_element = document.getElementsByTagName('body')[0];
     var selection;
     selection = window.getSelection();
-    var pagelink = "<br /><br /> Read more at: <a href='"+document.location.href+"'>"+document.location.href+"</a><br />Copyright &copy; c.bavota"; // change this if you want
+    var pagelink = "<br /><br />&copy secretdoctrine.ru (\"#{@content_item.book_page.book.name}\", страница #{@content_item.book_page.url_name})";
     var copytext = selection + pagelink;
     var newdiv = document.createElement('div');
     newdiv.style.position='absolute';

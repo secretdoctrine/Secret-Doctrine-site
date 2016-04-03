@@ -148,17 +148,20 @@ ActiveRecord::Schema.define(version: 20200218122338) do
   add_index "refinery_authentication_devise_users", ["slug"], name: "index_refinery_authentication_devise_users_on_slug", using: :btree
 
   create_table "refinery_authors", force: :cascade do |t|
-    t.string   "slug",            limit: 255
-    t.string   "friendly_header", limit: 255
-    t.string   "name",            limit: 255
-    t.string   "poetry_header",   limit: 255
-    t.text     "about_text",      limit: 65535
-    t.integer  "position",        limit: 4
+    t.string   "slug",                  limit: 255
+    t.string   "friendly_header",       limit: 255
+    t.string   "name",                  limit: 255
+    t.string   "poetry_header",         limit: 255
+    t.text     "about_text",            limit: 65535
+    t.integer  "position",              limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "is_root",                       default: false, null: false
-    t.integer  "order_number",    limit: 4,     default: 0,     null: false
-    t.integer  "author_id",       limit: 4
+    t.boolean  "is_root",                             default: false, null: false
+    t.integer  "order_number",          limit: 4,     default: 0,     null: false
+    t.integer  "author_id",             limit: 4
+    t.text     "additional_info",       limit: 65535
+    t.text     "last_poem_placeholder", limit: 65535
+    t.boolean  "need_placeholder",                    default: false, null: false
   end
 
   add_index "refinery_authors", ["slug"], name: "index_refinery_authors_on_slug", using: :btree
@@ -173,6 +176,7 @@ ActiveRecord::Schema.define(version: 20200218122338) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "order_number",  limit: 4,     default: 0, null: false
+    t.text     "image_caption", limit: 65535
   end
 
   create_table "refinery_books", force: :cascade do |t|
