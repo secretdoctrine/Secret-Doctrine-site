@@ -8,4 +8,6 @@ create database doctrine_db;
 
 grant all on doctrine_db.* to 'doctrine_user'@'localhost';
 
-(on ubuntu) sudo apt-get install libmariadbclient-dev
+(on ubuntu)
+sudo apt-get install libmariadbclient-dev
+sudo apt-get install mariadb-server mariadb-client
