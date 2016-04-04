@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require refinery/books/jquery-2.1.4
+//= require refinery/books/jstree
 //= require refinery/books/rangy-core
 //= require refinery/books/rangy-classapplier
 //= require refinery/books/rangy-highlighter
