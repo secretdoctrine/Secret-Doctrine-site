@@ -1,14 +1,15 @@
 <% user_can_modify_images = current_refinery_user.has_plugin?('refinery_images') %>
+<% no_errors = @image.errors.empty? %>
 <div id="dialog_menu_left">
   <% if (any_images = @images.any?) or searching? %>
-    <span id="existing_image_radio" class="radio<%= ' selected_radio' if (no_errors = @image.errors.empty?) %>">
-      <input type="radio" name="image_type" value="existing_image" id="image_type_existing"<%= ' checked="true"'.html_safe if no_errors or searching? %> />
+    <span id="existing_image_radio" class="radio">
+      <input type="radio" name="image_type" value="existing_image" id="image_type_existing" />
       <label for="image_type_existing" class="stripped"><%= t('.existing_image') %></label>
     </span>
   <% end %>
   <% if user_can_modify_images %>
-    <span id="upload_image_radio" class="radio<%= ' selected_radio' if !no_errors and !any_images %>">
-      <input type="radio" name="image_type" value="upload_image" id="image_type_upload"<%= ' checked="true"'.html_safe if (!any_images or !no_errors) and !searching? %> />
+    <span id="upload_image_radio" class="radio selected_radio">
+      <input type="radio" name="image_type" value="upload_image" id="image_type_upload"<%= ' checked="checked"'.html_safe %> />
       <label for="image_type_upload" class="stripped"><%= t('.new_image') %></label>
     </span>
   <% end %>
