@@ -56,7 +56,7 @@ module Refinery
 
         result = {}
         with_hash = {}
-        search_text = params[:search_text]
+        search_text = (params[:search_text] or '')
 
         show_extended_search = (params.has_key?('is_ext_search') and params['is_ext_search'] == 'true')
         per_page = RESULTS_ON_PAGE
