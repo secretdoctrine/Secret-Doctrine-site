@@ -313,8 +313,9 @@ ActiveRecord::Schema.define(version: 20200218122338) do
     t.integer  "position",            limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "order_number",        limit: 4,   default: 0,     null: false
-    t.boolean  "is_root",                         default: false, null: false
+    t.integer  "order_number",        limit: 4,     default: 0,     null: false
+    t.boolean  "is_root",                           default: false, null: false
+    t.text     "extended_name",       limit: 65535
   end
 
   create_table "refinery_multimedia_groups_multimedia_items", force: :cascade do |t|
