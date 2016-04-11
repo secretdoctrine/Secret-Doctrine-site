@@ -19,6 +19,25 @@ module Refinery
 
       end
 
+      def printable_number
+
+        return nil unless self.show_number
+
+        siblings = multimedia_group.multimedia_items.sort_by{|x| x.order_number}
+        number = 1
+
+        siblings.each do |item|
+
+          return number if item.id == self.id
+          next unless item.show_number
+          number += 1
+
+        end
+
+        number
+
+      end
+
       # To enable admin searching, add acts_as_indexed on searchable fields, for example:
       #
       #   acts_as_indexed :fields => [:title]
