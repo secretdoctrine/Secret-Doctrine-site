@@ -120,3 +120,40 @@ p, pre, blockquote, article.bodycontent ul, article.bodycontent ol, article.body
     background-color: #112617;
     background-image: none;
 }
+
+blockquote {
+    margin-left: 4ex;
+}
+
+.snoska {
+    color: #FF0000;
+    font-weight: bold;
+    font-size: 150%;
+    line-height: 0.5em;
+}
+
+.snoska span {
+    display: none;
+    text-transform: none;
+    text-align: left;
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 1.3em;
+    color: #000000;
+    background: #FFFFCC;
+}
+
+.snoska span p {
+    background: #FFFFCC;
+}
+
+.snoska:hover { border-bottom: none; }
+.snoska:hover span { display:inline; }
+
+.snoska span a { color:#0000FF; }
+.snoska span a:hover { color:#FF0000; }
+
+
+.tab1 {
+    margin-left: 4ex;
+}
