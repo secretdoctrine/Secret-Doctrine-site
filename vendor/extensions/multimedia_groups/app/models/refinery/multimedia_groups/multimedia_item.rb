@@ -4,7 +4,7 @@ module Refinery
 
       belongs_to :multimedia_group
 
-      validates :title, :presence => true, :uniqueness => true
+      validates :title, :presence => true
 
       belongs_to :audio_file, :class_name => '::Refinery::Resource'
       belongs_to :hidef_audio_file, :class_name => '::Refinery::Resource'

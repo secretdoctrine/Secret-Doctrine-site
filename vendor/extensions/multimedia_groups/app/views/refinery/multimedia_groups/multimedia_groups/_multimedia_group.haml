@@ -6,7 +6,10 @@
         %h2{align: "center"}
           %strong
             %span{style: "font-size: 18pt;"}
-              = raw multimedia_group.extended_name
+              - if multimedia_group.extended_name.to_s.empty?
+                = multimedia_group.title
+              - else
+                = raw multimedia_group.extended_name
         %p
           &nbsp;
 
@@ -17,9 +20,10 @@
               %h2
                 &nbsp;
               %ul{:class => :list}
-                = render :partial => 'multimedia_item', :collection => multimedia_group.multimedia_items, :as => :item
+                = render :partial => 'multimedia_item', :collection => multimedia_group.ordered_items, :as => :item
           - if multimedia_group.multimedia_groups.any?
-            = render :partial => 'multimedia_group_small', :collection => multimedia_group.multimedia_groups, :as => :multimedia_group
+            = render :partial => 'multimedia_group_small', :collection => multimedia_group.ordered_groups, :as => :multimedia_group
+          %ins.last_line
 
 
 

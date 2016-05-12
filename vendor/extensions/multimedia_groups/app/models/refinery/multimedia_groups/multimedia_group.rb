@@ -9,12 +9,20 @@ module Refinery
       ROOT_NAME = ::I18n.t('multimedia_groups.root_name')
 
 
-      validates :title, :presence => true, :uniqueness => true
+      validates :title, :presence => true
 
       def destroy
         multimedia_groups.each {|x| x.destroy}
         multimedia_items.each {|x| x.destroy}
         super
+      end
+
+      def ordered_items
+        multimedia_items.all.sort_by{|x| x.order_number}
+      end
+
+      def ordered_groups
+        multimedia_groups.all.sort_by{|x| x.order_number}
       end
 
       def get_next_order_number
