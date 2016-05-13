@@ -69,11 +69,16 @@ module Refinery
 
       end
 
+      def sorted_content_elements
+        contents_elements.sort_by{|x| [x.page_number, x.get_nest_level]}
+      end
+
       def build_contents(page)
 
         root_element = ContentsTreeElement.new
 
-        contents_elements.where(contents_element_id: nil).sort_by{ |x| x.page_number }.each do |content_element|
+        #contents_elements.where(contents_element_id: nil).sort_by{ |x| x.page_number }.each do |content_element|
+        sorted_content_elements.each do |content_element|
           add_contents_element(root_element, content_element, page)
         end
 

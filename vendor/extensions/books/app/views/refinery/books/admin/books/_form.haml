@@ -85,7 +85,7 @@
 
 - if @book.contents_elements.any?
   %div#contents_elements
-    = render :partial => '/refinery/books/admin/contents_elements/contents_element', :collection => @book.contents_elements.sort_by{|x| [x.page_number, x.get_nest_level]}
+    = render :partial => '/refinery/books/admin/contents_elements/contents_element', :collection => @book.sorted_content_elements
 - unless @book.id.nil?
   %div#new_contents_element
     = render :partial => '/refinery/books/admin/contents_elements/contents_element_form', :locals => {:contents_element => @new_contents_element}
