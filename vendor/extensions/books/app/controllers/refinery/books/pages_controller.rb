@@ -38,7 +38,7 @@ module Refinery
 
         send_file(
             #File.read(File.expand_path(@page.pdf_content.path)),
-            File.expand_path(@page.pdf_content.path),
+            File.expand_path(File.join(Rails.root, @page.pdf_content.path)),
             type: 'application/pdf',
             disposition: 'attachment',
             filename: @page.short_book_and_page_name + '.pdf'

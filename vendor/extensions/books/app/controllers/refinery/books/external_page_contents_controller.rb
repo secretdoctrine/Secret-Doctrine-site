@@ -6,11 +6,11 @@ module Refinery
 
         @content_item = ExternalPageContent.find_by_id(params[:id])
         return render_404 if @content_item.nil?
-        return render_404 unless File.exist?(File.expand_path(@content_item.path))
+        return render_404 unless File.exist?(File.join(Rails.root, @content_item.path))
 
-        return send_file(File.expand_path(@content_item.path), disposition: :inline) unless @content_item.is_html
+        return send_file(File.join(Rails.root, @content_item.path), disposition: :inline) unless @content_item.is_html
 
-        @content = File.read(File.expand_path(@content_item.path))
+        @content = File.read(File.join(Rails.root, @content_item.path))
 
         render :layout => false
 

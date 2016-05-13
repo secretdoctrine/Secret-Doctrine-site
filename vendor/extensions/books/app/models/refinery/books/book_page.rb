@@ -11,6 +11,7 @@ module Refinery
       RESULTS_ON_PAGE = 20
       MAX_SEARCH_RESULTS = 1000
       PAGE_NAME_EXPORT_LIMIT = 30
+      BOOK_NAME_EXPORT_LIMIT = 30
       NAME_SEPARATOR = ' / '
 
       def self.zip_for_search(params, temp_file)
@@ -26,7 +27,7 @@ module Refinery
             next if page.pdf_content.nil?
             title = page.short_book_and_page_name + '.pdf'
             z.put_next_entry(title)
-            z.print(IO.read(File.expand_path(page.pdf_content.path)))
+            z.print(IO.read(File.expand_path(File.join(Rails.root, page.pdf_content.path))))
 
           end
 
@@ -36,7 +37,17 @@ module Refinery
       end
 
       def short_book_and_page_name
-        book_and_page_name.first(PAGE_NAME_EXPORT_LIMIT)
+        #book_and_page_name.first(PAGE_NAME_EXPORT_LIMIT)
+        result = book.name.first(BOOK_NAME_EXPORT_LIMIT)
+        if book.name.length > BOOK_NAME_EXPORT_LIMIT
+          result += '(...)'
+        end
+        result += ' - ' + display_name.first(PAGE_NAME_EXPORT_LIMIT)
+        if display_name.length > PAGE_NAME_EXPORT_LIMIT
+          result += '(...)'
+        end
+
+        result
       end
 
       def book_and_page_name

@@ -8,8 +8,8 @@ module Refinery
 
       def destroy
         begin
-          if File.expand_path(local_path).start_with?(File.expand_path(File.join(Rails.root, "public")))
-            FileUtils.rm_r(local_path)
+          if local_path.start_with?("public")
+            FileUtils.rm_r(File.join(Rails.root, local_path))
           end
         rescue
         end

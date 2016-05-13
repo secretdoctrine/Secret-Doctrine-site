@@ -141,7 +141,7 @@ module Refinery
             yaml_object['book']['name_comment'] if yaml_object['book'].has_key? 'name_comment'
         result[:book].can_buy =
             yaml_object['book'].has_key?('can_buy') ? yaml_object['book']['can_buy'] == 'true' : false
-        result[:book].local_path = dest_directory
+        result[:book].local_path = Pathname.new(dest_directory).relative_path_from(Rails.root)
 
         result[:book].save!
 
@@ -213,7 +213,7 @@ module Refinery
           ExternalPageContent.create!(
               book_page_id: page.id,
               content_type: ExternalPageContent::PDF_TYPE,
-              path: File.join(dest_directory, pdf_file_name))
+              path: Pathname.new(File.join(dest_directory, pdf_file_name)).relative_path_from(Rails.root))
 
           dir_entries.delete(pdf_file_name)
 
@@ -227,7 +227,7 @@ module Refinery
           ExternalPageContent.create!(
               book_page_id: page.id,
               content_type: ExternalPageContent::HTML_TYPE,
-              path: File.join(dest_directory, html_file_name))
+              path: Pathname.new(File.join(dest_directory, html_file_name)).relative_path_from(Rails.root))
 
           content = Nokogiri::HTML(File.read(File.join(dest_directory, html_file_name)))
           content.css('style,script').remove
