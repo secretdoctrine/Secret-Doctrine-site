@@ -71,7 +71,10 @@ module Refinery
 
         # Only allow a trusted parameter "white list" through.
         def poem_params
-          params.require(:poem).permit(:order_number, :content, :short_content, :picture_id, :author_id, :title, :image_caption)
+          params.require(:poem).permit(
+              :order_number, :content, :short_content, :picture_id, :author_id, :title, :image_caption,
+              :tile_picture_id, :preview_picture_id, :name_second_line, :name_comment, :alt_top_block
+          )
         end
       end
     end
