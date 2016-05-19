@@ -2,6 +2,14 @@ module Refinery
   module Books
     class Book < Refinery::Core::BaseModel
 
+      SHORT_NAME_LIMIT = 80
+
+      def short_name
+        return name if name.length < SHORT_NAME_LIMIT
+        name.first(SHORT_NAME_LIMIT) + '(...)'
+      end
+
+
       def parent_id=(new_id)
         self.book_category_id = new_id
       end

@@ -6,6 +6,8 @@ module Refinery
 
     class Importer
 
+      BOOK_IMPORT_NAME_LIMIT = 120
+
       def self.working_directory
 
         File.join(Rails.root, 'public')
@@ -30,10 +32,18 @@ module Refinery
             next unless is_loadable_path(yaml)
             yaml_object = YAML.load(File.read(yaml))
 
-            string += yaml_object['book']['name_prefix'] + ' ' if yaml_object['book'].has_key? 'name_prefix'
+            if yaml_object['book'].has_key? 'name_prefix' and yaml_object['book']['name_prefix']
+              string += yaml_object['book']['name_prefix'] + ' '
+            end
             string += yaml_object['book']['name']
-            string += ' ' + yaml_object['book']['name_comment'] if yaml_object['book'].has_key? 'name_comment'
+            if yaml_object['book'].has_key? 'name_comment' and yaml_object['book']['name_comment']
+              string += ' ' + yaml_object['book']['name_comment']
+            end
             string += ' (' + yaml.sub(working_directory.to_s, "") + ')'
+
+            if string.length > BOOK_IMPORT_NAME_LIMIT
+              string = string.first(BOOK_IMPORT_NAME_LIMIT) + '(...)'
+            end
 
             result.push([string, yaml.sub(working_directory.to_s, "")])
           end
@@ -155,7 +165,7 @@ module Refinery
         if yaml_object['book'].has_key?('book_file')
           result[:book].book_file = ::Refinery::Resource.new
           result[:book].book_file.file = File.open(File.join(source_dir_name, yaml_object['book']['book_file']))
-          result[:book].book_file.save
+          result[:book].book_file.save!
           result[:book].save!
         end
 
