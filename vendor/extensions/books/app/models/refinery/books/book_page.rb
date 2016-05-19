@@ -24,10 +24,17 @@ module Refinery
 
           search_results[:search_results].each do |page|
 
-            next if page.pdf_content.nil?
-            title = page.short_book_and_page_name + '.pdf'
-            z.put_next_entry(title)
-            z.print(IO.read(File.expand_path(File.join(Rails.root, page.pdf_content.path))))
+            #next if page.pdf_content.nil?
+            if page.pdf_content
+              title = page.short_book_and_page_name + '.pdf'
+              z.put_next_entry(title)
+              z.print(IO.read(File.expand_path(File.join(Rails.root, page.pdf_content.path))))
+            else
+              title = page.short_book_and_page_name + '.html'
+              z.put_next_entry(title)
+              z.print(IO.read(File.expand_path(File.join(Rails.root, page.html_content.path))))
+            end
+
 
           end
 
