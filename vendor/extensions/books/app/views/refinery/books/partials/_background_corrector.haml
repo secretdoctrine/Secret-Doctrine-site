@@ -1,0 +1,10 @@
+:javascript
+  function toggleStyleForFoundSpans() {
+    $("iframe").each(function () {
+      $(this.contentWindow.document.body)[0].style.backgroundColor = "#FFFFFF";
+    });
+    }
+
+  window.onload = function() {
+    toggleStyleForFoundSpans();
+  }
