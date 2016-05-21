@@ -67,6 +67,12 @@ body.poesy_inner .bodycontent { padding-bottom: 0;}
 .art figure img { width: 100%; border: none;}
 .art figcaption { padding: 8px; font-size: 13px;}
 .art h1 { font-size: 19px; text-transform: uppercase; color: #900; margin: 0 0 1em;}
+.art h1 i {
+    font-size: 80%;
+    font-style: normal;
+    font-weight: normal;
+    text-transform: none;
+}
 
 .footnote { font-size: 29px; font-weight: bold; color: red;}
 .footnote small { font-size: 18px; background: #ffc; color: #000; text-transform: none; font-weight: normal; font-style: normal; text-align: left; display: none;}
@@ -145,6 +151,8 @@ blockquote {
 
 .snoska span p {
     background: #FFFFCC;
+    padding: 3px;
+    margin: 0;
 }
 
 .snoska:hover { border-bottom: none; }

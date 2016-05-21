@@ -8,19 +8,26 @@
       Для публикации стихотворений необходимо письменное разрешение автора или редакции сайта.
       При размещении отдельных стихотворений в электронном виде ссылка на сайт и автора обязательна. Также обязательна ссылка на автора при цитировании.
   %div.art
-    %figure
-      = link_to @poem.picture.url, {class: :highslide, onclick: 'return hs.expand(this);'} do
-        = image_tag @poem.picture.url, {alt: @poem.title, height: :auto, width: :auto}
-      %figcaption
-        = @poem.image_caption
+    - if @poem.alt_top_block.to_s.empty?
+      %figure
+        = link_to @poem.picture.url, {class: :highslide, onclick: 'return hs.expand(this);'} do
+          = image_tag @poem.picture.url, {alt: @poem.title, height: :auto, width: :auto}
+        %figcaption
+          = @poem.image_caption
+    - else
+      = raw @poem.alt_top_block
 
     %h1.upper
       = @poem.title
-      %span.snoska
-        *
-        %span
-          %p
-            = raw "* <em>pieta</em> (итал.) — <em>милосердие</em>,  в изобразит, искусстве — <em>оплакивание Христа Его Матерью, Богородицей.</em>"
+      - unless @poem.name_second_line.to_s.empty?
+        %br
+        %i
+          = @poem.name_second_line
+      - unless @poem.name_comment.to_s.empty?
+        %span.snoska
+          *
+          %span
+            = raw @poem.name_comment
 
     =raw @poem.content
 
