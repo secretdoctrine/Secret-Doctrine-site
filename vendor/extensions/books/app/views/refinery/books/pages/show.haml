@@ -59,7 +59,7 @@
     - else
       = link_to ' ', refinery.books_book_page_path(params.merge(id: @page_info[:page].next.url_name).except(:highlight_words)), id: 'next_page'
 
-= render partial: 'refinery/books/partials/book_view_resize_script'
+= render partial: 'refinery/books/partials/book_view_resize_script', :locals => {:html_width => @page_info[:page].book.html_width, :html_height => @page_info[:page].book.html_height}
 
 = render partial: 'refinery/books/partials/highlighter_script'
 

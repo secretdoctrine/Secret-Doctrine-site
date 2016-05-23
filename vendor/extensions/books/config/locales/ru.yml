@@ -67,6 +67,8 @@ ru:
       ignore_relevance: 'Группировать результаты без учета релевантности'
       results_per_page: 'Результатов на странице'
       too_many_results: 'Слишком много результатов'
+    format_unlim: 'По размеру страницы'
+    format_700_950: '950х700 пикселей'
   refinery:
     plugins:
       book_categories:

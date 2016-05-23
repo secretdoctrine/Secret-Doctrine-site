@@ -43,6 +43,10 @@
     = f.text_field :name_comment
 
   %div.field
+    = f.label :page_format
+    = f.select :page_format, options_for_select(@book.page_format_array_for_select, selected: @book.page_format)
+
+  %div.field
     = f.label :cover_picture
     = render '/refinery/admin/image_picker',
              :f => f,
