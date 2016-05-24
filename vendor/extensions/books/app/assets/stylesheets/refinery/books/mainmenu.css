@@ -374,3 +374,5 @@ BODY { behavior:url("/csshover2.htc"); } /* Fix for IE (css hover on any tag) */
 .whitebg #footermenu a {
     color:#000000;
 }
+
+.clear{clear: both;}

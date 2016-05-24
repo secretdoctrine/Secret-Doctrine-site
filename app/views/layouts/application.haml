@@ -21,6 +21,7 @@
       =image_tag 'Header_Slava2.jpg', {:title => 'Н. К. Рерих. Слава Гималаев'}
       =image_tag 'Header_Slava_right2.gif', {:alt => 'Тайная Доктрина Востока в творчестве Ларисы Дмитриевой', :class => :right}
     = Refinery::Pages::MenuPresenter.new(refinery_menu_pages, self).to_html
+    %div.clear
     = yield
 
     = render partial: 'refinery/footer'
