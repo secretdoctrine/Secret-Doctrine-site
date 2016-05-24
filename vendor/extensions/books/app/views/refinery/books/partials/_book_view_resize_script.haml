@@ -16,43 +16,5 @@
     $("#main_container_div")[0].style.width = width - 310 + "px";
   }
 
-  function set_html_width() {
-    var width, height;
-    if(#{html_width} == 0) {
-      width = window.innerWidth - 310 - 2*80 - 30 + "px";
-    }
-    else
-    {
-      width = #{html_width} + "px";
-    }
-
-    if(#{html_height} == 0) {
-      height = window.innerHeight - 209 - 180 + "px";
-    }
-    else
-    {
-      height = #{html_height} + "px";
-    }
-
-    $("iframe").each(function() {
-      this.style.width = width;
-      this.style.height = height;
-    })
-
-    $("#next_page").each(function() {
-      this.style.height = height;
-    })
-
-    $("#previous_page").each(function() {
-      this.style.height = height;
-    })
-
-  }
-
   resize();
-  set_html_width();
 
-  window.onresize = function() {
-    resize();
-    set_html_width();
-  };
