@@ -1,5 +1,9 @@
 = stylesheet_link_tag 'multimedia.css'
 
 %div.mainclear
-  = render :partial => 'multimedia_group', :collection => @root_multimedia_groups, :as => :multimedia_group
+  = #render :partial => 'multimedia_group', :collection => @root_multimedia_groups, :as => :multimedia_group
+  %div.maincontent
+    %div.content
+      %article.bodycontent
+        = raw @page.content_for(:side_body)
   = render :partial => 'left_bar', :locals => {:page => @page, :root_multimedia_groups => @root_multimedia_groups}

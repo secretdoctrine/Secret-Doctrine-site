@@ -60,6 +60,7 @@ body.library {
     margin: 0px 10px;
     vertical-align: top;
     text-align: right;
+    min-width: 300px;
 }
 
 #search_block {
