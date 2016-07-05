@@ -7,6 +7,7 @@ module Refinery
       belongs_to :book_category
       has_many :book_categories
       has_many :books
+      has_many :popup_books
 
       ROOT_NAME = ::I18n.t('library.categories_root_name')
 
@@ -24,7 +25,8 @@ module Refinery
 
         result = []
         book_categories.each {|x| result.push(x)}
-        books.each {|x| result.push(x)}
+        books.all.each {|x| result.push(x)}
+        popup_books.all.each {|x| result.push(x)}
 
         result.sort_by {|x| x.order_number}
 
@@ -73,6 +75,26 @@ module Refinery
 
       end
 
+      def self.process_own_popup_books(db_element, tree_element)
+
+        db_element.popup_books.each do |popup_book|
+
+          book_element = TreeElement.new(
+              name: popup_book.name,
+              link_target: Refinery::Core::Engine.routes.url_helpers.books_popup_book_path(popup_book.id),
+              id: popup_book.id,
+              tree_prefix: popup_book.tree_prefix,
+              is_data: true,
+              order_number: popup_book.order_number,
+              selected: false
+          )
+
+          tree_element.child_elements.push(book_element)
+
+        end
+
+      end
+
       def self.add_tree_element(current_element, tree_parent, db_element, selected_book_ids: [], selected_category_ids: [])
 
         tree_element = TreeElement.new(
@@ -85,6 +107,7 @@ module Refinery
         )
 
         process_own_books(db_element, tree_element, selected_book_ids: selected_book_ids)
+        process_own_popup_books(db_element, tree_element)
 
         child_elements = db_element.book_categories.includes(:books)
 

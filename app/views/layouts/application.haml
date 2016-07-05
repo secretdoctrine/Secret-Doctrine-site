@@ -9,6 +9,8 @@
     = stylesheet_link_tag 'refinery/books/application.css'
     = stylesheet_link_tag 'application.css'
     = javascript_include_tag 'refinery/books/application'
+    = javascript_include_tag 'multimedia_groups/jquery.jplayer'
+    = stylesheet_link_tag 'multimedia_groups/themicons'
     %link{:href => "/favicon.ico", :rel => "shortcut icon"}
 
   = csrf_meta_tags
@@ -31,5 +33,19 @@
       hs.showCredits = false;
       hs.outlineWhileAnimating = true;
       hs.lang={cssDirection:"ltr",loadingText:"Загрузка...",loadingTitle:"Кликните чтобы отменить",focusTitle:"Нажмите чтобы перенести вперёд",fullExpandTitle:"Увеличить",fullExpandText:"Полноэкранный",previousText:"Предыдущий",previousTitle:"Назад (стрелка влево)",nextText:"Далее",nextTitle:"Далее (стрелка вправо)",moveTitle:"Передвинуть",moveText:"Передвинуть",closeText:"Закрыть",closeTitle:"Закрыть (Esc)",resizeTitle:"Восстановить размер",playText:"Слайд-шоу",playTitle:"Слайд-шоу (пробел)",pauseText:"Пауза",pauseTitle:"Приостановить слайд-шоу (пробел)",number:"Изображение %1/%2",restoreTitle:"Нажмите чтобы посмотреть картинку, используйте мышь для перетаскивания. Используйте клавиши вперёд и назад"};
+
+    :javascript
+      if($("#jplayer_div").length) {
+        $('#jplayer_div').jPlayer({
+          solution: 'html',
+          supplied: 'mp3',
+          cssSelectorAncestor: '#jplayer_container_div',
+          useStateClassSkin: true
+        })
+      }
+
+      function play_file(file, title) {
+        $('#jplayer_div').jPlayer('setMedia', {mp3: file}).jPlayer('play');
+      }
 
     = javascript_include_tag 'refinery/books/highslide-full.packed'
