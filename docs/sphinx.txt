@@ -6,7 +6,7 @@ rake ts:start
 
 rake ts:reindex
 
-
+apt-get install software-properties-common
 sudo add-apt-repository ppa:builds/sphinxsearch-rel22
 sudo apt-get update
 sudo apt-get install sphinxsearch
