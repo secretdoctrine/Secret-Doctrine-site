@@ -5,9 +5,9 @@ ru:
   refinery:
     plugins:
       multimedia_items:
-        title: Multimedia Items
+        title: Мультимедиа (объекты)
       multimedia_groups:
-        title: Multimedia Groups
+        title: Мультимедиа
     multimedia_groups:
       admin:
         multimedia_items:
@@ -57,3 +57,5 @@ ru:
       refinery/multimedia_groups/multimedia_group:
         title: Title
         multimedia_group_id: Multimedia Group
+  headers:
+    multimedia: Мультимедиа

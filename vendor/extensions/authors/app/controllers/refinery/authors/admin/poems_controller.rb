@@ -59,13 +59,22 @@ module Refinery
 
         private
 
+        def create_or_update_unsuccessful(action)
+
+          redirect_to :back
+
+        end
+
         def find_all_authors
           @authors = Refinery::Authors::Author.all
         end
 
         # Only allow a trusted parameter "white list" through.
         def poem_params
-          params.require(:poem).permit(:order_number, :content, :short_content, :picture_id, :author_id, :title)
+          params.require(:poem).permit(
+              :order_number, :content, :short_content, :picture_id, :author_id, :title, :image_caption,
+              :tile_picture_id, :preview_picture_id, :name_second_line, :name_comment, :alt_top_block
+          )
         end
       end
     end

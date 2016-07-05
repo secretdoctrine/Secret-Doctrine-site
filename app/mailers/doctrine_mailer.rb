@@ -31,19 +31,20 @@ class DoctrineMailer < ApplicationMailer
 
     mail from: yaml_object['from'],
          to: email,
-         subject: 'new feedback',
+         subject: 'Пользователь оставил новое сообщение',
          delivery_method_options: create_delivery_options(yaml_object)
   end
 
-  def new_news_item(email, news_item)
+  def new_news_item(news_recipient, news_item)
 
+    @news_recipient = news_recipient
     @news_item = news_item
 
     yaml_object = YAML.load(File.read(File.join(Rails.root, 'config', 'mail_settings.yml')))
 
     mail from: yaml_object['from'],
-         to: email,
-         subject: 'News item added',
+         to: news_recipient.email,
+         subject: 'Добавлена новость',
          delivery_method_options: create_delivery_options(yaml_object)
 
   end
@@ -56,7 +57,7 @@ class DoctrineMailer < ApplicationMailer
 
     mail from: yaml_object['from'],
          to: news_recipient.email,
-         subject: 'News item added',
+         subject: 'Активирована подписка на новости',
          delivery_method_options: create_delivery_options(yaml_object)
 
   end

@@ -2,7 +2,7 @@
   - if item.video_link.blank?
     %span{:style => 'width:16px; height: 16px; display: block; float: right;'}
   - else
-    = link_to '', item.video_link, :class => 'youtube_i', :onclick => '"return hs.htmlExpand(this, {objectType: \'iframe\', width: 560, height: 315, allowSizeReduction: false, wrapperClassName: \'draggable-header no-footer\', preserveContent: false, objectLoadTime: \'after\'})"'
+    = link_to '', item.video_link, :class => 'youtube_i', :onclick => "return hs.htmlExpand(this, {objectType: 'iframe', width: 560, height: 315, allowSizeReduction: false, wrapperClassName: 'draggable-header no-footer', preserveContent: false, objectLoadTime: 'after'})"
   - if item.book_link.blank?
     %span{:style => 'width:16px; height: 16px; display: block; float: right;'}
   - else
@@ -10,13 +10,15 @@
 
   - if item.audio_file
     = link_to '', item.audio_file.url, :class => 'save_i', :target => '_blank'
-    = link_to '#', :onclick => "play_file('#{item.audio_file.url}', '#{item.title}');".html_safe, :class => "tit c_player", :title => "Слушать" do
+    = link_to '#', :onclick => "play_file('#{refinery.file_multimedia_groups_multimedia_group_multimedia_item_path(item.multimedia_group, item)}', '#{item.title}');".html_safe, :class => "tit c_player", :title => "Слушать" do
       %span.num
-        = item.position
+        - if item.printable_number
+          = item.printable_number.to_s + '.'
       = item.title
   - else
     %span{:style => 'width:16px; height: 16px; display: block; float: right;'}
     = link_to '#', :class => "tit wo_play"  do
       %span.num
-        = item.position
+        - if item.printable_number
+          = item.printable_number.to_s + '.'
       = item.title

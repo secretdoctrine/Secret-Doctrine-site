@@ -63,9 +63,15 @@ module Refinery
 
         private
 
+        def create_or_update_unsuccessful(action)
+
+          redirect_to :back
+
+        end
+
         # Only allow a trusted parameter "white list" through.
         def author_params
-          params.require(:author).permit(:name, :poetry_header, :about_text, :friendly_header, :order_number, :author_id)
+          params.require(:author).permit(:name, :poetry_header, :about_text, :friendly_header, :order_number, :author_id, :additional_info, :last_poem_placeholder, :need_placeholder)
         end
       end
     end

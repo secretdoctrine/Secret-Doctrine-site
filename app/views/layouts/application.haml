@@ -2,10 +2,16 @@
   %head
 
     %meta{:@content_item => "text/html; charset=windows-1251", "http-equiv" => "Content-Type"}
-    %title Тайная Доктрина Востока в творчестве Ларисы Дмитриевой
+    - title = 'Тайная Доктрина Востока в творчестве Ларисы Дмитриевой'
+    - if @page_title
+      - title += t('headers.separator') + @page_title
+    %title #{title}
     = stylesheet_link_tag 'refinery/books/application.css'
     = stylesheet_link_tag 'application.css'
     = javascript_include_tag 'refinery/books/application'
+    = javascript_include_tag 'multimedia_groups/jquery.jplayer'
+    = stylesheet_link_tag 'multimedia_groups/jplayer-style'
+    = stylesheet_link_tag 'multimedia_groups/themicons'
     %link{:href => "/favicon.ico", :rel => "shortcut icon"}
 
   = csrf_meta_tags
@@ -18,14 +24,29 @@
       =image_tag 'Header_Slava2.jpg', {:title => 'Н. К. Рерих. Слава Гималаев'}
       =image_tag 'Header_Slava_right2.gif', {:alt => 'Тайная Доктрина Востока в творчестве Ларисы Дмитриевой', :class => :right}
     = Refinery::Pages::MenuPresenter.new(refinery_menu_pages, self).to_html
+    %div.clear
     = yield
 
     = render partial: 'refinery/footer'
     :javascript
-      hs.graphicsDir = 'assets/refinery/books/highslide/graphics/';
+      hs.graphicsDir = '/assets/refinery/books/highslide/graphics/';
       hs.outlineType = "rounded-white";
       hs.showCredits = false;
       hs.outlineWhileAnimating = true;
       hs.lang={cssDirection:"ltr",loadingText:"Загрузка...",loadingTitle:"Кликните чтобы отменить",focusTitle:"Нажмите чтобы перенести вперёд",fullExpandTitle:"Увеличить",fullExpandText:"Полноэкранный",previousText:"Предыдущий",previousTitle:"Назад (стрелка влево)",nextText:"Далее",nextTitle:"Далее (стрелка вправо)",moveTitle:"Передвинуть",moveText:"Передвинуть",closeText:"Закрыть",closeTitle:"Закрыть (Esc)",resizeTitle:"Восстановить размер",playText:"Слайд-шоу",playTitle:"Слайд-шоу (пробел)",pauseText:"Пауза",pauseTitle:"Приостановить слайд-шоу (пробел)",number:"Изображение %1/%2",restoreTitle:"Нажмите чтобы посмотреть картинку, используйте мышь для перетаскивания. Используйте клавиши вперёд и назад"};
+
+    :javascript
+      if($("#jplayer_div").length) {
+        $('#jplayer_div').jPlayer({
+          solution: 'html',
+          supplied: 'mp3',
+          cssSelectorAncestor: '#jplayer_container_div',
+          useStateClassSkin: true
+        })
+      }
+
+      function play_file(file, title) {
+        $('#jplayer_div').jPlayer('setMedia', {mp3: file}).jPlayer('play');
+      }
 
     = javascript_include_tag 'refinery/books/highslide-full.packed'

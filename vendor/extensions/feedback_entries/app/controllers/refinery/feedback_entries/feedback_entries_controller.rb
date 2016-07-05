@@ -2,10 +2,14 @@ module Refinery
   module FeedbackEntries
     class FeedbackEntriesController < ::ApplicationController
 
-      before_action :find_page
+      before_action :find_page, :set_page_title
+
+      def set_page_title
+        @page_title = t('headers.feedback')
+      end
 
       def index
-        return redirect_to refinery.new_feedback_entries_feedback_entry_path
+        redirect_to refinery.new_feedback_entries_feedback_entry_path
       end
 
       def new
@@ -21,8 +25,7 @@ module Refinery
         @feedback_entry = FeedbackEntry.new(feedback_entry_params)
         if verify_recaptcha(model: @feedback_entry) and @feedback_entry.save and @feedback_entry.valid?
           flash.notice = t(
-            'refinery.crudify.created',
-            :what => @feedback_entry.entry_title
+            'feedback.send_successful'
           )
           Refinery::Authentication::Devise::User.all.collect{|x| x.email}.each do |email|
             begin
@@ -35,7 +38,9 @@ module Refinery
           return redirect_to refinery.new_feedback_entries_feedback_entry_path
         end
 
-        render :new
+        flash.alert = @feedback_entry.errors.messages
+
+        redirect_to :back
 
       end
 

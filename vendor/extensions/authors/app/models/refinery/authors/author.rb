@@ -13,6 +13,11 @@ module Refinery
 
       validates :name, :presence => true, :uniqueness => true
 
+
+      def should_generate_new_friendly_id?
+        changes.keys.include? 'friendly_header'
+      end
+
       def destroy
         authors.each {|x| x.destroy}
         poems.each {|x| x.destroy}

@@ -38,6 +38,10 @@
     = f.label :book_link
     = f.text_field :book_link
 
+  %div.field
+    = f.label :show_number
+    = f.check_box :show_number, :checked => @multimedia_item.show_number
+
   = render '/refinery/admin/form_actions', :f => f,
     :continue_editing => false,
              :delete_title => t('delete', :scope => 'refinery.multimedia_items.admin.multimedia_items.multimedia_item'),

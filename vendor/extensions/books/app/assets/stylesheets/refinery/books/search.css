@@ -162,6 +162,13 @@ a.search_type_link:hover, a.search_type_link:focus {
 
 }
 
+#results_count {
+    margin-top: 40px;
+    padding: 10px;
+    text-align: center;
+    color: #91C0D2;
+}
+
 #buttons_block {
     text-align: center;
     margin-top: 20px;

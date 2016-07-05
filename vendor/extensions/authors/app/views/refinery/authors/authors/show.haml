@@ -1,5 +1,17 @@
 = stylesheet_link_tag 'poetry.css'
 
+%div#overlay_mask{ class: "overlay_mask", style: "display: none;" }
+%div#overlay_box{ class: "overlay_box zelenyi_slonik", style: "display: none;" }
+  %ins.close{ onclick: "$('#overlay_mask, #overlay_box').hide()" }
+    Закрыть
+  %div.over_inner
+    = raw @author.additional_info
+
+/%div#overlay_box_eng{ class: "overlay_box zelenyi_slonik" }
+/  %ins.close{ onclick: "$('#overlay_mask_eng, #overlay_box_eng').hide()" }
+/    Закрыть
+/  %div.over_inner
+
 %article.bodycontent
   = raw @page.content_for(:body)
 
@@ -21,8 +33,12 @@
           %tr
             = render partial: 'poem', collection: poem_pair, as: :poem
             - if poem_pair.size < 2
-              %td
-                &nbsp;
+              - if @author.need_placeholder
+                %td.prepared_td
+                  = raw @author.last_poem_placeholder
+              - else
+                %td
+                  &nbsp;
 
     %div.info
       %a{href: "#", onclick: "$('#overlay_mask, #overlay_box').show(); $(window).scrollTop(50); return false;"}

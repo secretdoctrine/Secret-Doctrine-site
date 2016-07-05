@@ -17,9 +17,9 @@
     = f.text_field :title
 
   %div.field
-    = render '/refinery/admin/wysiwyg',
+    = render '/refinery/admin/tabbed_fields',
                 :f => f,
-                :fields => [:content, :short_content],
+                :tabbed_fields => [:content, :short_content, :name_comment, :alt_top_block],
                 :object => "authors/poem"
 
   %div.field
@@ -29,6 +29,30 @@
                :field => :picture_id,
                :image => @poem.picture,
                :toggle_image_display => false
+
+  %div.field
+    = f.label :tile_picture
+    = render '/refinery/admin/image_picker',
+               :f => f,
+               :field => :tile_picture_id,
+               :image => @poem.tile_picture,
+               :toggle_image_display => false
+
+  %div.field
+    = f.label :preview_picture
+    = render '/refinery/admin/image_picker',
+               :f => f,
+               :field => :preview_picture_id,
+               :image => @poem.preview_picture,
+               :toggle_image_display => false
+
+  %div.field
+    = f.label :image_caption
+    = f.text_field :image_caption
+
+  %div.field
+    = f.label :name_second_line
+    = f.text_field :name_second_line
 
   = render '/refinery/admin/form_actions', :f => f,
              :continue_editing => false,

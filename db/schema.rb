@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200218122338) do
+ActiveRecord::Schema.define(version: 20200218122339) do
 
   create_table "book_categories", force: :cascade do |t|
     t.integer "book_category_id", limit: 4
@@ -148,17 +148,20 @@ ActiveRecord::Schema.define(version: 20200218122338) do
   add_index "refinery_authentication_devise_users", ["slug"], name: "index_refinery_authentication_devise_users_on_slug", using: :btree
 
   create_table "refinery_authors", force: :cascade do |t|
-    t.string   "slug",            limit: 255
-    t.string   "friendly_header", limit: 255
-    t.string   "name",            limit: 255
-    t.string   "poetry_header",   limit: 255
-    t.text     "about_text",      limit: 65535
-    t.integer  "position",        limit: 4
+    t.string   "slug",                  limit: 255
+    t.string   "friendly_header",       limit: 255
+    t.string   "name",                  limit: 255
+    t.string   "poetry_header",         limit: 255
+    t.text     "about_text",            limit: 65535
+    t.integer  "position",              limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "is_root",                       default: false, null: false
-    t.integer  "order_number",    limit: 4,     default: 0,     null: false
-    t.integer  "author_id",       limit: 4
+    t.boolean  "is_root",                             default: false, null: false
+    t.integer  "order_number",          limit: 4,     default: 0,     null: false
+    t.integer  "author_id",             limit: 4
+    t.text     "additional_info",       limit: 65535
+    t.text     "last_poem_placeholder", limit: 65535
+    t.boolean  "need_placeholder",                    default: false, null: false
   end
 
   add_index "refinery_authors", ["slug"], name: "index_refinery_authors_on_slug", using: :btree
@@ -173,6 +176,7 @@ ActiveRecord::Schema.define(version: 20200218122338) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "order_number",  limit: 4,     default: 0, null: false
+    t.text     "image_caption", limit: 65535
   end
 
   create_table "refinery_books", force: :cascade do |t|
@@ -309,8 +313,9 @@ ActiveRecord::Schema.define(version: 20200218122338) do
     t.integer  "position",            limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "order_number",        limit: 4,   default: 0,     null: false
-    t.boolean  "is_root",                         default: false, null: false
+    t.integer  "order_number",        limit: 4,     default: 0,     null: false
+    t.boolean  "is_root",                           default: false, null: false
+    t.text     "extended_name",       limit: 65535
   end
 
   create_table "refinery_multimedia_groups_multimedia_items", force: :cascade do |t|
@@ -322,8 +327,9 @@ ActiveRecord::Schema.define(version: 20200218122338) do
     t.integer  "position",            limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "order_number",        limit: 4,   default: 0, null: false
+    t.integer  "order_number",        limit: 4,   default: 0,    null: false
     t.integer  "hidef_audio_file_id", limit: 4
+    t.boolean  "show_number",                     default: true, null: false
   end
 
   create_table "refinery_news_items", force: :cascade do |t|

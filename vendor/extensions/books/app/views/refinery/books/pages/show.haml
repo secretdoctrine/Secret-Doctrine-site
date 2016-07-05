@@ -36,10 +36,12 @@
                   = t('library.go_to_page')
     %tr
       %td{id: 'page_buttons', colspan: '2'}
-        = link_to refinery.books_book_page_path(@page_info[:page].book.id, @page_info[:page].url_name) do
-          = image_tag 'html.png'
-        = link_to refinery.books_book_page_path(@page_info[:page].book.id, @page_info[:page].url_name, pdf: true) do
-          = image_tag 'pdf.png'
+        - if @page_info[:page].html_content
+          = link_to refinery.books_book_page_path(@page_info[:page].book.id, @page_info[:page].url_name) do
+            = image_tag 'html.png'
+        - if @page_info[:page].pdf_content
+          = link_to refinery.books_book_page_path(@page_info[:page].book.id, @page_info[:page].url_name, pdf: true) do
+            = image_tag 'pdf.png'
 
 
   %div{id: 'page_container'}
@@ -59,4 +61,15 @@
 
 = render partial: 'refinery/books/partials/book_view_resize_script'
 
+= render partial: 'refinery/books/partials/page_resize_script', :locals => {:html_width => @page_info[:page].book.html_width, :html_height => @page_info[:page].book.html_height}
+
 = render partial: 'refinery/books/partials/highlighter_script'
+
+= render partial: 'refinery/books/partials/background_corrector'
+
+:javascript
+
+  window.onresize = function() {
+    resize();
+    set_html_size();
+  };

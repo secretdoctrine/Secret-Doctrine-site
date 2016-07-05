@@ -19,6 +19,8 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 ru:
+  will_paginate:
+    page_gap: ...
   contents_elements:
     section: 'Раздел'
     chapter: 'Глава'
@@ -59,18 +61,20 @@ ru:
       results_count: 'Всего результатов: '
       view_html: 'Страницы целиком'
       view_snippet: 'Только вхождения'
-      export: 'Скачать результаты поиска (PDF)'
-      export_page: 'Скачать в PDF'
+      export: 'Скачать результаты поиска'
+      export_page: 'Скачать'
       search_exact_words: 'Искать без словоформ'
       ignore_relevance: 'Группировать результаты без учета релевантности'
       results_per_page: 'Результатов на странице'
       too_many_results: 'Слишком много результатов'
+    format_unlim: 'По размеру страницы'
+    format_700_950: '950х700 пикселей'
   refinery:
     plugins:
       book_categories:
-        title: Book Categories
+        title: Библиотека
       books:
-        title: Books
+        title: Книги
     books:
       admin:
         book_categories:
@@ -129,3 +133,8 @@ ru:
           page_count: Page Count
           can_buy: Can Buy
           book_category_id: Book Category
+  headers:
+    library: Библиотека
+    search: Поиск
+    results_found: ' результатов найдено'
+    page_number: 'Страница '

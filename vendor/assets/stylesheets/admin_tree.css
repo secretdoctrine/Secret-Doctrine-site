@@ -1,0 +1,42 @@
+.action_destroy,
+.action_add,
+.action_item_add,
+.action_rename {
+    background-size: contain;
+    height: 18px;
+    width: 18px;
+    margin: 3px;
+}
+
+.action_destroy:hover,
+.action_add:hover,
+.action_item_add:hover,
+.action_rename:hover {
+    cursor: pointer;
+}
+
+.action_destroy {
+    background-image: url('destroy.png');
+}
+
+.action_add {
+    background-image: url('add.png')
+}
+
+.action_item_add {
+    background-image: url('add_item.png')
+}
+
+.action_rename {
+    background-image: url('edit.png')
+}
+
+/* to make jstree ignore refinery link styles */
+
+#jstree_container a {
+    border: none;
+}
+
+.jstree-node {
+    white-space: normal !important;
+}

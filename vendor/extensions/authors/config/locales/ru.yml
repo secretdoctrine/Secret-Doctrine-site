@@ -6,9 +6,9 @@ ru:
   refinery:
     plugins:
       poems:
-        title: Poems
+        title: Поэзия (стихи)
       authors:
-        title: Authors
+        title: Поэзия
     authors:
       admin:
         poems:
@@ -57,3 +57,5 @@ ru:
         name: Name
         poetry_header: Poetry Header
         about_text: About Text
+  headers:
+    authors: Поэзия

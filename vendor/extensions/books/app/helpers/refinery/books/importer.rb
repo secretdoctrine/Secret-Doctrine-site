@@ -6,6 +6,8 @@ module Refinery
 
     class Importer
 
+      BOOK_IMPORT_NAME_LIMIT = 120
+
       def self.working_directory
 
         File.join(Rails.root, 'public')
@@ -30,10 +32,18 @@ module Refinery
             next unless is_loadable_path(yaml)
             yaml_object = YAML.load(File.read(yaml))
 
-            string += yaml_object['book']['name_prefix'] + ' ' if yaml_object['book'].has_key? 'name_prefix'
+            if yaml_object['book'].has_key? 'name_prefix' and yaml_object['book']['name_prefix']
+              string += yaml_object['book']['name_prefix'] + ' '
+            end
             string += yaml_object['book']['name']
-            string += ' ' + yaml_object['book']['name_comment'] if yaml_object['book'].has_key? 'name_comment'
+            if yaml_object['book'].has_key? 'name_comment' and yaml_object['book']['name_comment']
+              string += ' ' + yaml_object['book']['name_comment']
+            end
             string += ' (' + yaml.sub(working_directory.to_s, "") + ')'
+
+            if string.length > BOOK_IMPORT_NAME_LIMIT
+              string = string.first(BOOK_IMPORT_NAME_LIMIT) + '(...)'
+            end
 
             result.push([string, yaml.sub(working_directory.to_s, "")])
           end
@@ -141,21 +151,21 @@ module Refinery
             yaml_object['book']['name_comment'] if yaml_object['book'].has_key? 'name_comment'
         result[:book].can_buy =
             yaml_object['book'].has_key?('can_buy') ? yaml_object['book']['can_buy'] == 'true' : false
-        result[:book].local_path = dest_directory
+        result[:book].local_path = Pathname.new(dest_directory).relative_path_from(Rails.root)
 
         result[:book].save!
 
-        if yaml_object['book'].has_key?('picture_path')
+        if yaml_object['book'].has_key?('picture_path') and yaml_object['book']['picture_path']
           result[:book].cover_picture = ::Refinery::Image.new
           result[:book].cover_picture.image = File.open(File.join(source_dir_name, yaml_object['book']['picture_path']))
           result[:book].cover_picture.save
           result[:book].save!
         end
 
-        if yaml_object['book'].has_key?('book_file')
+        if yaml_object['book'].has_key?('book_file') and yaml_object['book']['book_file']
           result[:book].book_file = ::Refinery::Resource.new
           result[:book].book_file.file = File.open(File.join(source_dir_name, yaml_object['book']['book_file']))
-          result[:book].book_file.save
+          result[:book].book_file.save!
           result[:book].save!
         end
 
@@ -203,38 +213,47 @@ module Refinery
 
           page = BookPage.create!(book_id: result[:book].id, internal_order: page_num, url_name: url_name, page_text: '')
 
-          pdf_file_name = dir_entries.find{|x| pdf_regex.match(x) and pdf_regex.match(x)[1].to_i == file_page_num}
-          if pdf_file_name.nil?
-            result[:message] = ::I18n.t('importer.no_pdf_file') + ' ' + file_page_num.to_s
-            return result
+          unless yaml_object['book'].has_key? 'has_pdf' and yaml_object['book']['has_pdf'] == 'false'
+
+            pdf_file_name = dir_entries.find{|x| pdf_regex.match(x) and pdf_regex.match(x)[1].to_i == file_page_num}
+            if pdf_file_name.nil?
+              result[:message] = ::I18n.t('importer.no_pdf_file') + ' ' + file_page_num.to_s
+              return result
+            end
+
+            FileUtils.cp(File.join(source_dir_name, pdf_file_name), File.join(dest_directory, pdf_file_name))
+            ExternalPageContent.create!(
+                book_page_id: page.id,
+                content_type: ExternalPageContent::PDF_TYPE,
+                path: Pathname.new(File.join(dest_directory, pdf_file_name)).relative_path_from(Rails.root))
+
+            dir_entries.delete(pdf_file_name)
+
           end
 
-          FileUtils.cp(File.join(source_dir_name, pdf_file_name), File.join(dest_directory, pdf_file_name))
-          ExternalPageContent.create!(
-              book_page_id: page.id,
-              content_type: ExternalPageContent::PDF_TYPE,
-              path: File.join(dest_directory, pdf_file_name))
+          unless yaml_object['book'].has_key? 'has_html' and yaml_object['book']['has_html'] == 'false'
 
-          dir_entries.delete(pdf_file_name)
+            html_file_name = dir_entries.find{|x| html_regex.match(x) and html_regex.match(x)[1].to_i == file_page_num}
+            if html_file_name.nil?
+              result[:message] = ::I18n.t('importer.no_html_file') + ' ' + file_page_num.to_s
+              return result
+            end
 
-          html_file_name = dir_entries.find{|x| html_regex.match(x) and html_regex.match(x)[1].to_i == file_page_num}
-          if html_file_name.nil?
-            result[:message] = ::I18n.t('importer.no_html_file') + ' ' + file_page_num.to_s
-            return result
+            FileUtils.cp(File.join(source_dir_name, html_file_name), File.join(dest_directory, html_file_name))
+            ExternalPageContent.create!(
+                book_page_id: page.id,
+                content_type: ExternalPageContent::HTML_TYPE,
+                path: Pathname.new(File.join(dest_directory, html_file_name)).relative_path_from(Rails.root))
+
+            content = Nokogiri::HTML(File.read(File.join(dest_directory, html_file_name)))
+            content.css('style,script').remove
+            page.page_text = content.text
+            dir_entries.delete(html_file_name)
           end
 
-          FileUtils.cp(File.join(source_dir_name, html_file_name), File.join(dest_directory, html_file_name))
-          ExternalPageContent.create!(
-              book_page_id: page.id,
-              content_type: ExternalPageContent::HTML_TYPE,
-              path: File.join(dest_directory, html_file_name))
-
-          content = Nokogiri::HTML(File.read(File.join(dest_directory, html_file_name)))
-          content.css('style,script').remove
-          page.page_text = content.text
           page.save!
 
-          dir_entries.delete(html_file_name)
+
 
         end
 

@@ -9,12 +9,11 @@
   list-style-image: none;
 }
 .jstree-node {
-  /*white-space: nowrap;*/
+  white-space: nowrap;
 }
 .jstree-anchor {
   display: inline-block;
   color: black;
-  /*white-space: nowrap;*/
   padding: 0 4px 0 1px;
   margin: 0;
   vertical-align: top;

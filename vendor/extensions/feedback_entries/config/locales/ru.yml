@@ -1,8 +1,17 @@
 ru:
+  feedback:
+      send_successful: Ваше сообщение успешно отправлено. Спасибо!
+      incorrect_data: Данные указаны неверно
+      poster_email: ваш e-mail
+      poster_name: ваше имя, профессия
+      entry_title: тема письма, страна
+      entry_text: Текст сообщения
+      alert_prefix: Поле "
+      alert_suffix: '" '
   refinery:
     plugins:
       feedback_entries:
-        title: Feedback Entries
+        title: Гостевая
     feedback_entries:
       admin:
         feedback_entries:
@@ -28,3 +37,5 @@ ru:
         poster_email: Poster Email
         entry_title: Entry Title
         entry_text: Entry Text
+  headers:
+    feedback: Гостевая

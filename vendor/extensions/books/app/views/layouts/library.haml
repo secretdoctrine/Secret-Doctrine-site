@@ -2,20 +2,13 @@
   %head
 
     %meta{:@content_item => "text/html; charset=windows-1251", "http-equiv" => "Content-Type"}/
-    %title Тайная Доктрина Востока в творчестве Ларисы Дмитриевой
-    /= stylesheet_link_tag 'index.css'
-    /= stylesheet_link_tag 'mainmenu.css'
-    /= stylesheet_link_tag 'header.css'
+    - title = 'Тайная Доктрина Востока в творчестве Ларисы Дмитриевой'
+    - if @page_title
+      - title += ' - ' + @page_title
+    %title #{title}
     = stylesheet_link_tag 'refinery/books/application.css'
-    /= stylesheet_link_tag 'library.css'
-    /= stylesheet_link_tag 'paginating.css'
-    /= stylesheet_link_tag 'search.css'
-    /= stylesheet_link_tag 'jstree.css'
     %link{:href => "/favicon.ico", :rel => "shortcut icon"}
-    /=javascript_include_tag 'jquery-2.1.4.js'
-    /=javascript_include_tag 'jstree.js'
 
-  /- stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
   = javascript_include_tag 'refinery/books/application'
   - csrf_meta_tags
 
@@ -25,4 +18,3 @@
       =image_tag 'refinery/books/Header_Slava_right2.gif', {:alt => 'Тайная Доктрина Востока в творчестве Ларисы Дмитриевой', :class => :right}
     = Refinery::Pages::MenuPresenter.new(refinery_menu_pages, self).to_html
     = yield
-    = javascript_include_tag 'refinery/books/lightbox'

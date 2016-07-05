@@ -2,15 +2,15 @@
   = link_to refinery.authors_poem_path(poem.id) do
     %div.img_wrapper
       /= image_fu poem.picture, nil, {class: 'img_restricted'}
-      - if poem.picture
+      - if poem.tile_picture
+        %div.image_tile_holder{style: "background-image: url(#{poem.tile_picture.url})"}
+      - elsif poem.picture
         %div.image_tile_holder{style: "background-image: url(#{poem.picture.url})"}
     %article
       %h2
         %strong
           = poem.order_number + 1
           \.
-        “
         = poem.title
-        ”
       %div
         = raw poem.short_content

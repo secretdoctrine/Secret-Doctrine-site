@@ -80,3 +80,17 @@ aside.left { display: none;}
     background-color: #660000;
     opacity: 0.7;
 }
+
+.but_29 { height: auto; min-height: 0; padding: 0; margin: 0; background: none; border: none; -webkit-border-fit: lines;}
+.but_29:hover { cursor: pointer; }
+.but_29 .s0,
+.but_29 .s1,
+.but_29 .s2 { display: inline-block; height: 35px; background-image: url(button.png); background-repeat: no-repeat;}
+
+.but_29 .s0 { padding: 0 0 0 15px; background-position: 0 0;}
+.but_29 .s1 { padding: 0 15px 0 0; background-position: 100% -80px;}
+.but_29 .s2 { background-position: 0 -40px; background-repeat: repeat-x; line-height: 35px; font-weight: bold; color: #91C0C9; min-width: 50px;}
+
+.but_29:hover .s0 {background: url(button_down.png) 0 1px no-repeat;}
+.but_29:hover .s1 {background: url(button_down.png) 100% -79px no-repeat;}
+.but_29:hover .s2 {background: url(button_down.png) 0 -39px;}

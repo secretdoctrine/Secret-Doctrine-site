@@ -8,6 +8,8 @@ module Refinery
       mount_uploader :attachment, FeedbackAttachmentUploader
       validates :poster_name, :presence => true
       validates :entry_title, :presence => true
+      validates :poster_email, :presence => true
+      validates :entry_text, :presence => true
 
       def self.create(params)
         params[:entry_datetime] = Time.now
@@ -17,6 +19,16 @@ module Refinery
       def self.create!(params)
         params[:entry_datetime] = Time.now
         super(params)
+      end
+
+      def save
+        self.entry_datetime = Time.now
+        super
+      end
+
+      def save!
+        self.entry_datetime = Time.now
+        super
       end
 
       def title

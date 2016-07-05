@@ -1,23 +1,20 @@
-%script{:type => 'text/javascript'}
+:javascript
   function resize()
   {
 
-  //for correct resize handling we need to set body overflow to hidden
-  $("body")[0].style.overflow = "hidden";
+    //for correct resize handling we need to set body overflow to hidden
+    $("body")[0].style.overflow = "hidden";
 
-  var heights = window.innerHeight;
-  array = $(".fullheight")
+    // set height
+    var height = window.innerHeight;
+    $(".fullheight").each(function () {
+      this.style.height = height - 209 + "px";
+    })
 
-  for (index = 0; index < array.length; ++index) {
-  array[index].style.height = heights - 209 + "px";
+    // set widths
+    var width = window.innerWidth;
+    $("#main_container_div")[0].style.width = width - 310 + "px";
   }
 
-  var widths = window.innerWidth;
-
-  $("#main_container_div")[0].style.width = widths - 310 + "px";
-
-  }
   resize();
-  window.onresize = function() {
-  resize();
-  };
+

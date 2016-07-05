@@ -2,14 +2,47 @@ module Refinery
   module Books
     class Book < Refinery::Core::BaseModel
 
+      SHORT_NAME_LIMIT = 80
+
+      FORMAT_UNLIM = 0
+      FORMAT_700_950 = 1
+
+      def html_width
+
+        return 0 if self.page_format == FORMAT_UNLIM
+        return 700 if self.page_format == FORMAT_700_950
+
+        0
+
+      end
+
+      def html_height
+
+        return 0 if self.page_format == FORMAT_UNLIM
+        return 950 if self.page_format == FORMAT_700_950
+
+        0
+
+      end
+
+      def page_format_array_for_select
+        [[::I18n.t('library.format_unlim'), FORMAT_UNLIM], [::I18n.t('library.format_700_950'), FORMAT_700_950]]
+      end
+
+      def short_name
+        return name if name.length < SHORT_NAME_LIMIT
+        name.first(SHORT_NAME_LIMIT) + '(...)'
+      end
+
+
       def parent_id=(new_id)
         self.book_category_id = new_id
       end
 
       def destroy
         begin
-          if File.expand_path(local_path).start_with?(File.expand_path(File.join(Rails.root, "public")))
-            FileUtils.rm_r(local_path)
+          if local_path.start_with?("public")
+            FileUtils.rm_r(File.join(Rails.root, local_path))
           end
         rescue
         end
@@ -69,11 +102,16 @@ module Refinery
 
       end
 
+      def sorted_content_elements
+        contents_elements.sort_by{|x| [x.page_number, x.get_nest_level]}
+      end
+
       def build_contents(page)
 
         root_element = ContentsTreeElement.new
 
-        contents_elements.where(contents_element_id: nil).sort_by{ |x| x.page_number }.each do |content_element|
+        #contents_elements.where(contents_element_id: nil).sort_by{ |x| x.page_number }.each do |content_element|
+        sorted_content_elements.each do |content_element|
           add_contents_element(root_element, content_element, page)
         end
 

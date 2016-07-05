@@ -11,6 +11,7 @@ module Refinery
       RESULTS_ON_PAGE = 20
       MAX_SEARCH_RESULTS = 1000
       PAGE_NAME_EXPORT_LIMIT = 30
+      BOOK_NAME_EXPORT_LIMIT = 30
       NAME_SEPARATOR = ' / '
 
       def self.zip_for_search(params, temp_file)
@@ -23,10 +24,17 @@ module Refinery
 
           search_results[:search_results].each do |page|
 
-            next if page.pdf_content.nil?
-            title = page.short_book_and_page_name + '.pdf'
-            z.put_next_entry(title)
-            z.print(IO.read(File.expand_path(page.pdf_content.path)))
+            #next if page.pdf_content.nil?
+            if page.pdf_content
+              title = page.short_book_and_page_name + '.pdf'
+              z.put_next_entry(title)
+              z.print(IO.read(File.expand_path(File.join(Rails.root, page.pdf_content.path))))
+            else
+              title = page.short_book_and_page_name + '.html'
+              z.put_next_entry(title)
+              z.print(IO.read(File.expand_path(File.join(Rails.root, page.html_content.path))))
+            end
+
 
           end
 
@@ -36,7 +44,17 @@ module Refinery
       end
 
       def short_book_and_page_name
-        book_and_page_name.first(PAGE_NAME_EXPORT_LIMIT)
+        #book_and_page_name.first(PAGE_NAME_EXPORT_LIMIT)
+        result = book.name.first(BOOK_NAME_EXPORT_LIMIT)
+        if book.name.length > BOOK_NAME_EXPORT_LIMIT
+          result += '(...)'
+        end
+        result += ' - ' + display_name.first(PAGE_NAME_EXPORT_LIMIT)
+        if display_name.length > PAGE_NAME_EXPORT_LIMIT
+          result += '(...)'
+        end
+
+        result
       end
 
       def book_and_page_name
@@ -56,7 +74,7 @@ module Refinery
 
         result = {}
         with_hash = {}
-        search_text = params[:search_text]
+        search_text = (params[:search_text] or '')
 
         show_extended_search = (params.has_key?('is_ext_search') and params['is_ext_search'] == 'true')
         per_page = RESULTS_ON_PAGE

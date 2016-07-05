@@ -1,0 +1,4 @@
+---
+name: td2_cover.gif
+model_class: Refinery::Image
+model_attachment: image

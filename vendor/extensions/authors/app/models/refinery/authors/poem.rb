@@ -7,6 +7,8 @@ module Refinery
       validates :content, :presence => true
 
       belongs_to :picture, :class_name => '::Refinery::Image'
+      belongs_to :tile_picture, :class_name => '::Refinery::Image'
+      belongs_to :preview_picture, :class_name => '::Refinery::Image'
 
       # To enable admin searching, add acts_as_indexed on searchable fields, for example:
       #

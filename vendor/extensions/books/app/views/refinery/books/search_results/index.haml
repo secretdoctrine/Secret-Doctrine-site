@@ -1,11 +1,13 @@
 - jstree_div = 'jstree_container'
 %div{class: 'search_results_container'}
-  %div#results_count
-    = I18n.t('library.search_page.results_count') + @result[:count].to_s
-  %div#warning_too_many_results
-    - if @result[:too_many_results]
+  - if @result[:too_many_results]
+    %div#warning_too_many_results
       %div
         = I18n.t('library.search_page.too_many_results')
+        = I18n.t('library.search_page.results_count') + @result[:count].to_s
+  - else
+    %div#results_count
+      = I18n.t('library.search_page.results_count') + @result[:count].to_s
   %div{class: :extended_search}
     = form_tag refinery.books_search_results_path, {method: :get, id: 'search_form'} do
       = hidden_field_tag(:page, params[:page])
