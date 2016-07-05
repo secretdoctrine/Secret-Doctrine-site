@@ -24,6 +24,19 @@ Refinery::Core::Engine.routes.draw do
     end
   end
 
+  # Admin routes
+  namespace :books, :path => '' do
+    namespace :admin, :path => "#{Refinery::Core.backend_route}/books" do
+      resources :popup_books, :except => :show do
+        collection do
+          post :update_positions
+        end
+      end
+
+      resources :contents_elements
+    end
+  end
+
   namespace :books, :path => '' do
     resources :search_results, :only => [:index] do
       get 'export', on: :collection
@@ -40,6 +53,7 @@ Refinery::Core::Engine.routes.draw do
     end
     #resources :pages, :only => [:show, :index]
     resources :book_categories, :only => [:show, :index]
+    resources :popup_books, :only => [:show]
     end
 
 end
