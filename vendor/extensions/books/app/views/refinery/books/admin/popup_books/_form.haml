@@ -1,6 +1,6 @@
 = form_for [refinery, :books_admin, @popup_book] do |f|
 
-  = render '/refinery/admin/error_messages', :object => @book_category, :include_object_name => true
+  = render '/refinery/admin/error_messages', :object => @popup_book, :include_object_name => true
 
   - if @popup_book.id.nil?
     / This is 'new'

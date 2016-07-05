@@ -17,10 +17,10 @@ module Refinery
           respond_to do |format|
 
             format.html {
-              if @book_category.update_attributes(popup_book_params)
+              if @popup_book.update_attributes(popup_book_params)
                 flash.notice = t(
                     'refinery.crudify.updated',
-                    :what => "'#{@book_category.name}'"
+                    :what => "'#{@popup_book.name}'"
                 )
                 create_or_update_successful
               else
@@ -28,7 +28,7 @@ module Refinery
               end
             }
             format.json {
-              @book_category.update_position(
+              @popup_book.update_position(
                   params[:new_parent].split('book_category_')[1].to_i,
                   params[:old_parent].split('book_category_')[1].to_i,
                   params[:new_position].to_i,
@@ -41,7 +41,7 @@ module Refinery
         private
 
         # Only allow a trusted parameter "white list" through.
-        def book_params
+        def popup_book_params
           params.require(:popup_book).permit(:name, :name_prefix, :tree_prefix, :name_comment, :order_number, :book_category_id, :body)
         end
       end

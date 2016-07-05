@@ -97,22 +97,6 @@
       });
     }
 
-    book_category_ids = $(".jstree-edit").map(function() { return $(this).attr("id") }).get();
-    for(var i = 0; i < book_category_ids.length; i++)
-    {
-      $("##{jstree_div}").jstree(true).add_action(book_category_ids[i], {
-          "id": "action_rename",
-          "class": "action_rename pull-right",
-          "text": " ",
-          "after": true,
-          "selector": "a",
-          "event": "click",
-          "callback": function(node_id, node, action_id, action_el){
-              document.location.href = node.li_attr.edit_path;
-          }
-      });
-    }
-
     book_category_ids = $(".jstree-popup-book-add").map(function() { return $(this).attr("id") }).get();
     for(var i = 0; i < book_category_ids.length; i++)
     {
@@ -125,6 +109,22 @@
           "event": "click",
           "callback": function(node_id, node, action_id, action_el){
               document.location.href = node.li_attr.new_popup_book_path;
+          }
+      });
+    }
+
+    book_category_ids = $(".jstree-edit").map(function() { return $(this).attr("id") }).get();
+    for(var i = 0; i < book_category_ids.length; i++)
+    {
+      $("##{jstree_div}").jstree(true).add_action(book_category_ids[i], {
+          "id": "action_rename",
+          "class": "action_rename pull-right",
+          "text": " ",
+          "after": true,
+          "selector": "a",
+          "event": "click",
+          "callback": function(node_id, node, action_id, action_el){
+              document.location.href = node.li_attr.edit_path;
           }
       });
     }
