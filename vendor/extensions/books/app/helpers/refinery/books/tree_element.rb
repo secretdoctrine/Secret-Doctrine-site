@@ -12,6 +12,7 @@ module Refinery
       attr_accessor :order_number
       attr_accessor :selected
       attr_accessor :id
+      attr_accessor :is_popup
 
       BOOK_TYPE = 'book'
       CATEGORY_TYPE = 'category'
@@ -30,7 +31,8 @@ module Refinery
           tree_prefix: nil,
           order_number: 0,
           selected: false,
-          id: 0
+          id: 0,
+          is_popup: false
       )
 
         @selected = selected
@@ -43,6 +45,7 @@ module Refinery
         @tree_prefix = tree_prefix
         @order_number = order_number
         @id = id
+        @is_popup = is_popup
 
       end
 

@@ -86,7 +86,8 @@ module Refinery
               tree_prefix: popup_book.tree_prefix,
               is_data: true,
               order_number: popup_book.order_number,
-              selected: false
+              selected: false,
+              is_popup: true
           )
 
           tree_element.child_elements.push(book_element)

@@ -2,6 +2,19 @@
 * @file: highslide.css
 * @version: 4.1.9
 */
+
+.highslide-container {
+    background: #17317e;
+    color: #fff;
+    border-radius: 10px 10px 10px 10px;
+    font: 12px Arial,"Helvetica CY","Nimbus Sans L",sans-serif;
+    left: 50%;
+    margin-left: -470px;
+    position: absolute;
+    top: 70px;
+    width: 940px;
+    z-index: 901;
+}
 .highslide-container div {
     font-family: Verdana, Helvetica;
     font-size: 10pt;
@@ -33,7 +46,7 @@
     border-color: white;
 }
 .highslide-wrapper, .highslide-outline {
-    background: white;
+    background: #17317e;
 }
 .glossy-dark {
     background: #111;
@@ -123,159 +136,10 @@ a.highslide-credits:hover i {
     width: 30px;
     height: 30px;
     cursor: pointer;
-    background: url(highslide/close.png);
+    background: url(highslide/close_x.png);
     /* NOTE! For IE6, you also need to update the highslide-ie6.css file. */
 }
 
-/*****************************************************************************/
-/* Thumbnail boxes for the galleries.                                        */
-/* Remove these if you are not using a gallery.                              */
-/*****************************************************************************/
-.highslide-gallery ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-.highslide-gallery ul li {
-    display: block;
-    position: relative;
-    float: left;
-    width: 106px;
-    height: 106px;
-    border: 1px solid silver;
-    background: #ededed;
-    margin: 2px;
-    line-height: 0;
-    overflow: hidden;
-}
-.highslide-gallery ul a {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-}
-.highslide-gallery ul img {
-    position: relative;
-    top: -50%;
-    left: -50%;
-}
-html>/**/body .highslide-gallery ul li {
-    display: table;
-    text-align: center;
-}
-html>/**/body .highslide-gallery ul li {
-    text-align: center;
-}
-html>/**/body .highslide-gallery ul a {
-    position: static;
-    display: table-cell;
-    vertical-align: middle;
-}
-html>/**/body .highslide-gallery ul img {
-    position: static;
-}
-
-/*****************************************************************************/
-/* Controls for the galleries.											     */
-/* Remove these if you are not using a gallery							     */
-/*****************************************************************************/
-.highslide-controls {
-    width: 195px;
-    height: 40px;
-    background: url(highslide/controlbar-white.gif) 0 -90px no-repeat;
-    margin: 20px 15px 10px 0;
-}
-.highslide-controls ul {
-    position: relative;
-    left: 15px;
-    height: 40px;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    background: url(highslide/controlbar-white.gif) right -90px no-repeat;
-
-}
-.highslide-controls li {
-    float: left;
-    padding: 5px 0;
-    margin:0;
-    list-style: none;
-}
-.highslide-controls a {
-    background-image: url(highslide/controlbar-white.gif);
-    display: block;
-    float: left;
-    height: 30px;
-    width: 30px;
-    outline: none;
-}
-.highslide-controls a.disabled {
-    cursor: default;
-}
-.highslide-controls a.disabled span {
-    cursor: default;
-}
-.highslide-controls a span {
-    /* hide the text for these graphic buttons */
-    display: none;
-    cursor: pointer;
-}
-
-
-/* The CSS sprites for the controlbar - see http://www.google.com/search?q=css+sprites */
-.highslide-controls .highslide-previous a {
-    background-position: 0 0;
-}
-.highslide-controls .highslide-previous a:hover {
-    background-position: 0 -30px;
-}
-.highslide-controls .highslide-previous a.disabled {
-    background-position: 0 -60px !important;
-}
-.highslide-controls .highslide-play a {
-    background-position: -30px 0;
-}
-.highslide-controls .highslide-play a:hover {
-    background-position: -30px -30px;
-}
-.highslide-controls .highslide-play a.disabled {
-    background-position: -30px -60px !important;
-}
-.highslide-controls .highslide-pause a {
-    background-position: -60px 0;
-}
-.highslide-controls .highslide-pause a:hover {
-    background-position: -60px -30px;
-}
-.highslide-controls .highslide-next a {
-    background-position: -90px 0;
-}
-.highslide-controls .highslide-next a:hover {
-    background-position: -90px -30px;
-}
-.highslide-controls .highslide-next a.disabled {
-    background-position: -90px -60px !important;
-}
-.highslide-controls .highslide-move a {
-    background-position: -120px 0;
-}
-.highslide-controls .highslide-move a:hover {
-    background-position: -120px -30px;
-}
-.highslide-controls .highslide-full-expand a {
-    background-position: -150px 0;
-}
-.highslide-controls .highslide-full-expand a:hover {
-    background-position: -150px -30px;
-}
-.highslide-controls .highslide-full-expand a.disabled {
-    background-position: -150px -60px !important;
-}
-.highslide-controls .highslide-close a {
-    background-position: -180px 0;
-}
-.highslide-controls .highslide-close a:hover {
-    background-position: -180px -30px;
-}
 
 /*****************************************************************************/
 /* Styles for the HTML popups											     */
@@ -283,17 +147,27 @@ html>/**/body .highslide-gallery ul img {
 /*****************************************************************************/
 .highslide-maincontent {
     display: none;
+    background: #17317e;
+    color: #fff;
+    border-radius: 10px 10px 10px 10px;
+    font: 12px Arial,"Helvetica CY","Nimbus Sans L",sans-serif;
+    left: 50%;
+    margin-left: -470px;
+    position: absolute;
+    top: 70px;
+    width: 940px;
+    z-index: 901;
 }
 .highslide-html {
-    background-color: white;
+
 }
 .highslide-html-content {
     display: none;
-    width: 400px;
+    width: 940px;
     padding: 0 5px 5px 5px;
 }
 .highslide-header {
-    padding-bottom: 5px;
+    padding: 5px;
 }
 .highslide-header ul {
     margin: 0;
@@ -308,16 +182,19 @@ html>/**/body .highslide-gallery ul img {
     display: none;
 }
 .highslide-header a {
-    font-weight: bold;
-    color: gray;
-    text-transform: uppercase;
-    text-decoration: none;
+    font: 12px Arial,"Helvetica CY","Nimbus Sans L",sans-serif;
+    color: #fff;
+    text-decoration: underline;
 }
 .highslide-header a:hover {
-    color: black;
+    text-decoration: none;
 }
 .highslide-header .highslide-move a {
     cursor: move;
+}
+.highslide-header .highslide-close a {
+    padding-right: 15px;
+    background: url('highslide/close_x.gif') no-repeat right;
 }
 .highslide-footer {
     height: 16px;

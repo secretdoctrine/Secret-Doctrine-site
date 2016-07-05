@@ -1,0 +1,24 @@
+%html
+  %head
+    :css
+      body {
+          background: #17317e;
+          color: #fff;
+          font: 12px Arial,"Helvetica CY","Nimbus Sans L",sans-serif;
+      }
+      body .over_inner {
+        padding: 50px 40px 30px;
+        position: relative;
+        z-index: 0;
+      }
+      body p {
+        margin: 0 0 1.4em;
+      }
+      body a {
+        color: #FFCC66;
+      }
+      body a:hover {
+        color: #FF0000;
+      }
+  %body
+    = yield
