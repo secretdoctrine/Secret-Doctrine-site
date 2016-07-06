@@ -38,6 +38,12 @@ module Refinery
         self.multimedia_group_id = new_id
       end
 
+      def is_toplevel
+        root_group = MultimediaGroup.get_root!
+        return true if multimedia_group.id == root_group.id
+        false
+      end
+
       def self.get_root!
 
         root = find_by(is_root: true)

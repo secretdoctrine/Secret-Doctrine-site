@@ -1,5 +1,10 @@
-%li
+- li_class = nil
+- if group.multimedia_groups.any? and current_group and group.multimedia_groups.collect{|x| x.id}.include? current_group.id
+  - li_class = 'jstree-open'
+- if group.is_toplevel
+  - li_class = 'jstree-open'
+%li{:class => li_class}
   = link_to group.title, refinery.multimedia_groups_multimedia_group_path(group.id)
   - if group.multimedia_groups.any?
     %ul
-      = render :partial => 'tree_group_li', :collection => group.ordered_groups, :as => :group
+      = render :partial => 'tree_group_li', :collection => group.ordered_groups, :as => :group, :locals => {:current_group => current_group}

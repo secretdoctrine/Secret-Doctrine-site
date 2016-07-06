@@ -6,4 +6,4 @@
     %div.content
       %article.bodycontent
         = raw @page.content_for(:side_body)
-  = render :partial => 'left_bar', :locals => {:page => @page, :root_multimedia_groups => @root_multimedia_groups}
+  = render :partial => 'left_bar', :locals => {:page => @page, :root_multimedia_groups => @root_multimedia_groups, :current_group => nil}
