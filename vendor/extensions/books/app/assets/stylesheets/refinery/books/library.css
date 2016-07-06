@@ -176,6 +176,15 @@ object.pdf_page,
     text-align: justify;
 }
 
+.pro .anonce a {
+    text-decoration: underline;
+    color: #91C0D2;
+}
+
+.pro .anonce a:hover {
+    text-decoration: none;
+}
+
 .pro h2, .pro h2 a {
     font-size: 18px;
     font-weight: bold;
