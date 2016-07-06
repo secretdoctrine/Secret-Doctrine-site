@@ -42,7 +42,8 @@ module Refinery
 
         # Only allow a trusted parameter "white list" through.
         def popup_book_params
-          params.require(:popup_book).permit(:name, :name_prefix, :tree_prefix, :name_comment, :order_number, :book_category_id, :body)
+          params.require(:popup_book).permit(:name, :name_prefix, :tree_prefix, :name_comment, :order_number,
+                                             :book_category_id, :body, :synopsis)
         end
       end
     end

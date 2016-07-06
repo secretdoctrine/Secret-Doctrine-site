@@ -240,6 +240,7 @@ module Refinery
 
         content = []
         books.each {|x| content.push(CategoryContentElement.new(is_book: true, model: x))}
+        popup_books.each {|x| content.push(CategoryContentElement.new(is_popup_book: true, model: x))}
         book_categories.each {|x| content.push(CategoryContentElement.new(is_book: false, model: x))}
         content.sort_by!{|x| x.model.order_number}
 
