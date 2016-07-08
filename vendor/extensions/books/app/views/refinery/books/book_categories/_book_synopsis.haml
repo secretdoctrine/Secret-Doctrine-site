@@ -9,10 +9,15 @@
     %h2
       - if element.is_book
         = link_to(element.model.name, refinery.books_book_path(element.model.id))
+      - elsif element.is_popup_book
+        = link_to element.model.name, '#', :onclick => "return hs.htmlExpand(this, { objectType: 'iframe', src: '#{refinery.books_popup_book_path(element.model.id)}', align: 'center' } );"
       - else
         = link_to(element.model.name, refinery.books_book_category_path(element.model.id))
     %p
       = raw element.model.synopsis
+    - if element.is_popup_book
+      %a{ href: "#", onclick: "return hs.htmlExpand(this, { objectType: 'iframe', src: '#{refinery.books_popup_book_path(element.model.id)}', align: 'center' } );"}
+        =I18n.t('library.readmore')
   %div{class: 'footer'}
     - if element.is_book
       - pdf_content = element.model.book_file
@@ -30,6 +35,8 @@
           %span{class: 's1'}
             %span{class: 's2'}
               =I18n.t('library.buy')
+    - elsif element.is_popup_book
+      &nbsp;
     - else
       %a{class: 'first last', href: "#{refinery.books_book_category_path(element.model.id)}"}
         %span{class: 's1'}

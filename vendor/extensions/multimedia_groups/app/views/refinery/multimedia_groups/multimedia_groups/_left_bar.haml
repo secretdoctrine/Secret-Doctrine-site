@@ -5,7 +5,7 @@
   %nav{class: "menuleft navmenu", style: "margin-top: 0px;"}
     %div.multimedia_jstree_div
       %ul
-        = render :partial => 'tree_group_li', :collection => root_multimedia_groups, :as => :group
+        = render :partial => 'tree_group_li', :collection => root_multimedia_groups, :as => :group, :locals => {:current_group => current_group}
   :javascript
     $('.multimedia_jstree_div').jstree({
       "core" : {"themes" : {"icons" : false}}

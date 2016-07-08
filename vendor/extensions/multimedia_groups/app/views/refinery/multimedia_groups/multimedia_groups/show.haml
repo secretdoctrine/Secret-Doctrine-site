@@ -3,4 +3,4 @@
 
 %div.mainclear
   = render :partial => 'multimedia_group', :locals => {:multimedia_group => @multimedia_group}
-  = render :partial => 'left_bar', :locals => {:page => @page, :root_multimedia_groups => @root_multimedia_groups}
+  = render :partial => 'left_bar', :locals => {:page => @page, :root_multimedia_groups => @root_multimedia_groups, :current_group => @multimedia_group}
