@@ -1,6 +1,0 @@
-development:
-  morphology: stem_ru
-  index_exact_words: true
-production:
-  morphology: stem_ru
-  index_exact_words: true
