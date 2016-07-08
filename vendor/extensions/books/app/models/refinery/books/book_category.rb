@@ -104,7 +104,8 @@ module Refinery
             id: db_element.id,
             is_open: ((not current_element.nil?) and current_element.id == db_element.id ? true : false),
             order_number: db_element.order_number,
-            selected: selected_category_ids.any?{|x| x == db_element.id}
+            selected: selected_category_ids.any?{|x| x == db_element.id},
+            tree_prefix: db_element.tree_prefix
         )
 
         process_own_books(db_element, tree_element, selected_book_ids: selected_book_ids)

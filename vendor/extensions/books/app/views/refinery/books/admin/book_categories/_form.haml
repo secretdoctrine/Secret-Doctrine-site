@@ -16,6 +16,10 @@
     = f.text_field :name
 
   %div.field
+    = f.label :tree_prefix
+    = f.text_field :tree_prefix
+
+  %div.field
     = render '/refinery/admin/wysiwyg', :f => f, :fields => [:synopsis], :object => "books/book_category"
 
   = render '/refinery/admin/form_actions', :f => f, :continue_editing => false, :delete_title => t('delete', :scope => 'refinery.book_categories.admin.book_categories.book_category'),:delete_confirmation => t('message', :scope => 'refinery.admin.delete', :title => @book_category.name)
