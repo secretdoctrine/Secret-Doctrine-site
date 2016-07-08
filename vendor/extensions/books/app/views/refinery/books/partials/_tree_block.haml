@@ -9,7 +9,7 @@
     = image_tag 'refinery/books/roscherkl_up.gif'
   %div{id: jstree_div}
     %ul
-      = render partial: 'refinery/books/partials/tree_level_li', locals: {tree_element: tree}
+      = render partial: 'refinery/books/partials/tree_level_li', locals: {tree_element: tree, first: TRUE}
 
 - display = display_contents ? 'block' : 'none'
 %div{ id: 'contents_div', class: 'fullheight', width: '200px', style: 'display: ' + display + ';' }

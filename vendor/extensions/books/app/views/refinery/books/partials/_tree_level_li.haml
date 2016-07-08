@@ -1,6 +1,7 @@
 - tree_element.child_elements.each do |child_element|
-  - li_class = child_element.is_open ? 'jstree-open' : ''
+  - li_class = (child_element.is_open or first ? 'jstree-open' : '')
   - span_class = child_element.type == 'category' ? '' : 'tree_book'
+  - span_class += first ? ' white' : ''
   %li{class: "#{li_class}", selected: "#{child_element.selected}", type: "#{child_element.type + '#' + child_element.id.to_s}"}
     - if child_element.is_popup
       %a{ onclick: "return hs.htmlExpand(this, { objectType: 'iframe', src: '#{child_element.link_target}', align: 'center' } );"}
@@ -16,4 +17,4 @@
           = child_element.name
     - if not child_element.child_elements.empty?
       %ul
-        = render partial: 'refinery/books/partials/tree_level_li', locals: {tree_element: child_element}
+        = render partial: 'refinery/books/partials/tree_level_li', locals: {tree_element: child_element, first: FALSE}
