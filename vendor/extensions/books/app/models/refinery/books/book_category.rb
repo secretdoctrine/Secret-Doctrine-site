@@ -98,6 +98,8 @@ module Refinery
 
       def self.add_tree_element(current_element, tree_parent, db_element, selected_book_ids: [], selected_category_ids: [])
 
+        return if db_element.is_hidden
+
         tree_element = TreeElement.new(
             name: db_element.name,
             link_target: Refinery::Core::Engine.routes.url_helpers.books_book_category_path(db_element.id),

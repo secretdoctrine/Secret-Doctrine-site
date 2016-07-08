@@ -71,7 +71,7 @@ module Refinery
 
         # Only allow a trusted parameter "white list" through.
         def book_category_params
-          params.require(:book_category).permit(:book_category_id, :name, :is_root, :order_number, :synopsis, :tree_prefix)
+          params.require(:book_category).permit(:book_category_id, :name, :is_root, :order_number, :synopsis, :tree_prefix, :is_hidden)
         end
       end
     end
