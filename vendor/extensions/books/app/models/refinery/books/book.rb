@@ -7,6 +7,39 @@ module Refinery
       FORMAT_UNLIM = 0
       FORMAT_700_950 = 1
 
+      def export_yml
+
+        result = ""
+        result += "pdf_regex: \n"
+        result += "html_regex: \n"
+        result += "book:\n"
+        result += "  picture_path:\n"
+        result += "  book_file:\n"
+        result += "  name_prefix: '" + self.name_prefix + "'\n"
+        result += "  tree_prefix: '" + self.tree_prefix + "'\n"
+        result += "  name: '" + self.name + "'\n"
+        result += "  name_comment: '" + self.name_comment + "'\n"
+        result += "  page_count: '" + self.book_pages.count.to_s + "'\n"
+        result += "  first_page: '" + self.book_pages.sort_by{|x| x.internal_order}.first.internal_order.to_s + "'\n"
+        result += "  synopsis: '" + self.synopsis + "'\n"
+        result += "  contents:\n"
+
+        contents_elements.sort_by{|x| x.page_number}.each do |ce|
+
+          result += "  "*2 + "- \n"
+          result += "  "*3 + "name: '" + ce.name + "'\n"
+          result += "  "*3 + "page: '" + ce.page_number.to_s + "'\n"
+          result += "  "*3 + "type: '" + ce.get_class_name + "'\n"
+          result += "  "*3 + "name_prefix: '" + ce.name_prefix + "'\n" unless ce.name_prefix.blank?
+          result += "  "*3 + "name_comment: '" + ce.name_comment + "'\n" unless ce.name_comment.blank?
+
+        end
+
+        result
+
+      end
+
+
       def html_width
 
         return 0 if self.page_format == FORMAT_UNLIM

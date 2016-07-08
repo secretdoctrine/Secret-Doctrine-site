@@ -50,6 +50,7 @@ Refinery::Core::Engine.routes.draw do
       end
       resources :external_book_contents, :only => [:show]
       get 'cover', on: :member
+      get 'export_yml', on: :member
     end
     #resources :pages, :only => [:show, :index]
     resources :book_categories, :only => [:show, :index]
