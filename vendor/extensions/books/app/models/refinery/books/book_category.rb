@@ -10,6 +10,12 @@ module Refinery
       has_many :popup_books
 
       ROOT_NAME = ::I18n.t('library.categories_root_name')
+      SHORT_NAME_LIMIT = 80
+
+      def short_name
+        return name if name.length < SHORT_NAME_LIMIT
+        name.first(SHORT_NAME_LIMIT) + '(...)'
+      end
 
       def parent_id=(new_id)
         self.book_category_id = new_id
