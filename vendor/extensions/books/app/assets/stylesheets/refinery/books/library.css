@@ -504,6 +504,10 @@ object.pdf_page,
     color: #FFFF00;
 }
 
+#jstree_container li.selected_li ul {
+    color: #000055;
+}
+
 /*
 #tree_container_div .library_toggle input {
     width: 100%;
