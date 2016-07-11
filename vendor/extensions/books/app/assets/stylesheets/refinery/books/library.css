@@ -500,6 +500,9 @@ object.pdf_page,
     overflow-x: hidden;
 }
 
+#jstree_container li.selected_li {
+    color: #FFFF00;
+}
 
 /*
 #tree_container_div .library_toggle input {
