@@ -98,13 +98,15 @@ module Refinery
 
       def self.add_tree_element(current_element, tree_parent, db_element, selected_book_ids: [], selected_category_ids: [])
 
-        return if db_element.is_hidden
+        return false if db_element.is_hidden
+        is_current = ((not current_element.nil?) and current_element.id == db_element.id ? true : false)
 
         tree_element = TreeElement.new(
             name: db_element.name,
             link_target: Refinery::Core::Engine.routes.url_helpers.books_book_category_path(db_element.id),
             id: db_element.id,
-            is_open: ((not current_element.nil?) and current_element.id == db_element.id ? true : false),
+            is_open: is_current,
+            is_current: is_current,
             order_number: db_element.order_number,
             selected: selected_category_ids.any?{|x| x == db_element.id},
             tree_prefix: db_element.tree_prefix
@@ -116,19 +118,22 @@ module Refinery
         child_elements = db_element.book_categories.includes(:books)
 
         child_elements.each do |child|
-          add_tree_element(
+          child_is_open = add_tree_element(
               current_element,
               tree_element,
               child,
               selected_book_ids: selected_book_ids,
               selected_category_ids: selected_category_ids
           )
+          tree_element.is_open = true if child_is_open
         end
 
 
         tree_element.child_elements.sort_by!{|x| x.order_number}
 
         tree_parent.child_elements.push(tree_element)
+
+        is_open
 
       end
 

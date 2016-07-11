@@ -13,6 +13,7 @@ module Refinery
       attr_accessor :selected
       attr_accessor :id
       attr_accessor :is_popup
+      attr_accessor :is_current
 
       BOOK_TYPE = 'book'
       CATEGORY_TYPE = 'category'
@@ -32,7 +33,8 @@ module Refinery
           order_number: 0,
           selected: false,
           id: 0,
-          is_popup: false
+          is_popup: false,
+          is_current: false
       )
 
         @selected = selected
@@ -46,6 +48,7 @@ module Refinery
         @order_number = order_number
         @id = id
         @is_popup = is_popup
+        @is_current = is_current
 
       end
 
