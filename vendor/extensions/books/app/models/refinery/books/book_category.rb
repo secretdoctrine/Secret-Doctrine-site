@@ -139,7 +139,7 @@ module Refinery
 
         tree_parent.child_elements.push(tree_element)
 
-        is_open
+        tree_element.is_open
 
       end
 
