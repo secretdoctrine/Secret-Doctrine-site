@@ -196,7 +196,7 @@ module Refinery
 
           if page_num <= 0
 
-            selector = yaml_object['book'].has_key? 'negative_numeration' ?
+            selector = yaml_object['book'].has_key?('negative_numeration') ?
                                                         yaml_object['book']['negative_numeration'] :
                                                         'roman_upper'
             if selector == 'roman_lower'
