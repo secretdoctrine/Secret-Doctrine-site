@@ -156,7 +156,7 @@ blockquote {
 }
 
 .snoska:hover { border-bottom: none; }
-.snoska:hover span { display:inline; }
+.snoska:hover span { display:block; }
 
 .snoska span a { color:#0000FF; }
 .snoska span a:hover { color:#FF0000; }
