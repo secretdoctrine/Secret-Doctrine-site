@@ -40,7 +40,7 @@
                         = root_element.tree_prefix
                       = root_element.name
                     %ul
-                      = render partial: 'refinery/books/partials/tree_level_li', locals: {tree_element: root_element}
+                      = render partial: 'refinery/books/partials/tree_level_li', locals: {tree_element: root_element, first: TRUE}
 
           %td
             %label
