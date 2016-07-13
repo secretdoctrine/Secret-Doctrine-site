@@ -221,6 +221,7 @@ object.pdf_page,
     line-height: 26px;
     background: url(pro_bg_blue.png) repeat-x 0 -30px;
     padding: 0 13px;
+    font-size: 12px;
 }
 
 .pro .footer a.first .s2 {
