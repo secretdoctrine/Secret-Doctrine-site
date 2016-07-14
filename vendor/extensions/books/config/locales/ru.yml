@@ -48,7 +48,7 @@ ru:
   library:
     delete_confirm: 'Вы уверены?'
     categories_root_name: 'Все категории'
-    show_categories: 'Показать категории'
+    show_categories: 'Показать каталог'
     show_contents: 'Показать оглавление'
     search: 'Искать...'
     search_more: 'Опции...'
