@@ -1486,12 +1486,18 @@
                         continue;
                 }
                 i = 0;
+                //alert(text);
                 if (isRegex) {
                     result = searchTerm.exec(text);
                     if (result) {
+                        //alert(result);
                         matchStartIndex = result.index;
                         matchEndIndex = matchStartIndex + result[0].length;
-                        if (insideRegexMatch) {
+                        // in our case regex is always a complete word, so we cannot find ourselves in a situation
+                        // where search is not complete
+                        returnValue = handleMatch(matchStartIndex, matchEndIndex);
+                        break;
+                        /*if (insideRegexMatch) {
                             // Check whether the match is now over
                             if ((!backward && matchEndIndex < text.length) || (backward && matchStartIndex > 0)) {
                                 returnValue = handleMatch(matchStartIndex, matchEndIndex);
@@ -1499,7 +1505,7 @@
                             }
                         } else {
                             insideRegexMatch = true;
-                        }
+                        }*/
                     }
                 } else if ( (matchStartIndex = text.indexOf(searchTerm)) != -1 ) {
                     returnValue = handleMatch(matchStartIndex, matchStartIndex + searchTerm.length);

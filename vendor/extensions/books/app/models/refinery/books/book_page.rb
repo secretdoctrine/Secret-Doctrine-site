@@ -8,7 +8,7 @@ module Refinery
       belongs_to :book
       has_many :external_page_contents
 
-      RESULTS_ON_PAGE = 20
+      RESULTS_ON_PAGE = 10
       MAX_SEARCH_RESULTS = 1000
       PAGE_NAME_EXPORT_LIMIT = 30
       BOOK_NAME_EXPORT_LIMIT = 30
