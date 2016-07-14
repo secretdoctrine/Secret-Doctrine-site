@@ -1,0 +1,13 @@
+= render partial: 'refinery/books/partials/highlighter_script'
+
+= render partial: 'refinery/books/partials/background_corrector'
+
+:javascript
+
+  window.onload = function() {
+    rangy.init();
+    initFind();
+    highlightSearchInFrames();
+    toggleStyleForFoundSpans();
+    correctBackground();
+  };
