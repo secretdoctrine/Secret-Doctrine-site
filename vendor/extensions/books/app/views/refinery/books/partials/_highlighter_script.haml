@@ -18,15 +18,13 @@
   function doSearch(searchTerm, targetFrame) {
     // Remove existing highlights
     var range = rangy.createRange();
-    var searchScopeRange = rangy.createRange();
-    searchScopeRange.selectNodeContents(targetFrame.contentWindow.document.body);
+    range.selectNodeContents(targetFrame.contentWindow.document.body);
     var options = {
-      caseSensitive: false,
+      caseSensitive: true,
       wholeWordsOnly: false,
-      withinRange: searchScopeRange,
+      withinRange: range,
       direction: "forward" // This is redundant because "forward" is the default
     };
-    range.selectNodeContents(targetFrame.contentWindow.document.body);
     searchResultApplier.undoToRange(range);
     if (searchTerm !== "") {
       // Iterate over matches

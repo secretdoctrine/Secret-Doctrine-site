@@ -1462,20 +1462,30 @@
                 };
             }
 
-            while ( (pos = it.next()) ) {
-                currentChar = pos.character;
-                if (!isRegex && !findOptions.caseSensitive) {
-                    currentChar = currentChar.toLowerCase();
-                }
+            var i = 0;
+            var no_more_chars = false;
+            while ( true ) {
+                pos = it.next();
+                if(pos == null)
+                    no_more_chars = true;
+                if(!no_more_chars) {
+                    currentChar = pos.character;
+                    if (!isRegex && !findOptions.caseSensitive) {
+                        currentChar = currentChar.toLowerCase();
+                    }
 
-                if (backward) {
-                    chars.unshift(pos);
-                    text = currentChar + text;
-                } else {
-                    chars.push(pos);
-                    text += currentChar;
+                    if (backward) {
+                        chars.unshift(pos);
+                        text = currentChar + text;
+                    } else {
+                        chars.push(pos);
+                        text += currentChar;
+                    }
+                    i++;
+                    if(i < 10000)
+                        continue;
                 }
-
+                i = 0;
                 if (isRegex) {
                     result = searchTerm.exec(text);
                     if (result) {
@@ -1495,6 +1505,8 @@
                     returnValue = handleMatch(matchStartIndex, matchStartIndex + searchTerm.length);
                     break;
                 }
+                if(no_more_chars)
+                    break;
             }
 
             // Check whether regex match extends to the end of the range
