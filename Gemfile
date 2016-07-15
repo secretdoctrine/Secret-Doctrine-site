@@ -81,3 +81,5 @@ gem 'carrierwave'
 gem 'mailkick'
 gem 'dotenv-rails', :groups => [:development, :test, :production]
 gem 'recaptcha', require: 'recaptcha/rails'
+
+gem 'hairaito'
