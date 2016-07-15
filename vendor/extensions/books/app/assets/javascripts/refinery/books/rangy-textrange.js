@@ -195,6 +195,8 @@
         };
 
         function normalizeIgnoredCharacters(ignoredCharacters) {
+            if(ignoredCharacters == "")
+                return "";
             // Check if character is ignored
             var ignoredChars = ignoredCharacters || "";
 
@@ -411,21 +413,27 @@
         // (0x0009), carriage returns (0x000D), and/or spaces (0x0020), and whose
         // parent is an Element whose resolved value for "white-space" is "pre-line"."
         function isWhitespaceNode(node) {
+            if(node.hasOwnProperty('is_whitespace'))
+                return node.is_whitespace;
             if (!node || node.nodeType != 3) {
-                return false;
+                node.is_whitespace = false;
+                return node.is_whitespace;
             }
             var text = node.data;
             if (text === "") {
-                return true;
+                node.is_whitespace = true;
+                return node.is_whitespace;
             }
             var parent = node.parentNode;
             if (!parent || parent.nodeType != 1) {
-                return false;
+                node.is_whitespace = false;
+                return node.is_whitespace;
             }
             var computedWhiteSpace = getComputedStyleProperty(node.parentNode, "whiteSpace");
 
-            return (/^[\t\n\r ]+$/.test(text) && /^(normal|nowrap)$/.test(computedWhiteSpace)) ||
-                (/^[\t\r ]+$/.test(text) && computedWhiteSpace == "pre-line");
+            node.is_whitespace = ((/^[\t\n\r ]+$/.test(text) && /^(normal|nowrap)$/.test(computedWhiteSpace)) ||
+                (/^[\t\r ]+$/.test(text) && computedWhiteSpace == "pre-line"));
+            return node.is_whitespace;
         }
 
         // Adpated from Aryeh's code.
@@ -433,13 +441,17 @@
         // true:"
         function isCollapsedWhitespaceNode(node) {
             // "If node's data is the empty string, return true."
+            if(node.hasOwnProperty('is_collapsed_whitespace'))
+                return node.is_collapsed_whitespace;
             if (node.data === "") {
-                return true;
+                node.is_collapsed_whitespace = true;
+                return node.is_collapsed_whitespace;
             }
 
             // "If node is not a whitespace node, return false."
             if (!isWhitespaceNode(node)) {
-                return false;
+                node.is_collapsed_whitespace = false;
+                return node.is_collapsed_whitespace;
             }
 
             // "Let ancestor be node's parent."
@@ -447,32 +459,42 @@
 
             // "If ancestor is null, return true."
             if (!ancestor) {
-                return true;
+                node.is_collapsed_whitespace = true;
+                return node.is_collapsed_whitespace;
             }
 
             // "If the "display" property of some ancestor of node has resolved value "none", return true."
             if (isHidden(node)) {
-                return true;
+                node.is_collapsed_whitespace = true;
+                return node.is_collapsed_whitespace;
             }
 
-            return false;
+            node.is_collapsed_whitespace = false;
+            return node.is_collapsed_whitespace;
         }
 
         function isCollapsedNode(node) {
+            //return false;
+            if(node.hasOwnProperty('is_collapsed'))
+                return node.is_collapsed;
             var type = node.nodeType;
-            return type == 7 /* PROCESSING_INSTRUCTION */ ||
+            node.is_collapsed = (type == 7 /* PROCESSING_INSTRUCTION */ ||
                 type == 8 /* COMMENT */ ||
                 isHidden(node) ||
                 /^(script|style)$/i.test(node.nodeName) ||
                 isVisibilityHiddenTextNode(node) ||
-                isCollapsedWhitespaceNode(node);
+                isCollapsedWhitespaceNode(node));
+            return node.is_collapsed;
         }
 
         function isIgnoredNode(node, win) {
+            if(node.hasOwnProperty('is_ignored'))
+                return node.is_ignored;
             var type = node.nodeType;
-            return type == 7 /* PROCESSING_INSTRUCTION */ ||
+            node.is_ignored = (type == 7 /* PROCESSING_INSTRUCTION */ ||
                 type == 8 /* COMMENT */ ||
-                (type == 1 && getComputedDisplay(node, win) == "none");
+                (type == 1 && getComputedDisplay(node, win) == "none"));
+            return node.is_ignored;
         }
 
         /*----------------------------------------------------------------------------------------------------------------*/
@@ -485,7 +507,10 @@
 
         Cache.prototype = {
             get: function(key) {
-                return this.store.hasOwnProperty(key) ? this.store[key] : null;
+                //return this.store.hasOwnProperty(key) ? this.store[key] : null;
+                var return_value;
+                return_value = this.store[key];
+                return return_value == undefined ? null : return_value;
             },
 
             set: function(key, value) {
@@ -829,7 +854,7 @@
 
                 // Check if character is ignored
                 var ignoredChars = normalizeIgnoredCharacters(characterOptions.ignoreCharacters);
-                var isIgnoredCharacter = (thisChar !== "" && ignoredChars.indexOf(thisChar) > -1);
+                var isIgnoredCharacter = (thisChar !== "" && ignoredChars != "" && ignoredChars.indexOf(thisChar) > -1);
 
                 // Check if this position's  character is invariant (i.e. not dependent on character options) and return it
                 // if so
@@ -920,7 +945,7 @@
                     }
                 }
 
-                if (ignoredChars.indexOf(character) > -1) {
+                if (ignoredChars != "" && ignoredChars.indexOf(character) > -1) {
                     character = "";
                 }
 
@@ -1052,24 +1077,57 @@
         var Session = (function() {
             function createWrapperCache(nodeProperty) {
                 var cache = new Cache();
+                //var lastUsedWrappersByPropery = new Cache();
+                //var current_counter = 0;
 
                 return {
                     get: function(node) {
+                        //if(!node.hasOwnProperty("cnt_value"))
+                        //    return null;
+                        //var lastUsedWrapper = lastUsedWrappersByPropery.get(node[nodeProperty]);
+                        //if(lastUsedWrapper != null && lastUsedWrapper.node === node)
+                        //    return lastUsedWrapper;
                         var wrappersByProperty = cache.get(node[nodeProperty]);
                         if (wrappersByProperty) {
-                            for (var i = 0, wrapper; wrapper = wrappersByProperty[i++]; ) {
-                                if (wrapper.node === node) {
-                                    return wrapper;
+                            /*if(node.cnt_value <= wrappersByProperty.length - 1)
+                            {
+                                if(wrappersByProperty[node.cnt_value].node === node) {
+                                    lastUsedWrappersByPropery.set(node[nodeProperty], wrapper);
+                                    return wrappersByProperty[node.cnt_value];
                                 }
+                            }*/
+
+                            for (var i = 0, wrapper; wrapper = wrappersByProperty[i++]; ) {
+                                //if (wrapper.counter_value == node.counter_value) {
+                                    if(wrapper.node === node)
+                                    {
+                                        //lastUsedWrappersByPropery.set(node[nodeProperty], wrapper);
+                                        //node.cnt_value = i;
+                                        return wrapper;
+                                    }
+                                //}
                             }
+                            /*var return_value;
+                            return_value = wrappersByProperty[node.counter_value];
+                            if(return_value == undefined)
+                                return null;
+                            lastUsedWrappersByPropery.set(node[nodeProperty], return_value);
+                            return return_value;*/
                         }
                         return null;
                     },
 
                     set: function(nodeWrapper) {
+                        //var cnt_value = current_counter++;
+                        //nodeWrapper.counter_value = cnt_value;
+                        //nodeWrapper.node.counter_value = cnt_value;
                         var property = nodeWrapper.node[nodeProperty];
                         var wrappersByProperty = cache.get(property) || cache.set(property, []);
-                        wrappersByProperty.push(nodeWrapper);
+                        //wrappersByProperty.push(nodeWrapper);
+                        wrappersByProperty.unshift(nodeWrapper);
+                        //nodeWrapper.node.cnt_value = cnt_value;
+                        //wrappersByProperty[cnt_value] = nodeWrapper;
+                        //lastUsedWrappersByPropery.set(property, nodeWrapper);
                     }
                 };
             }
