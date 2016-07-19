@@ -44,14 +44,14 @@
 
           %td
             %label
-              = check_box_tag('show_snippets', 'true', @result[:show_snippets])
-              = I18n.t('library.search_page.view_snippet')
+              = check_box_tag('show_html', 'true', @result[:show_html])
+              = I18n.t('library.search_page.view_html')
             %label
               = check_box_tag('search_exact_words', 'true', params[:search_exact_words])
               = I18n.t('library.search_page.search_exact_words')
             %label
-              = check_box_tag('ignore_relevance', 'true', params[:ignore_relevance])
-              = I18n.t('library.search_page.ignore_relevance')
+              = check_box_tag('use_relevance', 'true', params[:use_relevance])
+              = I18n.t('library.search_page.use_relevance')
             %div.search_option
               = I18n.t('library.search_page.results_per_page')
               = number_field_tag('per_page', @result[:per_page], :min => 5, :step => 5, id: :per_page_field)
@@ -78,10 +78,11 @@
             %span.s2
               = I18n.t('library.search_page.export')
 
-  - if @result[:show_snippets]
-    = render partial: 'search_snippet', collection: @result[:search_results], as: :page
-  - else
+  - if @result[:show_html]
     = render partial: 'search_html', collection: @result[:search_results], as: :page
+  - else
+    = render partial: 'search_snippet', collection: @result[:search_results], as: :page
+
 
   %div{class: 'flickr_pagination'}
     = will_paginate @result[:search_results]

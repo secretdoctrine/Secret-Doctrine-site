@@ -142,7 +142,7 @@ module Refinery
           result[:count] = BookPage.search_count(search_text, with: with_hash)
         end
         result[:too_many_results] = result[:count] >= MAX_SEARCH_RESULTS
-        result[:show_snippets] = (params.has_key?(:show_snippets) and params[:show_snippets] == 'true')
+        result[:show_html] = (params.has_key?(:show_html) and params[:show_html] == 'true')
 
         if should_not_search
           result[:book_category_ids] = []
@@ -162,7 +162,7 @@ module Refinery
         page = 1 if page <= 0
 
         order_string = ''
-        unless params.has_key?('ignore_relevance') and params['ignore_relevance']
+        if params.has_key?('use_relevance') and params['use_relevance'] == 'true'
           order_string += 'weight() DESC, '
         end
         order_string+= 'book_id ASC, internal_order ASC'
