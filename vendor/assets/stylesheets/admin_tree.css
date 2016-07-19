@@ -40,3 +40,11 @@
 .jstree-node {
     white-space: normal !important;
 }
+
+#jstree_container .is_hidden > a {
+    color: #cccccc;
+}
+
+#jstree_container .is_hidden > a:hover {
+    color: inherit;
+}
