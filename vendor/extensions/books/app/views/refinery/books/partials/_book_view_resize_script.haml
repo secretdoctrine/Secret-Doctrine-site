@@ -10,10 +10,16 @@
     $(".fullheight").each(function () {
       this.style.height = height - 209 + "px";
     })
+    $(".fullheight_with_footer").each(function () {
+      this.style.height = height - 209 - 34 + "px";
+    })
 
     // set widths
     var width = window.innerWidth;
     $("#main_container_div")[0].style.width = width - 310 + "px";
+    $(".link_footer").each(function () {
+      this.style.width = width - 310 + "px";
+    })
   }
 
   resize();

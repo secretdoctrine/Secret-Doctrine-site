@@ -50,8 +50,11 @@ ru:
     categories_root_name: 'Все категории'
     show_categories: 'Показать каталог'
     show_contents: 'Показать оглавление'
-    search: 'Искать...'
-    search_more: 'Опции...'
+    search: 'Искать'
+    search_category: 'Искать в разделе'
+    search_book: 'Искать в книге'
+    search_more: 'Область поиска'
+    search_more_hint: 'Поиск по другим разделам и книгам'
     open_subcategory: 'Войти в раздел'
     read: 'Читать'
     readmore: 'Читать далее...'
@@ -139,3 +142,14 @@ ru:
     search: Поиск
     results_found: ' результатов найдено'
     page_number: 'Страница '
+  quick_navigation:
+    main: 'Главная'
+    news: 'Новости'
+    library: 'Библиотека'
+    poslannik: 'Посланник Утренней Звезды Христос...'
+    secretdoctrine: '"Тайная Доктрина" Е.П.Б. в... '
+    dumalka: 'Думалка'
+    symbols: 'Символы'
+    poetry: 'Поэзия'
+    media: 'Аудио'
+

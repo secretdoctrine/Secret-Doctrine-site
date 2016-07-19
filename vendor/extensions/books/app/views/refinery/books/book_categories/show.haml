@@ -11,11 +11,11 @@
             %input{type: :hidden, name: 'book_category_id', value: @category.id}
             %input{type: :hidden, name: 'is_ext_search', value: false, id: 'is_ext_search'}
             %input{id: 'search_lite', name: 'search_text'}
-            %a{onclick: '$("#search_form")[0].submit();', class: 'but_24'}
+            %a{onclick: '$("#search_form")[0].submit();', class: 'but_24', title: I18n.t('library.search_more_hint')}
               %span.s0
                 %span.s1
                   %span.s2
-                    = I18n.t('library.search')
+                    = I18n.t('library.search_category')
             %a{onclick: '$("#is_ext_search")[0].value = true; $("#search_form")[0].submit();', class: 'but_24'}
               %span.s0
                 %span.s1

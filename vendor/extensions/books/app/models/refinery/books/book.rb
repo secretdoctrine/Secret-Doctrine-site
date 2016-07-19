@@ -136,7 +136,7 @@ module Refinery
       end
 
       def sorted_content_elements
-        contents_elements.sort_by{|x| [x.page_number, x.get_nest_level]}
+        contents_elements.sort_by{|x| [x.page_number, x.get_nest_level, x.id]}
       end
 
       def build_contents(page)
@@ -152,6 +152,14 @@ module Refinery
 
       end
 
+      def get_parent_for_content_element(content_element)
+
+        element = contents_elements.select{|x| x.page_number <= content_element.page_number and x.bigger_content_element_than_provided(content_element)}
+            .sort_by{|x| [-x.page_number, -x.get_nest_level]}.first
+        element
+
+      end
+
       def get_parent_for_page(page_num)
 
         preceding_elements = contents_elements.select{|x| x.page_number <= page_num}
@@ -159,6 +167,13 @@ module Refinery
         max_named_page = preceding_elements.max_by{|x| x.page_number}.page_number
 
         element = contents_elements.select{|x| x.page_number == max_named_page}.sort_by{|x| -x.get_nest_level}.first
+        element
+
+      end
+
+      def get_nearest_non_page_content_element_for_page(page_num)
+
+        element = contents_elements.select{|x| x.page_number <= page_num and x.ce_type != ContentsElement::PAGE_CE_TYPE}.sort_by{|x| [-x.page_number, -x.get_nest_level]}.first
         element
 
       end

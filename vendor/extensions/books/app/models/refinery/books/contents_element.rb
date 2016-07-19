@@ -33,6 +33,20 @@ module Refinery
 
       end
 
+      def bigger_content_element_than_provided(provided_content_element)
+
+        if provided_content_element.ce_type == PAGE_CE_TYPE
+          return true if ce_type == PART_CE_TYPE or ce_type == CHAPTER_CE_TYPE or ce_type == SECTION_CE_TYPE
+        elsif provided_content_element.ce_type == PART_CE_TYPE
+          return true if ce_type == CHAPTER_CE_TYPE or ce_type == SECTION_CE_TYPE
+        elsif provided_content_element.ce_type == CHAPTER_CE_TYPE
+          return true if ce_type == SECTION_CE_TYPE
+        end
+
+        false
+
+      end
+
       def get_nest_level
 
         return NEST_LEVEL_SECTION_CE_TYPE if ce_type == SECTION_CE_TYPE
