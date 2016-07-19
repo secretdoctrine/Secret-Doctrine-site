@@ -9,10 +9,10 @@
         - @page_info[:page].breadcrumb_parents.each do |parent|
           \ »
           = link_to parent[:link_target], {class: parent[:is_book] ? 'is_book' : ''} do
-            - if parent[:prefix]
+            - unless parent[:prefix].blank?
               = parent[:prefix] + '.'
             = parent[:name]
-            - if parent[:comment]
+            - unless parent[:comment].blank?
               = parent[:comment]
       %td{id: 'search_block'}
         = form_tag refinery.books_search_results_path, {method: :get, id: 'search_form'} do
