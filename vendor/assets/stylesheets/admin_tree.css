@@ -48,3 +48,7 @@
 #jstree_container .is_hidden > a:hover {
     color: inherit;
 }
+
+#jstree_container .is_popup a {
+    color: #0000ff;
+}

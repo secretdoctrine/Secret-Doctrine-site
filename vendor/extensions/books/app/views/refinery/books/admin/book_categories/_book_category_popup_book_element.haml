@@ -1,6 +1,7 @@
 - node_class = 'jstree-open'
 - node_class += ' jstree-edit'
 - node_class += ' jstree-destroy'
+- node_class += ' is_popup'
 %li{:id => 'popup_book_' + popup_book.id.to_s,
     :edit_path => refinery.edit_books_admin_popup_book_path(popup_book.id),
     :class => node_class,
