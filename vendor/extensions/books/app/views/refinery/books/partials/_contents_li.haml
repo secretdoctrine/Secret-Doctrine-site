@@ -4,13 +4,13 @@
   - if li_class == 'section' or li_class == 'chapter'
     %li{class: li_class + selected}
       %a{href: refinery.books_book_page_path(child_element.book_id, child_element.page_internal_number, pdf: pdf)}
-        - if child_element.name_prefix
+        - unless child_element.name_prefix.blank?
           %i
             = child_element.name_prefix.html_safe
           %br
-        - if child_element.display_name
+        - unless child_element.display_name.blank?
           = child_element.display_name.html_safe
-        - if child_element.name_comment
+        - unless child_element.name_comment.blank?
           %br
           %span{class: 'nobold'}
             = child_element.name_comment.html_safe
@@ -19,11 +19,9 @@
     %li{class: 'li_background'}
       %ul
         %li{class: li_class + selected}
-          - if child_element.page_internal_number.nil?
-            - child_element.page_internal_number
           %a{href: refinery.books_book_page_path(child_element.book_id, child_element.page_internal_number, pdf: pdf)}
             = child_element.display_name.html_safe
-            - if child_element.name_comment
+            - unless child_element.name_comment.blank?
               %span{class: 'nobold'}
                 = ' ' + child_element.name_comment.html_safe
 
