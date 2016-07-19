@@ -62,12 +62,12 @@
 
   - unless @result[:should_not_search]
     %div#buttons_block
-      = link_to refinery.url_for(params.merge(show_snippets: false)), class: 'but_24' do
+      = link_to refinery.url_for(params.merge(show_html: true)), class: 'but_24' do
         %span.s0
           %span.s1
             %span.s2
               = I18n.t('library.search_page.view_html')
-      = link_to refinery.url_for(params.merge(show_snippets: true)), class: 'but_24' do
+      = link_to refinery.url_for(params.merge(show_html: false)), class: 'but_24' do
         %span.s0
           %span.s1
             %span.s2
