@@ -4,6 +4,7 @@
     %div#warning_too_many_results
       %div
         = I18n.t('library.search_page.too_many_results')
+        %br
         = I18n.t('library.search_page.results_count') + @result[:count].to_s
   - else
     %div#results_count
