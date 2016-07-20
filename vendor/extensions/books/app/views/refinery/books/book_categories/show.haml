@@ -1,6 +1,6 @@
 = render partial: 'refinery/books/partials/tree_block', :locals => { :display_contents => false, :tree => @tree }
 
-%div{id: 'main_container_div', class: 'fullheight'}
+%div{id: 'main_container_div', class: 'fullheight_with_footer'}
   %div{id: 'library_feed'}
     %table{id: 'category_headers', cols: '*, 200px'}
       %tr
@@ -15,14 +15,15 @@
               %span.s0
                 %span.s1
                   %span.s2
-                    = I18n.t('library.search')
-            %a{onclick: '$("#is_ext_search")[0].value = true; $("#search_form")[0].submit();', class: 'but_24'}
+                    = I18n.t('library.search_category')
+            %a{onclick: '$("#is_ext_search")[0].value = true; $("#search_form")[0].submit();', class: 'but_24', title: I18n.t('library.search_more_hint')}
               %span.s0
                 %span.s1
                   %span.s2
                     = I18n.t('library.search_more')
     = render partial: 'book_synopsis', collection: @elements, as: :element
 
+= render partial: 'refinery/books/partials/navigation_footer'
 
 = render partial: 'refinery/books/partials/book_view_resize_script'
 

@@ -23,9 +23,35 @@ body.library {
 
 }
 
-.fullheight {
+.fullheight,
+.fullheight_with_footer {
     height: 500px;
     overflow-y: auto;
+}
+
+.link_footer {
+    height: 34px;
+    background-color: #A3B2CC;
+    color: #000099;
+    text-align: center;
+    display: block;
+    float: left;
+}
+
+.link_footer a {
+    color: #000099;
+    text-decoration: underline;
+    font-size: 12px;
+}
+
+.link_footer a:hover {
+    color: #FFFFFF;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.link_footer div {
+    padding: 7px;
 }
 
 #tree_container_div, #contents_div, #main_container_div {
@@ -38,7 +64,8 @@ body.library {
     width: 300px;
 }
 
-#book_headers {
+#book_headers,
+#book_footer {
     width: 100%;
     border: none;
 }
@@ -50,17 +77,18 @@ body.library {
 }
 
 #book_headers td,
+#book_footer td,
 #category_headers td{
     color: #ffffff;
     padding: 10px 10px 0px 20px;
 }
 
 #search_block,
-#page_selector {
+.page_selector {
     margin: 0px 10px;
     vertical-align: top;
     text-align: right;
-    min-width: 300px;
+    min-width: 400px;
 }
 
 #search_block {
@@ -68,12 +96,31 @@ body.library {
 }
 
 #book_header {
-    font-size: 18px;
+    font-size: 12px;
+    color: #91C0D2;
+}
+
+#book_header a {
+    color: #91C0D2;
     text-decoration: underline;
+}
+
+#book_header a:hover {
+    text-decoration: none;
+}
+
+#book_header a.is_book {
+    font-weight: bold;
+    font-size: 14px;
 }
 
 #page_header {
     font-size: 14px;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.page_selector select {
+    font-family: "Times New Roman", Times, serif;
 }
 
 #page_container {
@@ -309,6 +356,10 @@ object.pdf_page,
     color:#91C0E0;
 }
 
+#contents_div h2 a:hover {
+    color: #FFFF00;
+}
+
 #contents_div h2.part {
     font-size: 140%;
 }
@@ -341,18 +392,21 @@ object.pdf_page,
     color: #dd0022;
     letter-spacing: 4px;
     line-height: 2em;
+    font-family: "Times New Roman", Times, serif;
 }
 
 #contents_div .section i a,
 #contents_div h2 i a
 {
     color:#dd0022;
+    font-family: "Times New Roman", Times, serif;
 }
 
 #contents_div .section small { /*ïðåäèñëîâèå*/
     letter-spacing: 0.4ex;
     font-weight:normal;
     color: #dd0022;
+    font-family: "Times New Roman", Times, serif;
 }
 
 /* Ãëàâà */
@@ -501,11 +555,13 @@ object.pdf_page,
     overflow-x: hidden;
 }
 
-#jstree_container li.selected_li {
+#jstree_container li.selected_li,
+#contents_div li.selected_li {
     color: #FFFF00;
 }
 
-#jstree_container li.selected_li ul {
+#jstree_container li.selected_li ul,
+#contents_div li.selected_li ul {
     color: #000055;
 }
 
@@ -528,6 +584,7 @@ object.pdf_page,
 */
 #jstree_container .tree_prefix {
     color: #dd0022;
+    font-family: "Times New Roman", Times, serif;
 }
 
 #jstree_container .tree_book {

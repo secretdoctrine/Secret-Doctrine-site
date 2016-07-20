@@ -19,7 +19,7 @@
     = image_tag 'refinery/books/roscherkl_up.gif'
   - if defined? contents and contents
     %h2
-      %a
+      = link_to refinery.books_book_path(book.id, :pdf => pdf) do
         - if book.name_prefix
           %i
             = book.name_prefix

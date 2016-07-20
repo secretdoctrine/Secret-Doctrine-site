@@ -254,6 +254,47 @@ module Refinery
 
       end
 
+      def breadcrumb_parents
+
+        parents = []
+        parent = book.get_nearest_non_page_content_element_for_page(internal_order)
+
+        while parent
+          target_page = BookPage.find_by_book_id_and_internal_order(book.id, parent.page_number)
+          parents.unshift({
+                              :prefix => parent.name_prefix,
+                              :name => parent.name,
+                              :comment => parent.name_comment,
+                              :link_target => Refinery::Core::Engine.routes.url_helpers.books_book_page_path(book.id, target_page.id),
+                              :is_book => false
+                          })
+          parent = book.get_parent_for_content_element(parent)
+        end
+
+        parents.unshift({
+                            :prefix => book.name_prefix,
+                            :name => book.name,
+                            :comment => book.name_comment,
+                            :link_target => Refinery::Core::Engine.routes.url_helpers.books_book_path(book.id),
+                            :is_book => true
+                        })
+
+        parent = book.book_category
+        root = BookCategory.get_root!
+        while parent.id != root.id
+          parents.unshift({
+                              :prefix => parent.tree_prefix,
+                              :name => parent.name,
+                              :link_target => Refinery::Core::Engine.routes.url_helpers.books_book_category_path(parent.id),
+                              :is_book => false
+                          })
+          parent = parent.book_category
+        end
+
+        parents
+
+      end
+
     end
   end
 end

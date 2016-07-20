@@ -15,6 +15,8 @@
     :update_path => refinery.books_admin_book_category_path(book_category.id),
     :destroy_path => refinery.books_admin_book_category_path(book_category.id),
     :node_type => :category}
+  - unless book_category.tree_prefix.blank?
+    = book_category.tree_prefix
   = book_category.short_name
   - book_category.children_array.each do |child|
     %ul

@@ -2,6 +2,7 @@
   = f.hidden_field :book_id, {:value => contents_element.book_id}
   = raw '&nbsp;'*4*contents_element.get_nest_level
   = f.select :ce_type, options_for_select(contents_element.array_for_select, contents_element.ce_type)
+  = f.text_field :name_prefix
   = f.text_field :name
   = f.number_field :page_number
   = f.submit
