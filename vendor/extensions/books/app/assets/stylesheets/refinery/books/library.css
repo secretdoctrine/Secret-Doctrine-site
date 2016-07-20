@@ -184,6 +184,16 @@ object.pdf_page,
 #library_feed,
 #library_news_feed {
     padding: 15px 30px 30px 40px;
+    font-size: 12px;
+}
+
+#library_news_feed .last_book a {
+    color: #FFF;
+    text-decoration: underline;
+}
+
+#library_news_feed .last_book a:hover {
+    text-decoration: none;
 }
 
 .pro {
