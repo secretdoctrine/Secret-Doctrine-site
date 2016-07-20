@@ -245,9 +245,13 @@ module Refinery
                 content_type: ExternalPageContent::HTML_TYPE,
                 path: Pathname.new(File.join(dest_directory, html_file_name)).relative_path_from(Rails.root))
 
-            content = Nokogiri::HTML(File.read(File.join(dest_directory, html_file_name)))
-            content.css('style,script').remove
-            page.page_text = content.text
+            if File.size(File.join(dest_directory, html_file_name)) > 16*1024*1024
+              page.page_text = ''
+            else
+              content = Nokogiri::HTML(File.read(File.join(dest_directory, html_file_name)))
+              content.css('style,script').remove
+              page.page_text = content.text
+            end
             dir_entries.delete(html_file_name)
           end
 
