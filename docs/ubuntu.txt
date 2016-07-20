@@ -1,2 +1,21 @@
 ruby 2.0.0
 sudo apt-get install nodejs
+
+
+
+поресайзить диск:
+
+sudo swapoff
+sudo parted
+
+print / print free
+
+rm <номер> - удалить swap
+resizepart <номер> - поресайзить основной раздел
+mkpart, выбрать primary - это будет swap
+quit
+
+sudo resize2fs /dev/xvda1 (раздел с данными)
+
+sudo blkid /dev/xvda2 - для swap раздела
+полученное значение записать в /etc/fstab
