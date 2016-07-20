@@ -196,6 +196,11 @@ object.pdf_page,
     text-decoration: none;
 }
 
+#library_news_feed form label {
+    font-size: 12px;
+    cursor: pointer;
+}
+
 .pro {
     background: url(black_40.png);
     padding: 30px 15px 15px 25px;

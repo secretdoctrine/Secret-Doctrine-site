@@ -18,6 +18,11 @@
                 %span.s1
                   %span.s2
                     = I18n.t('library.search_more')
+            %br
+            %label
+              %input{type: :checkbox, name: 'show_html', value: "true", id: 'show_html'}
+              = I18n.t('library.search_page.view_html')
+
     = render partial: 'library_news', collection: @library_news, as: :news_item
 
 = render partial: 'refinery/books/partials/navigation_footer'
