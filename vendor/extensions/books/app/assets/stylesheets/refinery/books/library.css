@@ -606,6 +606,10 @@ object.pdf_page,
     color: #000099;
 }
 
+#jstree_container .jstree-hovered > span {
+    color: #fff000;
+}
+
 #jstree_container .white {
     color: #FFFFFF;
 }
