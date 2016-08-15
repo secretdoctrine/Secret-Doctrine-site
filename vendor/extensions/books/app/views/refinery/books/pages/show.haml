@@ -37,12 +37,7 @@
           = t('library.go_to_page_prefix')
           = hidden_field_tag(:book_id, @page_info[:page].book.id)
           = hidden_field_tag(:pdf, @page_info[:pdf])
-          = select_tag :id, options_for_select(@page_info[:pages_for_select], @page_info[:page].url_name)
-          %a{onclick: '$("#page_redirector_form")[0].submit();', class: 'but_24'}
-            %span.s0
-              %span.s1
-                %span.s2
-                  = t('library.go_to_page')
+          = select_tag :id, options_for_select(@page_info[:pages_for_select], @page_info[:page].url_name), onchange: '$("#page_redirector_form")[0].submit();'
     %tr
       %td{id: 'page_buttons', colspan: '2'}
         - if @page_info[:page].html_content
@@ -75,12 +70,7 @@
           = t('library.go_to_page_prefix')
           = hidden_field_tag(:book_id, @page_info[:page].book.id)
           = hidden_field_tag(:pdf, @page_info[:pdf])
-          = select_tag :id, options_for_select(@page_info[:pages_for_select], @page_info[:page].url_name)
-          %a{onclick: '$("#page_redirector_form_lower")[0].submit();', class: 'but_24'}
-            %span.s0
-              %span.s1
-                %span.s2
-                  = t('library.go_to_page')
+          = select_tag :id, options_for_select(@page_info[:pages_for_select], @page_info[:page].url_name), onchange: '$("#page_redirector_form_lower")[0].submit();'
 
 = render partial: 'refinery/books/partials/navigation_footer'
 
