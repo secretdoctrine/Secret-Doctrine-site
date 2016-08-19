@@ -279,17 +279,7 @@ module Refinery
                             :is_book => true
                         })
 
-        parent = book.book_category
-        root = BookCategory.get_root!
-        while parent.id != root.id
-          parents.unshift({
-                              :prefix => parent.tree_prefix,
-                              :name => parent.name,
-                              :link_target => Refinery::Core::Engine.routes.url_helpers.books_book_category_path(parent.id),
-                              :is_book => false
-                          })
-          parent = parent.book_category
-        end
+        parents += book.breadcrumb_parents
 
         parents
 
