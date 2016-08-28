@@ -84,15 +84,20 @@ body.library {
 }
 
 #search_block,
-.page_selector {
+.page_selector,
+#page_buttons {
     margin: 0px 10px;
-    vertical-align: top;
     text-align: right;
-    min-width: 450px;
+}
+
+.page_selector {
+    width: 120px;
+    vertical-align: middle;
 }
 
 #search_block {
-
+    min-width: 450px;
+    vertical-align: top;
 }
 
 #book_header {
@@ -126,10 +131,6 @@ body.library {
 #page_container {
     display: block;
     margin-top: 10px;
-    text-align: center;
-}
-
-#page_buttons {
     text-align: center;
 }
 
