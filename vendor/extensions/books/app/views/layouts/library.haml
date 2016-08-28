@@ -19,6 +19,8 @@
     = Refinery::Pages::MenuPresenter.new(refinery_menu_pages, self).to_html
     = yield
 
+    = render partial: 'layouts/footer'
+
     :javascript
       hs.graphicsDir = '/assets/refinery/books/highslide/graphics/';
       hs.showCredits = false;

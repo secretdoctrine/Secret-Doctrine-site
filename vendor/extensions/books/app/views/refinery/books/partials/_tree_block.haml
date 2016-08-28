@@ -1,7 +1,7 @@
 - jstree_div = 'jstree_container'
 - display = display_contents ? 'none' : 'block'
 
-%div{id: 'tree_container_div', class: 'fullheight', width: '200px', style: 'display: ' + display + ';' }
+%td{id: 'tree_container_div', class: 'fullheight', width: '200px', style: 'display: ' + display + ';' }
   - display_button = display_contents ? 'inline-block' : 'none'
   %div{class: 'library_toggle'}
     %input{type: 'button', value: I18n.t('library.show_contents'), style: 'display: ' + display_button + ';', onclick: 'javascript: $("#contents_div")[0].style.display = "block"; $("#tree_container_div")[0].style.display = "none";'}
@@ -12,7 +12,7 @@
       = render partial: 'refinery/books/partials/tree_level_li', locals: {tree_element: tree, first: TRUE}
 
 - display = display_contents ? 'block' : 'none'
-%div{ id: 'contents_div', class: 'fullheight', width: '200px', style: 'display: ' + display + ';' }
+%td{ id: 'contents_div', class: 'fullheight', width: '200px', style: 'display: ' + display + ';' }
   %div{class: 'library_toggle'}
     %input{type: 'button', value: I18n.t('library.show_categories'), onclick: 'javascript: $("#contents_div")[0].style.display = "none"; $("#tree_container_div")[0].style.display = "block";'}
     %br

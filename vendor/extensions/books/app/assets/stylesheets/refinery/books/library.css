@@ -20,13 +20,12 @@ body.library {
 }
 
 #main_container_div {
-
+    vertical-align: top;
 }
 
 .fullheight,
 .fullheight_with_footer {
-    height: 500px;
-    overflow-y: auto;
+
 }
 
 .link_footer {
@@ -35,7 +34,7 @@ body.library {
     color: #000099;
     text-align: center;
     display: block;
-    float: left;
+    min-width: 1080px;
 }
 
 .link_footer a {
@@ -55,8 +54,6 @@ body.library {
 }
 
 #tree_container_div, #contents_div, #main_container_div {
-    display: block;
-    float: left;
     color: #ffffff;
 }
 

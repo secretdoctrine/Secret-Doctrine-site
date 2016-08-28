@@ -20,33 +20,4 @@
     %div.clear
     = yield
 
-    %table.footer{:bgcolor => "#000000", :width => "100%"}
-      %tr
-        %td{:valign => "top", :width => "50%"}
-          %p
-        %td{:valign => "middle"}
-          %table{:border => "0", :width => "417"}
-            %tr
-              %td
-                = image_tag 'induism_ic.gif', {:height => 52, :width => 56}
-              %td
-                = image_tag 'buddism_ic.gif', {:height => 52, :width => 53}
-              %td
-                = image_tag 'krest_ic.gif', {:height => 52, :width => 33}
-              %td
-                = image_tag 'islam_ic.gif', {:height => 52, :width => 51}
-              %td
-                = image_tag 'iudei_ic.gif', {:height => 52, :width => 55}
-              %td
-                = image_tag 'zoroastrism_ic.gif', {:height => 52, :width => 39}
-        %td{:valign => "top", :width => "50%"}
-          %p{:align => "right"}
-    %marquee#mecenat
-      Сайт открыт 24 марта 2007 г.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      \&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      \&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      Редакция сердечно благодарит единомышленника из Санкт-Петербурга - мецената сайта, который предпочел оставаться неизвестным.
-      \&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      \&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      \&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      Copyright &copy; 2007 RadChand. E-mail: sdoctrine@mail.ru
+    = render partial: 'layouts/footer'

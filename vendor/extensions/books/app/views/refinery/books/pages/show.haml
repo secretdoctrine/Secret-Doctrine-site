@@ -1,74 +1,77 @@
-= render partial: 'refinery/books/partials/tree_block', :locals => { :display_contents => true, tree: @page_info[:tree], contents: @page_info[:contents], book: @page_info[:page].book, pdf: @page_info[:pdf] }
-
-%div{id: 'main_container_div', class: 'fullheight_with_footer'}
-  %table{id: 'book_headers', cols: '*, 250px, 200px'}
-    %tr
-      %td{id: 'book_header'}
-        /= @page_info[:page].book.name
-        = link_to t('menu.library'), refinery.books_book_categories_path
-        - @page_info[:page].breadcrumb_parents.each do |parent|
-          \ »
-          = link_to parent[:link_target], {class: parent[:is_book] ? 'is_book' : ''} do
-            - unless parent[:prefix].blank?
-              = parent[:prefix] + '.'
-            = parent[:name]
-            - unless parent[:comment].blank?
-              = parent[:comment]
-      %td{id: 'search_block', colspan: '2'}
-        = form_tag refinery.books_search_results_path, {method: :get, id: 'search_form'} do
-          %input{type: :hidden, name: 'book_id', value: @page_info[:page].book.id}
-          %input{id: 'search_lite', name: 'search_text'}
-          %input{type: :hidden, name: 'is_ext_search', value: false, id: 'is_ext_search'}
-          %a{onclick: '$("#search_form")[0].submit();', class: 'but_24'}
-            %span.s0
-              %span.s1
-                %span.s2
-                  = t('library.search_book')
-          %a{onclick: '$("#is_ext_search")[0].value = true; $("#search_form")[0].submit();', class: 'but_24', title: I18n.t('library.search_more_hint')}
-            %span.s0
-              %span.s1
-                %span.s2
-                  = t('library.search_more')
-    %tr
-      %td{id: 'page_header'}
-        = @page_info[:page].display_name
-      %td{id: 'page_buttons'}
-        - if @page_info[:page].html_content && @page_info[:page].pdf_content
-          = link_to refinery.books_book_page_path(@page_info[:page].book.id, @page_info[:page].url_name) do
-            = image_tag '48-htmls.png'
-          = link_to refinery.books_book_page_path(@page_info[:page].book.id, @page_info[:page].url_name, pdf: true) do
-            = image_tag '48-pdfs.png'
-      %td{class: 'page_selector'}
-        = form_tag refinery.redirect_books_book_pages_path, {method: :get, id: 'page_redirector_form'} do
-          = t('library.go_to_page_prefix')
-          = hidden_field_tag(:book_id, @page_info[:page].book.id)
-          = hidden_field_tag(:pdf, @page_info[:pdf])
-          = select_tag :id, options_for_select(@page_info[:pages_for_select], @page_info[:page].url_name), onchange: '$("#page_redirector_form")[0].submit();'
+%table
+  %tr
+    = render partial: 'refinery/books/partials/tree_block', :locals => { :display_contents => true, tree: @page_info[:tree], contents: @page_info[:contents], book: @page_info[:page].book, pdf: @page_info[:pdf] }
 
 
-  %div{id: 'page_container'}
-    - if @page_info[:page].prev.nil?
-      %div.pre_next_page_placeholder
-    - else
-      = link_to ' ', refinery.books_book_page_path(params.merge(id: @page_info[:page].prev.url_name).except(:highlight_words)), id: 'previous_page'
-    - if @page_info[:pdf]
-      %object.pdf_page{data: "#{refinery.books_book_page_external_page_content_path(@page_info[:page].book, @page_info[:page], @page_info[:page].pdf_content)}"}
-    - else
-      %iframe{src: "#{refinery.books_book_page_external_page_content_path(@page_info[:page].book, @page_info[:page], @page_info[:page].html_content, highlight_words: params.has_key?(:highlight_words) ? params[:highlight_words] : '')}", highlight_words: params.has_key?(:highlight_words) ? params[:highlight_words] : ''}
+    %td{id: 'main_container_div', class: 'fullheight_with_footer'}
+      %table{id: 'book_headers', cols: '*, 250px, 200px'}
+        %tr
+          %td{id: 'book_header'}
+            /= @page_info[:page].book.name
+            = link_to t('menu.library'), refinery.books_book_categories_path
+            - @page_info[:page].breadcrumb_parents.each do |parent|
+              \ »
+              = link_to parent[:link_target], {class: parent[:is_book] ? 'is_book' : ''} do
+                - unless parent[:prefix].blank?
+                  = parent[:prefix] + '.'
+                = parent[:name]
+                - unless parent[:comment].blank?
+                  = parent[:comment]
+          %td{id: 'search_block', colspan: '2'}
+            = form_tag refinery.books_search_results_path, {method: :get, id: 'search_form'} do
+              %input{type: :hidden, name: 'book_id', value: @page_info[:page].book.id}
+              %input{id: 'search_lite', name: 'search_text'}
+              %input{type: :hidden, name: 'is_ext_search', value: false, id: 'is_ext_search'}
+              %a{onclick: '$("#search_form")[0].submit();', class: 'but_24'}
+                %span.s0
+                  %span.s1
+                    %span.s2
+                      = t('library.search_book')
+              %a{onclick: '$("#is_ext_search")[0].value = true; $("#search_form")[0].submit();', class: 'but_24', title: I18n.t('library.search_more_hint')}
+                %span.s0
+                  %span.s1
+                    %span.s2
+                      = t('library.search_more')
+        %tr
+          %td{id: 'page_header'}
+            = @page_info[:page].display_name
+          %td{id: 'page_buttons'}
+            - if @page_info[:page].html_content && @page_info[:page].pdf_content
+              = link_to refinery.books_book_page_path(@page_info[:page].book.id, @page_info[:page].url_name) do
+                = image_tag '48-htmls.png'
+              = link_to refinery.books_book_page_path(@page_info[:page].book.id, @page_info[:page].url_name, pdf: true) do
+                = image_tag '48-pdfs.png'
+          %td{class: 'page_selector'}
+            = form_tag refinery.redirect_books_book_pages_path, {method: :get, id: 'page_redirector_form'} do
+              = t('library.go_to_page_prefix')
+              = hidden_field_tag(:book_id, @page_info[:page].book.id)
+              = hidden_field_tag(:pdf, @page_info[:pdf])
+              = select_tag :id, options_for_select(@page_info[:pages_for_select], @page_info[:page].url_name), onchange: '$("#page_redirector_form")[0].submit();'
 
-    - if @page_info[:page].next.nil?
-      %div.pre_next_page_placeholder
-    - else
-      = link_to ' ', refinery.books_book_page_path(params.merge(id: @page_info[:page].next.url_name).except(:highlight_words)), id: 'next_page'
 
-  %table{id: 'book_footer'}
-    %tr
-      %td{class: 'page_selector'}
-        = form_tag refinery.redirect_books_book_pages_path, {method: :get, id: 'page_redirector_form_lower'} do
-          = t('library.go_to_page_prefix')
-          = hidden_field_tag(:book_id, @page_info[:page].book.id)
-          = hidden_field_tag(:pdf, @page_info[:pdf])
-          = select_tag :id, options_for_select(@page_info[:pages_for_select], @page_info[:page].url_name), onchange: '$("#page_redirector_form_lower")[0].submit();'
+      %div{id: 'page_container'}
+        - if @page_info[:page].prev.nil?
+          %div.pre_next_page_placeholder
+        - else
+          = link_to ' ', refinery.books_book_page_path(params.merge(id: @page_info[:page].prev.url_name).except(:highlight_words)), id: 'previous_page'
+        - if @page_info[:pdf]
+          %object.pdf_page{data: "#{refinery.books_book_page_external_page_content_path(@page_info[:page].book, @page_info[:page], @page_info[:page].pdf_content)}"}
+        - else
+          %iframe{src: "#{refinery.books_book_page_external_page_content_path(@page_info[:page].book, @page_info[:page], @page_info[:page].html_content, highlight_words: params.has_key?(:highlight_words) ? params[:highlight_words] : '')}", highlight_words: params.has_key?(:highlight_words) ? params[:highlight_words] : ''}
+
+        - if @page_info[:page].next.nil?
+          %div.pre_next_page_placeholder
+        - else
+          = link_to ' ', refinery.books_book_page_path(params.merge(id: @page_info[:page].next.url_name).except(:highlight_words)), id: 'next_page'
+
+      %table{id: 'book_footer'}
+        %tr
+          %td{class: 'page_selector'}
+            = form_tag refinery.redirect_books_book_pages_path, {method: :get, id: 'page_redirector_form_lower'} do
+              = t('library.go_to_page_prefix')
+              = hidden_field_tag(:book_id, @page_info[:page].book.id)
+              = hidden_field_tag(:pdf, @page_info[:pdf])
+              = select_tag :id, options_for_select(@page_info[:pages_for_select], @page_info[:page].url_name), onchange: '$("#page_redirector_form_lower")[0].submit();'
 
 = render partial: 'refinery/books/partials/navigation_footer'
 
