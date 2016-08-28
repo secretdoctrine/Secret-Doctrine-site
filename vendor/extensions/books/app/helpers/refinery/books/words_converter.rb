@@ -8,10 +8,14 @@ module Refinery
 
       def self.convert(str)
 
+        results_array = []
+
+        str.split(SEPARATOR).collect{|x| x.strip}.select{|x| x.length > 0}.each do |x|
+          results_array += x.scan(Regexp.new(BEFORE_STRING + '(.+?)' + AFTER_STRING))
+        end
+
         result = '(' +
-            str.split(SEPARATOR).collect{|x| x.strip}.select{|x| x.length > 0}
-                .collect{|x| Regexp.new(BEFORE_STRING + '(.+)' + AFTER_STRING).match(x)[1]}
-                .uniq.join('|') +
+            results_array.join('|') +
             ')'
         result
 
