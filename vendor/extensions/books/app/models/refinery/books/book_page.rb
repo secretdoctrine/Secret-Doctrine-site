@@ -84,6 +84,8 @@ module Refinery
         search_text_array = search_text.split(' ').collect{ |x| x.strip }.select{|x| not x.empty?}
         if params.has_key?('search_exact_words') and params['search_exact_words'] == 'true'
           search_text_array = search_text_array.collect{ |x| "=#{x}" }
+        else
+          search_text_array = search_text_array.collect{ |x| "*#{x}*" }
         end
         search_text = search_text_array.join(' & ')
 

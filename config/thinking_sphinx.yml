@@ -1,6 +1,12 @@
 development:
+# enable dict crc if you want to enable single letter searches
+#  dict: crc
   morphology: stem_ru
   index_exact_words: true
+  min_infix_len: 2
 production:
+# enable dict crc if you want to enable single letter searches
+# dict: crc
   morphology: stem_ru
   index_exact_words: true
+  min_infix_len: 2
