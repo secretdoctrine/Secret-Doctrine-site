@@ -1,5 +1,5 @@
 - tree_element.child_elements.each do |child_element|
-  - li_class = ((child_element.is_open or first) ? 'jstree-open' : '')
+  - li_class = ((child_element.is_open) ? 'jstree-open' : '')
   - li_class += child_element.is_current ? ' selected_li' : ''
   - span_class = child_element.type == 'category' ? '' : 'tree_book'
   - span_class += first ? ' white' : ''
