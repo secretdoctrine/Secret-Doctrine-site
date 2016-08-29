@@ -14,10 +14,12 @@
 
     if(#{html_height} == 0) {
       height = window.innerHeight - 209 - 180 + "px";
+      maxHeight = window.innerHeight - 209 + "px";
     }
     else
     {
       height = #{html_height} + "px";
+      maxHeight = #{html_height} + 180 + "px";
     }
 
     $("iframe").each(function() {
@@ -40,6 +42,10 @@
 
     $("#page_container").each(function() {
       this.style.minWidth = minWidth;
+    })
+
+    $("#contents_div").each(function() {
+      this.style.maxHeight = maxHeight;
     })
 
   }

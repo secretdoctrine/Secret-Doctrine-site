@@ -346,6 +346,7 @@ object.pdf_page,
 #contents_div {
     font-size: 80%;
     background: #244372 url(rock085-4.jpg);
+    overflow-y: auto;
 }
 
 #contents_div li:hover > a,

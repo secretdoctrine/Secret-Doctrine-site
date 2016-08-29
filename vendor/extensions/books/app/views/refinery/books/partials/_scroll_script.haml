@@ -1,7 +1,18 @@
-%script{:type => 'text/javascript'}
+:javascript
+
   function scroll_to_element(selector) {
-  $(selector)[0].scrollIntoView(true);
+    $(selector)[0].scrollIntoView(true);
   }
 
-  if($('#contents_div li.selected_li').length) { scroll_to_element('#contents_div li.selected_li'); }
-  if($('#jstree_container li.selected_li').length) { scroll_to_element('#jstree_container li.selected_li'); }
+  function scroll_to_element_inner(child_selector, parent_selector) {
+    var topPos = $(child_selector)[0].offsetTop;
+    $(parent_selector)[0].scrollTop = topPos-10;
+  }
+
+  if($('#contents_div li.selected_li').length) {
+    scroll_to_element_inner('#contents_div li.selected_li', '#contents_div');
+  }
+
+  //if($('#jstree_container li.selected_li').length) {
+  //  scroll_to_element('#jstree_container li.selected_li');
+  //}
