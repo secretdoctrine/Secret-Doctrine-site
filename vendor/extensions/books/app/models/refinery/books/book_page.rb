@@ -294,7 +294,7 @@ module Refinery
                             :is_book => true
                         })
 
-        parents += book.breadcrumb_parents
+        parents = book.breadcrumb_parents + parents
 
         parents
 
