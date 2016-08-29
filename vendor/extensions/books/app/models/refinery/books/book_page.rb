@@ -236,6 +236,19 @@ module Refinery
 
       end
 
+      def display_name_page_only
+
+        name = ::I18n.t('importer.page') + ' ' + url_name
+        contents_element = book.get_parent_for_page(internal_order)
+
+        return name if contents_element.nil? or contents_element.page_number != internal_order or contents_element.ce_type != ContentsElement::PAGE_CE_TYPE
+
+        name += '. ' + contents_element.name
+        name += ' ' + contents_element.name_comment unless contents_element.name_comment.blank?
+        name.html_safe
+
+      end
+
       def full_path_name
 
         parents = []
@@ -250,7 +263,7 @@ module Refinery
         full_name = book.name + NAME_SEPARATOR
         full_name += parents.collect{|x| x.name}.join(NAME_SEPARATOR)
         full_name += NAME_SEPARATOR if parents.any?
-        full_name += display_name
+        full_name += display_name_page_only
 
         full_name.html_safe
 
