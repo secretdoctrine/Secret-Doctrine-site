@@ -30,23 +30,21 @@ body.library {
 }
 
 .link_footer {
-    height: 34px;
-    background-color: #A3B2CC;
-    color: #000099;
+    height: 24px;
+    color: #ffffff;
     text-align: center;
     display: block;
     min-width: 1080px;
+    font-size: 10px;
 }
 
 .link_footer a {
-    color: #000099;
-    text-decoration: underline;
-    font-size: 12px;
+    text-decoration: none;
+    color: #ffffff;
 }
 
 .link_footer a:hover {
-    color: #FFFFFF;
-    text-decoration: none;
+    text-decoration: underline;
     cursor: pointer;
 }
 
@@ -78,6 +76,10 @@ body.library {
 #book_footer td,
 #category_headers td{
     color: #ffffff;
+}
+
+#book_headers td,
+#book_footer td {
     padding: 10px 10px 0px 20px;
 }
 
@@ -96,6 +98,26 @@ body.library {
 #search_block {
     min-width: 450px;
     vertical-align: top;
+}
+
+#search_block .last_book {
+    margin-top: 56px;
+}
+
+#search_block .last_book #search_lite {
+    width: 250px;
+}
+
+#search_block .inline_left {
+    text-align: left;
+    display: inline-block;
+}
+
+#news_header {
+    text-align: center;
+    margin: 10px 0 20px;
+    font-size: 15px;
+    text-decoration: underline;
 }
 
 #book_header {
@@ -192,6 +214,10 @@ object.pdf_page,
 }
 
 #library_news_feed .last_book a:hover {
+    text-decoration: none;
+}
+
+#library_news_feed .last_book a.but_24 {
     text-decoration: none;
 }
 
