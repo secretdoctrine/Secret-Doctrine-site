@@ -27,7 +27,7 @@
 
   <div class='field'>
     <%= f.label :news_datetime -%>
-    <%= f.datetime_select :news_datetime -%>
+    <%= f.datetime_select :news_datetime, start_year: 1990 -%>
   </div>
 
   <%= render '/refinery/admin/form_actions', :f => f,
