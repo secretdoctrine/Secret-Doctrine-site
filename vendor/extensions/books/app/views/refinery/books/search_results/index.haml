@@ -41,7 +41,7 @@
                         = root_element.tree_prefix
                       = root_element.name
                     %ul
-                      = render partial: 'refinery/books/partials/tree_level_li', locals: {tree_element: root_element, first: TRUE}
+                      = render partial: 'refinery/books/partials/tree_level_li', locals: {tree_element: root_element, first: FALSE}
 
           %td
             %label
@@ -108,7 +108,6 @@
     hidden_field.value = checked_ids.join(", ");
   });
 
-  tree.jstree(true).open_all();
   $('li[selected="true"]').each(function() {
     tree.jstree('check_node', $(this))
   });

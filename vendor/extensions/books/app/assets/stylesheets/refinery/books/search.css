@@ -132,6 +132,21 @@ a.search_type_link:hover, a.search_type_link:focus {
     overflow-y: auto;
 }
 
+#options_block #jstree_container .jstree-checkbox {
+    background-position: -169px -9px;
+    width: 14px;
+    height: 14px;
+}
+
+#options_block #jstree_container .jstree-checked > .jstree-checkbox {
+    background-position: -233px -9px;
+}
+
+#options_block #jstree_container .jstree-anchor > .jstree-undetermined {
+    background-position: -201px -9px;
+}
+
+
 .extended_search table {
     border-collapse: collapse;
     border: none;
