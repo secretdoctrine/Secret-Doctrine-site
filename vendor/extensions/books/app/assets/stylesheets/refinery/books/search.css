@@ -128,8 +128,8 @@ a.search_type_link:hover, a.search_type_link:focus {
 }
 
 .extended_search #jstree_container {
-    height: 300px;
-    overflow-y: auto;
+    min-height: 600px;
+    overflow-x: hidden;
 }
 
 #options_block #jstree_container .jstree-checkbox {
