@@ -6,7 +6,7 @@
 
   function scroll_to_element_inner(child_selector, parent_selector) {
     var topPos = $(child_selector)[0].offsetTop;
-    $(parent_selector)[0].scrollTop = topPos-10;
+    $(parent_selector)[0].scrollTop = topPos
   }
 
   if($('#contents_div li.selected_li').length) {
