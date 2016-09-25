@@ -99,7 +99,8 @@ module Refinery
           category = BookCategory.find_by_id(params[:book_category_id])
           #selected_category_ids = category.categories_array
           selected_book_ids += category.all_child_book_ids
-          with_hash[:book_category_id] = selected_category_ids
+          #with_hash[:book_category_id] = selected_category_ids
+          with_hash[:book_id] = selected_book_ids
 
         end
 
@@ -128,6 +129,12 @@ module Refinery
 
               next if category.nil?
 
+              if category.id == BookCategory.get_root!.id
+                selected_category_ids.clear
+                selected_book_ids.clear
+                break
+              end
+
               selected_book_ids += category.all_child_book_ids
 
             end
@@ -137,10 +144,10 @@ module Refinery
         end
 
         # to make displayed tree not empty
-        if selected_book_ids.empty? and selected_category_ids.empty?
-          #selected_category_ids.push(BookCategory.get_root!.id)
-          selected_book_ids += BookCategory.get_root!.all_child_book_ids
-        end
+        #if selected_book_ids.empty? and selected_category_ids.empty?
+        #  #selected_category_ids.push(BookCategory.get_root!.id)
+        #  selected_book_ids += BookCategory.get_root!.all_child_book_ids
+        #end
 
         selected_book_ids.uniq!
 

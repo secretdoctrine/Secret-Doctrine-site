@@ -183,6 +183,7 @@ module Refinery
 
         root_element = TreeElement.new(
             is_root: true,
+            id: root.id,
             link_target: Refinery::Core::Engine.routes.url_helpers.books_book_categories_path,
             name: root.name,
             selected: selected_category_ids.any?{|x| x == root.id}
