@@ -108,6 +108,22 @@ module Refinery
 
       end
 
+      def all_child_book_ids
+
+        result = []
+
+        book_categories.each do |child_category|
+          result += child_category.all_child_book_ids
+        end
+
+        books.each do |book|
+          result.push(book.id)
+        end
+
+        result
+
+      end
+
       def self.add_tree_element(current_element, tree_parent, db_element, selected_book_ids: [], selected_category_ids: [])
 
         return false if db_element.is_hidden

@@ -102,7 +102,11 @@
     var checked_ids = [];
     $("##{jstree_div}").jstree("get_checked",null,true).forEach
         (function (element_id) {
-          checked_ids.push($("#" + element_id)[0].type);
+          try {
+            checked_ids.push($("#" + element_id)[0].type);
+          } catch (e) {
+
+          }
         });
     hidden_field = $("#tree_selected")[0];
     hidden_field.value = checked_ids.join(", ");
