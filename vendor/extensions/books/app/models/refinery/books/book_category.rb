@@ -63,6 +63,8 @@ module Refinery
 
       def self.process_own_books(db_element, tree_element, selected_book_ids: [])
 
+        any_open = false
+
         db_element.books.each do |book|
 
           book_element = TreeElement.new(
@@ -75,9 +77,13 @@ module Refinery
               selected: selected_book_ids.any?{ |x| x == book.id }
           )
 
+          any_open = true if book_element.selected
+
           tree_element.child_elements.push(book_element)
 
         end
+
+        any_open
 
       end
 
@@ -102,23 +108,41 @@ module Refinery
 
       end
 
+      def all_child_book_ids
+
+        result = []
+
+        book_categories.each do |child_category|
+          result += child_category.all_child_book_ids
+        end
+
+        books.each do |book|
+          result.push(book.id)
+        end
+
+        result
+
+      end
+
       def self.add_tree_element(current_element, tree_parent, db_element, selected_book_ids: [], selected_category_ids: [])
 
         return false if db_element.is_hidden
         is_current = ((not current_element.nil?) and current_element.id == db_element.id ? true : false)
+        is_selected = selected_category_ids.any?{|x| x == db_element.id}
 
         tree_element = TreeElement.new(
             name: db_element.name,
             link_target: Refinery::Core::Engine.routes.url_helpers.books_book_category_path(db_element.id),
             id: db_element.id,
-            is_open: is_current,
+            is_open: (is_current or is_selected),
             is_current: is_current,
             order_number: db_element.order_number,
-            selected: selected_category_ids.any?{|x| x == db_element.id},
+            selected: is_selected,
             tree_prefix: db_element.tree_prefix
         )
 
-        process_own_books(db_element, tree_element, selected_book_ids: selected_book_ids)
+        any_book_is_open = process_own_books(db_element, tree_element, selected_book_ids: selected_book_ids)
+        tree_element.is_open = true if any_book_is_open
         process_own_popup_books(db_element, tree_element)
 
         child_elements = db_element.book_categories.includes(:books)
@@ -159,6 +183,7 @@ module Refinery
 
         root_element = TreeElement.new(
             is_root: true,
+            id: root.id,
             link_target: Refinery::Core::Engine.routes.url_helpers.books_book_categories_path,
             name: root.name,
             selected: selected_category_ids.any?{|x| x == root.id}

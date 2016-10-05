@@ -97,8 +97,10 @@ module Refinery
 
           use_tree_selected = false
           category = BookCategory.find_by_id(params[:book_category_id])
-          selected_category_ids = category.categories_array
-          with_hash[:book_category_id] = selected_category_ids
+          #selected_category_ids = category.categories_array
+          selected_book_ids += category.all_child_book_ids
+          #with_hash[:book_category_id] = selected_category_ids
+          with_hash[:book_id] = selected_book_ids
 
         end
 
@@ -115,17 +117,39 @@ module Refinery
           params['tree_selected'].split(', ').each do |selected_element|
 
             split_element = selected_element.split('#')
-            selected_book_ids.push(split_element[1].to_i) if split_element[0] == TreeElement::BOOK_TYPE
-            selected_category_ids.push(split_element[1].to_i) if split_element[0] == TreeElement::CATEGORY_TYPE
+            if split_element[0] == TreeElement::BOOK_TYPE
+              selected_book_ids.push(split_element[1].to_i)
+            end
 
-          end
+            if split_element[0] == TreeElement::CATEGORY_TYPE
+              category_id = split_element[1].to_i
+              selected_category_ids.push(category_id)
 
-          # to make displayed tree not empty
-          if selected_book_ids.empty? and selected_category_ids.empty?
-            selected_category_ids.push(BookCategory.get_root!.id)
+              category = BookCategory.find_by_id(category_id)
+
+              next if category.nil?
+
+              if category.id == BookCategory.get_root!.id
+                selected_category_ids.clear
+                selected_book_ids.clear
+                break
+              end
+
+              selected_book_ids += category.all_child_book_ids
+
+            end
+
           end
 
         end
+
+        # to make displayed tree not empty
+        #if selected_book_ids.empty? and selected_category_ids.empty?
+        #  #selected_category_ids.push(BookCategory.get_root!.id)
+        #  selected_book_ids += BookCategory.get_root!.all_child_book_ids
+        #end
+
+        selected_book_ids.uniq!
 
         if use_tree_selected
           with_hash[:book_id] = selected_book_ids if selected_book_ids.any?
