@@ -24,7 +24,9 @@
           %i
             = book.name_prefix
           %br
-        - if book.name
+        - if book.taggable_name
+          = raw book.taggable_name
+        - elsif book.name
           = book.name
         - if book.name_comment
           %br
