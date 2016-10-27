@@ -20,15 +20,16 @@
   - if defined? contents and contents
     %h2
       = link_to refinery.books_book_path(book.id, :pdf => pdf) do
-        - if book.name_prefix
+        - unless book.name_prefix.blank?
           %i
             = book.name_prefix
           %br
-        - if book.taggable_name
+        - unless book.taggable_name.blank?
           = raw book.taggable_name
-        - elsif book.name
-          = book.name
-        - if book.name_comment
+        - else
+          - if book.name
+            = book.name
+        - unless book.name_comment.blank?
           %br
           %span{class: 'nobold'}
             = book.name_comment
