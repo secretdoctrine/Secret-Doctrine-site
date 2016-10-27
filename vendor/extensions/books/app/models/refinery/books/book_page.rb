@@ -254,7 +254,9 @@ module Refinery
         name = ::I18n.t('importer.page') + ' ' + url_name
         contents_element = book.get_parent_for_page(internal_order)
 
-        return name if contents_element.nil? or contents_element.page_number != internal_order
+        if contents_element.nil? or contents_element.page_number != internal_order or contents_element.ce_type != ContentsElement::PAGE_CE_TYPE
+          return name
+        end
 
         name += '. ' + contents_element.name
         name += ' ' + contents_element.name_comment unless contents_element.name_comment.blank?
