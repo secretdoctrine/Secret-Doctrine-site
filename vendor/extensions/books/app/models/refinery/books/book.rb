@@ -206,9 +206,11 @@ module Refinery
         parent = book_category
         root = BookCategory.get_root!
         while parent.id != root.id
+          doc = Nokogiri::HTML(parent.name)
+          stripped_name = doc.xpath("//text()").text
           parents.unshift({
                               :prefix => parent.tree_prefix,
-                              :name => parent.name,
+                              :name => stripped_name,
                               :link_target => Refinery::Core::Engine.routes.url_helpers.books_book_category_path(parent.id),
                               :is_book => false
                           })

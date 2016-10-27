@@ -156,6 +156,8 @@ module Refinery
         end
         #with_hash[:book_category_id] = selected_category_ids if selected_category_ids.any?
 
+        #result[:tree_selected] = selected_book_ids.join(', ')
+
         result[:tree] = make_tree(selected_book_ids, selected_category_ids)
         result[:per_page] = per_page
 
@@ -300,9 +302,11 @@ module Refinery
 
         while parent
           target_page = BookPage.find_by_book_id_and_internal_order(book.id, parent.page_number)
+          doc = Nokogiri::HTML(parent.name)
+          striped_name = doc.xpath("//text()").text
           parents.unshift({
                               :prefix => parent.name_prefix,
-                              :name => parent.name,
+                              :name => striped_name,
                               :comment => parent.name_comment,
                               :link_target => Refinery::Core::Engine.routes.url_helpers.books_book_page_path(book.id, target_page.id),
                               :is_book => false
@@ -310,9 +314,11 @@ module Refinery
           parent = book.get_parent_for_content_element(parent)
         end
 
+        doc = Nokogiri::HTML(book.name)
+        striped_name = doc.xpath("//text()").text
         parents.unshift({
                             :prefix => book.name_prefix,
-                            :name => book.name,
+                            :name => striped_name,
                             :comment => book.name_comment,
                             :link_target => Refinery::Core::Engine.routes.url_helpers.books_book_path(book.id),
                             :is_book => true
