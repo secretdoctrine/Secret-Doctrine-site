@@ -4,13 +4,13 @@
     $(selector)[0].scrollIntoView(true);
   }
 
-  function scroll_to_element_inner(child_selector, parent_selector) {
+  function scroll_to_element_inner(child_selector, parent_selector, modifier) {
     var topPos = $(child_selector)[0].offsetTop;
-    $(parent_selector)[0].scrollTop = topPos
+    $(parent_selector)[0].scrollTop = topPos - modifier;
   }
 
-  if($('#contents_div li.selected_li').length) {
-    scroll_to_element_inner('#contents_div li.selected_li', '#contents_div');
+  if($('#contents_body li.selected_li').length) {
+    scroll_to_element_inner('#contents_body li.selected_li', '#contents_body', $("#contents_header").height());
   }
 
   //if($('#jstree_container li.selected_li').length) {

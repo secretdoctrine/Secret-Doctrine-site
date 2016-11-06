@@ -372,6 +372,9 @@ object.pdf_page,
 #contents_div {
     font-size: 80%;
     background: #244372 url(rock085-4.jpg);
+}
+
+#contents_body {
     overflow-y: auto;
 }
 
