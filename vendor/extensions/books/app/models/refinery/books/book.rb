@@ -9,6 +9,9 @@ module Refinery
       FORMAT_950_1350 = 2
       FORMAT_750_1100 = 3
       FORMAT_600_900 = 4
+      FORMAT_700_960 = 5
+      FORMAT_650_900 = 6
+
 
       def export_yml
 
@@ -50,6 +53,8 @@ module Refinery
         return 950 if self.page_format == FORMAT_950_1350
         return 750 if self.page_format == FORMAT_750_1100
         return 600 if self.page_format == FORMAT_600_900
+        return 700 if self.page_format == FORMAT_700_960
+        return 650 if self.page_format == FORMAT_650_900
 
         0
 
@@ -62,6 +67,8 @@ module Refinery
         return 1350 if self.page_format == FORMAT_950_1350
         return 1100 if self.page_format == FORMAT_750_1100
         return 900 if self.page_format == FORMAT_600_900
+        return 960 if self.page_format == FORMAT_700_960
+        return 900 if self.page_format == FORMAT_650_900
 
         0
 
@@ -73,7 +80,9 @@ module Refinery
             [::I18n.t('library.format_700_950'), FORMAT_700_950],
             [::I18n.t('library.format_950_1350'), FORMAT_950_1350],
             [::I18n.t('library.format_750_1100'), FORMAT_750_1100],
-            [::I18n.t('library.format_600_900'), FORMAT_600_900]]
+            [::I18n.t('library.format_600_900'), FORMAT_600_900],
+            [::I18n.t('library.format_700_960'), FORMAT_700_960],
+            [::I18n.t('library.format_650_900'), FORMAT_650_900]]
       end
 
       def short_name
