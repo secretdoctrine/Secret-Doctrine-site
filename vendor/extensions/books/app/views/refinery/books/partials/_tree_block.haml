@@ -37,8 +37,9 @@
         %br
         = image_tag 'refinery/books/roscherkl.gif'
   %div#contents_body
-    %ul
-      = render partial: 'refinery/books/partials/contents_li', locals: {contents: contents, pdf: pdf}
+    - if defined? contents and contents
+      %ul
+        = render partial: 'refinery/books/partials/contents_li', locals: {contents: contents, pdf: pdf}
 
 
 %script{:type => 'text/javascript'}
