@@ -1049,3 +1049,68 @@
     margin-right: 0;
   }
 }
+
+/* Alternative style for white lines */
+
+.navmenu .jstree-default .jstree-node{
+  background-image: url("32px_white.png");
+}
+.navmenu .jstree-default .jstree-icon {
+  background-image: url("32px_white.png");
+}
+
+.navmenu .jstree-default .jstree-node {
+  background-position: -292px -4px;
+  background-repeat: repeat-y;
+}
+
+.navmenu .jstree-default .jstree-last {
+  background: transparent;
+}
+
+ .navmenu #jstree-dnd.jstree-default-large .jstree-ok,
+.navmenu #jstree-dnd.jstree-default-large .jstree-er {
+  background-image: url("32px_white.png");
+}
+
+.navmenu .jstree-default .jstree-icon {
+  background-image: url("32px_white.png");
+}
+.navmenu .jstree-default .jstree-file {
+  background-image: url("32px_white.png");
+}
+.navmenu .jstree-default .jstree-folder {
+  background-image: url("32px_white.png");
+}
+.navmenu #jstree-dnd.jstree-default .jstree-ok,
+.navmenu #jstree-dnd.jstree-default .jstree-er {
+  background-image: url("32px_white.png");
+}
+.navmenu .jstree-default-small .jstree-file {
+  background-image: url("32px_white.png");
+}
+.navmenu .jstree-default-small .jstree-folder {
+  background-image: url("32px_white.png");
+}
+.navmenu #jstree-dnd.jstree-default-small .jstree-ok,
+.navmenu #jstree-dnd.jstree-default-small .jstree-er {
+  background-image: url("32px_white.png");
+}
+.navmenu .jstree-default-large .jstree-node,
+.navmenu .jstree-default-large .jstree-icon {
+  background-image: url("32px_white.png");
+}
+.navmenu .jstree-default-large .jstree-node {
+  background-position: -288px 0px;
+  background-repeat: repeat-y;
+}
+ .navmenu .jstree-default-large .jstree-file {
+  background-image: url("32px_white.png");
+}
+.navmenu .jstree-default-large .jstree-folder {
+  background-image: url("32px_white.png");
+}
+.navmenu #jstree-dnd.jstree-default-large .jstree-ok,
+ .navmenu #jstree-dnd.jstree-default-large .jstree-er {
+  background-image: url("32px_white.png");
+}

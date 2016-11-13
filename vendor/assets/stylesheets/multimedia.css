@@ -101,6 +101,11 @@ aside.left h2 { font-size: 17px; font-weight: bold; margin: 39px 24px 17px;}
 
 .menuleft li:not([class]):not([js_level]) {display: none;}
 
+.menuleft a {
+    white-space: normal !important;
+    height: auto !important;
+}
+
 /*____________________________ audio main _____________________________*/
 .inf { font-size: 14px; font-style: italic;}
 figure.fl_img { float: left; margin: 0 23px 20px 0; max-width: 270px;}
