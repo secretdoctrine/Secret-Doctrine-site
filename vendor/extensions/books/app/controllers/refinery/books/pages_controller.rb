@@ -25,8 +25,15 @@ module Refinery
         @page_info[:tree] = BookCategory.build_categories_tree_for_book(@page.book)
         @page_info[:contents] = @page.book.build_contents(@page)
         @page_info[:pdf] =
-            ((params.has_key?('pdf') and params['pdf'] == 'true' and not @page.pdf_content.nil?) or @page.html_content.nil?)
+            ((not params.has_key?('pdf') or params['pdf'] == 'true' and not @page.pdf_content.nil?) or @page.html_content.nil?)
         @page_info[:pages_for_select] = @page.book.pages_for_select
+        if @page_info[:pdf]
+          @page_info[:width] = 0
+          @page_info[:height] = 0
+        else
+          @page_info[:width] = @page.book.html_width
+          @page_info[:height] = @page.book.html_height
+        end
 
         @page_title += t('headers.separator') + @page.book.name + t('headers.separator') + t('headers.page_number') + @page.url_name
 

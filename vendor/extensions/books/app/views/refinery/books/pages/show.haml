@@ -77,7 +77,7 @@
 
 = render partial: 'refinery/books/partials/book_view_resize_script'
 
-= render partial: 'refinery/books/partials/page_resize_script', :locals => {:html_width => @page_info[:page].book.html_width, :html_height => @page_info[:page].book.html_height}
+= render partial: 'refinery/books/partials/page_resize_script', :locals => {:html_width => @page_info[:width], :html_height => @page_info[:height]}
 
 = render partial: 'refinery/books/partials/prepare_iframes'
 

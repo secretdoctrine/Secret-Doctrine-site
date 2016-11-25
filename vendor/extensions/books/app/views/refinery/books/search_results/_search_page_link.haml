@@ -1,0 +1,1 @@
+= link_to (page_counter + 1).to_s + '. ' + page.full_path_name, refinery.books_book_page_path(page.book.id, page.url_name, highlight_words: Refinery::Books::WordsConverter.convert(page.words.page_text), pdf: :false)

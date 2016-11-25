@@ -16,8 +16,8 @@ module Refinery
 
         return render_404 if @book.nil?
 
-        use_pdf = false
-        use_pdf = true if params.has_key?('pdf') and params['pdf'] == 'true'
+        use_pdf = true
+        use_pdf = false if params.has_key?('pdf') and params['pdf'] == 'false'
         redirect_to refinery.books_book_page_path(@book, @book.book_pages.sort { |x, y| x.internal_order <=> y.internal_order}.first.url_name, :pdf => use_pdf)
 
       end
