@@ -1,1 +1,17 @@
-= link_to (page_counter + 1).to_s + '. ' + page.full_path_name, refinery.books_book_page_path(page.book.id, page.url_name, highlight_words: Refinery::Books::WordsConverter.convert(page.words.page_text), pdf: :false)
+- # link_text = page.full_path_name
+- link_text = ''
+- first = true
+- page.breadcrumb_parents.each do |parent|
+  - if first
+    - first = false
+  - else
+    - link_text += ' » '
+  - unless parent[:prefix].blank?
+    - link_text += parent[:prefix] + '. '
+  - link_text += parent[:name]
+  - unless parent[:comment].blank?
+    - link_text += '. ' + parent[:comment]
+- unless first
+  - link_text += ' » '
+- link_text += page.display_name_page_only
+= link_to (page_counter + 1).to_s + '. ' + link_text.html_safe, refinery.books_book_page_path(page.book.id, page.url_name, highlight_words: Refinery::Books::WordsConverter.convert(page.words.page_text), pdf: :false)
