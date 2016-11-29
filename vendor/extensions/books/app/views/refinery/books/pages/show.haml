@@ -37,7 +37,7 @@
             = @page_info[:page].display_name
           %td{id: 'page_buttons'}
             - if @page_info[:page].html_content && @page_info[:page].pdf_content
-              = link_to refinery.books_book_page_path(@page_info[:page].book.id, @page_info[:page].url_name) do
+              = link_to refinery.books_book_page_path(@page_info[:page].book.id, @page_info[:page].url_name, pdf: false) do
                 = image_tag '48-htmls.png'
               = link_to refinery.books_book_page_path(@page_info[:page].book.id, @page_info[:page].url_name, pdf: true) do
                 = image_tag '48-pdfs.png'
