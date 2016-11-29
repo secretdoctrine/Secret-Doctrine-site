@@ -29,7 +29,7 @@ module Refinery
         @page_info[:pages_for_select] = @page.book.pages_for_select
         if @page_info[:pdf]
           @page_info[:width] = 0
-          @page_info[:height] = 0
+          @page_info[:height] = @page.book.html_height
         else
           @page_info[:width] = @page.book.html_width
           @page_info[:height] = @page.book.html_height
