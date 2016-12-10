@@ -85,7 +85,8 @@ module Refinery
             [::I18n.t('library.format_750_1100'), FORMAT_750_1100],
             [::I18n.t('library.format_600_900'), FORMAT_600_900],
             [::I18n.t('library.format_700_960'), FORMAT_700_960],
-            [::I18n.t('library.format_650_900'), FORMAT_650_900]]
+            [::I18n.t('library.format_650_900'), FORMAT_650_900],
+            [::I18n.t('library.format_570_850'), FORMAT_570_850]]
       end
 
       def short_name
