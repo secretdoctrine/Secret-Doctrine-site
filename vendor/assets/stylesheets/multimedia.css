@@ -360,3 +360,8 @@ figure figcaption { font-size: 80%; padding: 6px;}
 .snoska:hover { border-bottom: none; }
 .snoska:hover span { display:block; overflow: hidden; }
 
+
+.multimedia_jstree_div .jstree-container-ul > .jstree-node { background:transparent; }
+.multimedia_jstree_div .jstree-container-ul > .jstree-open > .jstree-ocl { background-position:-36px -4px; }
+.multimedia_jstree_div .jstree-container-ul > .jstree-closed> .jstree-ocl { background-position:-4px -4px; }
+.multimedia_jstree_div .jstree-container-ul > .jstree-leaf> .jstree-ocl { background:transparent; }
