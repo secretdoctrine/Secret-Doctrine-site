@@ -26,7 +26,7 @@ module Refinery
     protected
 
       def find_all_news_items
-        @news_items = NewsItem.where(:site_news => true).order('position ASC')
+        @news_items = NewsItem.where(:site_news => true).order('news_datetime DESC')
       end
 
       def find_page

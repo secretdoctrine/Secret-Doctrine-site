@@ -20,7 +20,7 @@ module Refinery
 
       def index
 
-        @library_news = NewsItem.where(library_news: true).sort_by{ |x| x.news_datetime }
+        @library_news = NewsItem.where(library_news: true).order('news_datetime DESC')
 
       end
 
