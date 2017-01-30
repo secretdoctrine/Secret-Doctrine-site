@@ -163,7 +163,7 @@ object.pdf_page,
 
 #previous_page, #next_page,
 .pre_next_page_placeholder {
-    width: 70px;
+    width: 45px;
     border: none;
     vertical-align: top;
     display: inline-block;
