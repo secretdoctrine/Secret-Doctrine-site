@@ -11,7 +11,7 @@
       $(this.contentWindow.document.body).find("span.match").each(function() {
         computed_style = window.getComputedStyle(this);
         color = /rgba\(\s*\d+\s*,\s*\d+\s*,\s*\d+\s*,\s*(\d+)\s*\)/g.exec(computed_style.color);
-        if(computed_style.opacity == "0" || (color != null && color[1] == "0")) {
+        if(computed_style.opacity == "0" || (color != null && color[1] == "0") || computed_style.color == "transparent") {
           this.style.backgroundColor = "#FFFF00";
           this.style.color = "#FFFF00";
           this.style.opacity = "0.3";
