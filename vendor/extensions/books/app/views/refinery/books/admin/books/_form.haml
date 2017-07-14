@@ -26,6 +26,10 @@
     = f.hidden_field :book_category_id, {:value => @book.book_category_id}
     = f.hidden_field :order_number, {:value => @book.order_number}
 
+  - if @book.id
+    = f.label :local_path
+    = f.text_field :local_path, :class => 'larger widest', :disabled => true
+
   %div.field
     = f.label :name
     = f.text_field :name, :class => 'larger widest'
