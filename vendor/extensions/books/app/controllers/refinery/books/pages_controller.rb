@@ -39,6 +39,24 @@ module Refinery
 
       end
 
+      def export_zip
+
+        @page = BookPage.find_by_book_id_and_url_name(params[:book_id], params[:id])
+        render_404 if @page.nil?
+
+        filename = @page.numeric_name + '.zip'
+        temp_file = Tempfile.new(filename)
+
+        begin
+          @page.zip_export(temp_file)
+          send_data File.read(temp_file.path), type: 'application/zip', disposition: 'attachment', filename: filename
+        ensure
+          temp_file.close
+          temp_file.unlink
+        end
+
+      end
+
       def export
 
         @page = BookPage.find_by_book_id_and_url_name(params[:book_id], params[:id])

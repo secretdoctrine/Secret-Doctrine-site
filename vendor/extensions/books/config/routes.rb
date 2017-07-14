@@ -45,6 +45,7 @@ Refinery::Core::Engine.routes.draw do
     resources :books, :only => [:show] do
       resources :pages, :only => [:show] do
         get 'export', on: :member
+        get 'export_zip', on: :member
         get 'redirect', on: :collection
         resources :external_page_contents, :only => [:show]
       end

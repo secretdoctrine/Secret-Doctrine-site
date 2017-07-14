@@ -14,6 +14,34 @@ module Refinery
       BOOK_NAME_EXPORT_LIMIT = 30
       NAME_SEPARATOR = ' / '
 
+      def numeric_name
+
+        first_page_number = self.book.book_pages.sort_by { |p| p.internal_order }.first.internal_order
+        name = '%04d' % (internal_order - first_page_number + 1)
+
+      end
+
+      def zip_export(temp_file)
+
+        name = numeric_name
+
+        Zip::OutputStream.open(temp_file)  do |z|
+
+          if pdf_content
+            title = name + '.pdf'
+            z.put_next_entry(title)
+            z.print(IO.read(File.expand_path(File.join(Rails.root, pdf_content.path))))
+          end
+          if html_content
+            title = name + '.html'
+            z.put_next_entry(title)
+            z.print(IO.read(File.expand_path(File.join(Rails.root, html_content.path))))
+          end
+
+        end
+
+      end
+
       def self.zip_for_search(params, temp_file)
 
         params[:page] = 1

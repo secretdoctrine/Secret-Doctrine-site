@@ -39,7 +39,7 @@ module Refinery
       def export_yml
 
         @book = Book.find_by_id(params[:id])
-        print @book.export_yml
+        #print @book.export_yml
         send_data @book.export_yml, :disposition => :inline
 
       end
