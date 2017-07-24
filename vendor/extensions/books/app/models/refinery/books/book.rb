@@ -13,6 +13,10 @@ module Refinery
       FORMAT_650_900 = 6
       FORMAT_570_850 = 7
 
+      def string_or_nil(param)
+        return param unless param.nil?
+        ''
+      end
 
       def export_yml
 
@@ -22,23 +26,23 @@ module Refinery
         result += "book:\n"
         result += "  picture_path:\n"
         result += "  book_file:\n"
-        result += "  name_prefix: '" + self.name_prefix + "'\n"
-        result += "  tree_prefix: '" + self.tree_prefix + "'\n"
-        result += "  name: '" + self.name + "'\n"
-        result += "  name_comment: '" + self.name_comment + "'\n"
+        result += "  name_prefix: '" + string_or_nil(self.name_prefix) + "'\n"
+        result += "  tree_prefix: '" + string_or_nil(self.tree_prefix) + "'\n"
+        result += "  name: '" + string_or_nil(self.name) + "'\n"
+        result += "  name_comment: '" + string_or_nil(self.name_comment) + "'\n"
         result += "  page_count: '" + self.book_pages.count.to_s + "'\n"
         result += "  first_page: '" + self.book_pages.sort_by{|x| x.internal_order}.first.internal_order.to_s + "'\n"
-        result += "  synopsis: '" + self.synopsis + "'\n"
+        result += "  synopsis: '" + string_or_nil(self.synopsis) + "'\n"
         result += "  contents:\n"
 
         contents_elements.sort_by{|x| x.page_number}.each do |ce|
 
           result += "  "*2 + "- \n"
-          result += "  "*3 + "name: '" + ce.name + "'\n"
+          result += "  "*3 + "name: '" + string_or_nil(ce.name) + "'\n"
           result += "  "*3 + "page: '" + ce.page_number.to_s + "'\n"
           result += "  "*3 + "type: '" + ce.get_class_name + "'\n"
-          result += "  "*3 + "name_prefix: '" + ce.name_prefix + "'\n" unless ce.name_prefix.blank?
-          result += "  "*3 + "name_comment: '" + ce.name_comment + "'\n" unless ce.name_comment.blank?
+          result += "  "*3 + "name_prefix: '" + string_or_nil(ce.name_prefix) + "'\n" unless string_or_nil(ce.name_prefix).blank?
+          result += "  "*3 + "name_comment: '" + string_or_nil(ce.name_comment) + "'\n" unless string_or_nil(ce.name_comment).blank?
 
         end
 
