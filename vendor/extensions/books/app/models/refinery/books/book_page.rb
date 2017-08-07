@@ -325,6 +325,33 @@ module Refinery
 
       end
 
+      def copyright_page_name
+
+        name = ''
+        contents_element = book.get_nearest_non_page_content_element_for_page(internal_order)
+        if contents_element
+          if contents_element.name_prefix
+            name += contents_element.name_prefix + '. '
+          end
+          name += contents_element.name + '. '
+          if contents_element.name_comment
+            name += contents_element.name_comment + '. '
+          end
+        end
+
+        name += ::I18n.t('importer.page') + ' ' + url_name
+        contents_element = book.get_parent_for_page(internal_order)
+
+        if contents_element.nil? or contents_element.page_number != internal_order or contents_element.ce_type != ContentsElement::PAGE_CE_TYPE
+          return name
+        end
+
+        name += '. ' + contents_element.name
+        #name += ' ' + contents_element.name_comment unless contents_element.name_comment.blank?
+        name
+
+      end
+
       def breadcrumb_parents
 
         parents = []
