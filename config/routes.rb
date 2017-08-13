@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'refinery/pages#home'
+  match '/404', :to => 'application#page_not_found', :via => :all
+  match "/500", :to => "application#internal_server_error", :via => :all
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
