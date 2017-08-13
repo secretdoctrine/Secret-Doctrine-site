@@ -5,14 +5,14 @@ class ApplicationController < ActionController::Base
 
   def page_not_found
     respond_to do |format|
-      format.html { return redirect_to '/home/page-not-found' }
+      format.html { return redirect_to "#{Rails.application.config.refinery_root}/home/page-not-found" }
       format.all  { render nothing: true, status: 404 }
     end
   end
 
   def internal_server_error
     respond_to do |format|
-      format.html { return redirect_to '/home/internal-server-error' }
+      format.html { return redirect_to "#{Rails.application.config.refinery_root}/home/internal-server-error" }
       format.all  { render nothing: true, status: 500 }
     end
   end
