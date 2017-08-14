@@ -24,6 +24,8 @@ module Refinery
     config.active_record.raise_in_transactional_callbacks = true
     config.exceptions_app = self.routes
 
+    config.action_dispatch.default_headers.merge!({'X-Frame-Options' => 'ALLOWALL'})
+
     config.generators do |g|
       g.template_engine :haml
 
