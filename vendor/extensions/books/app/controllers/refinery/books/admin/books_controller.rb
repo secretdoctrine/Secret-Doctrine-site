@@ -113,7 +113,7 @@ module Refinery
         def book_params
           params.require(:book).permit(:name, :name_prefix, :tree_prefix, :name_comment, :order_number, :picture_path_id,
                                        :synopsis, :year, :author, :page_count, :can_buy, :book_category_id, :page_format,
-                                       :taggable_name)
+                                       :taggable_name, :book_file_id)
         end
       end
     end
