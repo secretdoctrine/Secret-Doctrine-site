@@ -64,77 +64,73 @@
   })
   .on('ready.jstree', function () {
     var ids = $(".jstree-author-add").map(function() { return $(this).attr("id") }).get();
-    for(var i = 0; i < ids.length; i++)
-    {
-      $("##{jstree_div}").jstree(true).add_action(ids[i], {
-          "id": "action_author_add",
-          "class": "action_add pull-right",
-          "text": " ",
-          "after": true,
-          "selector": "a",
-          "event": "click",
-          "callback": function(node_id, node, action_id, action_el){
-              document.location.href = node.li_attr.new_author_path;
-          }
-      });
-    }
+    $("##{jstree_div}").jstree(true).add_action(ids, {
+        "id": "action_author_add",
+        "class": "action_add pull-right",
+        "text": " ",
+        "after": true,
+        "selector": "a",
+        "event": "click",
+        "callback": function(node_id, node, action_id, action_el){
+            document.location.href = node.li_attr.new_author_path;
+        }
+    });
+
 
     var ids = $(".jstree-poem-add").map(function() { return $(this).attr("id") }).get();
-    for(var i = 0; i < ids.length; i++)
-    {
-      $("##{jstree_div}").jstree(true).add_action(ids[i], {
-          "id": "action_poem_add",
-          "class": "action_item_add pull-right",
-          "text": " ",
-          "after": true,
-          "selector": "a",
-          "event": "click",
-          "callback": function(node_id, node, action_id, action_el){
-              document.location.href = node.li_attr.new_poem_path;
-          }
-      });
-    }
+    $("##{jstree_div}").jstree(true).add_action(ids, {
+        "id": "action_poem_add",
+        "class": "action_item_add pull-right",
+        "text": " ",
+        "after": true,
+        "selector": "a",
+        "event": "click",
+        "callback": function(node_id, node, action_id, action_el){
+            document.location.href = node.li_attr.new_poem_path;
+        }
+    });
+
 
     ids = $(".jstree-edit").map(function() { return $(this).attr("id") }).get();
-    for(var i = 0; i < ids.length; i++)
-    {
-      $("##{jstree_div}").jstree(true).add_action(ids[i], {
-          "id": "action_rename",
-          "class": "action_rename pull-right",
-          "text": " ",
-          "after": true,
-          "selector": "a",
-          "event": "click",
-          "callback": function(node_id, node, action_id, action_el){
-              document.location.href = node.li_attr.edit_path;
-          }
-      });
-    }
+    $("##{jstree_div}").jstree(true).add_action(ids, {
+        "id": "action_rename",
+        "class": "action_rename pull-right",
+        "text": " ",
+        "after": true,
+        "selector": "a",
+        "event": "click",
+        "callback": function(node_id, node, action_id, action_el){
+            document.location.href = node.li_attr.edit_path;
+        }
+    });
 
     ids = $(".jstree-destroy").map(function() { return $(this).attr("id") }).get();
-    for(var i = 0; i < ids.length; i++)
-    {
-      $("##{jstree_div}").jstree(true).add_action(ids[i], {
-          "id": "action_destroy",
-          "class": "action_destroy pull-right",
-          "text": " ",
-          "after": true,
-          "selector": "a",
-          "event": "click",
-          "callback": function(node_id, node, action_id, action_el){
-              if(!confirm("#{::I18n.t('authors.delete_confirm')}"))
-                return;
-              $.ajax({
-                url: node.li_attr.destroy_path,
-                type: "DELETE"
-              }).done(function(){
-                window.location.reload();
-              }).fail(function(){
-                window.location.reload();
-              });
-          }
-      });
-    }
+    $("##{jstree_div}").jstree(true).add_action(ids, {
+        "id": "action_destroy",
+        "class": "action_destroy pull-right",
+        "text": " ",
+        "after": true,
+        "selector": "a",
+        "event": "click",
+        "callback": function(node_id, node, action_id, action_el){
+            if(!confirm("#{::I18n.t('authors.delete_confirm')}"))
+              return;
+            $.ajax({
+              url: node.li_attr.destroy_path,
+              type: "DELETE"
+            }).done(function(){
+              window.location.reload();
+            }).fail(function(){
+              window.location.reload();
+            });
+        }
+    });
+
 
   })
   .removeAttr('tabindex');
+
+  // enable opening link target
+  $("##{jstree_div}").on("activate_node.jstree", function(e,data){
+    window.location.href = data.node.a_attr.href;
+  })

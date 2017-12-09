@@ -14,7 +14,11 @@
     :is_root => author.is_root ? 'true' : 'false',
     :parent_id => "author_" + author.author_id.to_s,
     :node_type => :author}
-  = author.name
+  - unless author.is_root
+    = link_to refinery.edit_authors_admin_author_path(author.id) do
+      = author.name
+  - else
+    = author.name
   - author.children_array.each do |child|
     %ul
       - if child.is_a?(Refinery::Authors::Author)

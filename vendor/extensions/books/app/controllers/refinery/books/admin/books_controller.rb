@@ -4,7 +4,8 @@ module Refinery
       class BooksController < ::Refinery::AdminController
 
         crudify :'refinery/books/book',
-                :title_attribute => 'name'
+                :title_attribute => 'name',
+                :include => [:contents_elements]
 
         def new
 

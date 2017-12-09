@@ -13,7 +13,11 @@
     :destroy_path => refinery.multimedia_groups_admin_multimedia_group_path(multimedia_group.id),
     :is_root => multimedia_group.is_root ? 'true' : 'false',
     :node_type => :group}
-  = multimedia_group.title
+  - unless multimedia_group.is_root
+    = link_to refinery.edit_multimedia_groups_admin_multimedia_group_path(multimedia_group.id) do
+      = multimedia_group.title
+  - else
+    = multimedia_group.title
   - multimedia_group.children_array.each do |child|
     %ul
       - if child.is_a?(Refinery::MultimediaGroups::MultimediaGroup)

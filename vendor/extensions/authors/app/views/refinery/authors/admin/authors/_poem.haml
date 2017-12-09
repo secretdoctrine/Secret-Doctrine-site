@@ -8,4 +8,5 @@
     :destroy_path => refinery.authors_admin_poem_path(poem.id),
     :parent_id => "author_" + poem.author_id.to_s,
     :node_type => :poem}
-  = poem.title
+  = link_to refinery.edit_authors_admin_poem_path(poem.id) do
+    = poem.title
