@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.4'
+gem 'rails'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -30,7 +30,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'mysql2', '~> 0.3.13'
+gem 'mysql2'
 gem 'thinking-sphinx'
 gem 'thin'
 gem 'rangy-rails'
@@ -59,7 +59,7 @@ gem 'sprockets-rails', '~> 2.3.3'
 gem 'sprockets', '~> 3.4.0'
 
 # Refinery CMS
-gem 'refinerycms', '~> 3.0'
+gem 'refinerycms', '3.0.0'
 
 # Optionally, specify additional Refinery CMS Extensions here:
 gem 'refinerycms-acts-as-indexed', ['~> 2.0', '>= 2.0.1']
@@ -79,7 +79,7 @@ gem 'refinerycms-feedback_entries', path: 'vendor/extensions'
 
 gem 'carrierwave'
 gem 'mailkick'
-gem 'dotenv-rails', :groups => [:development, :test, :production]
+gem 'dotenv-rails', :groups => [:development, :test, :production], require: 'dotenv/rails-now'
 gem 'recaptcha', require: 'recaptcha/rails'
 
 gem 'hairaito'
