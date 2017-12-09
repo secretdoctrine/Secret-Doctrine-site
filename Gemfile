@@ -40,7 +40,7 @@ gem 'rangy-rails'
 gem 'will_paginate'
 gem 'rubyzip', require: 'zip'
 
-gem 'haml'
+gem 'haml', '~> 4.0.0'
 
 #gem 'library', path: 'library'
 
