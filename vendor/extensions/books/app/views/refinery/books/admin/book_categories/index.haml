@@ -146,3 +146,8 @@
 
 
   }).removeAttr('tabindex');
+
+  // enable opening link target
+  $("##{jstree_div}").on("activate_node.jstree", function(e,data){
+    window.location.href = data.node.a_attr.href;
+  })

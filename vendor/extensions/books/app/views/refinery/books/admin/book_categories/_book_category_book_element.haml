@@ -7,6 +7,7 @@
     :update_path => refinery.books_admin_book_path(book.id),
     :destroy_path => refinery.books_admin_book_path(book.id),
     :node_type => :book}
-  - unless book.tree_prefix.blank?
-    = book.tree_prefix
-  = book.short_name
+  = link_to refinery.edit_books_admin_book_path(book.id) do
+    - unless book.tree_prefix.blank?
+      = book.tree_prefix
+    = book.short_name
