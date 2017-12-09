@@ -1,4 +1,15 @@
-(function ($, undefined) {
+(function (factory) {
+	"use strict";
+	if (typeof define === 'function' && define.amd) {
+		define(['jquery'], factory);
+	}
+	else if(typeof module !== 'undefined' && module.exports) {
+		module.exports = factory(require('jquery'));
+	}
+	else {
+		factory(jQuery);
+	}
+}(function ($, undefined) {
 	"use strict";
 
 	$.jstree.defaults.actions = $.noop;
@@ -29,17 +40,20 @@
 		 */
 		this.add_action = function (node_id, action) {
 			var self = this;
-			node_id = typeof node_id === Object ? node_id : [node_id];
+			var node_ids = typeof node_id === 'object' ? node_id : [node_id];
 
-			for (var i = 0; i < node_id.length; i++) {
-				var _node_id = node_id[i];
+			var should_redraw_all = node_ids.indexOf("all") > -1;
+			for (var i = 0; i < node_ids.length; i++) {
+				var _node_id = node_ids[i];
 				var actions = self._actions[_node_id] = self._actions[_node_id] || [];
 
-				if (!self._has_action(_node_id, action.id)) actions.push(action);
+				if (!self._has_action(_node_id, action.id)) {
+					actions.push(action);
+					if (!should_redraw_all) this.redraw_node(_node_id);
+				}
 			}
 
-			//TODO: Redraw only the modified nodes?
-			this.redraw(true);
+			if (should_redraw_all) this.redraw(true);
 		};
 
 		/**
@@ -54,10 +68,10 @@
 		 */
 		this.remove_action = function (node_id, action_id) {
 			var self = this;
-			var node_ids = typeof node_id === Object ? node_id :
-				node_id === "all" ? Object.keys(this._actions).concat('all') :
-					[node_id];
+			var node_ids = typeof node_id === 'object' ? node_id :
+				node_id === "all" ? Object.keys(this._actions) : [node_id];
 
+			var should_redraw_all = node_ids.indexOf("all") > -1;
 			for (var i = 0; i < node_ids.length; i++) {
 				node_id = node_ids[i];
 				var actions = self._actions[node_id] || [];
@@ -69,11 +83,20 @@
 						new_actions.push(action);
 					}
 				}
-				self._actions[node_id] = new_actions;
+
+				var ids = actions.map(function(x) { return x.id; });
+				var new_ids = new_actions.map(function(x) { return x.id; });
+
+				if (ids.length != new_ids.length || ids.filter(function(n) { return new_ids.indexOf(n) === -1; }).length) {
+					self._actions[node_id] = new_actions;
+
+					if (!should_redraw_all) this.redraw_node(node_id);
+				}
 			}
 
-			//TODO: Redraw only the modified nodes?
-			this.redraw(true);
+			if (should_redraw_all) {
+				this.redraw(true);
+			}
 		};
 
 		this._create_action = function (node_id, action_id) {
@@ -140,7 +163,7 @@
 
 		this.redraw_node = function (obj, deep, callback, force_draw) {
 			var self = this;
-			var node_id = obj;
+			var node_id = typeof obj === "object" ? obj.id : obj;
 			var el = parent.redraw_node.call(this, obj, deep, callback, force_draw);
 			if (el) {
 				//Check if we have any specific actions for this node
@@ -163,4 +186,4 @@
 
 	}
 
-})(jQuery);
+}));
