@@ -1,4 +1,19 @@
-/**
+.jp-current-time,
+.jp-duration {
+    width: 60px;
+    font-size: .64em;
+    font-style: oblique; }
+
+.jp-current-time {
+    float: left;
+    display: inline;
+    cursor: default; }
+
+.jp-duration {
+    float: right;
+    display: inline;
+    text-align: right;
+    cursor: pointer; }/**
  * normalize.css v3.0.1 | MIT License | git.io/normalize
  * -----------------------------------------------------------------------------
  */
@@ -378,7 +393,7 @@ figure {
   background-image: linear-gradient(#4a4c4d, #2b2d2d);
   border-radius: 3px 3px 0 0;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
-  height: 30px;
+  height: 33px;
   position: relative;
   width: 100%;
 }
@@ -537,6 +552,25 @@ figure {
   background-image: -webkit-linear-gradient(135deg, rgba(255, 255, 255, 0.3) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0.3) 75%, transparent 75%, transparent);
   background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.3) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0.3) 75%, transparent 75%, transparent);
 }
+
+.jp-current-time,
+.jp-duration {
+    width: 60px;
+    font-size: .64em;
+    font-style: oblique;
+    color: #d2d6db}
+
+.jp-current-time {
+    float: left;
+    display: inline;
+    cursor: default; }
+
+.jp-duration {
+    float: right;
+    display: inline;
+    text-align: right;
+    cursor: pointer; }
+
 /* jPlayer: Playlist
 ----------------------------------------------- */
 .jp-playlist {

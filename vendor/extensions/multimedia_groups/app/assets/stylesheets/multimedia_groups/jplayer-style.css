@@ -537,6 +537,24 @@ figure {
   background-image: -webkit-linear-gradient(135deg, rgba(255, 255, 255, 0.3) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0.3) 75%, transparent 75%, transparent);
   background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.3) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0.3) 75%, transparent 75%, transparent);
 }
+
+.jp-current-time,
+.jp-duration {
+  width: 60px;
+  font-size: .64em;
+  font-style: oblique; }
+
+.jp-current-time {
+  float: left;
+  display: inline;
+  cursor: default; }
+
+.jp-duration {
+  float: right;
+  display: inline;
+  text-align: right;
+  cursor: pointer; }
+
 /* jPlayer: Playlist
 ----------------------------------------------- */
 .jp-playlist {
