@@ -17,5 +17,6 @@ quit
 
 sudo resize2fs /dev/xvda1 (раздел с данными)
 
-sudo blkid /dev/xvda2 - для swap раздела
+////////sudo blkid /dev/xvda2 - для swap раздела
+sudo mkswap /dev/xvda2, это даст нам значение для UUID swap'а
 полученное значение записать в /etc/fstab
