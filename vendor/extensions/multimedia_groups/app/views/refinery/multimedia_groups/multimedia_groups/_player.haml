@@ -1,10 +1,12 @@
 = javascript_include_tag 'multimedia_groups/jquery.jplayer'
+= javascript_include_tag 'multimedia_groups/jplayer.playlist.min'
 = stylesheet_link_tag 'multimedia_groups/jplayer-style'
 = stylesheet_link_tag 'multimedia_groups/themicons'
 
-%div#jplayer_div
+
 %div#jplayer_container_div{ :class => "jp-audio", :role => "application", 'aria-label' => "media player"}
-  %div.jp-type-single
+  %div.jp-type-playlist
+    %div#jplayer_div
     %div{:class=>"jp-gui jp-interface"}
       %div{ class: "jp-button jp-playpause-button"}
         %button.jp-play{:role=>"button", :tabindex=>"0"}
@@ -25,16 +27,5 @@
       %div.jp-volume-bar
         %div{ class: 'jp-volume-bar-value', style: 'width: 80%;'}
 
-
 :javascript
-
-  $('#jplayer_div').jPlayer({
-      solution: 'html',
-      supplied: 'mp3',
-      cssSelectorAncestor: '#jplayer_container_div',
-      useStateClassSkin: true
-    })
-
-  function play_file(file, title) {
-    $('#jplayer_div').jPlayer('setMedia', {mp3: file}).jPlayer('play');
-  }
+  var myPlaylist = []

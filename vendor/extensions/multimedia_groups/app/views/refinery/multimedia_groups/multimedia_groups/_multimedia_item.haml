@@ -10,7 +10,7 @@
 
   - if item.audio_file
     = link_to '', item.audio_file.url, :class => 'save_i', :target => '_blank'
-    = link_to '#', :onclick => "play_file('#{refinery.file_multimedia_groups_multimedia_group_multimedia_item_path(item.multimedia_group, item)}', '#{item.title}');".html_safe, :class => "tit c_player", :title => "Слушать" do
+    = link_to '#', :onclick => "play_file_in_playlist(#{playlist_name}, #{item.multimedia_group.item_index(item)}); return false;".html_safe, :class => "tit c_player", :title => "Слушать" do
       %span.num
         - if item.printable_number
           = item.printable_number.to_s + '.'

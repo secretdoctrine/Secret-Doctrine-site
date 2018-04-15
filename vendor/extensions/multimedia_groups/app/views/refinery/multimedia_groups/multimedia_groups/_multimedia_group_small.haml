@@ -1,7 +1,9 @@
 - if multimedia_group.multimedia_items.any?
+  :javascript
+    var playlist_#{multimedia_group.id} = #{multimedia_group.make_playlist.html_safe};
   %article.album
     %h2
       = multimedia_group.title
     %ul{:class => :list}
-      = render :partial => 'multimedia_item', :collection => multimedia_group.ordered_items, :as => :item
+      = render :partial => 'multimedia_item', :collection => multimedia_group.ordered_items, :as => :item, :locals => {playlist_name: "playlist_#{multimedia_group.id}"}
   = render :partial => 'multimedia_group_small', :collection => multimedia_group.multimedia_groups, :as => :multimedia_group

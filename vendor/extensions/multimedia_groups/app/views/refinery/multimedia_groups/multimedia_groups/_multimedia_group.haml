@@ -16,11 +16,13 @@
 
         %section#audio_albums.albums
           - if multimedia_group.multimedia_items.any?
+            :javascript
+              var playlist_#{multimedia_group.id} = #{multimedia_group.make_playlist.html_safe};
             %article.album
               %h2
                 &nbsp;
               %ul{:class => :list}
-                = render :partial => 'multimedia_item', :collection => multimedia_group.ordered_items, :as => :item
+                = render :partial => 'multimedia_item', :locals => {playlist_name: "playlist_#{multimedia_group.id}"}, :collection => multimedia_group.ordered_items, :as => :item
           - if multimedia_group.multimedia_groups.any?
             = render :partial => 'multimedia_group_small', :collection => multimedia_group.ordered_groups, :as => :multimedia_group
           %ins.last_line

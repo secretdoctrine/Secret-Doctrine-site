@@ -75,6 +75,29 @@ module Refinery
 
       end
 
+      def make_playlist
+
+        playlist = "[\n"
+
+        ordered_items.each do |item|
+
+          playlist += "{\n"
+          playlist += "  title: \"" + item.title + "\",\n"
+          playlist += "  mp3: \"" + Refinery::Core::Engine.routes.url_helpers.file_multimedia_groups_multimedia_group_multimedia_item_path(self, item) + "\",\n"
+          playlist += "},\n"
+
+        end
+
+        playlist += "]\n"
+
+      end
+
+      def item_index(item)
+        result = ordered_items.to_a.index.find_index(item)
+        result = 0 if result.nil?
+        result
+      end
+
       # To enable admin searching, add acts_as_indexed on searchable fields, for example:
       #
       #   acts_as_indexed :fields => [:title]
