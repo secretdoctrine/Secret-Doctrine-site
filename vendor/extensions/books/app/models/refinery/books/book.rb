@@ -13,6 +13,13 @@ module Refinery
       FORMAT_650_900 = 6
       FORMAT_570_850 = 7
 
+      after_commit :reindex
+
+      def reindex
+        `indexer --config #{Rails.root}/config/production.sphinx.conf refinery_books_book_page_core --rotate &`
+        `indexer --config #{Rails.root}/config/development.sphinx.conf refinery_books_book_page_core --rotate &`
+      end
+
       def string_or_nil(param)
         return param unless param.nil?
         ''

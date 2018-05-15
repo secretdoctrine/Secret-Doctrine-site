@@ -9,7 +9,7 @@
 # Added by Refinery CMS Pages extension
 Refinery::Pages::Engine.load_seed
 # Added by Refinery CMS NewsItems extension
-Refinery::NewsItems::Engine.load_seed
+Refinery::News::Engine.load_seed
 
 #Library::Engine.load_seed
 

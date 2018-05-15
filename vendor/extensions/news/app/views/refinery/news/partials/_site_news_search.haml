@@ -1,0 +1,15 @@
+%div{id: 'news_search_block', style: 'text-align: center;'}
+  = form_tag refinery.news_news_search_results_path, {:method => :get, id: 'search_form'} do
+    %div.news_search_inner
+      %input{id: 'search_news', name: 'search_text'}
+      %input{type: :hidden, name: 'is_ext_search', value: false, id: 'is_ext_search'}
+      %a{onclick: '$("#search_form")[0].submit();', class: 'but_24'}
+        %span.s0
+          %span.s1
+            %span.s2
+              = I18n.t('library.search')
+      %a{onclick: '$("#is_ext_search")[0].value = true; $("#search_form")[0].submit();', class: 'but_24', title: I18n.t('library.search_more_hint')}
+        %span.s0
+          %span.s1
+            %span.s2
+              = I18n.t('library.search_more')

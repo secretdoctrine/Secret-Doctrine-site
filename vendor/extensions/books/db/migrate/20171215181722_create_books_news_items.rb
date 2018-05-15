@@ -18,11 +18,11 @@ class CreateBooksNewsItems < ActiveRecord::Migration
 
   def down
     if defined?(::Refinery::UserPlugin)
-      ::Refinery::UserPlugin.destroy_all({:name => "refinerycms-news_items"})
+      ::Refinery::UserPlugin.destroy_all({:name => "refinerycms-news"})
     end
 
     if defined?(::Refinery::Page)
-      ::Refinery::Page.delete_all({:link_url => "/news_items/news_items"})
+      ::Refinery::Page.delete_all({:link_url => "/news/news_items"})
     end
 
     drop_table :refinery_books_news_items

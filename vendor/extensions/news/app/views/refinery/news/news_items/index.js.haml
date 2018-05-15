@@ -1,0 +1,4 @@
+- new_link = j(link_to 'More', refinery.url_for(params.merge(:prev_period_start => @news_dictionary[:period_start])), :remote => true, :format => :json)
+- new_content = j(render partial: 'refinery/news/partials/site_news', collection: @news_dictionary[:filtered_news], as: :news_item)
+$(".link_more").html("#{new_link}")
+$(".news_new").html("#{new_content}")

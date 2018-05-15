@@ -1,0 +1,46 @@
+<%= form_for [refinery, :news_admin, @news_item] do |f| -%>
+  <%= render '/refinery/admin/error_messages',
+              :object => @news_item,
+              :include_object_name => true %>
+
+    <div class='field'>
+      <%= f.label :title -%>
+      <%= f.text_field :title, :class => 'larger widest' -%>
+    </div>
+
+  <div class='field'>
+    <%= render '/refinery/admin/wysiwyg',
+                :f => f,
+                :fields => [:body],
+                :object => "news/news_item" -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :is_pinned -%>
+    <%= f.check_box :is_pinned, :checked => @news_item[:is_pinned] -%>
+  </div>
+    <% ::Refinery::News::NewsCategory.all.each do |category| %>
+        <label>
+          <%= check_box_tag "news_item[news_category_ids][]", category.id, f.object.news_categories.include?(category) %>
+          <%= category.category_name %>
+        </label>
+    <% end %>
+
+  <div class='field'>
+    <%= f.label :news_datetime -%>
+    <%= f.datetime_select :news_datetime, start_year: 1990 -%>
+  </div>
+
+  <%= render '/refinery/admin/form_actions', :f => f,
+             :continue_editing => false,
+             :delete_title => t('delete', :scope => 'refinery.news.admin.news.news_item'),
+             :delete_confirmation => t('message', :scope => 'refinery.admin.delete') -%>
+<% end -%>
+
+<% content_for :javascripts do -%>
+  <script>
+    $(document).ready(function(){
+      page_options.init(false, '', '');
+    });
+  </script>
+<% end -%>

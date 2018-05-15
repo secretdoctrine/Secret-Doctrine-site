@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require refinery/books/jquery-2.1.4
+//= require refinery/books/jquery-ui
 //= require refinery/books/jstree
 //= require refinery/books/rangy-core
 //= require refinery/books/rangy-classapplier
@@ -18,4 +19,5 @@
 //= require refinery/books/rangy-selectionsaverestore
 //= require refinery/books/rangy-serializer
 //= require refinery/books/rangy-textrange
+//= require jquery_ujs
 //= require_tree .

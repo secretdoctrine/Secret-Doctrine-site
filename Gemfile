@@ -72,7 +72,7 @@ gem 'refinerycms-authentication-devise', '~> 1.0'
 #  gem 'refinerycms-search', ['~> 3.0', '>= 3.0.0']
 #  gem 'refinerycms-page-images', ['~> 3.0', '>= 3.0.0']
 
-gem 'refinerycms-news_items', path: 'vendor/extensions'
+gem 'refinerycms-news', path: 'vendor/extensions'
 gem 'refinerycms-authors', path: 'vendor/extensions'
 gem 'activerecord-session_store', git: 'https://github.com/rails/activerecord-session_store'
 gem 'refinerycms-multimedia_groups', path: 'vendor/extensions'

@@ -1,0 +1,5 @@
+- news_class = 'news_item_category'
+- if current == news_category.category_name
+  - news_class += ' selected_category'
+= link_to refinery.news_news_category_path(news_category.id, params.permit(:period, :fixed_year)), class: news_class do
+  = news_category.category_name

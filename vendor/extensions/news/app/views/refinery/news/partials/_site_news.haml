@@ -1,0 +1,11 @@
+- article_class = ''
+- if defined? pinned
+  - article_class = 'pinned'
+%article{class: article_class}
+  %time{datetime: news_item.news_datetime}
+    - if defined? pinned
+      = image_tag 'pinned.png'
+    = I18n.l(news_item.news_datetime, locale: :ru, format: :long)
+  = raw news_item.body
+  %div.tag_block
+    = render partial: 'refinery/news/partials/site_news_tag', collection: news_item.news_categories, as: :news_category

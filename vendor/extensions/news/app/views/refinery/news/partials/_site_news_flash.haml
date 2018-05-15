@@ -1,0 +1,9 @@
+- if flash.notice
+  %div.flash_notice
+    %div
+      = flash.notice
+- if flash.alert
+  - flash.alert.each_key do |key|
+    %div.flash_alert
+      %div
+        = I18n.t('news_recipients.alert_prefix') + I18n.t("news_recipients.#{key}") + I18n.t('news_recipients.alert_suffix') + flash.alert[key].first

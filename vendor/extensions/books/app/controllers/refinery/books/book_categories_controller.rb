@@ -20,7 +20,8 @@ module Refinery
 
       def index
 
-        @library_news = NewsItem.where(library_news: true).order('news_datetime DESC')
+        library_news_category = Refinery::News::NewsCategory.where(category_type: Refinery::News::NewsCategory::LIBRARY_UPDATE_NC_TYPE).first
+        @library_news = library_news_category.items.order('news_datetime DESC')
 
       end
 

@@ -1,0 +1,111 @@
+= stylesheet_link_tag 'news.css'
+
+%div{class: 'search_results_container'}
+  - if @result[:too_many_results]
+    %div#warning_too_many_results
+      %div
+        = I18n.t('library.search_page.too_many_results')
+        %br
+        = I18n.t('library.search_page.results_count') + @result[:count].to_s
+  - else
+    %div#results_count
+      = I18n.t('library.search_page.results_count') + @result[:count].to_s
+  %div{class: :extended_search}
+    = form_tag refinery.news_news_search_results_path, {method: :get, id: 'search_form'} do
+      = hidden_field_tag(:page, params[:page])
+      %input{type: :submit, style: 'display: none;'}
+      %table
+        %tr
+          %td.search_option{colspan: '2'}
+            %input#search_string{name: 'search_text', value: params[:search_text]}
+            %a{onclick: '$("#search_form")[0].submit();', class: 'but_24'}
+              %span.s0
+                %span.s1
+                  %span.s2
+                    = I18n.t('library.search')
+            %a{onclick: 'show = $("#options_block")[0].style.display; if(show == "none") $("#options_block")[0].style.display = "block"; else $("#options_block")[0].style.display = "none";', class: 'but_24'}
+              %span.s0
+                %span.s1
+                  %span.s2
+                    = I18n.t('library.search_more')
+        - display = (params.has_key?('is_ext_search') and params['is_ext_search'] == 'true') ? 'block': 'none'
+        %tr#options_block{style: 'display: ' + display + ';' }
+          %td
+            %label
+              = check_box_tag('search_exact_words', 'true', params[:search_exact_words])
+              = I18n.t('library.search_page.search_exact_words')
+            %label
+              = check_box_tag('use_relevance', 'true', params[:use_relevance])
+              = I18n.t('library.search_page.use_relevance')
+            %div.date_interval
+              Задайте интервал поиска по дате:
+              %input#date_start{name: 'date_start'}
+              \-
+              %input#date_end{name: 'date_end'}
+            %div.search_option
+              = I18n.t('library.search_page.results_per_page')
+              = number_field_tag('per_page', @result[:per_page], :min => 5, :step => 5, id: :per_page_field)
+          %td
+            - ::Refinery::News::NewsCategory.all.each do |category|
+              %label
+                - is_set = (params[:news_category_ids] and params[:news_category_ids].include?(category.id.to_s))
+                = check_box_tag('news_category_ids[]', category.id, is_set)
+                = category.category_name
+
+
+  %div{class: 'flickr_pagination', style: 'margin-top: 10px;'}
+    = will_paginate @result[:search_results]
+
+  = render partial: 'refinery/news/news_search_results/site_news_result', collection: @result[:search_results], as: :news_item
+
+
+  %div{class: 'flickr_pagination'}
+    = will_paginate @result[:search_results]
+
+:javascript
+  $( function() {
+    var dateFormat = "dd.mm.yy",
+      from = $( "#date_start" )
+        .datepicker({
+          defaultDate: "+1w",
+          changeMonth: true,
+          changeYear: true,
+          dateFormat: dateFormat,
+          firstDay: 1
+        })
+        .on( "change", function() {
+          to.datepicker( "option", "minDate", getDate( this ) );
+        }),
+      to = $( "#date_end" ).datepicker({
+        defaultDate: "+1w",
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: dateFormat,
+        firstDay: 1
+      })
+      .on( "change", function() {
+        from.datepicker( "option", "maxDate", getDate( this ) );
+      });
+
+    function getDate( element ) {
+      var date;
+      try {
+        date = $.datepicker.parseDate( dateFormat, element.value );
+      } catch( error ) {
+        date = null;
+      }
+
+      return date;
+    }
+
+    date_from = "#{@result[:date_start]}";
+    date_to = "#{@result[:date_end]}";
+
+    from = $("#date_start");
+    to = $("#date_end");
+    from.val(date_from);
+    to.val(date_to);
+    to.datepicker( "option", "minDate", getDate( from[0] ) );
+    from.datepicker( "option", "maxDate", getDate( to[0] ) );
+
+  } );

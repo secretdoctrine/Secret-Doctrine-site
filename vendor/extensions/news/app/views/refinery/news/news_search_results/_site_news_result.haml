@@ -1,0 +1,4 @@
+%article.news_search_article
+  %time{datetime: news_item.news_datetime}
+    = I18n.l(news_item.news_datetime, locale: :ru, format: :long)
+  = raw news_item.body

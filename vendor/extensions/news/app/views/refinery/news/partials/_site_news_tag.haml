@@ -1,0 +1,3 @@
+%span.news_tag
+  = link_to refinery.news_news_category_path(news_category.id, params.permit(:period, :fixed_year)), class: 'tag_link' do
+    = news_category.category_name

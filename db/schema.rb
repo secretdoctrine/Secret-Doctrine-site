@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200218122339) do
+ActiveRecord::Schema.define(version: 20200218122346) do
 
   create_table "book_categories", force: :cascade do |t|
     t.integer "book_category_id", limit: 4
@@ -167,23 +167,28 @@ ActiveRecord::Schema.define(version: 20200218122339) do
   add_index "refinery_authors", ["slug"], name: "index_refinery_authors_on_slug", using: :btree
 
   create_table "refinery_authors_poems", force: :cascade do |t|
-    t.string   "title",         limit: 255
-    t.text     "content",       limit: 65535
-    t.text     "short_content", limit: 65535
-    t.integer  "picture_id",    limit: 4
-    t.integer  "author_id",     limit: 4
-    t.integer  "position",      limit: 4
+    t.string   "title",              limit: 255
+    t.text     "content",            limit: 65535
+    t.text     "short_content",      limit: 65535
+    t.integer  "picture_id",         limit: 4
+    t.integer  "author_id",          limit: 4
+    t.integer  "position",           limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "order_number",  limit: 4,     default: 0, null: false
-    t.text     "image_caption", limit: 65535
+    t.integer  "order_number",       limit: 4,     default: 0, null: false
+    t.text     "image_caption",      limit: 65535
+    t.integer  "tile_picture_id",    limit: 4
+    t.integer  "preview_picture_id", limit: 4
+    t.string   "name_second_line",   limit: 255
+    t.text     "name_comment",       limit: 65535
+    t.text     "alt_top_block",      limit: 65535
   end
 
   create_table "refinery_books", force: :cascade do |t|
-    t.string   "name",             limit: 255,                   null: false
-    t.string   "name_prefix",      limit: 255
+    t.string   "name",             limit: 4096,                  null: false
+    t.string   "name_prefix",      limit: 1024
     t.string   "tree_prefix",      limit: 255
-    t.string   "name_comment",     limit: 255
+    t.string   "name_comment",     limit: 1024
     t.integer  "order_number",     limit: 4,                     null: false
     t.integer  "cover_picture_id", limit: 4
     t.integer  "book_file_id",     limit: 4
@@ -197,6 +202,8 @@ ActiveRecord::Schema.define(version: 20200218122339) do
     t.string   "local_path",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "page_format",      limit: 4,     default: 1,     null: false
+    t.string   "taggable_name",    limit: 4096
   end
 
   add_index "refinery_books", ["book_category_id"], name: "index_refinery_books_on_book_category_id", using: :btree
@@ -210,27 +217,29 @@ ActiveRecord::Schema.define(version: 20200218122339) do
     t.integer  "position",         limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "tree_prefix",      limit: 255
+    t.boolean  "is_hidden"
   end
 
   add_index "refinery_books_book_categories", ["book_category_id"], name: "index_refinery_books_book_categories_on_book_category_id", using: :btree
 
   create_table "refinery_books_book_pages", force: :cascade do |t|
-    t.integer "book_id",        limit: 4,                    null: false
-    t.decimal "internal_order",               precision: 10, null: false
-    t.string  "url_name",       limit: 255,                  null: false
-    t.text    "page_text",      limit: 65535,                null: false
+    t.integer "book_id",        limit: 4,                       null: false
+    t.decimal "internal_order",                  precision: 10, null: false
+    t.string  "url_name",       limit: 255,                     null: false
+    t.text    "page_text",      limit: 16777215,                null: false
   end
 
   add_index "refinery_books_book_pages", ["book_id"], name: "index_refinery_books_book_pages_on_book_id", using: :btree
 
   create_table "refinery_books_contents_elements", force: :cascade do |t|
-    t.integer "book_id",             limit: 4,   null: false
+    t.integer "book_id",             limit: 4,    null: false
     t.integer "contents_element_id", limit: 4
-    t.integer "page_number",         limit: 4,   null: false
-    t.string  "name_prefix",         limit: 255
-    t.string  "name",                limit: 255, null: false
-    t.string  "name_comment",        limit: 255
-    t.integer "ce_type",             limit: 4,   null: false
+    t.integer "page_number",         limit: 4,    null: false
+    t.string  "name_prefix",         limit: 1024
+    t.string  "name",                limit: 4096, null: false
+    t.string  "name_comment",        limit: 1024
+    t.integer "ce_type",             limit: 4,    null: false
   end
 
   add_index "refinery_books_contents_elements", ["book_id"], name: "index_refinery_books_contents_elements_on_book_id", using: :btree
@@ -269,7 +278,24 @@ ActiveRecord::Schema.define(version: 20200218122339) do
     t.integer  "position",      limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "is_pinned",                   default: false, null: false
   end
+
+  create_table "refinery_books_popup_books", force: :cascade do |t|
+    t.string   "name",             limit: 255,   null: false
+    t.string   "name_prefix",      limit: 255
+    t.string   "tree_prefix",      limit: 255
+    t.string   "name_comment",     limit: 255
+    t.integer  "order_number",     limit: 4,     null: false
+    t.integer  "book_category_id", limit: 4
+    t.integer  "position",         limit: 4
+    t.text     "body",             limit: 65535
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "synopsis",         limit: 65535
+  end
+
+  add_index "refinery_books_popup_books", ["book_category_id"], name: "index_refinery_books_popup_books_on_book_category_id", using: :btree
 
   create_table "refinery_feedback_entries", force: :cascade do |t|
     t.string   "poster_name",    limit: 255
@@ -342,10 +368,30 @@ ActiveRecord::Schema.define(version: 20200218122339) do
     t.datetime "updated_at"
   end
 
+  create_table "refinery_news_items_news_categories", force: :cascade do |t|
+    t.string   "category_name", limit: 255
+    t.integer  "category_type", limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "refinery_news_items_news_categories", ["category_type"], name: "index_refinery_news_items_news_categories_on_category_type", using: :btree
+
+  create_table "refinery_news_items_news_items_news_categories", id: false, force: :cascade do |t|
+    t.integer "news_items_news_item_id",     limit: 4
+    t.integer "news_items_news_category_id", limit: 4
+  end
+
   create_table "refinery_news_items_news_recipients", force: :cascade do |t|
     t.string   "email",      limit: 255
     t.string   "name",       limit: 255
     t.string   "city",       limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "refinery_news_settings", force: :cascade do |t|
+    t.integer  "default_interval_in_months", limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -474,4 +520,5 @@ ActiveRecord::Schema.define(version: 20200218122339) do
   add_foreign_key "refinery_books_external_book_contents", "refinery_books", column: "book_id", on_delete: :cascade
   add_foreign_key "refinery_books_external_page_contents", "refinery_books_book_pages", column: "book_page_id", on_delete: :cascade
   add_foreign_key "refinery_books_internal_page_contents", "refinery_books_book_pages", column: "book_page_id", on_delete: :cascade
+  add_foreign_key "refinery_books_popup_books", "refinery_books_book_categories", column: "book_category_id", on_delete: :cascade
 end

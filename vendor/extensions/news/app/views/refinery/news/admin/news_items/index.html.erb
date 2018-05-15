@@ -1,0 +1,14 @@
+<%= form_for [refinery, :news_admin, @setting] do |f| -%>
+    <div class='field news_supp_field'>
+      <%= f.label :default_interval_in_months -%>
+      <%= f.number_field :default_interval_in_months, :class => 'larger widest' -%>
+    </div>
+    <%= f.submit %>
+<% end -%>
+<section id='records'>
+  <%= render 'records' %>
+</section>
+<aside id='actions'>
+  <%= render 'actions' %>
+</aside>
+<%= render '/refinery/admin/make_sortable', options: {tree: false} if !searching? and ::Refinery::News::Admin::NewsItemsController.sortable? and ::Refinery::News::NewsItem.many? %>

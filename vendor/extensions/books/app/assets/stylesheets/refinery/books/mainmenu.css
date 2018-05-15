@@ -24,7 +24,7 @@ BODY { behavior:url("/csshover2.htc"); } /* Fix for IE (css hover on any tag) */
     top:-999em;
     width:24em;
     height:auto;
-    background: url(library/iefix.gif);
+    /*background: url(library/iefix.gif);*/
     z-index:1000;
 }
 

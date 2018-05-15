@@ -1,0 +1,26 @@
+%section.subscription_news
+  %p
+    Вы можете оформить подписку на новости чтобы получать их на ваш e-mail. Таким образом, вы всегда будете в курсе последних изменений на нашем сайте.
+  /= raw page.content_for(:body)
+  = form_for [refinery, :news, @news_recipient] do |f|
+    %div.field
+      %label
+        Имя:
+      %br
+      = f.text_field :name
+    %div.field
+      %label
+        Ваш e-mail:
+      %br
+      = f.text_field :email
+    %div.field
+      %label
+        Город, профессия, возраст:
+      %br
+      = f.text_field :city
+    %div.submiting
+      %button.but_29{type: :submit}
+        %span.s0
+          %span.s1
+            %span.s2
+              Подписаться

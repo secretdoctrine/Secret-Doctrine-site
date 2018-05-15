@@ -1,0 +1,62 @@
+%section.news_list
+  %div.news_controls
+    %div.news_controls_block
+      Категории новостей
+      - all_news_class = 'news_item_category'
+      - if current == ''
+        - all_news_class += ' selected_category'
+      = link_to refinery.news_news_items_path(params.permit(:period, :fixed_year)), class: all_news_class do
+        Все новости
+      = render partial: 'refinery/news/partials/site_news_control_link', collection: @news_categories, as: :news_category, locals: {current: current}
+
+    %div.news_controls_block
+      По времени
+      - params_for_period = params.clone
+      - params_for_period.delete(:fixed_year)
+      - params_for_period.delete(:period)
+      - period_link_class = 'news_item_category'
+      - if news_dictionary[:selected_period] == 'all'
+        - period_link_class += ' period_selected'
+      = link_to refinery.url_for(params_for_period.merge(:period => 'all')), class: period_link_class do
+        За все время
+      - period_link_class = 'news_item_category'
+      - if news_dictionary[:selected_period] == 'default'
+        - period_link_class += ' period_selected'
+      = link_to refinery.url_for(params_for_period.merge(:period => 'default')), class: period_link_class do
+        По умолчанию
+      - period_link_class = 'news_item_category'
+      - if news_dictionary[:selected_period] == 'last_3_months'
+        - period_link_class += ' period_selected'
+      = link_to refinery.url_for(params_for_period.merge(:period => 'last_3_months')), class: period_link_class do
+        За 3 месяца
+      - period_link_class = 'news_item_category'
+      - if news_dictionary[:selected_period] == 'last_year'
+        - period_link_class += ' period_selected'
+      = link_to refinery.url_for(params_for_period.merge(:period => 'last_year')), class: period_link_class do
+        За год
+      - news_dictionary[:years].each do |year|
+        - link_class = 'news_item_category'
+        - if year == news_dictionary[:selected_year]
+          - link_class += ' period_selected'
+        = link_to refinery.url_for(params_for_period.merge(:fixed_year => year)), class: link_class do
+          = year
+    %div.news_controls_block
+      Подписка на новости
+      = render partial: 'refinery/news/partials/site_news_subscription', locals: {news_recipient: @news_recipient}
+    %div.news_controls_block.vk_link
+      = link_to 'https://vk.com/id101281' do
+        = image_tag 'vk.png'
+
+  %div.news_list_block
+    - if show_pinned
+      = render partial: 'refinery/news/partials/site_news', collection: news_dictionary[:pinned_news], as: :news_item, locals: {pinned: true}
+      - if news_dictionary[:not_pinned_news].length > 0
+        = render partial: 'refinery/news/partials/site_news', collection: news_dictionary[:not_pinned_news], as: :news_item
+      - else
+        Нет новостей за данный период
+    - else
+      = render partial: 'refinery/news/partials/site_news', collection: news_dictionary[:filtered_news], as: :news_item
+
+    %div.news_new
+    %div.link_more
+      = link_to 'More', refinery.url_for(params.merge(:prev_period_start => news_dictionary[:period_start])), :remote => true, :format => :json

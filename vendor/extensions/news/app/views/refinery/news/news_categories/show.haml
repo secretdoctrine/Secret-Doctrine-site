@@ -1,0 +1,9 @@
+= stylesheet_link_tag 'news.css'
+
+%div.clear
+
+%article.bodycontent
+  = render partial: 'refinery/news/partials/site_news_flash', locals: {flash: flash}
+  = render partial: 'refinery/news/partials/site_news_search'
+
+  = render partial: 'refinery/news/partials/site_news_list', locals: {news_categories: @news_categories, current: @news_category.category_name, news_dictionary: @news_dictionary, show_pinned: true, news_recipient: @news_recipient,}
