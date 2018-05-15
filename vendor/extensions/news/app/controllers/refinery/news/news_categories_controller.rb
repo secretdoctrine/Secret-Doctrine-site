@@ -8,16 +8,26 @@ module Refinery
 
 
       def show
-        @news_category = NewsCategory.find(params[:id])
-        category_items = @news_category.items.all
-        @news_dictionary = NewsItem.filter_by_params(category_items, params)
+        respond_to do |format|
+          format.html {
+            @news_category = NewsCategory.find(params[:id])
+            category_items = @news_category.items.all
+            @news_dictionary = NewsItem.filter_by_params(category_items, params)
 
-        @news_recipient = NewsRecipient.new
-        @news_categories = NewsCategory.all
+            @news_recipient = NewsRecipient.new
+            @news_categories = NewsCategory.all
 
-        # you can use meta fields from your model instead (e.g. browser_title)
-        # by swapping @page for @news_item in the line below:
-        present(@page)
+            # you can use meta fields from your model instead (e.g. browser_title)
+            # by swapping @page for @news_item in the line below:
+            present(@page)
+          }
+          format.js {
+            @news_category = NewsCategory.find(params[:id])
+            category_items = @news_category.items.all
+            @news_dictionary = NewsItem.filter_by_params(category_items, params)
+            return render :layout => false
+          }
+        end
       end
 
       protected

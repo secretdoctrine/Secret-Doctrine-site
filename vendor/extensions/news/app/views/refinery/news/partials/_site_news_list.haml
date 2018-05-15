@@ -48,15 +48,14 @@
         = image_tag 'vk.png'
 
   %div.news_list_block
-    - if show_pinned
-      = render partial: 'refinery/news/partials/site_news', collection: news_dictionary[:pinned_news], as: :news_item, locals: {pinned: true}
+    %div#news_list
+      - if show_pinned
+        = render partial: 'refinery/news/partials/site_news', collection: news_dictionary[:pinned_news], as: :news_item, locals: {pinned: true}
       - if news_dictionary[:not_pinned_news].length > 0
         = render partial: 'refinery/news/partials/site_news', collection: news_dictionary[:not_pinned_news], as: :news_item
       - else
-        Нет новостей за данный период
-    - else
-      = render partial: 'refinery/news/partials/site_news', collection: news_dictionary[:filtered_news], as: :news_item
+        %div#no_news
+          Нет новостей за данный период
 
-    %div.news_new
     %div.link_more
-      = link_to 'More', refinery.url_for(params.merge(:prev_period_start => news_dictionary[:period_start])), :remote => true, :format => :json
+      = link_to 'Ещё новости', refinery.url_for(params.merge(:prev_period_start => news_dictionary[:period_start])), :remote => true, :format => :json

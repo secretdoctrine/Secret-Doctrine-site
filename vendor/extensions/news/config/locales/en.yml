@@ -31,3 +31,5 @@ en:
         library_news: Library News
         site_news: Site News
         news_datetime: News Datetime
+      'refinery/news/setting':
+        default_interval_in_months: 'Default interval to show news for (in months):'

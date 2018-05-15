@@ -30,11 +30,16 @@ ru:
         show:
           show_all: Все новости
   activerecord:
+    models:
+      'refinery/news/setting':
+        one: 'Настройки'
     attributes:
       'refinery/news_items/news_item':
         body: Body
         library_news: Library News
         site_news: Site News
         news_datetime: News Datetime
+      'refinery/news/setting':
+        default_interval_in_months: 'Задать период по умолчанию для показа новостей (месяцев)'
   headers:
     news: Новости
