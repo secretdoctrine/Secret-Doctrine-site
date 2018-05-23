@@ -1,5 +1,9 @@
 = stylesheet_link_tag 'news.css'
 
+%div#back_to_news_link
+  = link_to refinery.news_news_items_path do
+    Назад к новостям сайта >
+
 %div{class: 'search_results_container'}
   - if @result[:too_many_results]
     %div#warning_too_many_results

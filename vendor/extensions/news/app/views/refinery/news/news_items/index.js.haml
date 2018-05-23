@@ -2,7 +2,11 @@
 - new_content = j(render partial: 'refinery/news/partials/site_news', collection: @news_dictionary[:not_pinned_news], as: :news_item)
 - no_content = @news_dictionary[:not_pinned_news].empty?
 
+if(#{@news_dictionary[:no_more_entries]}) {
+$(".link_more").html("")
+} else {
 $(".link_more").html("#{new_link}")
+}
 $("#news_list").append("#{new_content}")
 if(!#{no_content}) {
 $("#no_news").html("")

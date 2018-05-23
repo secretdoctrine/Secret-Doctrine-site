@@ -37,37 +37,61 @@ module Refinery
         result[:years] = collection.collect{|x| x.news_datetime.year}.uniq.sort.reverse
         result[:selected_year] = nil
         result[:has_period_filter] = false
+        result[:no_more_entries] = false
 
-        if params.has_key? :prev_period_start
-          period_end = params[:prev_period_start].to_datetime
-          period_start = period_end - 3.month
+        if collection.length == 0
+          result[:no_more_entries] = true
+          return
+        end
+
+        first_entry_datetime = collection.order('news_datetime ASC').first.news_datetime
+
+        if params.has_key? :fixed_year and not params.has_key? :prev_period_start
+          result[:selected_year] = params[:fixed_year].to_i
+          period_start = DateTime.new(result[:selected_year], 1, 1)
+          period_end = DateTime.new(result[:selected_year] + 1, 1, 1)
         else
-          period_end = DateTime.now
-          if params.has_key? :fixed_year
-            #result[:filtered_news] = result[:filtered_news].where("YEAR(news_datetime) = #{params[:fixed_year].to_i}")
-            result[:selected_year] = params[:fixed_year].to_i
-            #result[:period_start] = DateTime.new(result[:selected_year], 1, 1)
-            period_start = DateTime.new(result[:selected_year], 1, 1)
-            period_end = DateTime.new(result[:selected_year] + 1, 1, 1)
+
+          if params.has_key? :prev_period_start
+            interval = 3.month
+            period_end = params[:prev_period_start].to_datetime
+
+
           else
+            period_end = DateTime.now
 
             if params.has_key? :period
               if params[:period] == 'last_3_months'
-                period_start = period_end - 3.month
+                interval = 3.month
               elsif params[:period] == 'last_year'
-                period_start = period_end - 1.year
+                interval = 1.year
               elsif params[:period] == 'default'
-                period_start = period_end - self.default_time_in_months.months
+                interval = self.default_time_in_months.months
               else
-                period_start = period_end - self.default_time_in_months.months
+                interval = self.default_time_in_months.months
               end
               result[:selected_period] = params[:period]
             else
-              period_start = period_end - self.default_time_in_months.months
+              interval = self.default_time_in_months.months
               result[:selected_period] = 'default'
             end
           end
+
+          period_start = period_end - interval
+          while result[:filtered_news]
+                    .where('news_datetime >= ?', period_start)
+                    .where('news_datetime < ?', period_end)
+                    .where(:is_pinned => false)
+                    .length == 0
+            period_start = period_start - 3.month
+            break if period_start < first_entry_datetime
+          end
+
+          result[:no_more_entries] = true if period_start < first_entry_datetime
+
         end
+
+
 
         result[:filtered_news] = result[:filtered_news].where('news_datetime >= ?', period_start).where('news_datetime < ?', period_end)
         result[:period_start] = period_start

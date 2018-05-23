@@ -93,6 +93,11 @@ aside.left { display: none;}
 #news_search_block .but_24:hover .s2 {background: url(button_down.png) 0 -39px;}
 #news_search_block #search_news { min-width: 300px;}
 
+#back_to_news_link {
+    text-align: right;
+    padding: 15px 60px;
+}
+
 .date_interval {
     margin: 3px 10px;
 }
