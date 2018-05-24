@@ -38,10 +38,12 @@ module Refinery
         result[:selected_year] = nil
         result[:has_period_filter] = false
         result[:no_more_entries] = false
+        result[:pinned_news] = collection
+        result[:not_pinned_news] = collection
 
         if collection.length == 0
           result[:no_more_entries] = true
-          return
+          return result
         end
 
         first_entry_datetime = collection.order('news_datetime ASC').first.news_datetime
@@ -192,8 +194,8 @@ module Refinery
         result[:per_page] = per_page
 
         #
-        #should_not_search = (search_text.empty? and news_category_ids.empty?)
-        should_not_search = false
+        should_not_search = (search_text.empty? and news_category_ids.empty?)
+        #should_not_search = false
         result[:should_not_search] = should_not_search
 
         if should_not_search

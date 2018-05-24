@@ -56,6 +56,6 @@
       - else
         %div#no_news
           Нет новостей за данный период
-
-    %div.link_more
-      = link_to 'Ещё новости', refinery.url_for(params.merge(:prev_period_start => news_dictionary[:period_start])), :remote => true, :format => :json
+    - unless news_dictionary[:no_more_entries]
+      %div.link_more
+        = link_to 'Ещё новости', refinery.url_for(params.merge(:prev_period_start => news_dictionary[:period_start])), :remote => true, :format => :json
