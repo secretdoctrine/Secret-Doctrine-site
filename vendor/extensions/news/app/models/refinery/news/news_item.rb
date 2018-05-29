@@ -38,7 +38,8 @@ module Refinery
         result[:selected_year] = nil
         result[:has_period_filter] = false
         result[:no_more_entries] = false
-        result[:pinned_news] = collection
+        #result[:pinned_news] = collection
+        result[:pinned_news] = NewsItem.where(:is_pinned => true).order('news_datetime DESC')
         result[:not_pinned_news] = collection
 
         if collection.length == 0
@@ -46,7 +47,15 @@ module Refinery
           return result
         end
 
-        first_entry_datetime = collection.order('news_datetime ASC').first.news_datetime
+        db_first_entry_datetime = collection.order('news_datetime ASC').first.news_datetime
+        first_entry_datetime = DateTime.new(
+            db_first_entry_datetime.year,
+            db_first_entry_datetime.month,
+            db_first_entry_datetime.day,
+            db_first_entry_datetime.hour,
+            db_first_entry_datetime.min,
+            db_first_entry_datetime.sec)
+
 
         if params.has_key? :fixed_year and not params.has_key? :prev_period_start
           result[:selected_year] = params[:fixed_year].to_i
@@ -69,6 +78,9 @@ module Refinery
                 interval = 1.year
               elsif params[:period] == 'default'
                 interval = self.default_time_in_months.months
+              elsif params[:period] == 'all'
+                # +1 is just to be sure
+                interval = ((period_end - first_entry_datetime).to_i + 1.day)*24
               else
                 interval = self.default_time_in_months.months
               end
@@ -101,7 +113,7 @@ module Refinery
 
 
         result[:filtered_news] = result[:filtered_news].order('news_datetime DESC')
-        result[:pinned_news] = result[:unfiltered_news].where(:is_pinned => true).order('news_datetime DESC')
+        #result[:pinned_news] = result[:unfiltered_news].where(:is_pinned => true).order('news_datetime DESC')
         result[:not_pinned_news] = result[:filtered_news].where(:is_pinned => false).order('news_datetime DESC')
 
         result
