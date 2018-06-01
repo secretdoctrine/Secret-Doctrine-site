@@ -21,7 +21,7 @@ module Refinery
 
       def is_fresh?()
 
-        (news_datetime >(DateTime.now - 3.month))
+        (news_datetime >(DateTime.now - Setting.first.fresh_interval_in_months.month))
 
       end
 

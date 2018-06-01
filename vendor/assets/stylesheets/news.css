@@ -44,6 +44,9 @@ aside.left { display: none;}
 .news_list article.pinned {
     border: 6px groove #4F63CE;
 }
+.news_list article.fresh {
+    background: url(news_69_new.png) repeat;
+}
 .news_list article a { color: #FFF;}
 .news_list article time { display: block; margin: 0 0 10px; color: #FFF; font-weight: bold;}
 .news_list article .time { color: #FFF;}

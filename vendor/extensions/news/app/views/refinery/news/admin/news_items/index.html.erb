@@ -2,6 +2,8 @@
     <div class='field news_supp_field' style="margin-bottom: 20px;">
       <%= f.label :default_interval_in_months, style: 'display: inline-block;' -%>
       <%= f.number_field :default_interval_in_months -%>
+      <%= f.label :fresh_interval_in_months, style: 'display: inline-block;' -%>
+      <%= f.number_field :fresh_interval_in_months -%>
       <%= f.submit %>
     </div>
 <% end -%>

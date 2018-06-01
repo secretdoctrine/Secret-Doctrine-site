@@ -41,5 +41,6 @@ ru:
         news_datetime: News Datetime
       'refinery/news/setting':
         default_interval_in_months: 'Задать период по умолчанию для показа новостей (месяцев)'
+        fresh_interval_in_months: 'Период "свежести" новости (месяцев)'
   headers:
     news: Новости

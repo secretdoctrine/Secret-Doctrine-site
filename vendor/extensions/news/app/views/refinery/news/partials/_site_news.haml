@@ -1,6 +1,8 @@
 - article_class = ''
 - if defined? pinned
   - article_class = 'pinned'
+- elsif news_item.is_fresh?
+  - article_class = 'fresh'
 %article{class: article_class}
   %time{datetime: news_item.news_datetime}
     - if defined? pinned
