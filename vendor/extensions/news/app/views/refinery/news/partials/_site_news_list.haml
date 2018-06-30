@@ -34,12 +34,22 @@
         - period_link_class += ' period_selected'
       = link_to refinery.url_for(params_for_period.merge(:period => 'last_year')), class: period_link_class do
         За год
-      - news_dictionary[:years].each do |year|
-        - link_class = 'news_item_category'
-        - if year == news_dictionary[:selected_year]
-          - link_class += ' period_selected'
-        = link_to refinery.url_for(params_for_period.merge(:fixed_year => year)), class: link_class do
-          = year
+      - news_dictionary[:years].each_key do |year|
+        %div.news_item_container
+          - link_class = 'news_item_year'
+          - if year == news_dictionary[:selected_year] and news_dictionary[:selected_month].nil?
+            - link_class += ' period_selected'
+          = link_to '#', {id: year.to_s + '_anchor', class: 'year_control', onclick: "toggle(#{year}); return false;"} do
+            &nbsp;
+          = link_to refinery.url_for(params_for_period.merge(:fixed_year => year)), class: link_class do
+            = year
+          %div{:id => year, :style => 'display: none;'}
+            - news_dictionary[:years][year].each do |month|
+              - link_class = 'news_item_month'
+              - if year == news_dictionary[:selected_year] and month == news_dictionary[:selected_month]
+                - link_class += ' period_selected'
+              = link_to refinery.url_for(params_for_period.merge(:month_year => year, :fixed_month => month)), class: link_class do
+                = I18n.t("date.months")[month]
     %div.news_controls_block
       Подписка на новости
       = render partial: 'refinery/news/partials/site_news_subscription', locals: {news_recipient: @news_recipient}
@@ -59,3 +69,13 @@
     - unless news_dictionary[:no_more_entries]
       %div.link_more
         = link_to 'Ещё новости', refinery.url_for(params.merge(:prev_period_start => news_dictionary[:period_start])), :remote => true, :format => :json
+
+:javascript
+  function toggle(year) {
+    if($('#' + year).css('display') == 'none'){
+      $('#' + year).show();
+    } else {
+      $('#' + year).hide();
+    }
+    $('#' + year + '_anchor').toggleClass('open');
+  }

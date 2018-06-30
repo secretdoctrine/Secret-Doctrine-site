@@ -34,7 +34,11 @@ module Refinery
         result = {}
         result[:unfiltered_news] = collection
         result[:filtered_news] = collection
-        result[:years] = collection.collect{|x| x.news_datetime.year}.uniq.sort.reverse
+        #result[:years] = collection.collect{|x| x.news_datetime.year}.uniq.sort.reverse
+        result[:years] = {}
+        collection.collect{|x| x.news_datetime.year}.uniq.sort.reverse.each do |year|
+          result[:years][year] = collection.select{|x| x.news_datetime.year == year}.collect{|x| x.news_datetime.month}.uniq.sort.reverse
+        end
         result[:selected_year] = nil
         result[:has_period_filter] = false
         result[:no_more_entries] = false
@@ -59,8 +63,18 @@ module Refinery
 
         if params.has_key? :fixed_year and not params.has_key? :prev_period_start
           result[:selected_year] = params[:fixed_year].to_i
+          result[:selected_month] = nil
           period_start = DateTime.new(result[:selected_year], 1, 1)
           period_end = DateTime.new(result[:selected_year] + 1, 1, 1)
+        elsif params.has_key? :fixed_month and params.has_key? :month_year and not params.has_key? :prev_period_start
+          result[:selected_year] = params[:month_year].to_i
+          result[:selected_month] = params[:fixed_month].to_i
+          period_start = DateTime.new(result[:selected_year], result[:selected_month], 1)
+          if result[:selected_month] == 12
+            period_end = DateTime.new(result[:selected_year] + 1, 1, 1)
+          else
+            period_end = DateTime.new(result[:selected_year], result[:selected_month] + 1, 1)
+          end
         else
 
           if params.has_key? :prev_period_start
