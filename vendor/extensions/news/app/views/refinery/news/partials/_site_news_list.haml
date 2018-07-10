@@ -39,7 +39,10 @@
           - link_class = 'news_item_year'
           - if year == news_dictionary[:selected_year] and news_dictionary[:selected_month].nil?
             - link_class += ' period_selected'
-          = link_to '#', {id: year.to_s + '_anchor', class: 'year_control', onclick: "toggle(#{year}); return false;"} do
+          - anchor_class = 'year_control'
+          - if year == news_dictionary[:selected_year]
+            - anchor_class += ' open'
+          = link_to '#', {id: year.to_s + '_anchor', class: anchor_class, onclick: "toggle(#{year}); return false;"} do
             &nbsp;
           = link_to refinery.url_for(params_for_period.merge(:fixed_year => year)), class: link_class do
             = year
@@ -74,8 +77,11 @@
   function toggle(year) {
     if($('#' + year).css('display') == 'none'){
       $('#' + year).show();
+      $('#' + year + '_anchor').addClass('open');
     } else {
       $('#' + year).hide();
+      $('#' + year + '_anchor').removeClass('open');
     }
-    $('#' + year + '_anchor').toggleClass('open');
   }
+
+  toggle(#{news_dictionary[:selected_year]});
