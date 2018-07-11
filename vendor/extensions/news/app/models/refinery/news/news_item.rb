@@ -220,7 +220,7 @@ module Refinery
         result[:per_page] = per_page
 
         #
-        should_not_search = (search_text.empty? and news_category_ids.empty?)
+        should_not_search = (search_text.empty? and news_category_ids.empty? and datetime_start.nil? and datetime_end.nil?)
         #should_not_search = false
         result[:should_not_search] = should_not_search
 
