@@ -42,8 +42,8 @@ aside.left { display: none;}
     margin-bottom: 20px;
 }
 .news_list article.pinned {
-    border: 6px groove #4F63CE;
-    background: url(news_69_pinned.png) repeat;
+    border: 6px groove #30408E;
+    background: url(black_40.png) repeat;
 }
 .news_list article.fresh {
     background: url(news_69_new.png) repeat;
