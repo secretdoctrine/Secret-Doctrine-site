@@ -20,11 +20,6 @@
       = link_to refinery.url_for(params_for_period.merge(:period => 'all')), class: period_link_class do
         За все время
       - period_link_class = 'news_item_category'
-      - if news_dictionary[:selected_period] == 'default'
-        - period_link_class += ' period_selected'
-      = link_to refinery.url_for(params_for_period.merge(:period => 'default')), class: period_link_class do
-        По умолчанию
-      - period_link_class = 'news_item_category'
       - if news_dictionary[:selected_period] == 'last_3_months'
         - period_link_class += ' period_selected'
       = link_to refinery.url_for(params_for_period.merge(:period => 'last_3_months')), class: period_link_class do
