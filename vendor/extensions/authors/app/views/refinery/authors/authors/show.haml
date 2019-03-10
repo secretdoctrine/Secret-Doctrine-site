@@ -15,6 +15,12 @@
 %article.bodycontent
   = raw @page.content_for(:body)
 
+  %hgroup
+    %h1
+      = raw @author.title
+    %h2
+      = raw @author.subtitle
+
   %div.centered
 
     = raw @author.about_text
