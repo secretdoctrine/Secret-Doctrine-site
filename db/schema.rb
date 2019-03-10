@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200218122346) do
+ActiveRecord::Schema.define(version: 20200218122349) do
 
   create_table "book_categories", force: :cascade do |t|
     t.integer "book_category_id", limit: 4
@@ -162,6 +162,8 @@ ActiveRecord::Schema.define(version: 20200218122346) do
     t.text     "additional_info",       limit: 65535
     t.text     "last_poem_placeholder", limit: 65535
     t.boolean  "need_placeholder",                    default: false, null: false
+    t.string   "title",                 limit: 255
+    t.string   "subtitle",              limit: 255
   end
 
   add_index "refinery_authors", ["slug"], name: "index_refinery_authors_on_slug", using: :btree
@@ -394,6 +396,7 @@ ActiveRecord::Schema.define(version: 20200218122346) do
     t.integer  "default_interval_in_months", limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "fresh_interval_in_months",   limit: 4, default: 1, null: false
   end
 
   create_table "refinery_page_part_translations", force: :cascade do |t|
