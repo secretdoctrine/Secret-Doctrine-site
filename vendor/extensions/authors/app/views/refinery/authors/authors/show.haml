@@ -35,7 +35,7 @@
 
     %table.contents_tab{cellspacing: '6'}
       %tbody
-        - @author.poems.each_slice(2) do |poem_pair|
+        - @author.poems.order(:order_number).each_slice(2) do |poem_pair|
           %tr
             = render partial: 'poem', collection: poem_pair, as: :poem
             - if poem_pair.size < 2
