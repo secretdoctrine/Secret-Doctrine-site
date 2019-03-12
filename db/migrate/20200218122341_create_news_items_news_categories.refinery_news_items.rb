@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # This migration comes from refinery_news_items (originally 3)
 class CreateNewsItemsNewsCategories < ActiveRecord::Migration
 
