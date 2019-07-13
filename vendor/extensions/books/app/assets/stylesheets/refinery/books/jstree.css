@@ -391,20 +391,19 @@
   background-image: url("32px.png");
 }
 .jstree-default .jstree-node {
-  background-position: -292px -4px;
-  background-repeat: repeat-y;
+  background-image: none;
 }
 .jstree-default .jstree-last {
   background: transparent;
 }
 .jstree-default .jstree-open > .jstree-ocl {
-  background-position: -132px -4px;
+  background-position: -36px -4px;
 }
 .jstree-default .jstree-closed > .jstree-ocl {
-  background-position: -100px -4px;
+  background-position: -3px -4px;
 }
 .jstree-default .jstree-leaf > .jstree-ocl {
-  background-position: -68px -4px;
+  background-image: none;
 }
 .jstree-default .jstree-themeicon {
   background-position: -260px -4px;
@@ -1059,9 +1058,13 @@
   background-image: url("32px_white.png");
 }
 
+.navmenu .jstree-anchor,
+.navmenu .jstree-ocl {
+  margin: 8px 0;
+}
+
 .navmenu .jstree-default .jstree-node {
-  background-position: -292px -4px;
-  background-repeat: repeat-y;
+  background-image: none;
 }
 
 .navmenu .jstree-default .jstree-last {
@@ -1113,4 +1116,26 @@
 .navmenu #jstree-dnd.jstree-default-large .jstree-ok,
  .navmenu #jstree-dnd.jstree-default-large .jstree-er {
   background-image: url("32px_white.png");
+}
+
+.navmenu .jstree-default .jstree-anchor {
+  line-height: 18px;
+  height: 18px;
+}
+
+.navmenu .jstree-default .jstree-icon:empty {
+  width: 24px;
+  height: 18px;
+  line-height: 18px;
+}
+
+.navmenu .jstree-default .jstree-leaf > .jstree-ocl {
+  background-image: url("disk_r.gif");
+  background-position: center;
+}
+
+.navmenu > .jstree-default > .jstree-container-ul > .jstree-leaf > .jstree-ocl {
+  background-image: url("white_cir_small.png");
+  background-position: center;
+  background-repeat: no-repeat;
 }
