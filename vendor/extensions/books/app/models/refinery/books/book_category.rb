@@ -2,7 +2,7 @@ module Refinery
   module Books
     class BookCategory < Refinery::Core::BaseModel
 
-      validates :name, :presence => true, :uniqueness => true
+      validates :name, :presence => true
 
       belongs_to :book_category
       has_many :book_categories
