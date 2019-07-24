@@ -33,6 +33,12 @@ Refinery::Core::Engine.routes.draw do
         end
       end
 
+      resources :library_links, :except => :show do
+        collection do
+          post :update_positions
+        end
+      end
+
       resources :contents_elements
     end
   end
@@ -56,6 +62,7 @@ Refinery::Core::Engine.routes.draw do
     #resources :pages, :only => [:show, :index]
     resources :book_categories, :only => [:show, :index]
     resources :popup_books, :only => [:show]
+    resources :library_links, :only => [:show]
     end
 
 end

@@ -1,0 +1,12 @@
+- node_class = 'jstree-open'
+- node_class += ' jstree-edit'
+- node_class += ' jstree-destroy'
+- node_class += ' is_link'
+%li{:id => 'library_link_' + library_link.id.to_s,
+    :edit_path => refinery.edit_books_admin_library_link_path(library_link.id),
+    :class => node_class,
+    :update_path => refinery.books_admin_library_link_path(library_link.id),
+    :destroy_path => refinery.books_admin_library_link_path(library_link.id),
+    :node_type => :library_link}
+  = link_to refinery.edit_books_admin_library_link_path(library_link.id) do
+    = library_link.name

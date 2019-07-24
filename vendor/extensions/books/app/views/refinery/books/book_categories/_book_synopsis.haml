@@ -11,10 +11,15 @@
         = link_to(element.model.name, refinery.books_book_path(element.model.id))
       - elsif element.is_popup_book
         = link_to element.model.name, '#', :onclick => "return hs.htmlExpand(this, { objectType: 'iframe', src: '#{refinery.books_popup_book_path(element.model.id)}', align: 'center' } );"
+      - elsif element.is_link
+        = link_to(element.model.name, element.model.link.html_safe)
       - else
         = link_to(element.model.name, refinery.books_book_category_path(element.model.id))
     %p
-      = raw element.model.synopsis
+      - if element.model.has_attribute? :synopsis
+        = raw element.model.synopsis
+      - else
+        &nbsp
     - if element.is_popup_book
       %a{ href: "#", onclick: "return hs.htmlExpand(this, { objectType: 'iframe', src: '#{refinery.books_popup_book_path(element.model.id)}', align: 'center' } );"}
         =I18n.t('library.readmore')
@@ -36,6 +41,8 @@
             %span{class: 's2'}
               =I18n.t('library.buy')
     - elsif element.is_popup_book
+      &nbsp;
+    - elsif element.is_link
       &nbsp;
     - else
       %a{class: 'first last', href: "#{refinery.books_book_category_path(element.model.id)}"}

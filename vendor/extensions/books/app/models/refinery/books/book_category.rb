@@ -8,6 +8,7 @@ module Refinery
       has_many :book_categories
       has_many :books
       has_many :popup_books
+      has_many :library_links
 
       ROOT_NAME = ::I18n.t('library.categories_root_name')
       SHORT_NAME_LIMIT = 80
@@ -33,6 +34,7 @@ module Refinery
         book_categories.each {|x| result.push(x)}
         books.all.each {|x| result.push(x)}
         popup_books.all.each {|x| result.push(x)}
+        library_links.all.each {|x| result.push(x)}
 
         result.sort_by {|x| x.order_number}
 
@@ -108,6 +110,28 @@ module Refinery
 
       end
 
+      def self.process_own_library_links(db_element, tree_element)
+
+        db_element.library_links.each do |library_link|
+
+          book_element = TreeElement.new(
+              name: library_link.name,
+              link_target: Refinery::Core::Engine.routes.url_helpers.books_library_link_path(library_link.id),
+              id: library_link.id,
+              tree_prefix: library_link.tree_prefix,
+              is_data: true,
+              order_number: library_link.order_number,
+              selected: false,
+              is_popup: false,
+              is_link: true
+          )
+
+          tree_element.child_elements.push(book_element)
+
+        end
+
+      end
+
       def all_child_book_ids
 
         result = []
@@ -144,6 +168,7 @@ module Refinery
         any_book_is_open = process_own_books(db_element, tree_element, selected_book_ids: selected_book_ids)
         tree_element.is_open = true if any_book_is_open
         process_own_popup_books(db_element, tree_element)
+        process_own_library_links(db_element, tree_element)
 
         child_elements = db_element.book_categories.includes(:books)
 
@@ -280,6 +305,7 @@ module Refinery
         content = []
         books.each {|x| content.push(CategoryContentElement.new(is_book: true, model: x))}
         popup_books.each {|x| content.push(CategoryContentElement.new(is_popup_book: true, model: x))}
+        library_links.each {|x| content.push(CategoryContentElement.new(is_link: true, model: x))}
         book_categories.each {|x| content.push(CategoryContentElement.new(is_book: false, model: x))}
         content.sort_by!{|x| x.model.order_number}
 

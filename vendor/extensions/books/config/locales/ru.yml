@@ -122,27 +122,29 @@ ru:
       books:
         show:
           other: Other Books
-    activerecord:
-      attributes:
-        refinery/books/book_category:
-          book_category_id: Book Category
-          name: Name
-          is_root: Is Root
-          order_number: Order Number
-          synopsis: Synopsis
-        refinery/books/book:
-          name: Name
-          name_prefix: Name Prefix
-          tree_prefix: Tree Prefix
-          name_comment: Name Comment
-          order_number: Order Number
-          picture_path: Picture Path
-          synopsis: Synopsis
-          year: Year
-          author: Author
-          page_count: Page Count
-          can_buy: Can Buy
-          book_category_id: Book Category
+  activerecord:
+    attributes:
+      refinery/books/book_category:
+        book_category_id: Book Category
+        name: Name
+        is_root: Is Root
+        order_number: Order Number
+        synopsis: Synopsis
+      refinery/books/book:
+        name: Name
+        name_prefix: Name Prefix
+        tree_prefix: Tree Prefix
+        name_comment: Name Comment
+        order_number: Order Number
+        picture_path: Picture Path
+        synopsis: Synopsis
+        year: Year
+        author: Author
+        page_count: Page Count
+        can_buy: Can Buy
+        book_category_id: Book Category
+      refinery/books/library_link:
+        link: Ссылка (с префиксом протокола, например, https://)
   headers:
     library: Библиотека
     search: Поиск

@@ -3,6 +3,7 @@
 - node_class += ' jstree-add'
 - node_class += ' jstree-book-add'
 - node_class += ' jstree-popup-book-add'
+- node_class += ' jstree-library-link-add'
 - node_class += ' jstree-edit' unless book_category.is_root
 - node_class += ' jstree-destroy' unless book_category.is_root
 
@@ -11,6 +12,7 @@
     :new_path => refinery.new_books_admin_book_category_path + '?book_category_id=' + book_category.id.to_s,
     :new_book_path => refinery.new_books_admin_book_path + '?book_category_id=' + book_category.id.to_s,
     :new_popup_book_path => refinery.new_books_admin_popup_book_path + '?book_category_id=' + book_category.id.to_s,
+    :new_library_link_path => refinery.new_books_admin_library_link_path + '?book_category_id=' + book_category.id.to_s,
     :class => node_class,
     :update_path => refinery.books_admin_book_category_path(book_category.id),
     :destroy_path => refinery.books_admin_book_category_path(book_category.id),
@@ -32,3 +34,5 @@
         = render :partial => 'book_category_book_element', :locals => {book: child}
       - elsif child.is_a?(Refinery::Books::PopupBook)
         = render :partial => 'book_category_popup_book_element', :locals => {popup_book: child}
+      - elsif child.is_a?(Refinery::Books::LibraryLink)
+        = render :partial => 'book_category_library_link_element', :locals => {library_link: child}

@@ -108,6 +108,19 @@
         }
     });
 
+    book_category_ids = $(".jstree-library-link-add").map(function() { return $(this).attr("id") }).get();
+    $("##{jstree_div}").jstree(true).add_action(book_category_ids, {
+        "id": "action_library_link_add",
+        "class": "action_library_link_add pull-right",
+        "text": "L",
+        "after": true,
+        "selector": "a",
+        "event": "click",
+        "callback": function(node_id, node, action_id, action_el){
+            document.location.href = node.li_attr.new_library_link_path;
+        }
+    });
+
 
     book_category_ids = $(".jstree-edit").map(function() { return $(this).attr("id") }).get();
     $("##{jstree_div}").jstree(true).add_action(book_category_ids, {
