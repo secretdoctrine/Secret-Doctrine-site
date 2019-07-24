@@ -9,4 +9,4 @@
     :parent_id => "author_" + poem.author_id.to_s,
     :node_type => :poem}
   = link_to refinery.edit_authors_admin_poem_path(poem.id) do
-    = poem.title
+    = poem.short_title

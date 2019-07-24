@@ -11,6 +11,13 @@ module Refinery
 
       validates :title, :presence => true
 
+      SHORT_NAME_LIMIT = 80
+
+      def short_title
+        return title if title.length < SHORT_NAME_LIMIT
+        title.first(SHORT_NAME_LIMIT) + '(...)'
+      end
+
       def destroy
         multimedia_groups.each {|x| x.destroy}
         multimedia_items.each {|x| x.destroy}

@@ -9,6 +9,13 @@ module Refinery
       belongs_to :audio_file, :class_name => '::Refinery::Resource'
       belongs_to :hidef_audio_file, :class_name => '::Refinery::Resource'
 
+      SHORT_NAME_LIMIT = 80
+
+      def short_title
+        return title if title.length < SHORT_NAME_LIMIT
+        title.first(SHORT_NAME_LIMIT) + '(...)'
+      end
+
       def parent_id=(new_id)
         self.multimedia_group_id = new_id
       end

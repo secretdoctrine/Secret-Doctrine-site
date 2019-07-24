@@ -9,4 +9,4 @@
     :parent_group_id => "group_" + multimedia_item.multimedia_group.id.to_s,
     :node_type => :item}
   = link_to refinery.edit_multimedia_groups_admin_multimedia_item_path(multimedia_item.id) do
-    = multimedia_item.title
+    = multimedia_item.short_title

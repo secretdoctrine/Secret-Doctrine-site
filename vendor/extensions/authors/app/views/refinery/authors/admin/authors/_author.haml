@@ -16,7 +16,7 @@
     :node_type => :author}
   - unless author.is_root
     = link_to refinery.edit_authors_admin_author_path(author.id) do
-      = author.name
+      = author.short_name
   - else
     = author.name
   - author.children_array.each do |child|

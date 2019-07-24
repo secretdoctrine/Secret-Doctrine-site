@@ -14,6 +14,13 @@ module Refinery
       #
       #   acts_as_indexed :fields => [:title]
 
+      SHORT_NAME_LIMIT = 80
+
+      def short_title
+        return title if title.length < SHORT_NAME_LIMIT
+        title.first(SHORT_NAME_LIMIT) + '(...)'
+      end
+
       def parent_id=(new_id)
         self.author_id = new_id
       end

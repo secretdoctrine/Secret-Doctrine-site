@@ -15,7 +15,7 @@
     :node_type => :group}
   - unless multimedia_group.is_root
     = link_to refinery.edit_multimedia_groups_admin_multimedia_group_path(multimedia_group.id) do
-      = multimedia_group.title
+      = multimedia_group.short_title
   - else
     = multimedia_group.title
   - multimedia_group.children_array.each do |child|

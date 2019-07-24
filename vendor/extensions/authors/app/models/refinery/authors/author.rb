@@ -13,6 +13,13 @@ module Refinery
 
       validates :name, :presence => true, :uniqueness => true
 
+      SHORT_NAME_LIMIT = 80
+
+      def short_name
+        return name if name.length < SHORT_NAME_LIMIT
+        name.first(SHORT_NAME_LIMIT) + '(...)'
+      end
+
 
       def should_generate_new_friendly_id?
         changes.keys.include? 'friendly_header'
