@@ -1139,3 +1139,7 @@
   background-position: center;
   background-repeat: no-repeat;
 }
+
+.navmenu li.selected_li > a {
+  color: #FFFF00;
+}

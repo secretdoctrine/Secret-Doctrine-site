@@ -1,8 +1,10 @@
-- li_class = nil
+- li_class = ''
 - if group.multimedia_groups.any? and current_group and group.multimedia_groups.collect{|x| x.id}.include? current_group.id
   - li_class = 'jstree-open'
 - if group.is_toplevel
   - li_class = 'jstree-open'
+- if current_group and group.id == current_group.id
+  - li_class += ' selected_li'
 %li{:class => li_class}
   = link_to group.title, refinery.multimedia_groups_multimedia_group_path(group.id)
   - if group.multimedia_groups.any?
