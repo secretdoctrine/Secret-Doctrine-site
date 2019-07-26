@@ -9,4 +9,6 @@
     :destroy_path => refinery.books_admin_library_link_path(library_link.id),
     :node_type => :library_link}
   = link_to refinery.edit_books_admin_library_link_path(library_link.id) do
+    - unless library_link.tree_prefix.blank?
+      = library_link.tree_prefix
     = library_link.short_name
