@@ -12,6 +12,7 @@ class CreateLibraryLinks < ActiveRecord::Migration
       t.integer   :position
       t.text      :link,          :limit => 65535
       t.text      :synopsis,      :limit => 65535
+      t.integer   :cover_picture_id
 
       t.timestamps
 

@@ -1,6 +1,6 @@
 %div{class: 'pro'}
   %div{class: 'cover'}
-    - if element.is_book and element.model.cover_picture
+    - if (element.is_book or element.is_link) and element.model.cover_picture
       = link_to element.model.cover_picture.url, {onclick: "return hs.expand(this);"} do
         = image_tag element.model.cover_picture.url
       /= link_to refinery.cover_books_book_path(element.model.id), {'data-lightbox' => "#{element.model.id}"} do

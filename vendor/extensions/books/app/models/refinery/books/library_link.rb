@@ -2,6 +2,8 @@ module Refinery
   module Books
     class LibraryLink < Refinery::Core::BaseModel
 
+      belongs_to :cover_picture, :class_name => '::Refinery::Image'
+
       SHORT_NAME_LIMIT = 80
 
       def short_name
