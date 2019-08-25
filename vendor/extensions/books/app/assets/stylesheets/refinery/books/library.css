@@ -134,7 +134,7 @@ body.library {
     text-decoration: none;
 }
 
-#book_header a.is_book {
+#book_header a:nth-last-child(2) {
     font-weight: bold;
     font-size: 14px;
 }
