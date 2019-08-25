@@ -15,6 +15,8 @@ module Refinery
       attr_accessor :is_popup
       attr_accessor :is_current
       attr_accessor :is_link
+      attr_accessor :name_tooltip
+      attr_accessor :tree_prefix_tooltip
 
       BOOK_TYPE = 'book'
       CATEGORY_TYPE = 'category'
@@ -36,7 +38,9 @@ module Refinery
           id: 0,
           is_popup: false,
           is_current: false,
-          is_link: false
+          is_link: false,
+          name_tooltip: nil,
+          tree_prefix_tooltip: nil
       )
 
         @selected = selected
@@ -52,6 +56,8 @@ module Refinery
         @is_popup = is_popup
         @is_current = is_current
         @is_link = is_link
+        @name_tooltip = name_tooltip
+        @tree_prefix_tooltip = tree_prefix_tooltip
 
       end
 

@@ -114,7 +114,7 @@ module Refinery
         def book_params
           params.require(:book).permit(:name, :name_prefix, :tree_prefix, :name_comment, :order_number, :cover_picture_id,
                                        :synopsis, :year, :author, :page_count, :can_buy, :book_category_id, :page_format,
-                                       :taggable_name, :book_file_id)
+                                       :taggable_name, :book_file_id, :tree_prefix_tooltip, :name_tooltip)
         end
       end
     end

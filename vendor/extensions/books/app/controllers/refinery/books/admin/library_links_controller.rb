@@ -43,7 +43,7 @@ module Refinery
         # Only allow a trusted parameter "white list" through.
         def library_link_params
           params.require(:library_link).permit(:name, :name_prefix, :tree_prefix, :name_comment, :order_number,
-                                             :book_category_id, :link, :synopsis, :cover_picture_id)
+                                             :book_category_id, :link, :synopsis, :cover_picture_id, :tree_prefix_tooltip, :name_tooltip)
         end
       end
     end

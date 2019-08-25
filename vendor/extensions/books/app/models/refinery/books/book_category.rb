@@ -76,7 +76,9 @@ module Refinery
               tree_prefix: book.tree_prefix,
               is_data: true,
               order_number: book.order_number,
-              selected: selected_book_ids.any?{ |x| x == book.id }
+              selected: selected_book_ids.any?{ |x| x == book.id },
+              name_tooltip: book.name_tooltip,
+              tree_prefix_tooltip: book.tree_prefix_tooltip
           )
 
           any_open = true if book_element.selected
@@ -101,7 +103,9 @@ module Refinery
               is_data: true,
               order_number: popup_book.order_number,
               selected: false,
-              is_popup: true
+              is_popup: true,
+              name_tooltip: popup_book.name_tooltip,
+              tree_prefix_tooltip: popup_book.tree_prefix_tooltip
           )
 
           tree_element.child_elements.push(book_element)
@@ -123,7 +127,9 @@ module Refinery
               order_number: library_link.order_number,
               selected: false,
               is_popup: false,
-              is_link: true
+              is_link: true,
+              name_tooltip: library_link.name_tooltip,
+              tree_prefix_tooltip: library_link.tree_prefix_tooltip
           )
 
           tree_element.child_elements.push(book_element)
