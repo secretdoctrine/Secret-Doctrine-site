@@ -11,6 +11,7 @@
             = link_to t('menu.library'), refinery.books_book_categories_path
             - @page_info[:page].breadcrumb_parents.each do |parent|
               \ »
+              %br
               = link_to parent[:link_target], {class: parent[:is_book] ? 'is_book' : ''} do
                 - unless parent[:prefix].blank?
                   = parent[:prefix] + '.'
